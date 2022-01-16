@@ -1,1 +1,1 @@
-export { default as Vue3Lottie } from "@/vue3-lottie";
+export { default as Vue3Lottie } from '@/vue3-lottie'

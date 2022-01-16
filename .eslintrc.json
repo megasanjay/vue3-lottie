@@ -10,7 +10,8 @@
     "plugin:vue/vue3-essential",
     "@vue/standard",
     "@vue/typescript/recommended",
-    "plugin:vue/recommended"
+    "plugin:vue/recommended",
+    "plugin:prettier/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 2020

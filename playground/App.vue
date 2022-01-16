@@ -1,22 +1,22 @@
 <template>
-  <Vue3Lottie :animationData="AstronautJSON" :width="200" :height="200" />
+  <Vue3Lottie :animation-data="AstronautJSON" :width="200" :height="200" />
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import Vue3Lottie from "../packages/vue3-lottie";
+import { defineComponent } from 'vue'
+import Vue3Lottie from '../packages/vue3-lottie'
 
-import AstronautJSON from "./assets/lotties/Astronaut.json";
+import AstronautJSON from './assets/lotties/Astronaut.json'
 
 export default defineComponent({
-  name: "App",
+  name: 'App',
   components: {
     Vue3Lottie,
   },
   setup() {
-    return { AstronautJSON };
+    return { AstronautJSON }
   },
-});
+})
 </script>
 <style lang="scss">
 html,
