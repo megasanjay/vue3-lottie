@@ -1,17 +1,19 @@
 {
-  "name": "vue3-ts-lib-template",
+  "name": "vue3-lottie",
   "version": "1.0.0",
   "license": "MIT",
-  "author": "Tinko Liu <TinkoLiu@users.noreply.github.com> (https://github.com/TinkoLiu)",
+  "author": "Sanjay Soundarajan <info@sanjaysoundarajan.dev> (https://sanjaysoundarajan.dev)",
   "scripts": {
     "dev": "vite",
     "prepare": "husky install",
     "build": "vue-tsc --noEmit && rollup -c rollup.config.js",
     "serve": "vite preview",
     "lint": "eslint \"{packages,playground}/**/*.{ts,tsx,vue,js,jsx,html}\"",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "prettier": "npx prettier --write ."
   },
   "dependencies": {
+    "lottie-web": "^5.8.1",
     "vue": "^3.2.4"
   },
   "peerDependencies": {
@@ -24,7 +26,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/TinkoLiu/vue3-ts-lib-template.git"
+    "url": "https://github.com/megasanjay/vue3-lottie.git"
   },
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -58,6 +60,7 @@
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-vue": "^7.9.0",
     "husky": "^6.0.0",
+    "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-postcss": "^4.0.1",
