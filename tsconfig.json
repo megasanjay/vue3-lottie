@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
+    "types": ["vite/client"],
+    "baseUrl": ".",
+    "noImplicitAny": false,
+    "outDir": "lib",
+    "declarationDir": "lib",
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": [
+        "packages/*"
+      ]
+    },
+    "plugins": [
+      {
+          "transform": "@zerollup/ts-transform-paths",
+          "exclude": ["*"]
+      }
+  ]
+  },
+  "include": [
+    "packages/**/*.ts",
+    "packages/**/*.d.ts",
+    "packages/**/*.tsx",
+    "packages/**/*.vue",
+    "playground/**/*.ts",
+    "playground/**/*.d.ts",
+    "playground/**/*.tsx",
+    "playground/**/*.vue",
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

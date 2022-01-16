@@ -1,0 +1,74 @@
+{
+  "name": "vue3-ts-lib-template",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Tinko Liu <TinkoLiu@users.noreply.github.com> (https://github.com/TinkoLiu)",
+  "scripts": {
+    "dev": "vite",
+    "prepare": "husky install",
+    "build": "vue-tsc --noEmit && rollup -c rollup.config.js",
+    "serve": "vite preview",
+    "lint": "eslint \"{packages,playground}/**/*.{ts,tsx,vue,js,jsx,html}\"",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "vue": "^3.2.4"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.4"
+  },
+  "files": [
+    "es",
+    "lib",
+    "packages"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TinkoLiu/vue3-ts-lib-template.git"
+  },
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "exports": {
+    ".": {
+      "import": "./es/index.js",
+      "require": "./lib/index.js"
+    }
+  },
+  "typings": "lib/index.d.ts",
+  "type": "module",
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
+    "@rollup/plugin-alias": "^3.1.5",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@types/lodash-es": "^4.17.4",
+    "@types/node": "^15.3.1",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
+    "@typescript-eslint/parser": "^4.25.0",
+    "@vitejs/plugin-vue": "^1.2.2",
+    "@vitejs/plugin-vue-jsx": "^1.1.4",
+    "@vue/compiler-sfc": "^3.0.5",
+    "@vue/eslint-config-standard": "^6.0.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "@zerollup/ts-transform-paths": "^1.7.18",
+    "autoprefixer": "^10.3.4",
+    "eslint": "^7.26.0",
+    "eslint-plugin-import": "^2.23.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-vue": "^7.9.0",
+    "husky": "^6.0.0",
+    "rimraf": "^3.0.2",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-postcss": "^4.0.1",
+    "rollup-plugin-scss": "^3.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-vue": "^6.0.0",
+    "sass": "^1.41.1",
+    "ttypescript": "^1.5.12",
+    "typescript": "^4.2.4",
+    "vite": "^2.5.6",
+    "vue-tsc": "^0.3.0"
+  }
+}

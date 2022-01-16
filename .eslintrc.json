@@ -1,0 +1,21 @@
+{
+  "root": true,
+  "env": {
+    "es2020": true,
+    "node": true,
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "plugin:vue/vue3-essential",
+    "@vue/standard",
+    "@vue/typescript/recommended",
+    "plugin:vue/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "rules": {
+    "vue/no-multiple-template-root": "off"
+  }
+}
