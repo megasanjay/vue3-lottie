@@ -63,7 +63,7 @@ const AstronautJSON = require('./lotties/astronaut.json');
 | ---------------- | --------------------- | ------------- | ---------------------------------------------------------------------------------------- |
 | animationData    | Object (**Required**) | none          | The lottie animation data                                                                |
 | autoPlay         | Boolean               | true          | Start animation on component load                                                        |
-| rendererSettings | Object                | 0             | Options for if you want to use an existing canvas to draw (can be ignored on most cases) |
+| rendererSettings | Object                | {}            | Options for if you want to use an existing canvas to draw (can be ignored on most cases) |
 | loop             | Number or Boolean     | true          | The number of instances that the marquee animation should run (true is infinite)         |
 | width            | Number or String      | "100%"        | Width of the lottie animation container (Numbers correspond to pixel values)             |
 | height           | Number or String      | "100%"        | Height of the lottie animation container (Numbers correspond to pixel values)            |
