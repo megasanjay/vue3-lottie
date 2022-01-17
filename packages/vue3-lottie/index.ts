@@ -1,8 +1,8 @@
 import { App } from 'vue'
-import SampleComponent from './src/index.vue'
+import Vue3Lottie from './src/index.vue'
 
-SampleComponent.install = (app: App): void => {
-  app.component(SampleComponent.name, SampleComponent)
+Vue3Lottie.install = (app: App): void => {
+  app.component(Vue3Lottie.name, Vue3Lottie)
 }
 
-export default SampleComponent
+export default Vue3Lottie

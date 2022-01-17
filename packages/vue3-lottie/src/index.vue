@@ -3,12 +3,14 @@
     ref="LottieAnimationContainer"
     class="lottie-animation-container"
     :style="getCurrentStyle"
-  />
+    @mouseenter="hoverStarted"
+    @mouseleave="hoverEnded"
+  ></div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, computed } from 'vue'
-import lottie from 'lottie-web'
+import { defineComponent, ref, onMounted, computed, watch } from 'vue'
+import Lottie from 'lottie-web'
 
 export default defineComponent({
   name: 'Vue3Lottie',
@@ -21,13 +23,19 @@ export default defineComponent({
     speed: { type: Number, default: 1 },
     width: { type: [Number, String], default: '100%' },
     height: { type: [Number, String], default: '100%' },
+    pauseOnHover: { type: Boolean, default: false },
+    playOnHover: { type: Boolean, default: false },
+    backgroundColor: { type: String, default: 'transparent' },
+    pauseAnimation: { type: Boolean, default: false },
   },
 
-  setup(props) {
+  emits: ['onComplete', 'onLoopComplete', 'onEnterFrame', 'onSegmentStart'],
+
+  setup(props, context) {
     const LottieAnimationContainer = ref<HTMLElement | null>(null)
     let lottieAnimation = ref<any>(null)
 
-    const checkIfContainerExists = async () => {
+    const checkIfContainerExists = () => {
       if (LottieAnimationContainer.value !== null) {
         return true
       } else {
@@ -36,13 +44,43 @@ export default defineComponent({
     }
 
     const loadLottie = async () => {
+      let autoPlay = props.autoPlay
+
+      if (props.playOnHover) {
+        autoPlay = false
+      }
+
       if (LottieAnimationContainer.value) {
-        lottieAnimation = lottie.loadAnimation({
+        lottieAnimation = Lottie.loadAnimation({
           container: LottieAnimationContainer.value,
           renderer: 'svg',
           loop: props.loop,
-          autoplay: props.autoPlay,
+          autoplay: autoPlay,
           animationData: props.animationData,
+        })
+
+        if (props.pauseAnimation) {
+          lottieAnimation.pause()
+        } else {
+          if (props.playOnHover) {
+            lottieAnimation.pause()
+          }
+        }
+
+        lottieAnimation.addEventListener('loopComplete', () => {
+          context.emit('onLoopComplete')
+        })
+
+        lottieAnimation.addEventListener('complete', () => {
+          context.emit('onComplete')
+        })
+
+        lottieAnimation.addEventListener('enterFrame', () => {
+          context.emit('onEnterFrame')
+        })
+
+        lottieAnimation.addEventListener('segmentStart', () => {
+          context.emit('onSegmentStart')
         })
       }
     }
@@ -59,16 +97,58 @@ export default defineComponent({
       }
 
       let cssVariables = {
-        '--lottie-animation-container-width': `${width}`,
-        '--lottie-animation-container-height': `${height}`,
+        '--lottie-animation-container-width': width,
+        '--lottie-animation-container-height': height,
+        '--lottie-animation-container-background-color': props.backgroundColor,
       }
 
       return cssVariables
     })
 
-    const setupLottie = async () => {
-      const interval = setInterval(async () => {
-        if (await checkIfContainerExists()) {
+    const hoverStarted = () => {
+      if (lottieAnimation && props.pauseOnHover) {
+        lottieAnimation.pause()
+      }
+
+      if (lottieAnimation && props.playOnHover) {
+        lottieAnimation.play()
+      }
+    }
+
+    const hoverEnded = () => {
+      if (lottieAnimation && props.pauseOnHover) {
+        lottieAnimation.play()
+      }
+      if (lottieAnimation && props.playOnHover) {
+        lottieAnimation.pause()
+      }
+    }
+
+    watch(props, () => {
+      if ((props.pauseOnHover || props.playOnHover) && !props.pauseAnimation) {
+        console.error(
+          'If you are using pauseAnimation prop for Vue3-Lottie, please remove the props pauseOnHover or playOnHover',
+        )
+      }
+
+      if (!props.pauseOnHover && !props.playOnHover) {
+        if (props.pauseAnimation && lottieAnimation) {
+          lottieAnimation.pause()
+        } else if (lottieAnimation && !props.pauseAnimation) {
+          lottieAnimation.play()
+        }
+      }
+    })
+
+    const setupLottie = () => {
+      if (props.pauseOnHover && props.playOnHover) {
+        throw new Error(
+          'You cannot set pauseOnHover and playOnHover for Vue3-Lottie at the same time.',
+        )
+      }
+
+      const interval = setInterval(() => {
+        if (checkIfContainerExists()) {
           clearInterval(interval)
           loadLottie()
         }
@@ -79,14 +159,21 @@ export default defineComponent({
       setupLottie()
     })
 
-    return { LottieAnimationContainer, lottieAnimation, getCurrentStyle }
+    return {
+      LottieAnimationContainer,
+      lottieAnimation,
+      getCurrentStyle,
+      hoverStarted,
+      hoverEnded,
+    }
   },
 })
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .lottie-animation-container {
   width: var(--lottie-animation-container-width);
   height: var(--lottie-animation-container-height);
+  background-color: var(--lottie-animation-container-background-color);
 }
 </style>
