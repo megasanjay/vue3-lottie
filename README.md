@@ -48,10 +48,11 @@ export default {
 
 You can then use the component in your template. A common use case is an image marquee for logos but you can also use it for scrolling text.
 
-```html
-// import your animation data import AstronautJSON from
-'./lotties/astronaut.json'; OR const AstronautJSON =
-require('./lotties/astronaut.json')
+```js
+// import your animation data
+import AstronautJSON from './lotties/astronaut.json';
+// OR
+const AstronautJSON = require('./lotties/astronaut.json');
 
 <Vue3Lottie :animationData="DogJSON" :height="200" :width="200" />
 ```
