@@ -176,7 +176,7 @@ A prop for configuring the renderer. This is not needed for most animations. To 
 
 ### onComplete
 
-If you're animation has a finite amount od loops you can use this event to know when the animation has completed.
+If you're animation has a finite amount of loops you can use this event to know when the animation has completed.
 
 ### onLoopComplete
 
@@ -184,7 +184,7 @@ If you're animation has a finite amount of loops you can use this event to know 
 
 ### onEnterFrame
 
-This event is fired every frame of the animation. There will be 60 events per second if your lottie animation runs at 60fps.
+This event is fired every frame of the animation. There will be 60 events fired per second if your lottie animation runs at 60fps.
 
 ### onSegmentStart
 
