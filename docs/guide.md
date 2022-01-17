@@ -83,8 +83,10 @@ All the possible props for `vue3-lottie` are shown below.
 This is the animation data that is used to render the animation. **`This prop is required`**.
 You will have to import a json file that contains the animation data and pass it via this prop.
 
+You can go on https://lottiefiles.com/featured and find a lot of animations. When you find one you like, you can download it as a `Lottie JSON` file and import it into your app to use it as the animation data.
+
 ::: warning
-This component does not support dynamic animations. You cannot change animation data once it has been initialized. Create multiple copies of the component if you want to change the animation that is shown.
+This component does not support dynamic animations. You cannot change animation data once it has been initialized. Create multiple copies of the component or rerender the component if you want to change the animation that is shown.
 :::
 
 | Type   | Default value | Required | Accepted values       |
