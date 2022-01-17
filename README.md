@@ -54,7 +54,7 @@ import AstronautJSON from './lotties/astronaut.json';
 // OR
 const AstronautJSON = require('./lotties/astronaut.json');
 
-<Vue3Lottie :animationData="DogJSON" :height="200" :width="200" />
+<Vue3Lottie :animationData="AstronautJSON" :height="200" :width="200" />
 ```
 
 # Props and options
