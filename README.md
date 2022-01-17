@@ -1,12 +1,8 @@
-# vue3-marquee
+# Vue 3 Lottie
 
 [![npm](https://img.shields.io/npm/v/vue3-lottie)](https://www.npmjs.com/package/vue3-lottie) [![Downloads](https://img.shields.io/npm/dt/vue3-lottie)](https://www.npmjs.com/package/vue3-lottie) [![Stars](https://img.shields.io/github/stars/megasanjay/vue3-lottie.svg?style=flat-square)](https://github.com/megasanjay/vue3-lottie/stargazers) [![License](https://img.shields.io/npm/l/vue3-lottie)](https://github.com/megasanjay/vue3-lottie/blob/main/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/megasanjay/vue3-lottie)](https://github.com/megasanjay/vue3-lottie/issues)
 
-A simple lottie component with ZERO dependencies for Vue 3. This component was originally developed for internal use but I figured this could be useful to someone else as well. This component is modeled after a React lottie component I found called [React Fast lottie](https://github.com/justin-chu/react-fast-lottie). To keep a smooth animation running, clones of the content can be created for seamless transitions with no sudden jarring appearences or empty spaces in between content.
-
-# Warning
-
-The latest version of vue3-lottie is in the experimental stage. I'm looking for users with typescript applications to verify the use of this library before I update the version numbers.
+After finding a suprising lack of Vue 3 components for Lottie animations, I decided to create my own. Will be adding more documentation and examples soon.
 
 # Demos
 
@@ -32,47 +28,47 @@ The most common use case is to register the component globally.
 
 ```js
 // main.js
-import { createApp } from "vue";
-import Vue3Marquee from "vue3-lottie";
+import { createApp } from 'vue'
+import Vue3Lottie from 'vue3-lottie'
 
-createApp(App).use(Vue3Marquee).mount("#app");
+createApp(App).use(Vue3Lottie).mount('#app')
 ```
 
 Alternatively you can import the marquee component locally.
 
 ```js
-import Vue3Marquee from "vue3-marquee";
+import Vue3Lottie from 'vue3-lottie'
 
 export default {
   components: {
-    Vue3Marquee,
+    Vue3Lottie,
   },
-};
+}
 ```
 
 You can then use the component in your template. A common use case is an image marquee for logos but you can also use it for scrolling text.
 
 ```html
-<vue3-marquee>
-  <img height="200" width="300" src="...img" />
-  <img height="200" width="300" src="...img" />
-  <img height="200" width="300" src="...img" />
-</vue3-marquee>
+// import your animation data import AstronautJSON from
+'./lotties/astronaut.json'; OR const AstronautJSON =
+require('./lotties/astronaut.json')
+
+<Vue3Lottie :animationData="DogJSON" :height="200" :width="200" />
 ```
 
 # Props and options
 
-| Prop          | Type                                   | Default Value   | Description                                                                            |
-| ------------- | -------------------------------------- | --------------- | -------------------------------------------------------------------------------------- |
-| direction     | String of either 'normal' or 'reverse' | "normal"        | The direction for the content to move in                                               |
-| duration      | Number                                 | 20              | The time taken for the marquee content to move the width of the container (in seconds) |
-| delay         | Number                                 | 0               | A delay before the animation starts (in seconds)                                       |
-| loop          | Number                                 | 0               | The number of instances that the marquee animation should run (0 is infinite)          |
-| gradient      | Boolean                                | false           | Whether to show a gradient overlay                                                     |
-| gradientColor | Array of 3 RGB values                  | [255, 255, 255] | The RGB colors for the color of the gradient                                           |
-| gradientWidth | String                                 | 200px           | Length of portion of the container edges that should be taken by the gradient overlay  |
-| pauseOnHover  | Boolean                                | false           | Whether to pause the marquee on hover                                                  |
-| pauseOnClick  | Boolean                                | false           | Whether to pause the marquee when you hold the right click button                      |
-| clone         | Boolean                                | false           | Whether to clone the content if you want no empty spaces in the animation              |
+| Prop             | Type                  | Default Value | Description                                                                              |
+| ---------------- | --------------------- | ------------- | ---------------------------------------------------------------------------------------- |
+| animationData    | Object (**Required**) | none          | The lottie animation data                                                                |
+| autoPlay         | Boolean               | true          | Start animation on component load                                                        |
+| rendererSettings | Object                | 0             | Options for if you want to use an existing canvas to draw (can be ignored on most cases) |
+| loop             | Number or Boolean     | true          | The number of instances that the marquee animation should run (true is infinite)         |
+| width            | Number or String      | "100%"        | Width of the lottie animation container (Numbers correspond to pixel values)             |
+| height           | Number or String      | "100%"        | Height of the lottie animation container (Numbers correspond to pixel values)            |
+| backgroundColor  | String                | transparent   | Background color of the container                                                        |
+| pauseOnHover     | Boolean               | false         | Whether to pause the animation on hover                                                  |
+| pauseOnClick     | Boolean               | false         | Whether to play the animation when you hover                                             |
+| pauseAnimation   | Boolean               | false         | Prop to pass reactive variables so that you can control animation pause and play         |
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
