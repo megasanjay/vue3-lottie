@@ -9,11 +9,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, computed, watch } from 'vue'
-import Lottie from 'lottie-web'
+import { defineComponent, ref, onMounted, computed, watch } from "vue";
+import Lottie from "lottie-web";
 
 export default defineComponent({
-  name: 'Vue3Lottie',
+  name: "Vue3Lottie",
 
   props: {
     animationData: { type: Object, required: true },
@@ -21,143 +21,143 @@ export default defineComponent({
     autoPlay: { type: Boolean, default: true },
     rendererSettings: { type: Object, required: false },
     speed: { type: Number, default: 1 },
-    width: { type: [Number, String], default: '100%' },
-    height: { type: [Number, String], default: '100%' },
+    width: { type: [Number, String], default: "100%" },
+    height: { type: [Number, String], default: "100%" },
     pauseOnHover: { type: Boolean, default: false },
     playOnHover: { type: Boolean, default: false },
-    backgroundColor: { type: String, default: 'transparent' },
+    backgroundColor: { type: String, default: "transparent" },
     pauseAnimation: { type: Boolean, default: false },
   },
 
-  emits: ['onComplete', 'onLoopComplete', 'onEnterFrame', 'onSegmentStart'],
+  emits: ["onComplete", "onLoopComplete", "onEnterFrame", "onSegmentStart"],
 
   setup(props, context) {
-    const LottieAnimationContainer = ref<HTMLElement | null>(null)
-    let lottieAnimation = ref<any>(null)
+    const LottieAnimationContainer = ref<HTMLElement | null>(null);
+    let lottieAnimation = ref<any>(null);
 
     const checkIfContainerExists = () => {
       if (LottieAnimationContainer.value !== null) {
-        return true
+        return true;
       } else {
-        return false
+        return false;
       }
-    }
+    };
 
     const loadLottie = async () => {
-      let autoPlay = props.autoPlay
+      let autoPlay = props.autoPlay;
 
       if (props.playOnHover) {
-        autoPlay = false
+        autoPlay = false;
       }
 
       if (LottieAnimationContainer.value) {
         lottieAnimation = Lottie.loadAnimation({
           container: LottieAnimationContainer.value,
-          renderer: 'svg',
+          renderer: "svg",
           loop: props.loop,
           autoplay: autoPlay,
           animationData: props.animationData,
-        })
+        });
 
         if (props.pauseAnimation) {
-          lottieAnimation.pause()
+          lottieAnimation.pause();
         } else {
           if (props.playOnHover) {
-            lottieAnimation.pause()
+            lottieAnimation.pause();
           }
         }
 
-        lottieAnimation.addEventListener('loopComplete', () => {
-          context.emit('onLoopComplete')
-        })
+        lottieAnimation.addEventListener("loopComplete", () => {
+          context.emit("onLoopComplete");
+        });
 
-        lottieAnimation.addEventListener('complete', () => {
-          context.emit('onComplete')
-        })
+        lottieAnimation.addEventListener("complete", () => {
+          context.emit("onComplete");
+        });
 
-        lottieAnimation.addEventListener('enterFrame', () => {
-          context.emit('onEnterFrame')
-        })
+        lottieAnimation.addEventListener("enterFrame", () => {
+          context.emit("onEnterFrame");
+        });
 
-        lottieAnimation.addEventListener('segmentStart', () => {
-          context.emit('onSegmentStart')
-        })
+        lottieAnimation.addEventListener("segmentStart", () => {
+          context.emit("onSegmentStart");
+        });
       }
-    }
+    };
 
     const getCurrentStyle: any = computed(() => {
-      let width = props.width
-      let height = props.height
+      let width = props.width;
+      let height = props.height;
 
-      if (typeof props.width === 'number') {
-        width = `${props.width}px`
+      if (typeof props.width === "number") {
+        width = `${props.width}px`;
       }
-      if (typeof props.height === 'number') {
-        height = `${props.height}px`
+      if (typeof props.height === "number") {
+        height = `${props.height}px`;
       }
 
       let cssVariables = {
-        '--lottie-animation-container-width': width,
-        '--lottie-animation-container-height': height,
-        '--lottie-animation-container-background-color': props.backgroundColor,
-      }
+        "--lottie-animation-container-width": width,
+        "--lottie-animation-container-height": height,
+        "--lottie-animation-container-background-color": props.backgroundColor,
+      };
 
-      return cssVariables
-    })
+      return cssVariables;
+    });
 
     const hoverStarted = () => {
       if (lottieAnimation && props.pauseOnHover) {
-        lottieAnimation.pause()
+        lottieAnimation.pause();
       }
 
       if (lottieAnimation && props.playOnHover) {
-        lottieAnimation.play()
+        lottieAnimation.play();
       }
-    }
+    };
 
     const hoverEnded = () => {
       if (lottieAnimation && props.pauseOnHover) {
-        lottieAnimation.play()
+        lottieAnimation.play();
       }
       if (lottieAnimation && props.playOnHover) {
-        lottieAnimation.pause()
+        lottieAnimation.pause();
       }
-    }
+    };
 
     watch(props, () => {
       if ((props.pauseOnHover || props.playOnHover) && !props.pauseAnimation) {
         console.error(
-          'If you are using pauseAnimation prop for Vue3-Lottie, please remove the props pauseOnHover or playOnHover',
-        )
+          "If you are using pauseAnimation prop for Vue3-Lottie, please remove the props pauseOnHover or playOnHover"
+        );
       }
 
       if (!props.pauseOnHover && !props.playOnHover) {
         if (props.pauseAnimation && lottieAnimation) {
-          lottieAnimation.pause()
+          lottieAnimation.pause();
         } else if (lottieAnimation && !props.pauseAnimation) {
-          lottieAnimation.play()
+          lottieAnimation.play();
         }
       }
-    })
+    });
 
     const setupLottie = () => {
       if (props.pauseOnHover && props.playOnHover) {
         throw new Error(
-          'You cannot set pauseOnHover and playOnHover for Vue3-Lottie at the same time.',
-        )
+          "You cannot set pauseOnHover and playOnHover for Vue3-Lottie at the same time."
+        );
       }
 
       const interval = setInterval(() => {
         if (checkIfContainerExists()) {
-          clearInterval(interval)
-          loadLottie()
+          clearInterval(interval);
+          loadLottie();
         }
-      }, 100)
-    }
+      }, 100);
+    };
 
     onMounted(async () => {
-      setupLottie()
-    })
+      setupLottie();
+    });
 
     return {
       LottieAnimationContainer,
@@ -165,12 +165,12 @@ export default defineComponent({
       getCurrentStyle,
       hoverStarted,
       hoverEnded,
-    }
+    };
   },
-})
+});
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .lottie-animation-container {
   width: var(--lottie-animation-container-width);
   height: var(--lottie-animation-container-height);

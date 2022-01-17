@@ -1,22 +1,13 @@
 {
-  "root": true,
   "env": {
-    "es2020": true,
-    "node": true,
     "browser": true,
-    "es6": true
+    "es2021": true
   },
-  "extends": [
-    "plugin:vue/vue3-essential",
-    "@vue/standard",
-    "@vue/typescript/recommended",
-    "plugin:vue/recommended",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["eslint:recommended", "plugin:vue/essential"],
   "parserOptions": {
-    "ecmaVersion": 2020
+    "ecmaVersion": 13,
+    "sourceType": "module"
   },
-  "rules": {
-    "vue/no-multiple-template-root": "off"
-  }
+  "plugins": ["vue"],
+  "rules": {}
 }

@@ -1,13 +1,16 @@
 {
   "name": "vue3-lottie",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "author": "Sanjay Soundarajan <info@sanjaysoundarajan.dev> (https://sanjaysoundarajan.dev)",
   "scripts": {
-    "dev": "vite",
-    "prepare": "husky install",
-    "build": "vue-tsc --noEmit && rollup -c rollup.config.js",
-    "serve": "vite preview",
+    "dev": "vue-cli-service serve dev/serve.ts",
+    "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
+    "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
+    "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
+    "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife",
+    "prebuild": "rimraf ./dist",
+    "prepublish": "npm run build",
     "lint": "eslint \"{packages,playground}/**/*.{ts,tsx,vue,js,jsx,html}\"",
     "prepublishOnly": "npm run build",
     "prettier": "npx prettier --write ."
@@ -20,24 +23,18 @@
     "vue": "^3.2.4"
   },
   "files": [
-    "es",
-    "lib",
-    "packages"
+    "dist/*",
+    "src/**/*.vue",
+    "types/*"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/megasanjay/vue3-lottie.git"
   },
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "exports": {
-    ".": {
-      "import": "./es/index.js",
-      "require": "./lib/index.js"
-    }
-  },
-  "typings": "lib/index.d.ts",
-  "type": "module",
+  "main": "dist/vue3-lottie.ssr.js",
+  "module": "dist/vue3-lottie.esm.js",
+  "browser": "dist/vue3-lottie.esm.js",
+  "unpkg": "dist/vue3-lottie.min.js",
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
@@ -53,7 +50,6 @@
     "@typescript-eslint/parser": "^4.25.0",
     "@vitejs/plugin-vue": "^1.2.2",
     "@vitejs/plugin-vue-jsx": "^1.1.4",
-    "@vue/compiler-sfc": "^3.0.5",
     "@vue/eslint-config-standard": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
     "@zerollup/ts-transform-paths": "^1.7.18",
@@ -78,6 +74,32 @@
     "ttypescript": "^1.5.12",
     "typescript": "^4.2.4",
     "vite": "^2.5.6",
-    "vue-tsc": "^0.3.0"
-  }
+    "vue-tsc": "^0.3.0",
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@vue/cli-plugin-babel": "^4.5.13",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-service": "^4.5.13",
+    "@vue/compiler-sfc": "^3.0.11",
+    "copyfiles": "^2.4.1",
+    "cross-env": "^7.0.3",
+    "minimist": "^1.2.5",
+    "postcss": "^8.2.10",
+    "rollup": "^2.52.8",
+    "vue": "^3.0.5",
+    "vue-server-renderer": "^2.6.14"
+  },
+  "bugs": {
+    "url": "https://github.com/megasanjay/vue3-lottie/issues",
+    "email": "info@sanjaysoundarajan.dev"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "homepage": "https://vue3-lottie.vercel.app/",
+  "keywords": [
+    "vue3",
+    "marquee"
+  ],
+  "sideEffects": false
 }

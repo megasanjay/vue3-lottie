@@ -2,47 +2,32 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "moduleResolution": "node",
     "strict": true,
-    "importHelpers": true,
-    "allowSyntheticDefaultImports": true,
-    "declaration": true,
     "jsx": "preserve",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
-    "types": ["vite/client"],
-    "baseUrl": ".",
-    "noImplicitAny": false,
-    "outDir": "lib",
-    "declarationDir": "lib",
-    "isolatedModules": true,
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
     "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": ["webpack-env"],
     "paths": {
-      "@/*": [
-        "packages/*"
-      ]
+      "@/*": ["src/*", "dev/*"]
     },
-    "plugins": [
-      {
-          "transform": "@zerollup/ts-transform-paths",
-          "exclude": ["*"]
-      }
-  ]
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
   "include": [
-    "packages/**/*.ts",
-    "packages/**/*.d.ts",
-    "packages/**/*.tsx",
-    "packages/**/*.vue",
-    "playground/**/*.ts",
-    "playground/**/*.d.ts",
-    "playground/**/*.tsx",
-    "playground/**/*.vue",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "dev/**/*.vue",
+    "dev/**/*.tsx",
+    "dev/**/*.ts",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "types/shims-vue.d.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "exclude": ["node_modules"]
 }

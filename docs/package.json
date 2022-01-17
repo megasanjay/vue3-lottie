@@ -19,7 +19,6 @@
     "vitepress": "^0.20.0"
   },
   "dependencies": {
-    "vue3-lottie": "^0.0.1",
     "vue3-marquee": "^2.0.2-beta"
   },
   "repository": {

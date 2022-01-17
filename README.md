@@ -1,47 +1,78 @@
-# Vue 3 + TypeScript Library Template
-A simple but complete library template for Vue 3 + TypeScript
+# vue3-marquee
 
-## Getting started
-Getting the code by `git clone` or click `Use this template` right above.
+[![npm](https://img.shields.io/npm/v/vue3-marquee)](https://www.npmjs.com/package/vue3-marquee) [![Downloads](https://img.shields.io/npm/dt/vue3-marquee)](https://www.npmjs.com/package/vue3-marquee) [![Stars](https://img.shields.io/github/stars/megasanjay/vue3-marquee.svg?style=flat-square)](https://github.com/megasanjay/vue3-marquee/stargazers) [![License](https://img.shields.io/npm/l/vue3-marquee)](https://github.com/megasanjay/vue3-marquee/blob/main/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/megasanjay/vue3-marquee)](https://github.com/megasanjay/vue3-marquee/issues)
 
-Then use `yarn` or other package manager to install dependencies.
+A simple marquee component with ZERO dependencies for Vue 3. This component was originally developed for internal use but I figured this could be useful to someone else as well. This component is modeled after a React marquee component I found called [React Fast Marquee](https://github.com/justin-chu/react-fast-marquee). To keep a smooth animation running, clones of the content can be created for seamless transitions with no sudden jarring appearences or empty spaces in between content.
 
-## CSS
-This template includes `Scss` with it. Scoped style in Vue SFC is also supported. All the styles will be build into a `index.css` right in the project root.
+# Warning
 
-When using your library by npm package in another project, you can import this css by
-```
-import '{YOUR_LIB_NAME}/index.css'
-```
+The latest version of vue3-marquee is in the experimental stage. I'm looking for users with typescript applications to verify the use of this library before I update the version numbers.
 
-## Dev server
-The dev server is provided by `Vite`. To start the dev server, run
+# Demos
 
-```
-yarn dev
-```
+View the live demos here: [https://vue3-marquee.vercel.app/examples.html](https://vue3-marquee.vercel.app/examples.html)
 
-## Writing packages
-Simply creating a folder in `packages` and add it to `packages/index.ts`, and it's done.
+# Installation
 
-## Build your packages
-```
-yarn build
+If you are using npm:
+
+```shell
+npm install vue3-marquee
 ```
 
-Will build your packages in two format ( `esm` and `CommonJS` ) using *rollup* instead of *Vite* due to the issue when generating `.d.ts` file.
+If you are using yarn:
 
-Once everything done, you can pack your library by `npm pack` or publish it by `npm publish`
+```shell
+yarn add vue3-marquee
+```
 
-## External dependencies
-If you want to exclude your dependencies from your build result:
+# Usage
 
-1. Add the package to `peerDependencies` in `package.json`
-2. Add the package to `external` in `rollup.config.js`
+The most common use case is to register the component globally.
 
-When using this library, remember to install these `peerDependencies`.
+```js
+// main.js
+import { createApp } from "vue";
+import Vue3Marquee from "vue3-marquee";
 
-## About `d.ts`
-TypeScript declaration files will generated into `lib` folder once you build this template. That means the decalration files will be published in the npm package.
+createApp(App).use(Vue3Marquee).mount("#app");
+```
 
-Also, `.vue.d.ts` will be generated for Vue SFC.
+Alternatively you can import the marquee component locally.
+
+```js
+import Vue3Marquee from "vue3-marquee";
+
+export default {
+  components: {
+    Vue3Marquee,
+  },
+};
+```
+
+You can then use the component in your template. A common use case is an image marquee for logos but you can also use it for scrolling text.
+
+```html
+<vue3-marquee>
+  <img height="200" width="300" src="...img" />
+  <img height="200" width="300" src="...img" />
+  <img height="200" width="300" src="...img" />
+</vue3-marquee>
+```
+
+# Props and options
+
+| Prop          | Type                                   | Default Value   | Description                                                                            |
+| ------------- | -------------------------------------- | --------------- | -------------------------------------------------------------------------------------- |
+| direction     | String of either 'normal' or 'reverse' | "normal"        | The direction for the content to move in                                               |
+| duration      | Number                                 | 20              | The time taken for the marquee content to move the width of the container (in seconds) |
+| delay         | Number                                 | 0               | A delay before the animation starts (in seconds)                                       |
+| loop          | Number                                 | 0               | The number of instances that the marquee animation should run (0 is infinite)          |
+| gradient      | Boolean                                | false           | Whether to show a gradient overlay                                                     |
+| gradientColor | Array of 3 RGB values                  | [255, 255, 255] | The RGB colors for the color of the gradient                                           |
+| gradientWidth | String                                 | 200px           | Length of portion of the container edges that should be taken by the gradient overlay  |
+| pauseOnHover  | Boolean                                | false           | Whether to pause the marquee on hover                                                  |
+| pauseOnClick  | Boolean                                | false           | Whether to pause the marquee when you hold the right click button                      |
+| clone         | Boolean                                | false           | Whether to clone the content if you want no empty spaces in the animation              |
+
+[![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
