@@ -1,10 +1,19 @@
 <template>
-  <Vue3Lottie
-    :animationData="RocketJSON"
-    :height="200"
-    :width="200"
-    :pauseOnHover="true"
-  />
+  <div
+    style="
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <Vue3Lottie
+      :animationData="RocketJSON"
+      :height="200"
+      :width="200"
+      :pauseOnHover="true"
+    />
+  </div>
 </template>
 
 <script>

@@ -1,12 +1,21 @@
 <template>
-  <div>
+  <div
+    style="
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    "
+  >
     <Vue3Lottie
       :animationData="CarJSON"
       :height="200"
       :width="200"
       :pauseAnimation="playState"
     />
-    <button @click="playState = !playState">Play/Pause Animation</button>
+    <button @click="playState = !playState" style="margin-left: 20px">
+      Play/Pause Animation
+    </button>
   </div>
 </template>
 

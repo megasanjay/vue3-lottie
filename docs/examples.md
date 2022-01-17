@@ -1,5 +1,9 @@
 # Examples
 
+Some examples of how to use the library are shown below.
+
+[[toc]]
+
 ## Basic example
 
 <script setup>
@@ -9,7 +13,7 @@ import LoopExample from './examples/LoopExample.vue'
 import PauseOnHoverExample from './examples/PauseOnHoverExample.vue'
 import PlayOnHoverExample from './examples/PlayOnHoverExample.vue'
 import ReactiveExample from './examples/ReactiveExample.vue'
-
+import EventExample from './examples/EventExample.vue'
 </script>
 
 <BasicExample />
@@ -196,6 +200,44 @@ export default {
     return {
       playState: false,
       CarJSON,
+    }
+  },
+}
+</script>
+```
+
+## Events Example
+
+`vue3-lottie` has support for events to be emitted from the animation.
+
+<EventExample/>
+
+```vue
+<template>
+  <div>
+    <Vue3Lottie
+      :animationData="ClockJSON"
+      :height="200"
+      :width="200"
+      @onLoopComplete="completed++"
+    />
+    <span> This animation has completed {{ completed }} times. </span>
+  </div>
+</template>
+
+<script>
+import Vue3Lottie from 'vue3-lottie'
+import ClockJSON from './lotties/clock.json'
+
+export default {
+  name: 'EventExample',
+  components: {
+    Vue3Lottie,
+  },
+  data() {
+    return {
+      ClockJSON,
+      completed: 0,
     }
   },
 }

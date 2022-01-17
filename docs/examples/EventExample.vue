@@ -8,26 +8,28 @@
     "
   >
     <Vue3Lottie
-      :animationData="AstronautJSON"
+      :animationData="ClockJSON"
       :height="200"
       :width="200"
-      :loop="3"
+      @onLoopComplete="completed++"
     />
+    <span style="margin-left: 20px"> This animation has completed {{ completed }} times. </span>
   </div>
 </template>
 
 <script>
 import Vue3Lottie from 'vue3-lottie'
-import AstronautJSON from './lotties/astronaut.json'
+import ClockJSON from './lotties/clock.json'
 
 export default {
-  name: 'LoopExample',
+  name: 'EventExample',
   components: {
     Vue3Lottie,
   },
   data() {
     return {
-      AstronautJSON,
+      ClockJSON,
+      completed: 0,
     }
   },
 }

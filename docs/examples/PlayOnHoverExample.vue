@@ -1,10 +1,19 @@
 <template>
-  <Vue3Lottie
-    :animationData="WifiJSON"
-    :height="200"
-    :width="200"
-    :playOnHover="true"
-  />
+  <div
+    style="
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <Vue3Lottie
+      :animationData="WifiJSON"
+      :height="200"
+      :width="200"
+      :playOnHover="true"
+    />
+  </div>
 </template>
 
 <script>

@@ -2,6 +2,8 @@
 
 **vue3-lottie** is a simple Vue 3 component that allows you to add Lottie animations into Vue applications. This component uses props for data and any config options.
 
+[[toc]]
+
 ## Introduction
 
 `vue3-lottie` was created to help developers add Lottie animations to their Vue 3 applications. In my search for a simple way to add Lottie animations to my Vue application I found a suprising lack of maintained solutions. Adding a lottie animation to my Nuxt 3 application is the reason this component exists.
