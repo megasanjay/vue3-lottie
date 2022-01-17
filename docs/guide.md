@@ -176,11 +176,11 @@ A prop for configuring the renderer. This is not needed for most animations. To 
 
 ### onComplete
 
-If you're animation has a finite amount of loops you can use this event to know when the animation has completed.
+If your animation has a finite amount of loops you can use this event to know when the animation has completed.
 
 ### onLoopComplete
 
-If you're animation has a finite amount of loops you can use this event to know when the animation has completed a loop.
+If your animation has a finite amount of loops you can use this event to know when the animation has completed a loop.
 
 ### onEnterFrame
 
