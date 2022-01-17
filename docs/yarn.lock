@@ -761,11 +761,6 @@ vitepress@^0.20.0:
     vite "^2.7.0"
     vue "^3.2.26"
 
-vue-class-component@^8.0.0-0:
-  version "8.0.0-rc.1"
-  resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-8.0.0-rc.1.tgz#db692cd97656eb9a08206c03d0b7398cdb1d9420"
-  integrity sha512-w1nMzsT/UdbDAXKqhwTmSoyuJzUXKrxLE77PCFVuC6syr8acdFDAq116xgvZh9UCuV0h+rlCtxXolr3Hi3HyPQ==
-
 vue3-lottie@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/vue3-lottie/-/vue3-lottie-0.0.2.tgz#2ad4850774ce0316f08be88a45a3a54f78d81576"
@@ -773,13 +768,6 @@ vue3-lottie@^0.0.2:
   dependencies:
     lottie-web "^5.8.1"
     vue "^3.2.4"
-
-vue3-marquee@^2.0.2-beta:
-  version "2.0.2-beta"
-  resolved "https://registry.yarnpkg.com/vue3-marquee/-/vue3-marquee-2.0.2-beta.tgz#12ea26a1a3603066cf6161d46a1b379b69acab48"
-  integrity sha512-zzZZ5V2LnDCqbtpexHz298SQON1S4oe4QBlHG0nAQOtjX8YyidoQ46XlMevNlFqr1u4y/EO4T4u8fBYqQkk2Zw==
-  dependencies:
-    vue-class-component "^8.0.0-0"
 
 vue@^3.2.26, vue@^3.2.4:
   version "3.2.27"
