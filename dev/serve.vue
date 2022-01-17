@@ -4,6 +4,11 @@ import Vue3Lottie from '@/vue3-lottie.vue'
 
 // import AstronautJSON from './lotties/astronaut.json';
 const AstronautJSON = require('./lotties/astronaut.json')
+const DogJSON = require('./lotties/dog.json')
+const VinylJSON = require('./lotties/vinyl.json')
+const RocketJSON = require('./lotties/rocket.json')
+const HeartJSON = require('./lotties/heart.json')
+const CarJSON = require('./lotties/car.json')
 
 export default defineComponent({
   name: 'ServeDev',
@@ -13,26 +18,66 @@ export default defineComponent({
   data() {
     return {
       AstronautJSON,
+      DogJSON,
+      VinylJSON,
+      RocketJSON,
+      HeartJSON,
+      CarJSON,
+      startAnimation: false,
     }
   },
-  methods: {
-    generateRandomString() {
-      const randomString = Math.random().toString(36).substring(2, 15)
-      return `https://avatars.dicebear.com/api/avataaars/${randomString}.svg`
-    },
-    getImgURLS(num: number) {
-      let array = []
-      for (let i = 0; i < num; i++) {
-        array.push(this.generateRandomString())
-      }
-      return array
-    },
-  },
+  methods: {},
 })
 </script>
 
 <template>
   <div id="app">
-    <Vue3Lottie :animationData="AstronautJSON" :height="200" :width="200" />
+    <div>
+      <p>Default</p>
+      <Vue3Lottie :animationData="DogJSON" :height="200" :width="200" />
+    </div>
+    <div>
+      <p>Adjusting width and height to 300px</p>
+      <Vue3Lottie :animationData="VinylJSON" :height="300" :width="300" />
+    </div>
+    <div>
+      <p>Loop only twice</p>
+      <Vue3Lottie
+        :animationData="AstronautJSON"
+        :height="200"
+        :width="200"
+        :loop="2"
+      />
+    </div>
+    <div>
+      <p>Autoplay and pause on hover</p>
+      <Vue3Lottie
+        :animationData="RocketJSON"
+        :height="200"
+        :width="200"
+        :pauseOnHover="true"
+      />
+    </div>
+    <div>
+      <p>Play on hover</p>
+      <Vue3Lottie
+        :animationData="HeartJSON"
+        :height="200"
+        :width="200"
+        :playOnHover="true"
+      />
+    </div>
+    <div>
+      <p>Reactive play state</p>
+      <Vue3Lottie
+        :animationData="CarJSON"
+        :height="200"
+        :width="200"
+        :pauseAnimation="startAnimation"
+      />
+      <button @click="startAnimation = !startAnimation">
+        Toggle Animation
+      </button>
+    </div>
   </div>
 </template>

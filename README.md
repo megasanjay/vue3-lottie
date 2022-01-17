@@ -1,29 +1,29 @@
 # vue3-marquee
 
-[![npm](https://img.shields.io/npm/v/vue3-marquee)](https://www.npmjs.com/package/vue3-marquee) [![Downloads](https://img.shields.io/npm/dt/vue3-marquee)](https://www.npmjs.com/package/vue3-marquee) [![Stars](https://img.shields.io/github/stars/megasanjay/vue3-marquee.svg?style=flat-square)](https://github.com/megasanjay/vue3-marquee/stargazers) [![License](https://img.shields.io/npm/l/vue3-marquee)](https://github.com/megasanjay/vue3-marquee/blob/main/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/megasanjay/vue3-marquee)](https://github.com/megasanjay/vue3-marquee/issues)
+[![npm](https://img.shields.io/npm/v/vue3-lottie)](https://www.npmjs.com/package/vue3-lottie) [![Downloads](https://img.shields.io/npm/dt/vue3-lottie)](https://www.npmjs.com/package/vue3-lottie) [![Stars](https://img.shields.io/github/stars/megasanjay/vue3-lottie.svg?style=flat-square)](https://github.com/megasanjay/vue3-lottie/stargazers) [![License](https://img.shields.io/npm/l/vue3-lottie)](https://github.com/megasanjay/vue3-lottie/blob/main/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/megasanjay/vue3-lottie)](https://github.com/megasanjay/vue3-lottie/issues)
 
-A simple marquee component with ZERO dependencies for Vue 3. This component was originally developed for internal use but I figured this could be useful to someone else as well. This component is modeled after a React marquee component I found called [React Fast Marquee](https://github.com/justin-chu/react-fast-marquee). To keep a smooth animation running, clones of the content can be created for seamless transitions with no sudden jarring appearences or empty spaces in between content.
+A simple lottie component with ZERO dependencies for Vue 3. This component was originally developed for internal use but I figured this could be useful to someone else as well. This component is modeled after a React lottie component I found called [React Fast lottie](https://github.com/justin-chu/react-fast-lottie). To keep a smooth animation running, clones of the content can be created for seamless transitions with no sudden jarring appearences or empty spaces in between content.
 
 # Warning
 
-The latest version of vue3-marquee is in the experimental stage. I'm looking for users with typescript applications to verify the use of this library before I update the version numbers.
+The latest version of vue3-lottie is in the experimental stage. I'm looking for users with typescript applications to verify the use of this library before I update the version numbers.
 
 # Demos
 
-View the live demos here: [https://vue3-marquee.vercel.app/examples.html](https://vue3-marquee.vercel.app/examples.html)
+View the live demos here: [https://vue3-lottie.vercel.app/examples.html](https://vue3-lottie.vercel.app/examples.html)
 
 # Installation
 
 If you are using npm:
 
 ```shell
-npm install vue3-marquee
+npm install vue3-lottie
 ```
 
 If you are using yarn:
 
 ```shell
-yarn add vue3-marquee
+yarn add vue3-lottie
 ```
 
 # Usage
@@ -33,7 +33,7 @@ The most common use case is to register the component globally.
 ```js
 // main.js
 import { createApp } from "vue";
-import Vue3Marquee from "vue3-marquee";
+import Vue3Marquee from "vue3-lottie";
 
 createApp(App).use(Vue3Marquee).mount("#app");
 ```
