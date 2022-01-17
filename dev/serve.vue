@@ -34,7 +34,12 @@ export default defineComponent({
   <div id="app">
     <div>
       <p>Default</p>
-      <Vue3Lottie :animationData="DogJSON" :height="200" :width="200" />
+      <Vue3Lottie
+        :animationData="DogJSON"
+        :height="200"
+        :width="200"
+        @onComplete="console.log('done')"
+      />
     </div>
     <div>
       <p>Adjusting width and height to 300px</p>

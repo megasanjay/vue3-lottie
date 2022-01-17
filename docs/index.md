@@ -1,7 +1,7 @@
 ---
 home: true
 heroImage: https://v1.vuepress.vuejs.org/hero.png
-tagline: 🌟 A simple dynamic marquee component made for your Vue 3 applications
+tagline: 🌟 A simple component library that will add support for Lottie animations for Vue 3
 actionText: Quick Start →
 actionLink: /guide
 features:

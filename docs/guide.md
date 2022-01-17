@@ -1,54 +1,40 @@
 # Getting Started
 
-**vue3-marquee** is a simple marquee component for Vue 3 that creates customizable marquees. This component uses slots for your content and props for any config options.
-
-::: warning
-You are viewing the documentation for latest version of vue3-maquee. If you are running a version that is 1.0.x, click [here](/v1/guide) to access the documentation.
-
-The latest version is still slightly experimental in terms of typescript support.
-:::
+**vue3-lottie** is a simple Vue 3 component that allows you to add Lottie animations into Vue applications. This component uses props for data and any config options.
 
 ## Introduction
 
-`vue3-marquee` was born from an internal need for a quick and easy marquee component that I wanted to use in our website homepage. Many of the component libraries that I found were either unmaintained, complex or not compatible with Vue 3. This component should also work for you if you would like to use a marquee component that just works out of the box and is customizable to fit your use case.
+`vue3-lottie` was created to help developers add Lottie animations to their Vue 3 applications. In my search for a simple way to add Lottie animations to my Vue application I found a suprising lack of maintained solutions. Adding a lottie animation to my Nuxt 3 application is the reason this component exists.
 
-In my search for a good marquee component, I found a React library that seemed to do what I wanted so I decided to emulate the component in Vue 3 for anyone to use. The original React library can be found [here](https://www.react-fast-marquee.com/).
+React has a great library called `react-lottie` that works very well. This component has been modeled after the `react-lottie` library with a few of my own additions.
 
-In `vue3-marquee` you have the option of cloning content to remove any empty spaces for marquee elements that don't fit the width of the container. This will allow you to have seamless content that just works.
+`vue3-lottie` is a vue wrapper around the `lottie-web` library with a few additional features. Typescript support has been added to make it easier to use.
 
-## Changes from v1
-
-With version 2, typescript support has been added. It's currently in the beta phase but when I get some results from other devs using this library with typescript projects, I will push a full release to npm.
-
-The options object has been removed since it was adding additional code on the backend to handle. All options for the component should now be passed via template props.
-
-The clone attribute has been marked as experimental for the moment. If the options gives you strange artifacts or isn't what you are looking for, please just create a copy of your content to fit the width of your container.
-
-The `direction` prop has now changed to use the css value of `normal` or `reverse` natively. Use these as your passed props.
-
-The `gradientWidth` prop has been modified to only accept string attributes. Pass a valid css unit to adjust the width of the gradient.
+::: warning
+`vue3-lottie` is not a full-featured Lottie library. It is only a wrapper around the `lottie-web` library. It does not support all of the features of the `lottie-web` library. At the moment vue3-lottie only supports the `svg` renderer which is the majority of all animations that I have seen available on the internet. You might not be able to use use `html` and `canvas` renderers with this library at the moment.
+:::
 
 ## Installation
 
 ### NPM
 
-You can install `vue3-marquee` over `yarn` or `npm`. The only dependency required is Vue 3 which should automatically be supplied by your Vue 3 page.
+You can install `vue3-lottie` over `yarn` or `npm`. `lottie-web` is a dependency of `vue3-lottie` and should be automatically installed when you install `vue3-lottie`.
 
 ```bash
-yarn add vue3-marquee
+yarn add vue3-lottie
 ```
 
 ```bash
-npm install vue3-marquee --save
+npm install vue3-lottie --save
 ```
 
-### Browser CDN
+<!-- ### Browser CDN
 
 You can also use `vue3-marquee` directly in the browser via CDN.
 
 ```html
 <script src="https://unpkg.com/vue3-marquee@0.0.4/dist/vue3-marquee.min.js"></script>
-```
+``` -->
 
 ## Usage
 
@@ -56,122 +42,150 @@ The most common use case is to register the component globally.
 
 ```js
 // main.js
-import { createApp } from "vue";
-import Vue3Marquee from "vue3-marquee";
+import { createApp } from 'vue'
+import Vue3Lottie from 'vue3-lottie'
 
-createApp(App).use(Vue3Marquee).mount("#app");
+createApp(App).use(Vue3Lottie).mount('#app')
 ```
 
 Alternatively you can import the marquee component locally.
 
 ```vue
 <template>
-  <vue3-marquee>
-    <img height="200" src="...img" />
-    <img height="200" src="...img" />
-    <img height="200" src="...img" />
-  </vue3-marquee>
+  <Vue3Lottie :animationData="AstronautJSON" :height="200" :width="200" />
 </template>
 
 <script>
-import Vue3Marquee from "vue3-marquee";
+import Vue3Lottie from 'vue3-lottie'
+const AstronautJSON = require('./astronaut.json')
 
 export default {
   components: {
-    Vue3Marquee,
+    Vue3Lottie,
   },
-};
+  data() {
+    return {
+      AstronautJSON,
+    }
+  },
+}
 </script>
 ```
 
 ## Available props
 
-All the possible props for `vue3-marquee` are shown below.
+All the possible props for `vue3-lottie` are shown below.
 
-### direction
+### animationData 
 
-The direction for the content to move in. `normal` corresponds to elements moving left and `reverse` corresponds to elements moving right.
+This is the animation data that is used to render the animation. **`This prop is required`**.
+You will have to import a json file that contains the animation data and pass it via this prop.
+
+::: warning
+This component does not support dynamic animations. You cannot change animation data once it has been initialized. Create multiple copies of the component if you want to change the animation that is shown.
+:::
 
 | Type   | Default value | Required | Accepted values       |
 | ------ | ------------- | -------- | --------------------- |
-| String | "normal"      | no       | "normal" or "reverse" |
+| **Object** | **{}**            | **Yes**      | *Lottie animation data* |
 
-### duration
+### width
 
-The time taken for the marquee content to move the width of its own container (in seconds).
+Width of the lottie animation container (Numbers correspond to pixel values).
 
-| Type   | Default value | Required | Accepted values |
-| ------ | ------------- | -------- | --------------- |
-| Number | 20            | no       | Number > 0      |
+| Type             | Default value | Required | Accepted values                                                          |
+| ---------------- | ------------- | -------- | ------------------------------------------------------------------------ |
+| Number or String | '100%'        | No      | `Any valid css unit in String` or a `number that will become a px value` |
 
-### delay
+### height
 
-A delay before the animation starts (in seconds).
+Height of the lottie animation container (Numbers correspond to pixel values).
 
-| Type   | Default value | Required | Accepted values |
-| ------ | ------------- | -------- | --------------- |
-| Number | 0             | no       | Number >= 0     |
+| Type             | Default value | Required | Accepted values                                                          |
+| ---------------- | ------------- | -------- | ------------------------------------------------------------------------ |
+| Number or String | '100%'        | No       | `Any valid css unit in String` or a `number that will become a px value` |
 
 ### loop
 
-The number of instances that the marquee animation should run (0 is infinite).
+A prop for detailing if you want the animation to loop. A number value would be how many times the animation should loop.
 
-| Type   | Default value | Required | Accepted values |
-| ------ | ------------- | -------- | --------------- |
-| Number | 0             | no       | Number >= 0     |
+| Type              | Default value | Required | Accepted values                   |
+| ----------------- | ------------- | -------- | --------------------------------- |
+| Number or Boolean | `true`        | no       | `Number > 0` or `true` or `false` |
 
-### gradient
+### autoPlay
 
-Whether to show a gradient overlay.
+A prop for detailing if you want the animation to play automatically.
 
-| Type    | Default value | Required | Accepted values |
-| ------- | ------------- | -------- | --------------- |
-| Boolean | false         | no       | true or false   |
+| Type    | Default value | Required | Accepted values   |
+| ------- | ------------- | -------- | ----------------- |
+| Boolean | `true`        | no       | `true` or `false` |
 
-### gradientColor
+### pauseAnimation
 
-The RGB colors for the color of the gradient.
+A prop to control the play and pause states of the animation.
 
-| Type                  | Default value   | Required | Accepted values                                              |
-| --------------------- | --------------- | -------- | ------------------------------------------------------------ |
-| Array of 3 RGB values | [255, 255, 255] | no       | [0 <= Number <= 255, 0 <= Number <= 255, 0 <= Number <= 255] |
-
-### gradientWidth
-
-What portion of the container edges should be taken by the gradient overlay.
-
-| Type   | Default value | Required | Accepted values    |
-| ------ | ------------- | -------- | ------------------ |
-| String | 200px         | no       | Any valid css unit |
-
-::: tip
-Any accepted css size unit (eg: 10%, 2em) can be used here. You might need to play around with this unit to get the gradient overlay that you want.
+:::danger
+If you are controlling the animation state by yourself please be sure to not set `playOnHover` or `pauseOnHover` to `true`.
 :::
+
+| Type    | Default value | Required | Accepted values   |
+| ------- | ------------- | -------- | ----------------- |
+| Boolean | `false`       | no       | `true` or `false` |
 
 ### pauseOnHover
 
-Whether to pause the marquee on hover
+A prop to pause the animation on hover.
 
-| Type    | Default value | Required | Accepted values |
-| ------- | ------------- | -------- | --------------- |
-| Boolean | false         | no       | true or false   |
+| Type    | Default value | Required | Accepted values   |
+| ------- | ------------- | -------- | ----------------- |
+| Boolean | `false`       | no       | `true` or `false` |
 
-### pauseOnClick
+### playOnHover
 
-Whether to pause the marquee when you hold the right click button.
+A prop to play the animation on hover.
 
-| Type    | Default value | Required | Accepted values |
-| ------- | ------------- | -------- | --------------- |
-| Boolean | false         | no       | true or false   |
-
-### clone - experimental
-
-::: warning
-This option is still in the experimental stage.
+::: tip
+This will also automatically pause the animation when it is initalized.
 :::
 
-Whether to clone the content if you want no empty spaces in the animation. Use this option if you find empty spaces between your marquee animations.
+| Type    | Default value | Required | Accepted values   |
+| ------- | ------------- | -------- | ----------------- |
+| Boolean | `false`       | no       | `true` or `false` |
 
-| Type    | Default value | Required | Accepted values |
-| ------- | ------------- | -------- | --------------- |
-| Boolean | false         | no       | true or false   |
+### backgroundColor
+
+A prop to change the background color of the container. This will be passed directly into the css for this component.
+
+| Type   | Default value | Required | Accepted values                            |
+| ------ | ------------- | -------- | ------------------------------------------ |
+| String | `transparent` | no       | Any valid CSS color or hex based rgb value |
+
+### rendererSettings
+
+A prop for configuring the renderer. This is not needed for most animations. To learn more about this option see the [lottie-web documentation](https://github.com/airbnb/lottie-web#other-loading-options).
+
+| Type   | Default value | Required | Accepted values          |
+| ------ | ------------- | -------- | ------------------------ |
+| Object | {}            | no       | Lottie renderer settings |
+
+
+## Available events
+
+`vue3-lottie` will also emit the following events as they are described in the [lottie-web documentation](https://github.com/airbnb/lottie-web#events)
+
+### onComplete
+
+If you're animation has a finite amount od loops you can use this event to know when the animation has completed.
+
+### onLoopComplete
+
+If you're animation has a finite amount of loops you can use this event to know when the animation has completed a loop.
+
+### onEnterFrame
+
+This event is fired every frame of the animation. There will be 60 events per second if your lottie animation runs at 60fps.
+
+### onSegmentStart
+
+This event is fired when the animation enters a segment.
