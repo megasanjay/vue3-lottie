@@ -1,7 +1,7 @@
 declare module '*.vue' {
   import type {
     defineProps,
-    PropType,
+    defineEmits,
     ref,
     onMounted,
     computed,
