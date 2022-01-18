@@ -1,19 +1,10 @@
 <template>
-  <div
-    style="
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    "
-  >
-    <Vue3Lottie
-      :animationData="AstronautJSON"
-      :height="200"
-      :width="200"
-      :loop="3"
-    />
-  </div>
+  <Vue3Lottie
+    :animationData="AstronautJSON"
+    :height="200"
+    :width="200"
+    :loop="3"
+  />
 </template>
 
 <script>

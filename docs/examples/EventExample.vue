@@ -1,19 +1,14 @@
 <template>
-  <div
-    style="
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    "
-  >
+  <div>
     <Vue3Lottie
       :animationData="ClockJSON"
       :height="200"
       :width="200"
       @onLoopComplete="completed++"
     />
-    <span style="margin-left: 20px"> This animation has completed {{ completed }} times. </span>
+    <span style="margin-left: 20px">
+      This animation has completed {{ completed }} times.
+    </span>
   </div>
 </template>
 

@@ -1,12 +1,5 @@
 <template>
-  <div
-    style="
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    "
-  >
+  <div>
     <Vue3Lottie
       :animationData="CarJSON"
       :height="200"

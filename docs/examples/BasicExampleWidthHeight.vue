@@ -1,14 +1,5 @@
 <template>
-  <div
-    style="
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    "
-  >
-    <Vue3Lottie :animationData="VinylJSON" :height="300" :width="300" />
-  </div>
+  <Vue3Lottie :animationData="VinylJSON" :height="300" :width="300" />
 </template>
 
 <script>
