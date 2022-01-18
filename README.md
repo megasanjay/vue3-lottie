@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/vue3-lottie)](https://www.npmjs.com/package/vue3-lottie) [![Downloads](https://img.shields.io/npm/dt/vue3-lottie)](https://www.npmjs.com/package/vue3-lottie) [![Stars](https://img.shields.io/github/stars/megasanjay/vue3-lottie.svg?style=flat-square)](https://github.com/megasanjay/vue3-lottie/stargazers) [![License](https://img.shields.io/npm/l/vue3-lottie)](https://github.com/megasanjay/vue3-lottie/blob/main/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/megasanjay/vue3-lottie)](https://github.com/megasanjay/vue3-lottie/issues)
 
-After finding a suprising lack of Vue 3 components for Lottie animations, I decided to create my own. Will be adding more documentation and examples soon.
+After finding a suprising lack of Vue 3 components for Lottie animations, I decided to create my own.
 
 # Demos
 
@@ -34,7 +34,7 @@ import Vue3Lottie from 'vue3-lottie'
 createApp(App).use(Vue3Lottie).mount('#app')
 ```
 
-Alternatively you can import the marquee component locally.
+Alternatively you can also import the component locally.
 
 ```js
 import Vue3Lottie from 'vue3-lottie'
@@ -46,15 +46,28 @@ export default {
 }
 ```
 
-You can then use the component in your template. A common use case is an image marquee for logos but you can also use it for scrolling text.
+You can then use the component in your template
 
-```js
-// import your animation data
-import AstronautJSON from './lotties/astronaut.json';
-// OR
-const AstronautJSON = require('./lotties/astronaut.json');
+```vue
+<template>
+  <Vue3Lottie :animationData="DogJSON" :height="200" :width="200" />
+</template>
 
-<Vue3Lottie :animationData="AstronautJSON" :height="200" :width="200" />
+<script>
+import Vue3Lottie from 'vue3-lottie'
+import DogJSON from './lotties/dog.json'
+
+export default {
+  components: {
+    Vue3Lottie,
+  },
+  data() {
+    return {
+      DogJSON,
+    }
+  },
+}
+</script>
 ```
 
 # Props and options
@@ -72,4 +85,15 @@ const AstronautJSON = require('./lotties/astronaut.json');
 | pauseOnClick     | Boolean               | false         | Whether to play the animation when you hover                                             |
 | pauseAnimation   | Boolean               | false         | Prop to pass reactive variables so that you can control animation pause and play         |
 
-[![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+# Events
+
+- onComplete
+  - If your animation has a finite amount of loops you can use this event to know when the animation has completed.
+- onLoopComplete
+  - If your animation has a finite amount of loops you can use this event to know when the animation has completed a loop.
+- onEnterFrame
+  - This event is fired every frame of the animation. There will be 60 events fired per second if your lottie animation runs at 60fps.
+- onSegmentStart
+  - This event is fired when the animation enters a segment.
+
+![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg) ![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
