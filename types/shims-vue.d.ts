@@ -1,5 +1,4 @@
-/* eslint-disable */
-declare module "*.vue" {
+declare module '*.vue' {
   import type {
     defineProps,
     PropType,
@@ -7,7 +6,7 @@ declare module "*.vue" {
     onMounted,
     computed,
     watch,
-  } from "vue";
-  const component: DefineComponent<{}, {}, any>;
-  export default component;
+  } from 'vue'
+  const component: DefineComponent<{}, {}, any>
+  export default component
 }

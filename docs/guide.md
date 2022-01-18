@@ -30,13 +30,13 @@ yarn add vue3-lottie
 npm install vue3-lottie --save
 ```
 
-<!-- ### Browser CDN
+### Browser CDN
 
-You can also use `vue3-marquee` directly in the browser via CDN.
+You can also use `vue3-lottie` directly in the browser via CDN.
 
 ```html
-<script src="https://unpkg.com/vue3-marquee@0.0.4/dist/vue3-marquee.min.js"></script>
-``` -->
+<script src="https://unpkg.com/vue3-lottie@1.0.1/dist/vue3-lottie.min.js"></script>
+```
 
 ## Usage
 
@@ -50,7 +50,7 @@ import Vue3Lottie from 'vue3-lottie'
 createApp(App).use(Vue3Lottie).mount('#app')
 ```
 
-Alternatively you can import the marquee component locally.
+Alternatively you can import the component locally.
 
 ```vue
 <template>
@@ -78,7 +78,7 @@ export default {
 
 All the possible props for `vue3-lottie` are shown below.
 
-### animationData 
+### animationData
 
 This is the animation data that is used to render the animation. **`This prop is required`**.
 You will have to import a json file that contains the animation data and pass it via this prop.
@@ -89,9 +89,9 @@ You can go on https://lottiefiles.com/featured and find a lot of animations. Whe
 This component does not support dynamic animations. You cannot change animation data once it has been initialized. Create multiple copies of the component or rerender the component if you want to change the animation that is shown.
 :::
 
-| Type   | Default value | Required | Accepted values       |
-| ------ | ------------- | -------- | --------------------- |
-| **Object** | **{}**            | **Yes**      | *Lottie animation data* |
+| Type       | Default value | Required | Accepted values         |
+| ---------- | ------------- | -------- | ----------------------- |
+| **Object** | **{}**        | **Yes**  | _Lottie animation data_ |
 
 ### width
 
@@ -99,7 +99,7 @@ Width of the lottie animation container (Numbers correspond to pixel values).
 
 | Type             | Default value | Required | Accepted values                                                          |
 | ---------------- | ------------- | -------- | ------------------------------------------------------------------------ |
-| Number or String | '100%'        | No      | `Any valid css unit in String` or a `number that will become a px value` |
+| Number or String | '100%'        | No       | `Any valid css unit in String` or a `number that will become a px value` |
 
 ### height
 
@@ -173,23 +173,38 @@ A prop for configuring the renderer. This is not needed for most animations. To 
 | ------ | ------------- | -------- | ------------------------ |
 | Object | {}            | no       | Lottie renderer settings |
 
-
 ## Available events
 
-`vue3-lottie` will also emit the following events as they are described in the [lottie-web documentation](https://github.com/airbnb/lottie-web#events)
+`vue3-lottie` will also emit the following events as they are described in the [lottie-web documentation](https://github.com/airbnb/lottie-web#events). Look at the examples provided in the [examples section](/examples#listening-to-events) for how to use these methods.
 
 ### onComplete
 
-If your animation has a finite amount of loops you can use this event to know when the animation has completed.
+If your animation has a **`finite`** amount of loops you can use this event to know when the animation has completed.
 
 ### onLoopComplete
 
-If your animation has a finite amount of loops you can use this event to know when the animation has completed a loop.
+If your animation has a **`finite`** amount of loops you can use this event to know when the animation has completed a loop.
 
 ### onEnterFrame
 
-This event is fired every frame of the animation. There will be 60 events fired per second if your lottie animation runs at 60fps.
+This event is fired at every frame of the animation. There will be 60 events fired per second if your lottie animation runs at 60fps.
 
 ### onSegmentStart
 
 This event is fired when the animation enters a segment.
+
+## Available methods
+
+`vue3-lottie` has a few methods that you can call directly from your component if needed. Add a `ref` to the `vue3-lottie` component and then call the methods you want. Look at the examples provided in the [examples section](/examples#custom-controls) for how to use these methods.
+
+### play
+
+You can call this method to play the animation. It will resume the animation if it is paused and will start the animation if it is stopped.
+
+### pause
+
+You can call this method to pause the animation. It will only pause the animation if it is playing.
+
+### stop
+
+You can call this method to stop the animation. It will reset the animation to the first frame.

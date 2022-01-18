@@ -1,6 +1,6 @@
 {
   "name": "vue3-lottie",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "license": "MIT",
   "author": "Sanjay Soundarajan <info@sanjaysoundarajan.dev> (https://sanjaysoundarajan.dev)",
   "scripts": {
@@ -99,7 +99,7 @@
   "homepage": "https://vue3-lottie.vercel.app/",
   "keywords": [
     "vue3",
-    "marquee"
+    "lottie"
   ],
   "sideEffects": false
 }

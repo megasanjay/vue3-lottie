@@ -2,6 +2,10 @@
 
 Some examples of how to use the library are shown below.
 
+:::warning
+If you don't see the example in any of the sections below [click here](https://vue3-lottie.vercel.app/) and click the `examples` in the navbar. There is occasionally a bug with Vitepress where all the components are loaded at the end of the page.
+:::
+
 [[toc]]
 
 ## Basic example
@@ -14,6 +18,7 @@ import PauseOnHoverExample from './examples/PauseOnHoverExample.vue'
 import PlayOnHoverExample from './examples/PlayOnHoverExample.vue'
 import ReactiveExample from './examples/ReactiveExample.vue'
 import EventExample from './examples/EventExample.vue'
+import CustomControlsExample from './examples/CustomControlsExample.vue'
 </script>
 
 <BasicExample />
@@ -105,7 +110,7 @@ export default {
 
 ## Pause on Hover
 
-If you set pauseOnHover to true, the animation will pause when you hover over the animation.
+If you set `pauseOnHover` to true, the animation will pause when you hover over the animation.
 
 <PauseOnHoverExample />
 
@@ -169,7 +174,7 @@ export default {
 </script>
 ```
 
-## Reactive Example
+## Using reactive props to control the animation
 
 You can also use the `pauseAnimation` prop to control the play and pause state of the lottie animation.
 
@@ -206,7 +211,7 @@ export default {
 </script>
 ```
 
-## Events Example
+## Listening to events
 
 `vue3-lottie` has support for events to be emitted from the animation.
 
@@ -239,6 +244,60 @@ export default {
       ClockJSON,
       completed: 0,
     }
+  },
+}
+</script>
+```
+
+## Custom controls
+
+`vue3-lottie` has a few methods that you can call directly from your component if needed. Add a `ref` to the `vue3-lottie` component and then call the methods you want.
+
+<CustomControlsExample/>
+
+::: info
+`stop` will stop the animation and reset it to the first frame.
+:::
+
+```vue
+<template>
+  <div>
+    <Vue3Lottie
+      ref="customControl"
+      :animationData="CountdownJSON"
+      :height="200"
+      :width="200"
+    />
+    <button @click="play">Play</button>
+    <button @click="pause">Pause</button>
+    <button @click="stop">Stop</button>
+  </div>
+</template>
+
+<script>
+import Vue3Lottie from 'vue3-lottie'
+import CountdownJSON from './lotties/countdown.json'
+
+export default {
+  name: 'CustomControlsExample',
+  components: {
+    Vue3Lottie,
+  },
+  data() {
+    return {
+      CountdownJSON,
+    }
+  },
+  methods: {
+    play() {
+      this.$refs['customControl'].play()
+    },
+    pause() {
+      this.$refs['customControl'].pause()
+    },
+    stop() {
+      this.$refs['customControl'].stop()
+    },
   },
 }
 </script>

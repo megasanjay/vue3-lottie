@@ -1,11 +1,11 @@
 {
-  "name": "vue3-marquee-docs",
-  "version": "1.0.0",
-  "description": "A simple marquee component with ZERO dependencies for Vue 3",
+  "name": "vue3-lottie-docs",
+  "version": "1.1.0",
+  "description": "A simple component for Vue 3 to display lottie animations",
   "main": "index.js",
   "keywords": [
     "vue3",
-    "marquee"
+    "lottie"
   ],
   "scripts": {
     "dev": "vitepress dev ",
@@ -19,15 +19,15 @@
     "vitepress": "^0.20.0"
   },
   "dependencies": {
-    "vue3-lottie": "^0.0.2"
+    "vue3-lottie": "^1.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/megasanjay/vue3-marquee.git"
+    "url": "https://github.com/megasanjay/vue3-lottie.git"
   },
-  "homepage": "https://vue3-marquee.vercel.app/",
+  "homepage": "https://vue3-lottie.vercel.app/",
   "bugs": {
-    "url": "https://github.com/megasanjay/vue3-marquee/issues",
+    "url": "https://github.com/megasanjay/vue3-lottie/issues",
     "email": "info@sanjaysoundarajan.dev"
   }
 }

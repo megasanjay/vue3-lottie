@@ -143,6 +143,24 @@ export default defineComponent({
       }
     })
 
+    const play = () => {
+      if (lottieAnimation) {
+        lottieAnimation.play()
+      }
+    }
+
+    const pause = () => {
+      if (lottieAnimation) {
+        lottieAnimation.pause()
+      }
+    }
+
+    const stop = () => {
+      if (lottieAnimation) {
+        lottieAnimation.stop()
+      }
+    }
+
     const setupLottie = () => {
       if (props.pauseOnHover && props.playOnHover) {
         throw new Error(
@@ -168,6 +186,9 @@ export default defineComponent({
       getCurrentStyle,
       hoverStarted,
       hoverEnded,
+      play,
+      pause,
+      stop,
     }
   },
 })

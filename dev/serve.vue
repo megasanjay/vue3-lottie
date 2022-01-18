@@ -26,7 +26,17 @@ export default defineComponent({
       startAnimation: false,
     }
   },
-  methods: {},
+  methods: {
+    play() {
+      ;(this.$refs['customControl'] as any).play()
+    },
+    pause() {
+      ;(this.$refs['customControl'] as any).pause()
+    },
+    stop() {
+      ;(this.$refs['customControl'] as any).stop()
+    },
+  },
 })
 </script>
 
@@ -78,6 +88,20 @@ export default defineComponent({
       <button @click="startAnimation = !startAnimation">
         Toggle Animation
       </button>
+    </div>
+    <div>
+      <div>
+        <p>Adjusting width and height to 300px</p>
+        <Vue3Lottie
+          ref="customControl"
+          :animationData="VinylJSON"
+          :height="300"
+          :width="300"
+        />
+        <button @click="play">Play</button>
+        <button @click="pause">Pause</button>
+        <button @click="stop">Stop</button>
+      </div>
     </div>
   </div>
 </template>
