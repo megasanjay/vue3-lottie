@@ -1,14 +1,5 @@
 <template>
-  <div
-    style="
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    "
-  >
-    <Vue3Lottie :animationData="DogJSON" :height="200" :width="200" />
-  </div>
+  <Vue3Lottie :animationData="DogJSON" :height="200" :width="200" />
 </template>
 
 <script>
@@ -27,3 +18,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.lottie-animation-container {
+  margin: 0 auto;
+}
+</style>

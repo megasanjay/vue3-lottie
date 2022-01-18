@@ -21,3 +21,4 @@ yarn-error.log*
 *.sw*
 
 docs/package-lock.json
+docs/.vitepress/dist

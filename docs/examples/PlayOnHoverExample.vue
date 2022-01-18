@@ -23,3 +23,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.lottie-animation-container {
+  margin: 0 auto;
+}
+</style>
