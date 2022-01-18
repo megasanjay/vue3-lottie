@@ -6,7 +6,7 @@ After finding a suprising lack of Vue 3 components for Lottie animations, I deci
 
 # Demos
 
-View the live demos here: [https://vue3-lottie.vercel.app/examples.html](https://vue3-lottie.vercel.app/examples.html)
+View the live demos here: [https://vue3-lottie.vercel.app](https://vue3-lottie.vercel.app)
 
 # Installation
 
