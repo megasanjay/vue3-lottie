@@ -41,7 +41,7 @@ npm install vue3-lottie --save
 You can also use `vue3-lottie` directly in the browser via CDN.
 
 ```html
-<script src="https://unpkg.com/vue3-lottie@1.0.1/dist/vue3-lottie.min.js"></script>
+<script src="https://unpkg.com/vue3-lottie@1.1.2/dist/vue3-lottie.min.js"></script>
 ```
 
 ## Usage
