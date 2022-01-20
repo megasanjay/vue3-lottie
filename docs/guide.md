@@ -2,18 +2,24 @@
 
 **vue3-lottie** is a simple Vue 3 component that allows you to add Lottie animations into Vue applications. This component uses props for data and any config options.
 
+::: warning Limitations
+`vue3-lottie` is not a full-featured Lottie library. It is only a wrapper around the `lottie-web` library. It does not support all of the features of the `lottie-web` library. At the moment vue3-lottie only supports the `svg` renderer which is the majority of all animations that I have seen available on the internet. You might not be able to use use `html` and `canvas` renderers with this library at the moment.
+:::
+
 [[toc]]
 
 ## Introduction
 
-`vue3-lottie` was created to help developers add Lottie animations to their Vue 3 applications. In my search for a simple way to add Lottie animations to my Vue application I found a suprising lack of maintained solutions. Adding a lottie animation to my Nuxt 3 application is the reason this component exists.
+`vue3-lottie` was created to help developers add Lottie animations to their Vue 3 applications. In my search for a simple way to add Lottie animations to my Vue application I found a suprising lack of maintained solutions.
 
 React has a great library called `react-lottie` that works very well. This component has been modeled after the `react-lottie` library with a few of my own additions.
 
 `vue3-lottie` is a vue wrapper around the `lottie-web` library with a few additional features. Typescript support has been added to make it easier to use.
 
-::: warning
-`vue3-lottie` is not a full-featured Lottie library. It is only a wrapper around the `lottie-web` library. It does not support all of the features of the `lottie-web` library. At the moment vue3-lottie only supports the `svg` renderer which is the majority of all animations that I have seen available on the internet. You might not be able to use use `html` and `canvas` renderers with this library at the moment.
+::: warning For Nuxt v3
+I first created this component for use in my Nuxt 3 application. However in my initial testing for SSR I found that the component could potentially increase your TBT times (if you care about that). I only see this in my CD metrics and I cannot see a delay in my actual real world initial render times. I would also include `vue3-lottie` in a `<ClientOnly>` component to prevent it from being rendered on the server.
+
+If anyone has any solutions for this problem please let me know. I am open to any suggestions.
 :::
 
 ## Installation

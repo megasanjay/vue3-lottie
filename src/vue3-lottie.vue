@@ -1,6 +1,6 @@
 <template>
   <div
-    ref="LottieAnimationContainer"
+    :data-id="elementid"
     class="lottie-animation-container"
     :style="getCurrentStyle"
     @mouseenter="hoverStarted"
@@ -32,68 +32,83 @@ const emits = defineEmits([
   'onSegmentStart',
 ])
 
-const LottieAnimationContainer = ref<HTMLElement | null>(null)
 let lottieAnimation = ref<any>(null)
+const elementid = ref<string>('')
 
-const checkIfContainerExists = () => {
-  if (LottieAnimationContainer.value !== null) {
+// hack fix supplement for ssr
+const checkIfContainerExists = (elementID: String) => {
+  if (document.querySelector(`[data-id="${elementID}" ]`) !== null) {
     return true
   } else {
     return false
   }
 }
 
-const loadLottie = async () => {
+const loadLottie = async (element: Element) => {
   let autoPlay = props.autoPlay
 
   if (props.playOnHover) {
     autoPlay = false
   }
 
-  if (LottieAnimationContainer.value) {
-    const animationDataCopy = JSON.parse(JSON.stringify(props.animationData))
+  // creating a copy of the animation data to prevent the original data from being modified
+  // also needed to render multiple animations on the same page
+  const animationDataCopy = JSON.parse(JSON.stringify(props.animationData))
 
-    lottieAnimation = Lottie.loadAnimation({
-      container: LottieAnimationContainer.value,
-      renderer: 'svg',
-      loop: props.loop,
-      autoplay: autoPlay,
-      animationData: animationDataCopy,
-    })
+  let loop = props.loop
 
-    if (props.pauseAnimation) {
-      lottieAnimation.pause()
-    } else {
-      if (props.playOnHover) {
-        lottieAnimation.pause()
-      }
+  // drop the loop by one
+  if (typeof loop === 'number') {
+    if (loop > 0) {
+      loop = loop - 1
     }
-
-    lottieAnimation.addEventListener('loopComplete', () => {
-      emits('onLoopComplete')
-    })
-
-    lottieAnimation.addEventListener('complete', () => {
-      emits('onComplete')
-    })
-
-    lottieAnimation.addEventListener('enterFrame', () => {
-      emits('onEnterFrame')
-    })
-
-    lottieAnimation.addEventListener('segmentStart', () => {
-      emits('onSegmentStart')
-    })
   }
+
+  // actually load the animation
+  lottieAnimation = Lottie.loadAnimation({
+    container: element,
+    renderer: 'svg',
+    loop: loop,
+    autoplay: autoPlay,
+    animationData: animationDataCopy,
+  })
+
+  if (props.pauseAnimation) {
+    lottieAnimation.pause()
+  } else {
+    if (props.playOnHover) {
+      lottieAnimation.pause()
+    }
+  }
+
+  // set the emit events
+  lottieAnimation.addEventListener('loopComplete', () => {
+    emits('onLoopComplete')
+  })
+
+  lottieAnimation.addEventListener('complete', () => {
+    emits('onComplete')
+  })
+
+  lottieAnimation.addEventListener('enterFrame', () => {
+    emits('onEnterFrame')
+  })
+
+  lottieAnimation.addEventListener('segmentStart', () => {
+    emits('onSegmentStart')
+  })
 }
 
+// generate the css variables for width, height and background color
 const getCurrentStyle: any = computed(() => {
   let width = props.width
   let height = props.height
 
+  // set to px values if a number is passed
   if (typeof props.width === 'number') {
     width = `${props.width}px`
   }
+
   if (typeof props.height === 'number') {
     height = `${props.height}px`
   }
@@ -107,6 +122,7 @@ const getCurrentStyle: any = computed(() => {
   return cssVariables
 })
 
+// function to check if the container is being hovered
 const hoverStarted = () => {
   if (lottieAnimation && props.pauseOnHover) {
     lottieAnimation.pause()
@@ -117,6 +133,7 @@ const hoverStarted = () => {
   }
 }
 
+// function to check if the container is no longer being hovered
 const hoverEnded = () => {
   if (lottieAnimation && props.pauseOnHover) {
     lottieAnimation.play()
@@ -126,13 +143,17 @@ const hoverEnded = () => {
   }
 }
 
+// watch for changes in props
+// mainly used for the pauseAnimation prop
 watch(props, () => {
+  // error if pauseAnimation is true and pauseOnHover is also true or playOnHover is also true
   if ((props.pauseOnHover || props.playOnHover) && !props.pauseAnimation) {
     console.error(
       'If you are using pauseAnimation prop for Vue3-Lottie, please remove the props pauseOnHover or playOnHover',
     )
   }
 
+  // control the animation play state
   if (!props.pauseOnHover && !props.playOnHover) {
     if (props.pauseAnimation && lottieAnimation) {
       lottieAnimation.pause()
@@ -142,59 +163,71 @@ watch(props, () => {
   }
 })
 
+// method to play the animation
 const play = () => {
   if (lottieAnimation) {
     lottieAnimation.play()
   }
 }
 
+// method to pause the animation
 const pause = () => {
   if (lottieAnimation) {
     lottieAnimation.pause()
   }
 }
 
+// method to stop the animation. It will reset the animation to the first frame
 const stop = () => {
   if (lottieAnimation) {
     lottieAnimation.stop()
   }
 }
 
+// expose child methods to the parent component
 defineExpose({
   play,
   pause,
   stop,
 })
 
-const setupLottie = () => {
+// function to generate random strings for IDs
+const makeid = (length: number) => {
+  var result = ''
+  var characters =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  var charactersLength = characters.length
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength))
+  }
+  return result
+}
+
+const setupLottie = (elementID: String) => {
   if (props.pauseOnHover && props.playOnHover) {
     throw new Error(
       'You cannot set pauseOnHover and playOnHover for Vue3-Lottie at the same time.',
     )
   }
 
+  // Unfortunately, this is a hackfix for ssr. We need to wait for the element to be rendered before we can load the animation.
+  // One day I will figure out how to do this properly.
   const interval = setInterval(() => {
-    if (checkIfContainerExists()) {
+    if (checkIfContainerExists(elementID)) {
       clearInterval(interval)
-      loadLottie()
+      const element = document.querySelector(`[data-id="${elementID}" ]`)
+
+      if (element) {
+        loadLottie(element) // load the animation
+      }
     }
-  }, 100)
+  }, 0)
 }
 
 onMounted(async () => {
-  setupLottie()
+  elementid.value = makeid(20) // generate a random id for the container
+  setupLottie(elementid.value)
 })
-
-// return {
-//   LottieAnimationContainer,
-//   lottieAnimation,
-//   getCurrentStyle,
-//   hoverStarted,
-//   hoverEnded,
-//   play,
-//   pause,
-//   stop,
-// }
 </script>
 
 <style scoped>
