@@ -110,7 +110,7 @@ const loadLottie = async (element: Element) => {
   // set the emit events
   lottieAnimation.addEventListener('loopComplete', () => {
     if (props.direction === 'alternate') {
-      lottieAnimation.pause()
+      lottieAnimation.stop()
       direction = direction * -1 //invert direction
       lottieAnimation.setDirection(direction)
       lottieAnimation.play()

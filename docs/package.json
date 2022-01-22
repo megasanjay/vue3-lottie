@@ -1,6 +1,6 @@
 {
   "name": "vue3-lottie-docs",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "description": "A simple component for Vue 3 to display lottie animations",
   "main": "index.js",
   "keywords": [
@@ -19,7 +19,7 @@
     "vitepress": "^0.20.0"
   },
   "dependencies": {
-    "vue3-lottie": "^1.3.1"
+    "vue3-lottie": "^1.3.2"
   },
   "repository": {
     "type": "git",
