@@ -13,6 +13,7 @@ If you don't see the example in any of the sections below [click here](https://v
 <script setup>
 import BasicExample from './examples/BasicExample.vue'
 import BasicExampleWidthHeight from './examples/BasicExampleWidthHeight.vue'
+import BasicExampleAlternate from './examples/BasicExampleAlternate.vue'
 import LoopExample from './examples/LoopExample.vue'
 import PauseOnHoverExample from './examples/PauseOnHoverExample.vue'
 import PlayOnHoverExample from './examples/PlayOnHoverExample.vue'
@@ -102,6 +103,40 @@ export default {
   data() {
     return {
       AstronautJSON,
+    }
+  },
+}
+</script>
+```
+
+## Direction alternate
+
+You can set the `direction` to `alternate` to reverse the animation at the end of a loop.
+
+<BasicExampleAlternate/>
+
+```vue
+<template>
+  <Vue3Lottie
+    :animationData="StarJSON"
+    :height="300"
+    :width="300"
+    direction="alternate"
+  />
+</template>
+
+<script>
+import Vue3Lottie from 'vue3-lottie'
+import StarJSON from './lotties/star.json'
+
+export default {
+  name: 'BasicExampleAlternate',
+  components: {
+    Vue3Lottie,
+  },
+  data() {
+    return {
+      StarJSON,
     }
   },
 }
