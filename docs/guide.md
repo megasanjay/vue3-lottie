@@ -115,6 +115,22 @@ Height of the lottie animation container (Numbers correspond to pixel values).
 | ---------------- | ------------- | -------- | ------------------------------------------------------------------------ |
 | Number or String | '100%'        | No       | `Any valid css unit in String` or a `number that will become a px value` |
 
+### speed
+
+Speed of the lottie animation. This has to be a number greater than 0. You can use values between 0 and 1 to slow down the animation and values greater than 1 to speed it up.
+
+| Type   | Default value | Required | Accepted values |
+| ------ | ------------- | -------- | --------------- |
+| Number | `1`           | no       | `Number > 0`    |
+
+### direction
+
+The direction of the animation. `alternate` will play the animation in reverse when it reaches the end. This is really cool for animations that are looping.
+
+| Type   | Default value | Required | Accepted values                       |
+| ------ | ------------- | -------- | ------------------------------------- |
+| String | `forward`     | no       | `forward` or `reverse` or `alternate` |
+
 ### loop
 
 A prop for detailing if you want the animation to loop. A number value would be how many times the animation should loop.
@@ -163,6 +179,14 @@ This will also automatically pause the animation when it is initalized.
 | ------- | ------------- | -------- | ----------------- |
 | Boolean | `false`       | no       | `true` or `false` |
 
+### delay
+
+A prop to delay the animation. This is useful if you want to show the animation for a certain amount of time before it starts. This is a number value that is in milliseconds.
+
+| Type   | Default value | Required | Accepted values |
+| ------ | ------------- | -------- | --------------- |
+| Number | `0`           | no       | `Number > 0`    |
+
 ### backgroundColor
 
 A prop to change the background color of the container. This will be passed directly into the css for this component.
@@ -201,16 +225,113 @@ This event is fired when the animation enters a segment.
 
 ## Available methods
 
-`vue3-lottie` has a few methods that you can call directly from your component if needed. Add a `ref` to the `vue3-lottie` component and then call the methods you want. Look at the examples provided in the [examples section](/examples#custom-controls) for how to use these methods.
+`vue3-lottie` has a few methods that you can call directly from your component if needed. Add a `ref` to the `vue3-lottie` component and then call the methods you want. Look at the examples provided in the [examples section](/examples#custom-controls) for how to use these methods. The following example calls assume you have a `vue3-lottie` component with a `ref` called `lottieContainer`.
 
 ### play
 
-You can call this method to play the animation. It will resume the animation if it is paused and will start the animation if it is stopped.
+You can call this method to play the animation. It will resume the animation if it is paused and will start the animation if it is stopped. This method takes no arguments.
+
+```js
+this.$refs.lottieContainer.play()
+```
 
 ### pause
 
-You can call this method to pause the animation. It will only pause the animation if it is playing.
+You can call this method to pause the animation. It will only pause the animation if it is playing. This method takes no arguments.
+
+```js
+this.$refs.lottieContainer.pause()
+```
 
 ### stop
 
-You can call this method to stop the animation. It will reset the animation to the first frame.
+You can call this method to stop the animation. It will reset the animation to the first frame. This method takes no arguments.
+
+```js
+this.$refs.lottieContainer.stop()
+```
+
+### destroy
+
+You can call this method to destroy the animation. It will remove the animation from the DOM. This method takes no arguments.
+
+```js
+this.$refs.lottieContainer.destroy()
+```
+
+### setSpeed
+
+You can call this method to change the speed of your animation. This method takes a single argument which is the speed of the animation. The speed has to be a `number > 0`. You can also set this as a [prop](#speed) during initialization.
+
+- `speed`: Any number **greater** than 0.
+
+```js
+this.$refs.lottieContainer.setSpeed(2)
+```
+
+### setDirection
+
+You can call this method to change the direction of your animation. This method takes a single argument which is the direction of the animation. If you want the animation to alternate use the [direction prop](#direction).
+
+- `direction`: Either `'forward'` or `'reverse'`
+
+```js
+this.$refs.lottieContainer.setDirection('forward')
+```
+
+### getDuration
+
+You can call this method to get the duration of your animation. This method takes one argument.
+
+- `inFrames`: If `true`, returns duration in frames, if `false`, in seconds. This is set to `true` by default.
+
+```js
+this.$refs.lottieContainer.getDuration(true)
+```
+
+### goToAndStop
+
+You can call this method to go to a specific frame of your animation. The animation will be stopped at the end of this call. This method takes two arguments.
+
+- `frame`: numeric value
+- `isFrame`: defines if first argument is a time based value or a frame based. This value is set to `true` by default.
+
+```js
+this.$refs.lottieContainer.goToAndStop(10, true)
+```
+
+If you set the second argument to `false` you will be moving in seconds. (10 seconds in this example).
+
+### goToAndPlay
+
+You can call this method to go to a specific frame of your animation. The animation will be played from this frame. This method takes two arguments.
+
+- `frame`: numeric value
+- `isFrame`: defines if first argument is a time based value or a frame based. This value is set to `true` by default.
+
+```js
+this.$refs.lottieContainer.goToAndPlay(5, true)
+```
+
+If you set the second argument to `false` you will be moving in seconds. (5 seconds in this example).
+
+### playSegments
+
+You can call this method to play a specific segment of your animation. This method takes two arguments.
+
+- `segments`: array. Can contain 2 numeric values that will be used as first and last frame of the animation. Or can contain a sequence of arrays each with 2 numeric values.
+- `forceFlag`: boolean. If set to false, it will wait until the current segment is complete. If true, it will update values immediately. This value is set to `false` by default.
+
+```js
+this.$refs.lottieContainer.playSegments([10, 20], true)
+```
+
+### setSubFrame
+
+You can call this method to set the subframe value. This method takes a single argument.
+
+- `useSubFrame`: If `false`, it will respect the original After Effects fps. If `true`, it will update on every requestAnimationFrame with intermediate values. Default is `true`.
+
+```js
+this.$refs.lottieContainer.setSubFrame(true)
+```

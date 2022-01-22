@@ -19,6 +19,9 @@ const props = defineProps({
   rendererSettings: { type: Object, required: false },
   width: { type: [Number, String], default: '100%' },
   height: { type: [Number, String], default: '100%' },
+  speed: { type: Number, default: 1 },
+  delay: { type: Number, default: 0 },
+  direction: { type: String, default: 'forward' },
   pauseOnHover: { type: Boolean, default: false },
   playOnHover: { type: Boolean, default: false },
   backgroundColor: { type: String, default: 'transparent' },
@@ -34,6 +37,7 @@ const emits = defineEmits([
 
 let lottieAnimation = ref<any>(null)
 const elementid = ref<string>('')
+let direction = 1
 
 // hack fix supplement for ssr
 const checkIfContainerExists = (elementID: String) => {
@@ -64,6 +68,10 @@ const loadLottie = async (element: Element) => {
     }
   }
 
+  if (props.delay > 0) {
+    autoPlay = false
+  }
+
   // actually load the animation
   lottieAnimation = Lottie.loadAnimation({
     container: element,
@@ -72,6 +80,24 @@ const loadLottie = async (element: Element) => {
     autoplay: autoPlay,
     animationData: animationDataCopy,
   })
+
+  setTimeout(() => {
+    autoPlay = props.autoPlay
+    if (props.playOnHover) {
+      lottieAnimation.pause()
+    } else {
+      lottieAnimation.play()
+    }
+  }, props.delay)
+
+  lottieAnimation.setSpeed(props.speed)
+
+  if (props.direction === 'reverse') {
+    lottieAnimation.setDirection(-1)
+  }
+  if (props.direction === 'normal') {
+    lottieAnimation.setDirection(1)
+  }
 
   if (props.pauseAnimation) {
     lottieAnimation.pause()
@@ -83,6 +109,13 @@ const loadLottie = async (element: Element) => {
 
   // set the emit events
   lottieAnimation.addEventListener('loopComplete', () => {
+    if (props.direction === 'alternate') {
+      direction = direction * -1 //invert direction
+
+      lottieAnimation.stop()
+      lottieAnimation.play()
+      lottieAnimation.setDirection(direction)
+    }
     emits('onLoopComplete')
   })
 
@@ -184,11 +217,87 @@ const stop = () => {
   }
 }
 
+const destroy = () => {
+  if (lottieAnimation) {
+    lottieAnimation.destroy()
+  }
+}
+
+const setSpeed = (speed: number = 1) => {
+  // speed: 1 is normal speed.
+
+  if (speed <= 0) {
+    throw new Error('Speed must be greater than 0')
+  }
+
+  if (lottieAnimation) {
+    lottieAnimation.setSpeed(speed)
+  }
+}
+
+const setDirection = (direction: 'forward' | 'reverse') => {
+  if (lottieAnimation) {
+    if (direction === 'forward') {
+      lottieAnimation.setDirection(1)
+    } else if (direction === 'reverse') {
+      lottieAnimation.setDirection(-1)
+    }
+  }
+}
+
+const goToAndStop = (frame: number, isFrame: Boolean = true) => {
+  //value: numeric value.
+  //isFrame: defines if first argument is a time based value or a frame based (default true).
+
+  if (lottieAnimation) {
+    lottieAnimation.goToAndStop(frame, isFrame)
+  }
+}
+
+const goToAndPlay = (frame: number, isFrame: Boolean = true) => {
+  //value: numeric value
+  //isFrame: defines if first argument is a time based value or a frame based (default true).
+
+  if (lottieAnimation) {
+    lottieAnimation.goToAndPlay(frame, isFrame)
+  }
+}
+
+const playSegments = (segments: Array<number>, forceFlag: Boolean = false) => {
+  //segments: array. Can contain 2 numeric values that will be used as first and last frame of the animation. Or can contain a sequence of arrays each with 2 numeric values.
+  //forceFlag: boolean. If set to false, it will wait until the current segment is complete. If true, it will update values immediately.
+
+  if (lottieAnimation) {
+    lottieAnimation.playSegments(segments, forceFlag)
+  }
+}
+
+const setSubFrame = (useSubFrame: Boolean = true) => {
+  // useSubFrames: If false, it will respect the original AE fps. If true, it will update on every requestAnimationFrame with intermediate values. Default is true.
+  if (lottieAnimation) {
+    lottieAnimation.setSubframe(useSubFrame)
+  }
+}
+
+const getDuration = (inFrames: Boolean = true) => {
+  if (lottieAnimation) {
+    return lottieAnimation.getDuration(inFrames)
+  }
+}
+
 // expose child methods to the parent component
 defineExpose({
   play,
   pause,
   stop,
+  destroy,
+  setSpeed,
+  goToAndStop,
+  goToAndPlay,
+  setDirection,
+  playSegments,
+  setSubFrame,
+  getDuration,
 })
 
 // function to generate random strings for IDs

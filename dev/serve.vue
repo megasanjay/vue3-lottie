@@ -24,11 +24,14 @@ export default defineComponent({
       HeartJSON,
       CarJSON,
       startAnimation: false,
+      count: 0,
     }
   },
   methods: {
     play() {
       ;(this.$refs['customControl'] as any).play()
+      this.count = (this.$refs['customControl'] as any).getDuration(true)
+      console.log(this.count)
     },
     pause() {
       ;(this.$refs['customControl'] as any).pause()
@@ -37,6 +40,7 @@ export default defineComponent({
       ;(this.$refs['customControl'] as any).stop()
     },
   },
+  mounted() {},
 })
 </script>
 
@@ -90,18 +94,34 @@ export default defineComponent({
       </button>
     </div>
     <div>
-      <div>
-        <p>Adjusting width and height to 300px</p>
-        <Vue3Lottie
-          ref="customControl"
-          :animationData="VinylJSON"
-          :height="300"
-          :width="300"
-        />
-        <button @click="play">Play</button>
-        <button @click="pause">Pause</button>
-        <button @click="stop">Stop</button>
-      </div>
+      <p>Adjusting width and height to 300px</p>
+      <Vue3Lottie
+        ref="customControl"
+        :animationData="VinylJSON"
+        :height="300"
+        :width="300"
+      />
+      <button @click="play">Play</button>
+      <button @click="pause">Pause</button>
+      <button @click="stop">Stop</button>
+    </div>
+    <div>
+      <p>Alternate direction</p>
+      <Vue3Lottie
+        :animationData="HeartJSON"
+        :height="200"
+        :width="200"
+        :direction="'alternate'"
+      />
+    </div>
+    <div>
+      <p>Reverse direction</p>
+      <Vue3Lottie
+        :animationData="HeartJSON"
+        :height="200"
+        :width="200"
+        :direction="'reverse'"
+      />
     </div>
   </div>
 </template>

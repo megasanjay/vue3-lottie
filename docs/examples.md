@@ -262,15 +262,21 @@ export default {
 ```vue
 <template>
   <div>
-    <Vue3Lottie
-      ref="customControl"
-      :animationData="CountdownJSON"
-      :height="200"
-      :width="200"
-    />
-    <button @click="play">Play</button>
-    <button @click="pause">Pause</button>
-    <button @click="stop">Stop</button>
+    <div>
+      <Vue3Lottie
+        ref="customControl"
+        :animationData="CountdownJSON"
+        :height="200"
+        :width="200"
+      />
+      <div>
+        <button @click="play">Play</button>
+        <button @click="pause">Pause</button>
+        <button @click="stop">Stop</button>
+        <button @click="toggleDirection">Reverse</button>
+      </div>
+    </div>
+    This animation has {{ count }} frames.
   </div>
 </template>
 
@@ -286,6 +292,8 @@ export default {
   data() {
     return {
       CountdownJSON,
+      count: 0,
+      direction: 'forward',
     }
   },
   methods: {
@@ -298,6 +306,22 @@ export default {
     stop() {
       this.$refs['customControl'].stop()
     },
+    toggleDirection() {
+      if (this.direction === 'forward') {
+        this.pause()
+        this.$refs['customControl'].setDirection('reverse')
+        this.play()
+        this.direction = 'reverse'
+      } else {
+        this.pause()
+        this.$refs['customControl'].setDirection('forward')
+        this.play()
+        this.direction = 'forward'
+      }
+    },
+  },
+  mounted() {
+    this.$refs['customControl'].setSubframe()
   },
 }
 </script>

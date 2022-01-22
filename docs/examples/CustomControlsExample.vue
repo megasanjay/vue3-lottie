@@ -2,20 +2,66 @@
   <div
     style="
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
     "
   >
-    <Vue3Lottie
-      ref="customControl"
-      :animationData="CountdownJSON"
-      :height="200"
-      :width="200"
-    />
-    <button @click="play" style="margin-left: 20px">Play</button>
-    <button @click="pause" style="margin-left: 20px">Pause</button>
-    <button @click="stop" style="margin-left: 20px">Stop</button>
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <Vue3Lottie
+        ref="customControl"
+        :animationData="CountdownJSON"
+        :height="200"
+        :width="200"
+      />
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+          "
+        >
+          <button @click="play" style="margin-left: 20px">Play</button>
+          <button @click="pause" style="margin-left: 20px">Pause</button>
+          <button @click="stop" style="margin-left: 20px">Stop</button>
+        </div>
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <button @click="toggleDirection" style="margin-left: 20px">
+            Reverse
+          </button>
+          <button @click="getFrameCount" style="margin-left: 20px">
+            # of frames
+          </button>
+          <button @click="getTimeCount" style="margin-left: 20px">
+            # of seconds
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -31,6 +77,8 @@ export default {
   data() {
     return {
       CountdownJSON,
+      count: 0,
+      direction: 'forward',
     }
   },
   methods: {
@@ -42,6 +90,33 @@ export default {
     },
     stop() {
       this.$refs['customControl'].stop()
+    },
+    toggleDirection() {
+      if (this.direction === 'forward') {
+        this.pause()
+        this.$refs['customControl'].setDirection('reverse')
+        this.play()
+        this.direction = 'reverse'
+      } else {
+        this.pause()
+        this.$refs['customControl'].setDirection('forward')
+        this.play()
+        this.direction = 'forward'
+      }
+    },
+    getFrameCount() {
+      alert(
+        `This animation has ${this.$refs['customControl'].getDuration(
+          true,
+        )} frames`,
+      )
+    },
+    getTimeCount() {
+      alert(
+        `This animation takes ${this.$refs['customControl'].getDuration(
+          false,
+        )} seconds`,
+      )
     },
   },
 }

@@ -79,8 +79,11 @@ More detailed explanations are provided in the documentation.
 | animationData    | Object (**Required**) | none          | The lottie animation data                                                                |
 | width            | Number or String      | "100%"        | Width of the lottie animation container (Numbers correspond to pixel values)             |
 | height           | Number or String      | "100%"        | Height of the lottie animation container (Numbers correspond to pixel values)            |
+| speed            | Number                | "1"           | Speed of the lottie animation                                                            |
+| direction        | String                | "forward"     | Animation play direction                                                                 |
 | loop             | Number or Boolean     | true          | The number of instances that the lottie animation should run (true is infinite)          |
 | autoPlay         | Boolean               | true          | Start animation on component load                                                        |
+| delay            | Number                | 0             | Delay the animation play state by some milliseconds                                      |
 | pauseAnimation   | Boolean               | false         | Prop to pass reactive variables so that you can control animation pause and play         |
 | pauseOnHover     | Boolean               | false         | Whether to pause the animation on hover                                                  |
 | playOnHover      | Boolean               | false         | Whether to play the animation when you hover                                             |
@@ -110,5 +113,21 @@ You can control the animation with the following methods. These methods can be c
   - Pauses the animation
 - stop
   - Stops the animation. This will also reset the animation to the first frame. Look at the demo for some examples.
+- destroy
+  - You can call this method to destroy the animation. It will remove the animation from the DOM.
+- setSpeed(speed)
+  - You can call this method to change the speed of your animation.
+- setDirection(direction)
+  - You can call this method to change the direction of your animation.
+- getDuration(inFrames)
+  - You can call this method to get the duration of your animation.
+- goToAndStop(frameNumber, isFrames)
+  - You can call this method to go to a specific frame of your animation. The animation will be stopped at the end of this call.
+- goToAndPlay(frameNumber, isFrames)
+  - You can call this method to go to a specific frame of your animation. The animation will be played from this frame.
+- playSegments(segments, forceFlag)
+  - You can call this method to play a specific segment of your animation.
+- setSubFrame(subFrame)
+  - You can call this method to set the subframe value.
 
 ![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg) ![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
