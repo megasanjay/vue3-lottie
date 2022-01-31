@@ -305,13 +305,24 @@ export default {
         :width="200"
       />
       <div>
-        <button @click="play">Play</button>
-        <button @click="pause">Pause</button>
-        <button @click="stop">Stop</button>
-        <button @click="toggleDirection">Reverse</button>
+        <div>
+          <button @click="play">Play</button>
+          <button @click="pause">Pause</button>
+          <button @click="stop">Stop</button>
+        </div>
+        <div>
+          <button @click="toggleDirection">
+            Reverse
+          </button>
+          <button @click="getFrameCount">
+            # of frames
+          </button>
+          <button @click="getTimeCount">
+            # of seconds
+          </button>
+        </div>
       </div>
     </div>
-    This animation has {{ count }} frames.
   </div>
 </template>
 
@@ -354,9 +365,20 @@ export default {
         this.direction = 'forward'
       }
     },
-  },
-  mounted() {
-    this.$refs['customControl'].setSubframe()
+    getFrameCount() {
+      alert(
+        `This animation has ${this.$refs['customControl'].getDuration(
+          true,
+        )} frames`,
+      )
+    },
+    getTimeCount() {
+      alert(
+        `This animation takes ${this.$refs['customControl'].getDuration(
+          false,
+        )} seconds`,
+      )
+    },
   },
 }
 </script>
