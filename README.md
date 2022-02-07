@@ -74,21 +74,22 @@ export default {
 
 More detailed explanations are provided in the documentation.
 
-| Prop             | Type                  | Default Value | Description                                                                              |
-| ---------------- | --------------------- | ------------- | ---------------------------------------------------------------------------------------- |
-| animationData    | Object (**Required**) | none          | The lottie animation data                                                                |
-| width            | Number or String      | "100%"        | Width of the lottie animation container (Numbers correspond to pixel values)             |
-| height           | Number or String      | "100%"        | Height of the lottie animation container (Numbers correspond to pixel values)            |
-| speed            | Number                | "1"           | Speed of the lottie animation                                                            |
-| direction        | String                | "forward"     | Animation play direction                                                                 |
-| loop             | Number or Boolean     | true          | The number of instances that the lottie animation should run (true is infinite)          |
-| autoPlay         | Boolean               | true          | Start animation on component load                                                        |
-| delay            | Number                | 0             | Delay the animation play state by some milliseconds                                      |
-| pauseAnimation   | Boolean               | false         | Prop to pass reactive variables so that you can control animation pause and play         |
-| pauseOnHover     | Boolean               | false         | Whether to pause the animation on hover                                                  |
-| playOnHover      | Boolean               | false         | Whether to play the animation when you hover                                             |
-| backgroundColor  | String                | transparent   | Background color of the container                                                        |
-| rendererSettings | Object                | {}            | Options for if you want to use an existing canvas to draw (can be ignored on most cases) |
+| Prop             | Type              | Default Value | Description                                                                              |
+| ---------------- | ----------------- | ------------- | ---------------------------------------------------------------------------------------- |
+| animationData    | Object            | {}            | The lottie animation data provided as a JSON object                                      |
+| animationLink    | String            | ''            | A URL link to the Lottie animation data (eg: `Lottie Animation URL` on lottiefiles.com)  |
+| width            | Number or String  | "100%"        | Width of the lottie animation container (Numbers correspond to pixel values)             |
+| height           | Number or String  | "100%"        | Height of the lottie animation container (Numbers correspond to pixel values)            |
+| speed            | Number            | "1"           | Speed of the lottie animation                                                            |
+| direction        | String            | "forward"     | Animation play direction                                                                 |
+| loop             | Number or Boolean | true          | The number of instances that the lottie animation should run (true is infinite)          |
+| autoPlay         | Boolean           | true          | Start animation on component load                                                        |
+| delay            | Number            | 0             | Delay the animation play state by some milliseconds                                      |
+| pauseAnimation   | Boolean           | false         | Prop to pass reactive variables so that you can control animation pause and play         |
+| pauseOnHover     | Boolean           | false         | Whether to pause the animation on hover                                                  |
+| playOnHover      | Boolean           | false         | Whether to play the animation when you hover                                             |
+| backgroundColor  | String            | transparent   | Background color of the container                                                        |
+| rendererSettings | Object            | {}            | Options for if you want to use an existing canvas to draw (can be ignored on most cases) |
 
 # Events
 

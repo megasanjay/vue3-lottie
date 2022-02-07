@@ -13,19 +13,20 @@ import { defineProps, defineEmits, ref, onMounted, computed, watch } from 'vue'
 import Lottie from 'lottie-web'
 
 const props = defineProps({
-  animationData: { type: Object, required: true },
-  loop: { type: [Boolean, Number], default: true },
-  autoPlay: { type: Boolean, default: true },
+  animationData: { type: Object, required: false, default: () => ({}) },
+  animationLink: { type: String, required: false, default: '' },
+  loop: { type: [Boolean, Number], required: false, default: true },
+  autoPlay: { type: Boolean, required: false, default: true },
   rendererSettings: { type: Object, required: false },
-  width: { type: [Number, String], default: '100%' },
-  height: { type: [Number, String], default: '100%' },
-  speed: { type: Number, default: 1 },
-  delay: { type: Number, default: 0 },
-  direction: { type: String, default: 'forward' },
-  pauseOnHover: { type: Boolean, default: false },
-  playOnHover: { type: Boolean, default: false },
-  backgroundColor: { type: String, default: 'transparent' },
-  pauseAnimation: { type: Boolean, default: false },
+  width: { type: [Number, String], required: false, default: '100%' },
+  height: { type: [Number, String], required: false, default: '100%' },
+  speed: { type: Number, required: false, default: 1 },
+  delay: { type: Number, required: false, default: 0 },
+  direction: { type: String, required: false, default: 'forward' },
+  pauseOnHover: { type: Boolean, required: false, default: false },
+  playOnHover: { type: Boolean, required: false, default: false },
+  backgroundColor: { type: String, required: false, default: 'transparent' },
+  pauseAnimation: { type: Boolean, required: false, default: false },
 })
 
 const emits = defineEmits([
@@ -57,7 +58,21 @@ const loadLottie = async (element: Element) => {
 
   // creating a copy of the animation data to prevent the original data from being modified
   // also needed to render multiple animations on the same page
-  const animationDataCopy = JSON.parse(JSON.stringify(props.animationData))
+  let animationData = {}
+  if (props.animationData !== {}) {
+    animationData = JSON.parse(JSON.stringify(props.animationData))
+  }
+
+  if (props.animationLink != '') {
+    try {
+      const response = await fetch(props.animationLink)
+      const json = await response.json()
+      animationData = json
+    } catch (error) {
+      console.error(error)
+      return
+    }
+  }
 
   let loop = props.loop
 
@@ -78,7 +93,7 @@ const loadLottie = async (element: Element) => {
     renderer: 'svg',
     loop: loop,
     autoplay: autoPlay,
-    animationData: animationDataCopy,
+    animationData: animationData,
   })
 
   setTimeout(() => {
@@ -316,6 +331,10 @@ const setupLottie = (elementID: String) => {
     throw new Error(
       'You cannot set pauseOnHover and playOnHover for Vue3-Lottie at the same time.',
     )
+  }
+
+  if (props.animationLink === '' && props.animationData === {}) {
+    throw new Error('You must provide either animationLink or animationData')
   }
 
   // Unfortunately, this is a hackfix for ssr. We need to wait for the element to be rendered before we can load the animation.
