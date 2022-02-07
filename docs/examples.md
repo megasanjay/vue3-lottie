@@ -8,19 +8,20 @@ If you don't see the example in any of the sections below [click here](https://v
 
 [[toc]]
 
-## Basic example
-
 <script setup>
-import BasicExample from './examples/BasicExample.vue'
-import BasicExampleWidthHeight from './examples/BasicExampleWidthHeight.vue'
-import BasicExampleAlternate from './examples/BasicExampleAlternate.vue'
-import LoopExample from './examples/LoopExample.vue'
-import PauseOnHoverExample from './examples/PauseOnHoverExample.vue'
-import PlayOnHoverExample from './examples/PlayOnHoverExample.vue'
-import ReactiveExample from './examples/ReactiveExample.vue'
-import EventExample from './examples/EventExample.vue'
-import CustomControlsExample from './examples/CustomControlsExample.vue'
+  import BasicExample from './examples/BasicExample.vue'
+  import BasicExampleURL from './examples/BasicExampleURL.vue'
+  import BasicExampleWidthHeight from './examples/BasicExampleWidthHeight.vue'
+  import BasicExampleAlternate from './examples/BasicExampleAlternate.vue'
+  import LoopExample from './examples/LoopExample.vue'
+  import PauseOnHoverExample from './examples/PauseOnHoverExample.vue'
+  import PlayOnHoverExample from './examples/PlayOnHoverExample.vue'
+  import ReactiveExample from './examples/ReactiveExample.vue'
+  import EventExample from './examples/EventExample.vue'
+  import CustomControlsExample from './examples/CustomControlsExample.vue'
 </script>
+
+## Basic example with animationData
 
 <BasicExample />
 
@@ -41,6 +42,33 @@ export default {
     return {
       DogJSON,
     }
+  },
+}
+</script>
+```
+
+## Basic example with animationLink
+
+<BasicExampleURL />
+
+You can also pass in a valid URL link to the lottie file JSON object instead of referring to a local file. There is a chance that this might be breaking GDPR rules. If you are unsure, please read the terms and conditions of your lottie animation hosting platform.
+
+```vue
+<template>
+  <Vue3Lottie
+    animationLink="https://assets5.lottiefiles.com/packages/lf20_vmollwvl.json"
+    :height="200"
+    :width="200"
+  />
+</template>
+
+<script>
+import Vue3Lottie from 'vue3-lottie'
+
+export default {
+  name: 'BasicExampleURL',
+  components: {
+    Vue3Lottie,
   },
 }
 </script>
@@ -311,15 +339,9 @@ export default {
           <button @click="stop">Stop</button>
         </div>
         <div>
-          <button @click="toggleDirection">
-            Reverse
-          </button>
-          <button @click="getFrameCount">
-            # of frames
-          </button>
-          <button @click="getTimeCount">
-            # of seconds
-          </button>
+          <button @click="toggleDirection">Reverse</button>
+          <button @click="getFrameCount"># of frames</button>
+          <button @click="getTimeCount"># of seconds</button>
         </div>
       </div>
     </div>

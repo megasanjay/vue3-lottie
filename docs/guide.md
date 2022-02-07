@@ -86,7 +86,7 @@ All the possible props for `vue3-lottie` are shown below.
 
 ### animationData
 
-This is the animation data that is used to render the animation. **`This prop is required`**.
+This is the animation data that is used to render the animation. **`This prop is required if the animationLink is not provided`**.
 You will have to import a json file that contains the animation data and pass it via this prop.
 
 You can go on https://lottiefiles.com/featured and find a lot of animations. When you find one you like, you can download it as a `Lottie JSON` file and import it into your app to use it as the animation data.
@@ -95,9 +95,20 @@ You can go on https://lottiefiles.com/featured and find a lot of animations. Whe
 This component does not support dynamic animations. You cannot change animation data once it has been initialized. Create multiple copies of the component or rerender the component if you want to change the animation that is shown.
 :::
 
-| Type       | Default value | Required | Accepted values         |
-| ---------- | ------------- | -------- | ----------------------- |
-| **Object** | **{}**        | **Yes**  | _Lottie animation data_ |
+| Type       | Default value | Required                                   | Accepted values         |
+| ---------- | ------------- | ------------------------------------------ | ----------------------- |
+| **Object** | **{}**        | **Yes (if animationLink is not provided)** | _Lottie animation data_ |
+
+### animationLink
+
+This is the animation data that is used to render the animation. **`This prop is required if animationData is not provided`**.
+You can use the URL for the json file that contains the animation data. For example: `https://assets5.lottiefiles.com/packages/lf20_vmollwvl.json`.
+
+If you're getting your lotties from `lottiefiles.com`, you can use the `Lottie Animation URL`.
+
+| Type       | Default value | Required                                   | Accepted values         |
+| ---------- | ------------- | ------------------------------------------ | ----------------------- |
+| **String** | **""**        | **Yes (if animationData is not provided)** | _Lottie animation data_ |
 
 ### width
 
