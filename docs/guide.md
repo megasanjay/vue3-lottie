@@ -97,7 +97,7 @@ This component does not support dynamic animations. You cannot change animation 
 
 | Type       | Default value | Required                                   | Accepted values         |
 | ---------- | ------------- | ------------------------------------------ | ----------------------- |
-| **Object** | **{}**        | **Yes (if animationLink is not provided)** | _Lottie animation data_ |
+| **Object** | **{}**        | **Yes (if animationLink is not provided)** | JSON object containing Lottie animation data |
 
 ### animationLink
 
@@ -108,7 +108,7 @@ If you're getting your lotties from `lottiefiles.com`, you can use the `Lottie A
 
 | Type       | Default value | Required                                   | Accepted values         |
 | ---------- | ------------- | ------------------------------------------ | ----------------------- |
-| **String** | **""**        | **Yes (if animationData is not provided)** | _Lottie animation data_ |
+| **String** | **""**        | **Yes (if animationData is not provided)** | URL for a Lottie JSON object |
 
 ### width
 
