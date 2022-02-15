@@ -9,32 +9,48 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, ref, onMounted, computed, watch } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
 import Lottie from 'lottie-web'
 
-const props = defineProps({
-  animationData: { type: Object, required: false, default: () => ({}) },
-  animationLink: { type: String, required: false, default: '' },
-  loop: { type: [Boolean, Number], required: false, default: true },
-  autoPlay: { type: Boolean, required: false, default: true },
-  rendererSettings: { type: Object, required: false },
-  width: { type: [Number, String], required: false, default: '100%' },
-  height: { type: [Number, String], required: false, default: '100%' },
-  speed: { type: Number, required: false, default: 1 },
-  delay: { type: Number, required: false, default: 0 },
-  direction: { type: String, required: false, default: 'forward' },
-  pauseOnHover: { type: Boolean, required: false, default: false },
-  playOnHover: { type: Boolean, required: false, default: false },
-  backgroundColor: { type: String, required: false, default: 'transparent' },
-  pauseAnimation: { type: Boolean, required: false, default: false },
+interface LottieProps {
+  animationData?: any
+  animationLink?: string
+  loop?: boolean | number
+  autoPlay?: boolean
+  rendererSettings?: any
+  width?: number | string
+  height?: number | string
+  speed?: number
+  delay?: number
+  direction?: string
+  pauseOnHover?: boolean
+  playOnHover?: boolean
+  backgroundColor?: string
+  pauseAnimation?: boolean
+}
+
+const props = withDefaults(defineProps<LottieProps>(), {
+  animationData: {},
+  animationLink: '',
+  loop: true,
+  autoPlay: true,
+  width: '100%',
+  height: '100%',
+  speed: 1,
+  delay: 0,
+  direction: 'forward',
+  pauseOnHover: false,
+  playOnHover: false,
+  backgroundColor: 'transparent',
+  pauseAnimation: false,
 })
 
-const emits = defineEmits([
-  'onComplete',
-  'onLoopComplete',
-  'onEnterFrame',
-  'onSegmentStart',
-])
+const emits = defineEmits<{
+  (e: 'onComplete'): void
+  (e: 'onLoopComplete'): void
+  (e: 'onEnterFrame'): void
+  (e: 'onSegmentStart'): void
+}>()
 
 let lottieAnimation = ref<any>(null)
 const elementid = ref<string>('')
