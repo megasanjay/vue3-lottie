@@ -1,9 +1,3 @@
-declare module '*.vue' {
-  import type { DefineComponent } from 'vue'
-  const component: DefineComponent<{}, {}, any>
-  export default component
-}
-
 declare module 'vue3-lottie' {
   interface LottieProps {
     animationData?: any
@@ -22,3 +16,5 @@ declare module 'vue3-lottie' {
     pauseAnimation?: boolean
   }
 }
+
+export {}

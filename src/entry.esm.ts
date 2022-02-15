@@ -1,4 +1,5 @@
 // Import vue component
+import { App as Application } from 'vue'
 import component from '@/vue3-lottie.vue'
 
 // Default export is installable instance of component.
@@ -9,7 +10,7 @@ export default /*#__PURE__*/ (() => {
   const installable = component
 
   // Attach install function executed by Vue.use()
-  installable.install = (app: any) => {
+  installable.install = (app: Application) => {
     app.component('Vue3Lottie', installable)
   }
   return installable
