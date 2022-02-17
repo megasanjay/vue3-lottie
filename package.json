@@ -1,6 +1,6 @@
 {
   "name": "vue3-lottie",
-  "version": "1.4.2-beta",
+  "version": "1.4.3-beta",
   "license": "MIT",
   "author": "Sanjay Soundarajan <info@sanjaysoundarajan.dev> (https://sanjaysoundarajan.dev)",
   "scripts": {
@@ -35,7 +35,7 @@
   "module": "dist/vue3-lottie.esm.js",
   "browser": "dist/vue3-lottie.esm.js",
   "unpkg": "dist/vue3-lottie.min.js",
-  "types": "./src/types/shims.d.ts",
+  "types": "types/shims.d.ts",
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
