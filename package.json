@@ -3,6 +3,6 @@
   "private": "true",
   "scripts": {
     "build": "pnpm build --filter vue3-lottie",
-    "publish": "pnpm publish --filter vue3-lottie"
+    "publish": "pnpm publish -r vue3-lottie"
   }
 }
