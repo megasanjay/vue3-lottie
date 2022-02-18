@@ -1,0 +1,14 @@
+{
+  "include": ["src/**/*.ts", "src/**/*.vue"],
+  "exclude": ["node_modules", "dist", "**/*.js"],
+  "compilerOptions": {
+    "target": "es2019",
+    "outDir": "dist",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "types": ["vite/client", "node"]
+  }
+}

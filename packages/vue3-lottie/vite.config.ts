@@ -1,10 +1,9 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import VueTypeImports from 'vite-plugin-vue-type-imports'
 
 export default defineConfig({
-  plugins: [vue(), VueTypeImports()],
+  plugins: [vue()],
   build: {
     lib: {
       entry: resolve(__dirname, './src/index.ts'),
@@ -23,7 +22,6 @@ export default defineConfig({
     },
   },
   define: {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
     VERSION: JSON.stringify(require('./package.json').version),
   },
 })
