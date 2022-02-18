@@ -1,6 +1,6 @@
 {
   "name": "@reslear/vue3-lottie",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "author": "",
   "scripts": {
@@ -17,7 +17,8 @@
     "vue": "^3.2"
   },
   "files": [
-    "dist"
+    "dist",
+    "dist/*.css"
   ],
   "repository": {
     "type": "git",
@@ -34,7 +35,8 @@
     ".": {
       "import": "./dist/vue3-lottie.es.js",
       "require": "./dist/vue3-lottie.umd.js"
-    }
+    },
+    "./dist/style.css": "./dist/style.css"
   },
   "devDependencies": {
     "@babel/types": "^7.17.0",
@@ -43,6 +45,7 @@
     "typescript": "^4.5.5",
     "vite": "^2.8.4",
     "vue": "^3.2.31",
+    "vue-tsc": "^0.31.4",
     "vue-typegen": "^0.2.0"
   },
   "bugs": {
@@ -56,6 +59,5 @@
   "keywords": [
     "vue3",
     "lottie"
-  ],
-  "sideEffects": false
+  ]
 }

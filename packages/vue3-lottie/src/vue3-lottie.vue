@@ -423,7 +423,7 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style>
 .lottie-animation-container {
   width: var(--lottie-animation-container-width);
   height: var(--lottie-animation-container-height);

@@ -1,14 +1,14 @@
 {
-  "include": ["src/**/*.ts", "src/**/*.vue"],
-  "exclude": ["node_modules", "dist", "**/*.js"],
   "compilerOptions": {
-    "target": "es2019",
-    "outDir": "dist",
-    "allowJs": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "baseUrl": ".",
+    "target": "ES2018",
+    "module": "ESNext",
+    "strict": true,
+    "declaration": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "jsx": "preserve",
-    "types": ["vite/client", "node"]
-  }
+    "outDir": "dist",
+    "moduleResolution": "node"
+  },
+  "include": ["src/**/*.ts", "src/**/*.vue"],
+  "exclude": ["node_modules", "dist", "**/*.js"]
 }
