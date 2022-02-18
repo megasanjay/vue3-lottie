@@ -5,8 +5,7 @@
   "author": "Sanjay Soundarajan <info@sanjaysoundarajan.dev> (https://sanjaysoundarajan.dev)",
   "scripts": {
     "dev": "vue-cli-service serve dev/serve.ts",
-    "build:vite": "vite build",
-    "build": "vite build && vue-typegen gen -s src -o dist",
+    "build": "vite build && tsc -d --emitDeclarationOnly && vue-typegen gen -s ./src -o ./dist",
     "prepublishOnly": "npm run build",
     "lint": "eslint \"{packages,playground}/**/*.{ts,tsx,vue,js,jsx,html}\"",
     "prettier": "npx prettier --write ."
@@ -15,7 +14,8 @@
     "lottie-web": "^5.8.1"
   },
   "peerDependencies": {
-    "vue": "^3.2"
+    "vue": "^3.2",
+    "lottie-web": "^5.8.1"
   },
   "files": [
     "dist"
