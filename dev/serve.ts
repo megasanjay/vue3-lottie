@@ -1,5 +1,7 @@
-import { createApp } from "vue";
-import ServeDev from "./serve.vue";
+import { createApp } from 'vue'
 
-const app = createApp(ServeDev);
-app.mount("#app");
+// @ts-ignore
+import ServeDev from './serve.vue'
+
+const app = createApp(ServeDev)
+app.mount('#app')

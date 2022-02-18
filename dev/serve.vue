@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Vue3Lottie from '@/vue3-lottie.vue'
+import Vue3Lottie, { LottieProps } from '~/dist/vue3-lottie'
 
 // import AstronautJSON from './lotties/astronaut.json';
 const AstronautJSON = require('./lotties/astronaut.json')
