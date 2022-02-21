@@ -3,23 +3,16 @@ import Vue3Lottie from './vue3-lottie.vue'
 
 export { Vue3Lottie }
 
-function registerComponents(app: App, prefix = '') {
-  app.component(`${prefix}Lottie`, Vue3Lottie)
-}
-
-export function install(app: App, options: string) {
+export function install(app: App, options: { name: string }) {
   const finalOptions = Object.assign(
     {},
     {
-      installComponents: true,
-      componentsPrefix: '',
+      name: 'Vue3Lottie',
     },
     options,
   )
 
-  if (finalOptions.installComponents) {
-    registerComponents(app, finalOptions.componentsPrefix)
-  }
+  app.component(`${finalOptions.name}`, Vue3Lottie)
 }
 
 const plugin = {
