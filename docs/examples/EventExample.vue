@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import {Vue3Lottie} from 'vue3-lottie'
 import ClockJSON from './lotties/clock.json'
 
 export default {

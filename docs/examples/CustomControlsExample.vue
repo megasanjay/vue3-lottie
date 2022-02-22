@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import {Vue3Lottie} from 'vue3-lottie'
 import CountdownJSON from './lotties/countdown.json'
 
 export default {

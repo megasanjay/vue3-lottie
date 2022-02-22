@@ -3,8 +3,10 @@
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import { Vue3Lottie } from 'vue3-lottie'
 import DogJSON from './lotties/dog.json'
+
+import 'vue3-lottie/dist/style.css'
 
 export default {
   name: 'BasicExample',

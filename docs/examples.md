@@ -31,7 +31,9 @@ If you don't see the example in any of the sections below [click here](https://v
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import { Vue3Lottie } from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
+
 import DogJSON from './lotties/dog.json'
 
 export default {
@@ -63,7 +65,8 @@ You can also pass in a valid URL link to the lottie file JSON object instead of 
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import { Vue3Lottie } from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
 
 export default {
   name: 'BasicExampleURL',
@@ -86,7 +89,9 @@ You can also pass in any valid css unit here. If you pass in a number, It will b
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import { Vue3Lottie } from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
+
 import VinylJSON from './lotties/vinyl.json'
 
 export default {
@@ -121,7 +126,9 @@ If the loop has already been completed, refreshing the page will restart the ani
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import { Vue3Lottie } from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
+
 import AstronautJSON from './lotties/astronaut.json'
 
 export default {
@@ -154,7 +161,9 @@ You can set the `direction` to `alternate` to reverse the animation at the end o
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import { Vue3Lottie } from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
+
 import StarJSON from './lotties/star.json'
 
 export default {
@@ -188,7 +197,9 @@ If you set `pauseOnHover` to true, the animation will pause when you hover over 
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import { Vue3Lottie } from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
+
 import RocketJSON from './lotties/rocket.json'
 
 export default {
@@ -221,7 +232,9 @@ The lottie animation will play when you hover over the animation. Moving the mou
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import { Vue3Lottie } from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
+
 import WifiJSON from './lotties/wifi.json'
 
 export default {
@@ -257,7 +270,9 @@ You can also use the `pauseAnimation` prop to control the play and pause state o
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import { Vue3Lottie } from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
+
 import CarJSON from './lotties/car.json'
 
 export default {
@@ -294,7 +309,9 @@ export default {
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import { Vue3Lottie } from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
+
 import ClockJSON from './lotties/clock.json'
 
 export default {
@@ -349,7 +366,9 @@ export default {
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import { Vue3Lottie } from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
+
 import CountdownJSON from './lotties/countdown.json'
 
 export default {

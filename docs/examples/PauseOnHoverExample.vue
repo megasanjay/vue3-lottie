@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import {Vue3Lottie} from 'vue3-lottie'
 import RocketJSON from './lotties/rocket.json'
 
 export default {
