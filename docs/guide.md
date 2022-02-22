@@ -175,7 +175,7 @@ A prop for detailing if you want the animation to play automatically.
 A prop to control the play and pause states of the animation.
 
 :::danger
-If you are controlling the animation state by yourself please be sure to not set `playOnHover` or `pauseOnHover` to `true`.
+If you are controlling the animation state by yourself please be sure to **not** set `playOnHover` or `pauseOnHover` to `true`.
 :::
 
 | Type    | Default value | Required | Accepted values   |

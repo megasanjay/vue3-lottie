@@ -6,8 +6,8 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
 
-// import 'vue3-lottie/dist/style.css'
 // import { Vue3Lottie } from 'vue3-lottie'
+// import 'vue3-lottie/dist/style.css'
 
 import DogJSON from './assets/dog.json'
 </script>
