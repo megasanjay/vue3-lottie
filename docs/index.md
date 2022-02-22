@@ -5,8 +5,8 @@ tagline: 🌟 A simple component library that will add support for Lottie animat
 actionText: Quick Start →
 actionLink: /guide
 features:
-  - title: ⚡ Zero Dependencies
-    details: This is a simple Vue 3 component with no external dependencies. All the styling is done with pure CSS.
+  - title: ⚡ Extended API
+    details: Additional animation options and methods are available.
   - title: 🌠 Typescript Support
     details: Native TS support has been provided with this library.
   - title: 🙌 Easy to use
