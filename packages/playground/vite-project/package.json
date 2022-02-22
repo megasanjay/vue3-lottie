@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "vue": "^3.2.31",
-    "vue3-lottie": "^2.0.1-beta"
+    "vue3-lottie": "^2.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.0",

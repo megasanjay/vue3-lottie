@@ -19,7 +19,7 @@
     "vitepress": "^0.20.0"
   },
   "dependencies": {
-    "vue3-lottie": "^2.0.0"
+    "vue3-lottie": "^2.0.1"
   },
   "repository": {
     "type": "git",
