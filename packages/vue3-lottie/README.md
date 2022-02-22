@@ -80,7 +80,7 @@ export default {
 
 # Props and options
 
-More detailed explanations are provided in the documentation.
+More detailed explanations are provided in the [documentation](https://vue3-lottie.vercel.app/guide.html).
 
 | Prop             | Type              | Default Value | Description                                                                              |
 | ---------------- | ----------------- | ------------- | ---------------------------------------------------------------------------------------- |
