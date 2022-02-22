@@ -37,7 +37,7 @@ createApp(App).use(Vue3Lottie).mount('#app')
 Alternatively you can also import the component locally.
 
 ```js
-import Vue3Lottie from 'vue3-lottie'
+import { Vue3Lottie } from 'vue3-lottie'
 
 export default {
   components: {
@@ -54,7 +54,7 @@ You can then use the component in your template
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import { Vue3Lottie } from 'vue3-lottie'
 import DogJSON from './lotties/dog.json'
 
 export default {

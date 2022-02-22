@@ -1,8 +1,8 @@
 {
   "name": "vue3-lottie",
-  "version": "2.0.1-beta",
+  "version": "2.0.0",
   "license": "MIT",
-  "author": "",
+  "author": "Sanjay Soundarajan <info@sanjaysoundarajan.dev> (https://sanjaysoundarajan.dev)",
   "scripts": {
     "dev": "vue-cli-service serve dev/serve.ts",
     "build": "vite build && tsc -d --emitDeclarationOnly && vue-typegen gen -s ./src -o ./dist",

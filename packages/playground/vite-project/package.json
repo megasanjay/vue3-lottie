@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "vue": "^3.2.31",
-    "@reslear/vue3-lottie": "workspace:*"
+    "vue3-lottie": "^2.0.1-beta"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.0",
