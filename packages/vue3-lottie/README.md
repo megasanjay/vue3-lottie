@@ -13,13 +13,13 @@ View the live demos here: [https://vue3-lottie.vercel.app](https://vue3-lottie.v
 If you are using npm:
 
 ```shell
-npm install vue3-lottie
+npm install vue3-lottie@latest --save
 ```
 
 If you are using yarn:
 
 ```shell
-yarn add vue3-lottie
+yarn add vue3-lottie@latest
 ```
 
 # Usage
@@ -30,6 +30,7 @@ The most common use case is to register the component globally.
 // main.js
 import { createApp } from 'vue'
 import Vue3Lottie from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
 
 createApp(App).use(Vue3Lottie).mount('#app')
 ```
@@ -38,6 +39,7 @@ Alternatively you can also import the component locally.
 
 ```js
 import { Vue3Lottie } from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
 
 export default {
   components: {
@@ -55,6 +57,8 @@ You can then use the component in your template
 
 <script>
 import { Vue3Lottie } from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
+
 import DogJSON from './lotties/dog.json'
 
 export default {
@@ -130,5 +134,9 @@ You can control the animation with the following methods. These methods can be c
   - You can call this method to play a specific segment of your animation.
 - setSubFrame(subFrame)
   - You can call this method to set the subframe value.
+
+# Credits
+
+A big thank you goes to [@reslear](https://github.com/reslear) for adding Typescript support to this library. Go check out his profile and give him a follow!
 
 ![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg) ![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)

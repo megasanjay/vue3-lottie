@@ -16,6 +16,14 @@ React has a great library called `react-lottie` that works very well. This compo
 
 `vue3-lottie` is a vue wrapper around the `lottie-web` library with a few additional features. Typescript support has been added to make it easier to use.
 
+::: danger Upgrading from vue3-lottie@1.x.x
+This component has been upgraded to a new build tool with native TS support thanks to [@reslear](https://github.com/reslear). This also means that there are some breaking changes that need to be made to your code.
+
+- If you are importing the component in your main.(js|ts) file (via the `use` syntax), you don't have to modify this statement. However you will need to now import a css file as well.
+- If you are using a local import, you will need to convert your `import Vue3Lottie from 'vue3-lottie'` to `import {Vue3Lottie} from 'vue3-lottie'`. You will need to now import a css file as well
+
+  :::
+
 ::: warning For Nuxt v3
 I first created this component for use in my Nuxt 3 application. However in my initial testing for SSR I found that the component could potentially increase your TBT times (if you care about that). I only see this in my CD metrics and I cannot see a delay in my actual real world initial render times. I would also include `vue3-lottie` in a `<ClientOnly>` component to prevent it from being rendered on the server.
 
@@ -29,20 +37,20 @@ If anyone has any solutions for this problem please let me know. I am open to an
 You can install `vue3-lottie` over `yarn` or `npm`. `lottie-web` is a dependency of `vue3-lottie` and should be automatically installed when you install `vue3-lottie`.
 
 ```bash
-yarn add vue3-lottie
+yarn add vue3-lottie@latest
 ```
 
 ```bash
-npm install vue3-lottie --save
+npm install vue3-lottie@latest --save
 ```
 
-### Browser CDN
+<!-- ### Browser CDN
 
 You can also use `vue3-lottie` directly in the browser via CDN.
 
 ```html
-<script src="https://unpkg.com/vue3-lottie@1.1.2/dist/vue3-lottie.min.js"></script>
-```
+<script src="https://unpkg.com/vue3-lottie@2.0.1/dist/vue3-lottie.es.js"></script>
+``` -->
 
 ## Usage
 
@@ -52,6 +60,8 @@ The most common use case is to register the component globally.
 // main.js
 import { createApp } from 'vue'
 import Vue3Lottie from 'vue3-lottie'
+
+import 'vue3-lottie/dist/style.css'
 
 createApp(App).use(Vue3Lottie).mount('#app')
 ```
@@ -64,7 +74,9 @@ Alternatively you can import the component locally.
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import { Vue3Lottie } from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
+
 const AstronautJSON = require('./astronaut.json')
 
 export default {
@@ -95,8 +107,8 @@ You can go on https://lottiefiles.com/featured and find a lot of animations. Whe
 This component does not support dynamic animations. You cannot change animation data once it has been initialized. Create multiple copies of the component or rerender the component if you want to change the animation that is shown.
 :::
 
-| Type       | Default value | Required                                   | Accepted values         |
-| ---------- | ------------- | ------------------------------------------ | ----------------------- |
+| Type       | Default value | Required                                   | Accepted values                              |
+| ---------- | ------------- | ------------------------------------------ | -------------------------------------------- |
 | **Object** | **{}**        | **Yes (if animationLink is not provided)** | JSON object containing Lottie animation data |
 
 ### animationLink
@@ -106,8 +118,8 @@ You can use the URL for the json file that contains the animation data. For exam
 
 If you're getting your lotties from `lottiefiles.com`, you can use the `Lottie Animation URL`.
 
-| Type       | Default value | Required                                   | Accepted values         |
-| ---------- | ------------- | ------------------------------------------ | ----------------------- |
+| Type       | Default value | Required                                   | Accepted values              |
+| ---------- | ------------- | ------------------------------------------ | ---------------------------- |
 | **String** | **""**        | **Yes (if animationData is not provided)** | URL for a Lottie JSON object |
 
 ### width
