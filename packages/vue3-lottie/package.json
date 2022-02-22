@@ -1,6 +1,6 @@
 {
-  "name": "@reslear/vue3-lottie",
-  "version": "0.0.4",
+  "name": "vue3-lottie",
+  "version": "2.0.1-beta",
   "license": "MIT",
   "author": "",
   "scripts": {
