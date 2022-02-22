@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import {Vue3Lottie} from 'vue3-lottie'
 import WifiJSON from './lotties/wifi.json'
 
 export default {

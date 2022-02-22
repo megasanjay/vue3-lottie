@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Vue3Lottie from 'vue3-lottie'
+import { Vue3Lottie } from 'vue3-lottie'
 import DogJSON from './lotties/dog.json'
 
 export default {
