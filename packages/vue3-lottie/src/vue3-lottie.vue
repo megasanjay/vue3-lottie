@@ -9,7 +9,15 @@
 </template>
 
 <script lang="ts">
-import { ref, onMounted, computed, watch, defineComponent, PropType } from 'vue'
+import {
+  ref,
+  onMounted,
+  computed,
+  watch,
+  defineComponent,
+  PropType,
+  toRefs,
+} from 'vue'
 import Lottie from 'lottie-web'
 
 export interface LottieProps {
@@ -255,21 +263,23 @@ export default defineComponent({
       }
     }
 
+    const { pauseOnHover, playOnHover, pauseAnimation } = toRefs(props)
+
     // watch for changes in props
     // mainly used for the pauseAnimation prop
-    watch(props, () => {
+    watch([pauseOnHover, playOnHover, pauseAnimation], () => {
       // error if pauseAnimation is true and pauseOnHover is also true or playOnHover is also true
-      if ((props.pauseOnHover || props.playOnHover) && !props.pauseAnimation) {
+      if ((pauseOnHover.value || playOnHover.value) && !pauseAnimation.value) {
         console.error(
           'If you are using pauseAnimation prop for Vue3-Lottie, please remove the props pauseOnHover or playOnHover',
         )
       }
 
       // control the animation play state
-      if (!props.pauseOnHover && !props.playOnHover) {
-        if (props.pauseAnimation && lottieAnimation) {
+      if (!pauseOnHover.value && !playOnHover.value) {
+        if (pauseAnimation.value && lottieAnimation.value) {
           lottieAnimation.pause()
-        } else if (lottieAnimation && !props.pauseAnimation) {
+        } else if (lottieAnimation.value && !pauseAnimation.value) {
           lottieAnimation.play()
         }
       }
