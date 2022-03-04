@@ -7,15 +7,15 @@ importers:
 
   packages/playground/vite-project:
     specifiers:
-      '@reslear/vue3-lottie': workspace:*
       '@vitejs/plugin-vue': ^2.2.0
       typescript: ^4.5.5
       vite: ^2.8.4
       vue: ^3.2.31
       vue-tsc: ^0.31.4
+      vue3-lottie: ^2.0.2
     dependencies:
-      '@reslear/vue3-lottie': link:../../vue3-lottie
       vue: 3.2.31
+      vue3-lottie: link:../../vue3-lottie
     devDependencies:
       '@vitejs/plugin-vue': 2.2.0_vite@2.8.4+vue@3.2.31
       typescript: 4.5.5

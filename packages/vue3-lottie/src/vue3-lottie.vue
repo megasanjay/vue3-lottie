@@ -418,6 +418,17 @@ export default defineComponent({
       hoverEnded,
       hoverStarted,
       getCurrentStyle,
+      play,
+      pause,
+      stop,
+      destroy,
+      setSpeed,
+      setDirection,
+      goToAndStop,
+      goToAndPlay,
+      playSegments,
+      setSubFrame,
+      getDuration,
     }
   },
 })
