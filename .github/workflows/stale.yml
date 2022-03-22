@@ -26,7 +26,6 @@ jobs:
         stale-pr-message: 'Stale pull request'
         stale-issue-label: 'no-issue-activity'
         stale-pr-label: 'no-pr-activity'
-        stale-issue-label: "stale"
         stale-issue-message: "This issue is stale because it has been open for 30 days with no activity."
         close-issue-message: "This issue was closed because it has been inactive for 14 days since being marked as stale."
         days-before-pr-stale: -1
