@@ -270,7 +270,9 @@ export default defineComponent({
         if (props.pauseAnimation && lottieAnimation) {
           lottieAnimation.pause()
         } else if (lottieAnimation && !props.pauseAnimation) {
-          lottieAnimation.play()
+           if(lottieAnimation.animationData){
+            lottieAnimation.play();
+           }
         }
       }
     })
