@@ -257,7 +257,7 @@ export default defineComponent({
 
     // watch for changes in props
     // mainly used for the pauseAnimation prop
-    watch(props, () => {
+    watch(() => props, () => {
       // error if pauseAnimation is true and pauseOnHover is also true or playOnHover is also true
       if ((props.pauseOnHover || props.playOnHover) && !props.pauseAnimation) {
         console.error(
