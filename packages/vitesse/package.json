@@ -31,7 +31,7 @@
     "@types/markdown-it-link-attributes": "3.0.1",
     "@types/nprogress": "0.2.0",
     "@vitejs/plugin-vue": "2.3.1",
-    "@vue/test-utils": "2.0.0-rc.20",
+    "@vue/test-utils": "2.0.0",
     "critters": "0.0.16",
     "cross-env": "7.0.3",
     "cypress": "9.5.4",
