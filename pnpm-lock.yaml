@@ -109,7 +109,7 @@ importers:
 
   packages/vue3-lottie:
     specifiers:
-      '@babel/types': 7.17.0
+      '@babel/types': 7.18.4
       '@types/node': 17.0.19
       '@vitejs/plugin-vue': 2.2.2
       lottie-web: ^5.8.1
@@ -121,7 +121,7 @@ importers:
     dependencies:
       lottie-web: 5.8.1
     devDependencies:
-      '@babel/types': 7.17.0
+      '@babel/types': 7.18.4
       '@types/node': 17.0.19
       '@vitejs/plugin-vue': 2.2.2_vite@2.8.4+vue@3.2.31
       typescript: 4.5.5
@@ -544,7 +544,7 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.17.0
+      '@babel/types': 7.18.4
 
   /@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression/7.16.7_@babel+core@7.17.9:
     resolution: {integrity: sha512-anv/DObl7waiGEnC24O9zqL0pSuI9hljihqiDuFHC8d7/bjr/4RLGPWuc8rYOff/QPzbEPSkzG8wGG9aDuhHRg==}
@@ -1374,6 +1374,14 @@ packages:
 
   /@babel/types/7.17.0:
     resolution: {integrity: sha512-TmKSNO4D5rzhL5bjWFcVHHLETzfQ/AmbKpKPOSjlP0WoHZ6L911fgoOKY4Alp/emzG4cHJdyN49zpgkbXFEHHw==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      '@babel/helper-validator-identifier': 7.16.7
+      to-fast-properties: 2.0.0
+    dev: true
+
+  /@babel/types/7.18.4:
+    resolution: {integrity: sha512-ThN1mBcMq5pG/Vm2IcBmPPfyPXbd8S02rS+OBIDENdufvqC7Z/jHPCv9IcP01277aKtDI8g/2XysBN4hA8niiw==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/helper-validator-identifier': 7.16.7
@@ -2665,7 +2673,7 @@ packages:
     resolution: {integrity: sha512-GAwkz0AihzY5bkwIY5QDR+LvsRQgB/B+1foMPvi0FZPMl5fjD7ICiznUiBdLYMH1QYe6vqu4gWYytZOccLouFw==}
     engines: {node: '>= 10.0.0'}
     dependencies:
-      '@babel/types': 7.17.0
+      '@babel/types': 7.18.4
     dev: true
 
   /balanced-match/1.0.2:
@@ -3033,7 +3041,7 @@ packages:
     resolution: {integrity: sha512-vCrqcSIq4//Gx74TXXCGnHpulY1dskqLTFGDmhrGxzeXL8lF8kvXv6mpNWlJj1uD4DW23D4ljAqbY4RRaaUZIw==}
     dependencies:
       '@babel/parser': 7.17.9
-      '@babel/types': 7.17.0
+      '@babel/types': 7.18.4
     dev: true
 
   /content-disposition/0.5.4:
@@ -7868,7 +7876,7 @@ packages:
     engines: {node: '>= 10.0.0'}
     dependencies:
       '@babel/parser': 7.17.9
-      '@babel/types': 7.17.0
+      '@babel/types': 7.18.4
       assert-never: 1.2.1
       babel-walk: 3.0.0-canary-5
     dev: true
