@@ -111,6 +111,8 @@ A few events are emitted from the component. Look at the [Demos](#Demos) for exa
   - This event is fired every frame of the animation. There will be 60 events fired per second if your lottie animation runs at 60fps.
 - onSegmentStart
   - This event is fired when the animation enters a segment.
+- onAnimationLoaded
+  - This event is fired when the animation has loaded. This should let you know when you can start referencing the methods for the component.
 
 # Methods
 

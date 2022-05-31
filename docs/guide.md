@@ -246,6 +246,10 @@ This event is fired at every frame of the animation. There will be 60 events fir
 
 This event is fired when the animation enters a segment.
 
+### onAnimationLoaded
+
+This event is fired when the animation has loaded. This should let you know when you can start referencing the methods for the component. Don't use the `mounted` or `onMounted` lifecycle hooks because they will be called before the animation has loaded in the browser.
+
 ## Available methods
 
 `vue3-lottie` has a few methods that you can call directly from your component if needed. Add a `ref` to the `vue3-lottie` component and then call the methods you want. Look at the examples provided in the [examples section](/examples#custom-controls) for how to use these methods. The following example calls assume you have a `vue3-lottie` component with a `ref` called `lottieContainer`.

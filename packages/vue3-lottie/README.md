@@ -10,7 +10,7 @@ View the live demos here: [https://vue3-lottie.vercel.app](https://vue3-lottie.v
 
 # Upgrade to v2.x
 
-If you are using version 1.x of `vue3-lottie` you should upgrade to version 2.x. You can do this by running the [Installation](#installation) command below. This adds TS support for the component. There are some new imports so take a look at the [new documentation](https://vue3-lottie.vercel.app/guide.html#usage). 
+If you are using version 1.x of `vue3-lottie` you should upgrade to version 2.x. You can do this by running the [Installation](#installation) command below. This adds TS support for the component. There are some new imports so take a look at the [new documentation](https://vue3-lottie.vercel.app/guide.html#usage).
 
 # Installation
 
@@ -111,6 +111,8 @@ A few events are emitted from the component. Look at the [Demos](#Demos) for exa
   - This event is fired every frame of the animation. There will be 60 events fired per second if your lottie animation runs at 60fps.
 - onSegmentStart
   - This event is fired when the animation enters a segment.
+- onAnimationLoaded
+  - This event is fired when the animation has loaded. This should let you know when you can start referencing the methods for the component.
 
 # Methods
 

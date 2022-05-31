@@ -1,5 +1,12 @@
 <template>
   <Vue3Lottie :animationData="DogJSON" :height="300" />
+  <Vue3Lottie
+    :animationData="DogJSON"
+    :height="300"
+    ref="lottieContainer"
+    @onAnimationLoaded="stopAnimation"
+  />
+  <button @click="stopAnimation">stop</button>
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
 </template>
 
@@ -10,6 +17,25 @@ import HelloWorld from './components/HelloWorld.vue'
 // import 'vue3-lottie/dist/style.css'
 
 import DogJSON from './assets/dog.json'
+import { ref } from 'vue'
+
+const lottieContainer = ref<HTMLDivElement>(null)
+
+const stopAnimation = () => {
+  console.log(lottieContainer.value.getDuration(true))
+  lottieContainer.value.goToAndStop(10, true)
+}
+</script>
+
+<script lang="ts">
+export default {
+  methods: {
+    // stopAnimation() {
+    //   this.$refs.lottieContainer.stop()
+    // },
+  },
+  mounted() {},
+}
 </script>
 
 <style>

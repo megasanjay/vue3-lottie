@@ -98,6 +98,7 @@ export default defineComponent({
     onLoopComplete: null,
     onEnterFrame: null,
     onSegmentStart: null,
+    onAnimationLoaded: null,
   },
 
   setup(props, { emit: emits }) {
@@ -163,11 +164,18 @@ export default defineComponent({
 
       setTimeout(() => {
         autoPlay = props.autoPlay
+
         if (props.playOnHover) {
           lottieAnimation.pause()
         } else {
           lottieAnimation.play()
         }
+
+        /**
+         * Emit an `onAnimationLoaded` event when the animation is loaded
+         * This should help with times where you want to run functions on the ref of the element
+         */
+        emits('onAnimationLoaded')
       }, props.delay)
 
       lottieAnimation.setSpeed(props.speed)
@@ -292,6 +300,7 @@ export default defineComponent({
     // method to stop the animation. It will reset the animation to the first frame
     const stop = () => {
       if (lottieAnimation) {
+        console.log(lottieAnimation)
         lottieAnimation.stop()
       }
     }

@@ -12,7 +12,7 @@ importers:
       vite: ^2.8.4
       vue: ^3.2.31
       vue-tsc: ^0.31.4
-      vue3-lottie: ^2.0.2
+      vue3-lottie: workspace:*
     dependencies:
       vue: 3.2.31
       vue3-lottie: link:../../vue3-lottie
@@ -1482,8 +1482,8 @@ packages:
       - supports-color
     dev: true
 
-  /@intlify/bundle-utils/3.0.0_vue-i18n@9.1.9:
-    resolution: {integrity: sha512-y43Z5Q3ZJvxqtD8xUH6U3yrlZeay7ZTqkzv1GQ4b0mGQtk5uptOT9Ra4qvGuUv8QyPQsortrA/OHWUD5ax5ZNQ==}
+  /@intlify/bundle-utils/3.1.0_vue-i18n@9.1.9:
+    resolution: {integrity: sha512-ghlJ0kR2cCQ8D+poKknC0Xx0ncOt3J3os7CcIAqqIWVF7k6AtGoCDnIru+YzlZcvFRNmP9wEZ7jKliojCdAWNg==}
     engines: {node: '>= 12'}
     peerDependencies:
       petite-vue-i18n: '*'
@@ -1575,7 +1575,7 @@ packages:
       vue-i18n:
         optional: true
     dependencies:
-      '@intlify/bundle-utils': 3.0.0_vue-i18n@9.1.9
+      '@intlify/bundle-utils': 3.1.0_vue-i18n@9.1.9
       '@intlify/shared': 9.2.0-beta.35
       '@rollup/pluginutils': 4.2.1
       debug: 4.3.4
