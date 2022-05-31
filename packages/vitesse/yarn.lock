@@ -6555,10 +6555,10 @@ vue-tsc@0.34.7:
   dependencies:
     "@volar/vue-typescript" "0.34.7"
 
-vue3-lottie@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/vue3-lottie/-/vue3-lottie-2.1.0.tgz#e2d216d34c0d5406e51ecdcc3158e94e81249ea2"
-  integrity sha512-j9LRAdCoav437+dZtsvCEKekqzE86QrTVskdVuUiY4/gfrpOnSURGc3f4/WebMi2jcx08cMykTc6cYZiR6xgXA==
+vue3-lottie@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/vue3-lottie/-/vue3-lottie-2.2.1.tgz#2435a2f89e13336cc8e492b73c54e641742cfb83"
+  integrity sha512-V9sTlG7a6AROno6m/oZJoeaqCdTRHcKwO455xdTYCgRCpdNOePRhYAfQdP+ePoPv19GbgM5qlKlLicGyqGxesg==
   dependencies:
     lottie-web "^5.8.1"
 
