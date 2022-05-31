@@ -1,11 +1,14 @@
 <template>
   <Vue3Lottie :animationData="DogJSON" :height="300" />
   <Vue3Lottie
-    :animationData="DogJSON"
+    animationLink="https://assets7.lottiefiles.com/private_files/lf30_0dzl4dgt.json"
     :height="300"
-    :pauseAnimation="playState"
+    ref="anim"
+    :autoPlay="false"
+    :delay="0"
+    :loop="1"
   />
-  <button @click="playState = !playState">Play/Pause Animation</button>
+  <button @click="playAnim">Play Animation</button>
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
 </template>
 
@@ -18,7 +21,11 @@ import HelloWorld from './components/HelloWorld.vue'
 import DogJSON from './assets/dog.json'
 import { ref } from 'vue'
 
-const playState = ref(false)
+const anim = ref(null)
+
+const playAnim = () => {
+  anim.value.play()
+}
 </script>
 
 <style>

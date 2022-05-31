@@ -168,7 +168,11 @@ export default defineComponent({
         if (props.playOnHover) {
           lottieAnimation.pause()
         } else {
-          lottieAnimation.play()
+          if (autoPlay) {
+            lottieAnimation.play()
+          } else {
+            lottieAnimation.pause()
+          }
         }
 
         /**
