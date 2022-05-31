@@ -28,7 +28,7 @@ yarn add vue3-lottie@latest
 
 # Usage
 
-The most common use case is to register the component globally.
+## The most common use case is to register the component globally.
 
 ```js
 // main.js
@@ -39,7 +39,27 @@ import 'vue3-lottie/dist/style.css'
 createApp(App).use(Vue3Lottie).mount('#app')
 ```
 
-Alternatively you can also import the component locally.
+To define global components for [Volar type-checking](https://github.com/johnsoncodehk/volar/tree/master/extensions/vscode-vue-language-features#usage) you will need to add:
+
+```ts
+// components.d.ts
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    LottieAnimation: typeof import('vue3-lottie')['Vue3Lottie']
+  }
+}
+export {}
+```
+
+If needed rename component to use:
+
+```ts
+app.use(Vue3Lottie, { name: 'LottieAnimation' }) // use in template <LottieAnimation />
+```
+
+- `name` string (default: 'Vue3Lottie') - set custom component name
+
+## Alternatively you can also import the component locally.
 
 ```js
 import { Vue3Lottie } from 'vue3-lottie'

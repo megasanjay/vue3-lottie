@@ -39,7 +39,7 @@ import 'vue3-lottie/dist/style.css'
 createApp(App).use(Vue3Lottie).mount('#app')
 ```
 
-for define global components [volar Type-Checking](https://github.com/johnsoncodehk/volar/tree/master/extensions/vscode-vue-language-features#usage) need add:
+To define global components for [Volar type-checking](https://github.com/johnsoncodehk/volar/tree/master/extensions/vscode-vue-language-features#usage) you will need to add:
 
 ```ts
 // components.d.ts
@@ -51,10 +51,10 @@ declare module '@vue/runtime-core' {
 export {}
 ```
 
-is need rename component use:
+If needed rename component to use:
 
 ```ts
-app.use(vue3Lottie, { name: 'LottieAnimation' }) // use in tempalte <LottieAnimation />
+app.use(Vue3Lottie, { name: 'LottieAnimation' }) // use in template <LottieAnimation />
 ```
 
 - `name` string (default: 'Vue3Lottie') - set custom component name
