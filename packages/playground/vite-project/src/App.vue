@@ -3,10 +3,9 @@
   <Vue3Lottie
     :animationData="DogJSON"
     :height="300"
-    ref="lottieContainer"
-    :pauseOnHover="true"
+    :pauseAnimation="playState"
   />
-
+  <button @click="playState = !playState">Play/Pause Animation</button>
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
 </template>
 
@@ -19,23 +18,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import DogJSON from './assets/dog.json'
 import { ref } from 'vue'
 
-const lottieContainer = ref<HTMLDivElement>(null)
-
-const stopAnimation = () => {
-  console.log(lottieContainer.value.getDuration(true))
-  lottieContainer.value.goToAndStop(10, true)
-}
-</script>
-
-<script lang="ts">
-export default {
-  methods: {
-    // stopAnimation() {
-    //   this.$refs.lottieContainer.stop()
-    // },
-  },
-  mounted() {},
-}
+const playState = ref(false)
 </script>
 
 <style>

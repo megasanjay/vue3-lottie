@@ -263,26 +263,23 @@ export default defineComponent({
       }
     }
 
-    // watch for changes in props
-    // mainly used for the pauseAnimation prop
+    // watch for changes in props.pauseAnimation
     watch(
-      () => props,
+      () => props.pauseAnimation,
       () => {
         // error if pauseAnimation is true and pauseOnHover is also true or playOnHover is also true
-        if (
-          (props.pauseOnHover || props.playOnHover) &&
-          !props.pauseAnimation
-        ) {
+        if ((props.pauseOnHover || props.playOnHover) && props.pauseAnimation) {
           console.error(
-            'If you are using pauseAnimation prop for Vue3-Lottie, please remove the props pauseOnHover or playOnHover',
+            'If you are using pauseAnimation prop for Vue3-Lottie, please remove the props pauseOnHover and playOnHover',
           )
+          return
         }
 
         // control the animation play state
-        if (!props.pauseOnHover && !props.playOnHover) {
-          if (props.pauseAnimation && lottieAnimation) {
+        if (lottieAnimation) {
+          if (props.pauseAnimation) {
             lottieAnimation.pause()
-          } else if (lottieAnimation && !props.pauseAnimation) {
+          } else {
             lottieAnimation.play()
           }
         }
