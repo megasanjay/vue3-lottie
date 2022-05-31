@@ -145,4 +145,6 @@ You can control the animation with the following methods. These methods can be c
 
 A big thank you goes to [@reslear](https://github.com/reslear) for adding Typescript support to this library. Go check out his profile and give him a follow!
 
+- @DamianGlowala - PR #29 - Fix `watch` function
+
 ![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg) ![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
