@@ -6417,13 +6417,13 @@ unplugin-auto-import@0.7.1:
     resolve "^1.22.0"
     unplugin "^0.6.1"
 
-unplugin-vue-components@0.19.3:
-  version "0.19.3"
-  resolved "https://registry.yarnpkg.com/unplugin-vue-components/-/unplugin-vue-components-0.19.3.tgz#4c0aa419d118aee1c010d0da9d38ead45e735d63"
-  integrity sha512-z/kpYJnqrJuWglDNs7fy0YRHr41oLc07y2TkP3by6DqPb1GG9xGC9SFigeFwd4J7GVTqyFVsnjoeup7uK7I2dA==
+unplugin-vue-components@0.19.6:
+  version "0.19.6"
+  resolved "https://registry.yarnpkg.com/unplugin-vue-components/-/unplugin-vue-components-0.19.6.tgz#268f6d2787d96257d5d1698908d8f34ef3ec5803"
+  integrity sha512-APvrJ9Hpid1MLT0G4PWerMJgARhNw6dzz0pcCwCxaO2DR7VyvDacMqjOQNC6ukq7FSw3wzD8VH+9i3EFXwkGmw==
   dependencies:
-    "@antfu/utils" "^0.5.0"
-    "@rollup/pluginutils" "^4.2.0"
+    "@antfu/utils" "^0.5.1"
+    "@rollup/pluginutils" "^4.2.1"
     chokidar "^3.5.3"
     debug "^4.3.4"
     fast-glob "^3.2.11"
@@ -6431,12 +6431,21 @@ unplugin-vue-components@0.19.3:
     magic-string "^0.26.1"
     minimatch "^5.0.1"
     resolve "^1.22.0"
-    unplugin "^0.6.1"
+    unplugin "^0.6.3"
 
 unplugin@^0.6.1:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.6.2.tgz#5646829e7f8a664c8a4498654f258dc6ad3ebf1f"
   integrity sha512-+QONc2uBFQbeo4x5mlJHjTKjR6pmuchMpGVrWhwdGFFMb4ttFZ4E9KqhOOrNcm3Q8NNyB1vJ4s5e36IZC7UWYw==
+  dependencies:
+    chokidar "^3.5.3"
+    webpack-sources "^3.2.3"
+    webpack-virtual-modules "^0.4.3"
+
+unplugin@^0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.6.3.tgz#b8721e2b163a410a7efed726e6a0fc6fbadf975a"
+  integrity sha512-CoW88FQfCW/yabVc4bLrjikN9HC8dEvMU4O7B6K2jsYMPK0l6iAnd9dpJwqGcmXJKRCU9vwSsy653qg+RK0G6A==
   dependencies:
     chokidar "^3.5.3"
     webpack-sources "^3.2.3"
