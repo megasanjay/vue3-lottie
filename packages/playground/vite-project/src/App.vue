@@ -4,9 +4,9 @@
     :animationData="DogJSON"
     :height="300"
     ref="lottieContainer"
-    @onAnimationLoaded="stopAnimation"
+    :pauseOnHover="true"
   />
-  <button @click="stopAnimation">stop</button>
+
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
 </template>
 
