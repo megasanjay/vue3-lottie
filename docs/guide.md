@@ -30,29 +30,25 @@ I first created this component for use in my Nuxt 3 application. However in my i
 If anyone has any solutions for this problem please let me know. I am open to any suggestions.
 :::
 
-## Installation
+## Installation and Usage
 
-### NPM
+### Vue 3
 
-You can install `vue3-lottie` over `yarn` or `npm`. `lottie-web` is a dependency of `vue3-lottie` and should be automatically installed when you install `vue3-lottie`.
+- You can install `vue3-lottie` over `yarn` or `npm`. `lottie-web` is a dependency of `vue3-lottie` and should be automatically installed when you install `vue3-lottie`.
 
-```bash
-yarn add vue3-lottie@latest
-```
+If you are using npm:
 
-```bash
+```shell
 npm install vue3-lottie@latest --save
 ```
 
-<!-- ### Browser CDN
+If you are using yarn:
 
-You can also use `vue3-lottie` directly in the browser via CDN.
+```shell
+yarn add vue3-lottie@latest
+```
 
-```html
-<script src="https://unpkg.com/vue3-lottie@2.0.1/dist/vue3-lottie.es.js"></script>
-``` -->
-
-## Usage
+- Register the component in your Vue 3 application.
 
 The most common use case is to register the component globally.
 
@@ -60,13 +56,45 @@ The most common use case is to register the component globally.
 // main.js
 import { createApp } from 'vue'
 import Vue3Lottie from 'vue3-lottie'
-
 import 'vue3-lottie/dist/style.css'
 
 createApp(App).use(Vue3Lottie).mount('#app')
 ```
 
-Alternatively you can import the component locally.
+To define global components for [Volar type-checking](https://github.com/johnsoncodehk/volar/tree/master/extensions/vscode-vue-language-features#usage) you will need to add:
+
+```ts
+// components.d.ts
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    LottieAnimation: typeof import('vue3-lottie')['Vue3Lottie']
+  }
+}
+export {}
+```
+
+If needed rename component to use:
+
+```ts
+app.use(Vue3Lottie, { name: 'LottieAnimation' }) // use in template <LottieAnimation />
+```
+
+- `name` string (default: 'Vue3Lottie') - set custom component name
+
+Alternatively you can also import the component locally.
+
+```js
+import { Vue3Lottie } from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
+
+export default {
+  components: {
+    Vue3Lottie,
+  },
+}
+```
+
+You can then use the component in your template
 
 ```vue
 <template>
@@ -77,7 +105,7 @@ Alternatively you can import the component locally.
 import { Vue3Lottie } from 'vue3-lottie'
 import 'vue3-lottie/dist/style.css'
 
-const AstronautJSON = require('./astronaut.json')
+import AstronautJSON from './astronaut.json'
 
 export default {
   components: {
@@ -90,6 +118,44 @@ export default {
   },
 }
 </script>
+```
+
+### Nuxt 3
+
+:::warning
+This is still experimental. Will need to be tested extensively and will be updated as I find more use cases.
+:::
+
+- You can install `vue3-lottie` over `yarn` or `npm`. `lottie-web` is a dependency of `vue3-lottie` and should be automatically installed when you install `vue3-lottie`.
+
+If you are using npm:
+
+```shell
+npm install vue3-lottie@latest --save
+```
+
+If you are using yarn:
+
+```shell
+yarn add vue3-lottie@latest
+```
+
+- Create a folder called **`plugins`** at the root of your project.
+- Create a file named **`vue3-lottie.client.js`** inside the _plugins_ directory.
+- Add the following code to the **`vue3-lottie.client.js`** file.
+
+```js
+import { Vue3Lottie } from 'vue3-lottie'
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.use(Vue3Lottie)
+})
+```
+
+- Import the css file required by the component into your **`app.vue`** file.
+
+```js
+import 'vue3-lottie/dist/style.css'
 ```
 
 ## Available props

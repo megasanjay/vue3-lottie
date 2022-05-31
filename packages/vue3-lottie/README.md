@@ -10,9 +10,13 @@ View the live demos here: [https://vue3-lottie.vercel.app](https://vue3-lottie.v
 
 # Upgrade to v2.x
 
-If you are using version 1.x of `vue3-lottie` you should upgrade to version 2.x. You can do this by running the [Installation](#installation) command below. This adds TS support for the component. There are some new imports so take a look at the [new documentation](https://vue3-lottie.vercel.app/guide.html#usage).
+If you are using version 1.x of `vue3-lottie` you should upgrade to version 2.x. You can do this by running the [Installation and Usage](#installation-and-usage) command below. This adds TS support for the component. There are some new imports so take a look at the [new documentation](https://vue3-lottie.vercel.app/guide.html#usage).
 
-# Installation
+# Installation and Usage
+
+## Vue 3
+
+- You can install `vue3-lottie` over `yarn` or `npm`. `lottie-web` is a dependency of `vue3-lottie` and should be automatically installed when you install `vue3-lottie`.
 
 If you are using npm:
 
@@ -26,9 +30,9 @@ If you are using yarn:
 yarn add vue3-lottie@latest
 ```
 
-# Usage
+- Register the component in your Vue 3 application.
 
-## The most common use case is to register the component globally.
+The most common use case is to register the component globally.
 
 ```js
 // main.js
@@ -59,7 +63,7 @@ app.use(Vue3Lottie, { name: 'LottieAnimation' }) // use in template <LottieAnima
 
 - `name` string (default: 'Vue3Lottie') - set custom component name
 
-## Alternatively you can also import the component locally.
+Alternatively you can also import the component locally.
 
 ```js
 import { Vue3Lottie } from 'vue3-lottie'
@@ -76,14 +80,14 @@ You can then use the component in your template
 
 ```vue
 <template>
-  <Vue3Lottie :animationData="DogJSON" :height="200" :width="200" />
+  <Vue3Lottie :animationData="AstronautJSON" :height="200" :width="200" />
 </template>
 
 <script>
 import { Vue3Lottie } from 'vue3-lottie'
 import 'vue3-lottie/dist/style.css'
 
-import DogJSON from './lotties/dog.json'
+import AstronautJSON from './astronaut.json'
 
 export default {
   components: {
@@ -91,11 +95,47 @@ export default {
   },
   data() {
     return {
-      DogJSON,
+      AstronautJSON,
     }
   },
 }
 </script>
+```
+
+## Nuxt 3
+
+This is still experimental. Will be updated soon.
+
+- You can install `vue3-lottie` over `yarn` or `npm`. `lottie-web` is a dependency of `vue3-lottie` and should be automatically installed when you install `vue3-lottie`.
+
+If you are using npm:
+
+```shell
+npm install vue3-lottie@latest --save
+```
+
+If you are using yarn:
+
+```shell
+yarn add vue3-lottie@latest
+```
+
+- Create a folder called **`plugins`** at the root of your project.
+- Create a file named **`vue3-lottie.client.js`** inside the _plugins_ directory.
+- Add the following code to the **`vue3-lottie.client.js`** file.
+
+```js
+import { Vue3Lottie } from 'vue3-lottie'
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.use(Vue3Lottie)
+})
+```
+
+- Import the css file required by the component into your **`app.vue`** file.
+
+```js
+import 'vue3-lottie/dist/style.css'
 ```
 
 # Props and options
