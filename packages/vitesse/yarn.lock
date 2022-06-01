@@ -5404,10 +5404,10 @@ pluralize@^8.0.0:
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
   integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
 
-pnpm@6.32.8:
-  version "6.32.8"
-  resolved "https://registry.yarnpkg.com/pnpm/-/pnpm-6.32.8.tgz#74bb9de6d8922db56f75e52ed92100b20ffef5bc"
-  integrity sha512-pZroJtqqZDevFpJI/PsOMLLfGeA6en6cvyI/HC7boGmT7TJy9eFInNYwMGW2enKv2Al/aamV2Zomv05TtBe7qw==
+pnpm@6.32.19:
+  version "6.32.19"
+  resolved "https://registry.yarnpkg.com/pnpm/-/pnpm-6.32.19.tgz#4c8a503adf07c2704882dda50a246f3e37d2da94"
+  integrity sha512-IY+62k/caP5GsMQm5YcOJ03XDkze68aBiiXrlwqMUAYFhSstLETlenIC73AukJyUd7o4Y18HcV2gfQYCKb0PEA==
 
 postcss@^8.1.10, postcss@^8.3.7, postcss@^8.4.12:
   version "8.4.12"
