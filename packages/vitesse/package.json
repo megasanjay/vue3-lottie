@@ -13,7 +13,7 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "@vueuse/core": "8.2.6",
+    "@vueuse/core": "8.6.0",
     "@vueuse/head": "0.7.6",
     "nprogress": "0.2.0",
     "pinia": "2.0.14",
