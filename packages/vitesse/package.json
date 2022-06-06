@@ -53,7 +53,7 @@
     "vite-plugin-vue-layouts": "0.6.0",
     "vite-ssg": "0.20.0",
     "vite-ssg-sitemap": "0.2.7",
-    "vitest": "0.9.3",
+    "vitest": "0.14.1",
     "vue-tsc": "0.35.2"
   }
 }
