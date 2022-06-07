@@ -7117,10 +7117,10 @@ vite-ssg-sitemap@0.2.7:
   resolved "https://registry.yarnpkg.com/vite-ssg-sitemap/-/vite-ssg-sitemap-0.2.7.tgz#22d391097dcd22cbe736b8b2642c306ce60d7a65"
   integrity sha512-vzB2qey/PZGv8gd3nCkLiXxEemByZrTHjhkO7aFcjbxAKlW36RraBMZkizzRUo6uB06Uo7yM4UmzjE5h6dfvsg==
 
-vite-ssg@0.20.0:
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/vite-ssg/-/vite-ssg-0.20.0.tgz#62a8db9ea875cd3dfce4701bffcaaf2316760604"
-  integrity sha512-F6B6au8V0aOc9vQ/z875n8AjmGa8vkZGZnuSAidMeJzgEnVYJhIzLL5gUKU336bM9C1GCDJwz5JXmY6YPd3ukg==
+vite-ssg@0.20.1:
+  version "0.20.1"
+  resolved "https://registry.yarnpkg.com/vite-ssg/-/vite-ssg-0.20.1.tgz#cd8b0a4d5541bfa2f847f0893366a4127bd93ec9"
+  integrity sha512-fVlI5bXeGDnkuJX3G1Ac+J5jvQ6y8MKzqhHMgOwGzhJMclkhs6JV9ssZSVRN/jk4/sGf9cuTXxCWrR5mbEKkFg==
   dependencies:
     fs-extra "^10.1.0"
     html-minifier "^4.0.0"
