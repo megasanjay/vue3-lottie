@@ -307,7 +307,6 @@ export default defineComponent({
     // method to stop the animation. It will reset the animation to the first frame
     const stop = () => {
       if (lottieAnimation) {
-        console.log(lottieAnimation)
         lottieAnimation.stop()
       }
     }
