@@ -238,5 +238,6 @@ You can control the animation with the following methods. These methods can be c
 A big thank you goes to [@reslear](https://github.com/reslear) for adding Typescript support to this library. Go check out his profile and give him a follow!
 
 - [@DamianGlowala](https://github.com/DamianGlowala) - PR [#29](https://github.com/megasanjay/vue3-lottie/pull/29) - Fix `watch` function
+- [@Doyeon Eum](https://lottiefiles.com/user/283677) - For the hero [image](https://lottiefiles.com/20574-mongryong-hi) in this repo.
 
 ![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg) ![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
