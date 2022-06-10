@@ -54,6 +54,6 @@
     "vite-ssg": "0.20.1",
     "vite-ssg-sitemap": "0.2.7",
     "vitest": "0.14.1",
-    "vue-tsc": "0.35.2"
+    "vue-tsc": "0.37.3"
   }
 }
