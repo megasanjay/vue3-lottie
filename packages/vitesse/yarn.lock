@@ -6856,10 +6856,10 @@ vite-plugin-md@0.18.1:
     source-map-js "^1.0.2"
     ts-morph "^15.1.0"
 
-vite-plugin-pages@0.24.2:
-  version "0.24.2"
-  resolved "https://registry.yarnpkg.com/vite-plugin-pages/-/vite-plugin-pages-0.24.2.tgz#9b7201fac8f58d6d5a295a4898b14aec11d061c8"
-  integrity sha512-AmrHa6gi6n0mZReKzQTQ1uuf17fd1ziRDjNvSh0NTWNnDgA2si+hC8p63s3KyEmJS5lOE/rEeO4NBaRkY3sY3g==
+vite-plugin-pages@0.25.0:
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-pages/-/vite-plugin-pages-0.25.0.tgz#ebaff80a368301df738dbd6cdc8e529c4d6ddca7"
+  integrity sha512-q0SX2iSw0UrTnivkzsPb19ZxamShq1nE/e/CKOe8+uVg70/e14uJuzKnw7dZ2omPjmV9Lhks38nzJL6RDRGmeA==
   dependencies:
     "@types/debug" "^4.1.7"
     debug "^4.3.4"
