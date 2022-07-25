@@ -9,6 +9,14 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
+"@ampproject/remapping@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.2.0.tgz#56c133824780de3174aed5ab6834f3026790154d"
+  integrity sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==
+  dependencies:
+    "@jridgewell/gen-mapping" "^0.1.0"
+    "@jridgewell/trace-mapping" "^0.3.9"
+
 "@antfu/eslint-config-basic@0.25.2":
   version "0.25.2"
   resolved "https://registry.yarnpkg.com/@antfu/eslint-config-basic/-/eslint-config-basic-0.25.2.tgz#799ad49944c5af5a942c76db0e3f8066ff6d3353"
@@ -1160,6 +1168,14 @@
     "@intlify/runtime" "9.1.10"
     "@intlify/shared" "9.1.10"
 
+"@jridgewell/gen-mapping@^0.1.0":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@jridgewell/gen-mapping/-/gen-mapping-0.1.1.tgz#e5d2e450306a9491e3bd77e323e38d7aff315996"
+  integrity sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w==
+  dependencies:
+    "@jridgewell/set-array" "^1.0.0"
+    "@jridgewell/sourcemap-codec" "^1.4.10"
+
 "@jridgewell/gen-mapping@^0.3.0":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@jridgewell/gen-mapping/-/gen-mapping-0.3.2.tgz#c1aedc61e853f2bb9f5dfe6d4442d3b565b253b9"
@@ -1174,7 +1190,7 @@
   resolved "https://registry.yarnpkg.com/@jridgewell/resolve-uri/-/resolve-uri-3.1.0.tgz#2203b118c157721addfe69d47b70465463066d78"
   integrity sha512-F2msla3tad+Mfht5cJq7LSXcdudKTWCVYUgw6pLFOOHSTtZlj6SWNYAp+AhuqLmWdBO2X5hPrLcu8cVP8fy28w==
 
-"@jridgewell/set-array@^1.0.1":
+"@jridgewell/set-array@^1.0.0", "@jridgewell/set-array@^1.0.1":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@jridgewell/set-array/-/set-array-1.1.2.tgz#7c6cf998d6d20b914c0a55a91ae928ff25965e72"
   integrity sha512-xnkseuNADM0gt2bs+BvhO0p78Mk762YnZdsuzFV018NoG1Sj1SCQvpSqa7XUaTam5vAGasABV9qXASMKnFMwMw==
@@ -1514,14 +1530,14 @@
     "@typescript-eslint/types" "5.27.0"
     eslint-visitor-keys "^3.3.0"
 
-"@unocss/cli@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/cli/-/cli-0.44.0.tgz#960b8b28f1bb88003286be35bb28a4092d5b7106"
-  integrity sha512-hnIPU3WcMfXTQ7w4swHjkr+WgMK2brXw2nm2XS8zv5rqZ76faV99bqrTn1Dhu3jiIU77dGZ6Y6QnDBjgxY3qrg==
+"@unocss/cli@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/cli/-/cli-0.44.7.tgz#c2518ad8870571d98a869e15e994600337ef7d57"
+  integrity sha512-/FthkzWK3DT4u06rUnl5i7+fDPpp0sNH9oEz1EssrobmRIVWF7e7uGOUs8bc522uFMy8vOvxiQUn69v4RSGdGQ==
   dependencies:
-    "@unocss/config" "0.44.0"
-    "@unocss/core" "0.44.0"
-    "@unocss/preset-uno" "0.44.0"
+    "@unocss/config" "0.44.7"
+    "@unocss/core" "0.44.7"
+    "@unocss/preset-uno" "0.44.7"
     cac "^6.7.12"
     chokidar "^3.5.3"
     colorette "^2.0.19"
@@ -1530,132 +1546,133 @@
     pathe "^0.3.0"
     perfect-debounce "^0.1.3"
 
-"@unocss/config@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/config/-/config-0.44.0.tgz#9dade66468cf018094499f7a90f3fa12b5d06a44"
-  integrity sha512-HNDj4GQgoxAG017hB8Mq9S0p9ibk1hSFGlFKVdDBDGFiZh99RjeyU7eMmZA7hSM8upLtstGac03y2DmSWSRk0A==
+"@unocss/config@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/config/-/config-0.44.7.tgz#00ce8ac5977858b9361c72bae05a457b27321ca1"
+  integrity sha512-KSboUqIMkSLBQtVaQ2oTWSqdIBvj8Ged38h9un7Qe047jrYFHzgpCYVfmr7ZgZ2hqDYCdNc1357WgqNZO4AwiQ==
   dependencies:
-    "@unocss/core" "0.44.0"
+    "@unocss/core" "0.44.7"
     unconfig "^0.3.4"
 
-"@unocss/core@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/core/-/core-0.44.0.tgz#880e50ca72a3b6df452fbeddee2ab378279d200f"
-  integrity sha512-stuRYyY6GJW9kFzAv5MbAwxYDVMS5ycYTvgrRZrctyV3BHLERRQD1jyQfFNn1QHTxYceH4VpQDKjueHiUmqMHw==
+"@unocss/core@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/core/-/core-0.44.7.tgz#e2185cbdee65e13821a8ba102dfecd5d54ebadcc"
+  integrity sha512-EPs3IxvPdzxEkEynAyCqyJX25IPp5RtFK3mFdgmXGvigwpgq9sxJBzQRXmYNtDeZriSyiwjYmc9yclLEJH3IiA==
 
-"@unocss/inspector@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/inspector/-/inspector-0.44.0.tgz#99d8f9b92c21985c9e027cf90500ec71d154bc29"
-  integrity sha512-Bfj52sNowDl+PpdvzFGfxB5cvG4d8gkXY2DsBIKkon7tzWy732RMKvBis628atzvWdWL77Bsv5kRLlE4oQjRWg==
+"@unocss/inspector@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/inspector/-/inspector-0.44.7.tgz#addab3db9b29354bd03519a209aa1c396eff0cb5"
+  integrity sha512-uH0dla42tiKEfCpgCcDLC0FwKzrNRLqsN7R3az0B/eHSkeOuXrg7jdA9RWaNNmjnl6/ZOqevtyE5+g7JZf7E6A==
   dependencies:
     gzip-size "^6.0.0"
     sirv "^2.0.2"
 
-"@unocss/preset-attributify@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/preset-attributify/-/preset-attributify-0.44.0.tgz#e8e983930943424734b5c2ddc45f503a46eb0919"
-  integrity sha512-Z5jRjR4aq4Jar2h4IPIXe7viJQOZEAr2e+i7O3y9Hm8J11CUPxtwsF5a2wFTTyuvbEaInUfqJFzHYSHqqtZQRA==
+"@unocss/preset-attributify@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/preset-attributify/-/preset-attributify-0.44.7.tgz#5562c14eb3149f3665b837ca59e01a862ad3e8c9"
+  integrity sha512-aXW06aBcrHFzf0eKLpDpNmaQ7LPz6RibCHTNhSF/IkyDPAp7HDltIGoWY2+D/C1LUO3gXahnH4Mj4dlvv7fZtg==
   dependencies:
-    "@unocss/core" "0.44.0"
+    "@unocss/core" "0.44.7"
 
-"@unocss/preset-icons@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/preset-icons/-/preset-icons-0.44.0.tgz#0b99353e8b16e4e936bff2dd092d48927c24cfd5"
-  integrity sha512-yvzzGGdGbvgot6+PdWxOgTwWWamoIgAUINUWaHi324b5VIlH9FTrCPp3CyWvPzgXRzUtEAZ6Vb/EpouOS4YPOw==
+"@unocss/preset-icons@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/preset-icons/-/preset-icons-0.44.7.tgz#300cd8cae5c612a64e20bef73d834f6041b8df18"
+  integrity sha512-3PC8a1yjm/rV0Sq192OB+yWokccjNZlh8dsmt3NPdz7OTIRTreNvUaFlV5CHk1JSk2/CNus1VWLG1VeDHqdotg==
   dependencies:
     "@iconify/utils" "^1.0.33"
-    "@unocss/core" "0.44.0"
+    "@unocss/core" "0.44.7"
     ohmyfetch "^0.4.18"
 
-"@unocss/preset-mini@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/preset-mini/-/preset-mini-0.44.0.tgz#3c874a734506b69e491d125aaebbc58a8b1236fe"
-  integrity sha512-nv60tf6Ui1d1ktbYCAcYPpW+qmQI3OKct5lRebIH5zDjo3sv6mD8uQ25VvbaiXzRpQmZen+LFztHRLJ7guz0rA==
+"@unocss/preset-mini@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/preset-mini/-/preset-mini-0.44.7.tgz#05685903ecfd6f18401ca5334e0172fe2d8be0da"
+  integrity sha512-EPRogHZstaRGh4244FUixaQUgfQW1lfKnbyh8ZewtL+iCN0YdDEyWuITtqA1yv9sMlJdn9nAEowA3is9ZkWtBQ==
   dependencies:
-    "@unocss/core" "0.44.0"
+    "@unocss/core" "0.44.7"
 
-"@unocss/preset-tagify@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/preset-tagify/-/preset-tagify-0.44.0.tgz#e9a0f6816683917438adac049f38de4b37d482dc"
-  integrity sha512-MFDFSA0vEwgild1YCG1JWC0sdQb3eNFayzGeyllSxQukx0u7xyRBkcgRdSqsOf9u1cH5tIhCE8qwCzamxT5t8A==
+"@unocss/preset-tagify@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/preset-tagify/-/preset-tagify-0.44.7.tgz#8736107f2d6ab0759f944d89bc1268ebb06b6286"
+  integrity sha512-+9K3qX1bAIU7BINXi5qTFBr828WXrXGhq3Nzys8rHgrZShPpwwlfJl26oN3cteWEDxSOlM6DZ3xSqoIMtWcQXA==
   dependencies:
-    "@unocss/core" "0.44.0"
+    "@unocss/core" "0.44.7"
 
-"@unocss/preset-typography@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/preset-typography/-/preset-typography-0.44.0.tgz#278ae6b8a5e9fce1276fe9fb3da5faa65f754d6e"
-  integrity sha512-O52c4Vteuq+4HQOe9rM8asCFlvQ/ya5MoKoEtzV04HI9D33lun4R0SLV4orI6sNHy3FECNS5k8ekTmeXSDvfCg==
+"@unocss/preset-typography@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/preset-typography/-/preset-typography-0.44.7.tgz#16fd3437d3b3e3a3fec2681a2fc3ac91fcc959d3"
+  integrity sha512-2YAkIuClWIgi0F95VFMz0cY8wPmngpxlKE8wRNF29hZ5Qvz+MfFDe6ECypApKUDMP2+dfhAHwXu9MlN/Vgnr5A==
   dependencies:
-    "@unocss/core" "0.44.0"
+    "@unocss/core" "0.44.7"
 
-"@unocss/preset-uno@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/preset-uno/-/preset-uno-0.44.0.tgz#0ec168b54751fa21732f4db60254c7bfed89c797"
-  integrity sha512-Gxz1vxRzfOxUBhRG0AL14KsEZZGn2bA4sAATL+ZHNJWA3Sy2187zK3ACwYGOEuPWSafgFMzdaC60AD6lqvHgAA==
+"@unocss/preset-uno@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/preset-uno/-/preset-uno-0.44.7.tgz#fc205daff08cb77d5e744d7cd95a99c932d7deb9"
+  integrity sha512-JN1/hCy51RdQmDjCkVZWzFZv0XREyFIxSv/Wy3XfI3rzD42vdcTei/OraFfEhkh9/SdF9uUlIh9QQwOFZUWpyg==
   dependencies:
-    "@unocss/core" "0.44.0"
-    "@unocss/preset-mini" "0.44.0"
-    "@unocss/preset-wind" "0.44.0"
+    "@unocss/core" "0.44.7"
+    "@unocss/preset-mini" "0.44.7"
+    "@unocss/preset-wind" "0.44.7"
 
-"@unocss/preset-web-fonts@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/preset-web-fonts/-/preset-web-fonts-0.44.0.tgz#9dcdccf4625e775a4896a8010600417b994f958f"
-  integrity sha512-nsPG7/TGN30tslw88kj0nCnaju5vG2K0zigtOXroo1FniA9Br45YIyVSm/h2sc/JgJFE7HT7V2Fk4EePB/BYcw==
+"@unocss/preset-web-fonts@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/preset-web-fonts/-/preset-web-fonts-0.44.7.tgz#491c0c523e3071200ad993646fe83b460b500786"
+  integrity sha512-1dI3B9LnSt9yLnvsVsiI454SMhlraRdyNU1xrBQ8Z0YBF41/it0yk4+xf2uD8o87brBgfTib4gzPdVxgqQsiqQ==
   dependencies:
-    "@unocss/core" "0.44.0"
+    "@unocss/core" "0.44.7"
     ohmyfetch "^0.4.18"
 
-"@unocss/preset-wind@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/preset-wind/-/preset-wind-0.44.0.tgz#2b7138899e5a437d430c5133513faee9b084541f"
-  integrity sha512-+jmH0bE9VWDuwvxP+MGQqkbR9k68W35OXQURFm+nuiX0DM6tvv86gTzqP2C0HFpKyJdIMuxLJvQSxr9fheMbcQ==
+"@unocss/preset-wind@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/preset-wind/-/preset-wind-0.44.7.tgz#b5aabccf37d26c37a9d6c743d2a3dfeb55f0c070"
+  integrity sha512-mjzNwY18A/WT8cSGuxf52rYR/gy1jjDXg1xF38/Jn1Nln4jOBkKzrQTyk4c/3GJWNrHav8hE3VanD8+l7Q6W6A==
   dependencies:
-    "@unocss/core" "0.44.0"
-    "@unocss/preset-mini" "0.44.0"
+    "@unocss/core" "0.44.7"
+    "@unocss/preset-mini" "0.44.7"
 
-"@unocss/reset@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/reset/-/reset-0.44.0.tgz#288742441770faf22279101e7d5bab2150f665bc"
-  integrity sha512-+GSbrdULIg2o3gZpfrqDmylloEGN7+AJ0pdI5mGV4GQX0shT78mX3xNiSNjC0OOhQPoaSyBFuOFL7SFoYtZzfw==
+"@unocss/reset@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/reset/-/reset-0.44.7.tgz#637a3fbf7617557117ef38feb003cec1873ae3b5"
+  integrity sha512-izmqZafDMClT1vQEGpPzfKWvyft8xkA33xC0r0iOWEiDd94+wlC+7ohSnsafyl0iwEuwPp/ONzDft5ouHrOWLA==
 
-"@unocss/scope@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/scope/-/scope-0.44.0.tgz#3a97f9ced9e6b6877116be15b9a21c2d06905347"
-  integrity sha512-xrHG5nNF/fmRJcRrTcWUiXaOLvA1DQbS5s3oNCyqTQJ6iW7x2lM/sJ2XEwnia3VabRfmYxo7TvWW0FbdRRxd9g==
+"@unocss/scope@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/scope/-/scope-0.44.7.tgz#eac71c9f2fc44009cedf9aa2579aeb57e28c071d"
+  integrity sha512-E6kqHWfJpm3TXHj9KWs23oVEzknVAUfqbDpGYxh9JYG+hIvbYQdrBpIXNspodxQllNeQtGrtkQ8/PrHDo/3hpw==
 
-"@unocss/transformer-compile-class@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/transformer-compile-class/-/transformer-compile-class-0.44.0.tgz#8649f8ab0143f82c8336d9f891216c839d742790"
-  integrity sha512-WJB1bzkmtYuQWycuAp/zTrJFG4BOAWuk+hnqtIpPZCT3oKGuPrW9nVz7qRo+37eholz6VzrBSwpylDQgyUW1Ug==
+"@unocss/transformer-compile-class@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/transformer-compile-class/-/transformer-compile-class-0.44.7.tgz#1977041948e2e7e27586352c9284af9f58fb0d39"
+  integrity sha512-LwyjtdHIrgX6AREKiPmXSXjXclSUSnY/cHXSlwTqfs3Q0bkp6voFNG2CzhJF5xMoMa27ZszpvACbZG5CIZYOuA==
   dependencies:
-    "@unocss/core" "0.44.0"
+    "@unocss/core" "0.44.7"
 
-"@unocss/transformer-directives@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/transformer-directives/-/transformer-directives-0.44.0.tgz#263ca9092a61a5fc55be7907b74470d9f7542d53"
-  integrity sha512-QdMFWIaDWtTsyBEaq/sEjfelmqJlFg9LWlbt61oTxMN4hbdkidQiDJOKpnUfs602B0o4M6WMvtjummQTgZFdSw==
+"@unocss/transformer-directives@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/transformer-directives/-/transformer-directives-0.44.7.tgz#0ade5e77a3a421676b2a3cd79717ca7a6e2ed674"
+  integrity sha512-tDjFHfjpoaru/e468Nhhz+5ofdJY46mYgamF1n98RDLtH1hnKxS+PvD4mm0AxsY5NJ20hLUihzFbN0Mnuos4Ew==
   dependencies:
-    "@unocss/core" "0.44.0"
+    "@unocss/core" "0.44.7"
     css-tree "^2.1.0"
 
-"@unocss/transformer-variant-group@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/transformer-variant-group/-/transformer-variant-group-0.44.0.tgz#8c16539dd5881469cce397d4f77fa87699616420"
-  integrity sha512-8/ljJAH5lskRYs7ad4JiEW8peav+JjQNwxi5LUv6cMnbuHOkfpyIap9zi7eFSqmEtU4XDmL6sodnHfpf1yA49g==
+"@unocss/transformer-variant-group@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/transformer-variant-group/-/transformer-variant-group-0.44.7.tgz#67faa5821d8a30c07f5526ffb18278a375c46872"
+  integrity sha512-f5tJZ8rfpix245JgcezqjtvWC9wkc9Sdg0R/2yb3fyPBLGNonYGqAp2GViqmVo8UsFerullpKeUCmCSk8gCyFg==
   dependencies:
-    "@unocss/core" "0.44.0"
+    "@unocss/core" "0.44.7"
 
-"@unocss/vite@0.44.0":
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/@unocss/vite/-/vite-0.44.0.tgz#2d412c4749b23dd46757f97d7dae821f0b8050e8"
-  integrity sha512-96mXvNY1AliQP02VXu2H4K1a3/aGnlaCa85+XTRKNJb7vOeT8Qy5pz0TzIJpstJqDeMhYhqmR0qXDIADhH+23g==
+"@unocss/vite@0.44.7":
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/@unocss/vite/-/vite-0.44.7.tgz#b3d80c61cd1701bea3ebe611c24653493caf17e9"
+  integrity sha512-RjOB+Yv2bg/p5NOzwXDYap0fl7m+1VmIfej8Afceisy0mDL1NniGISiA0pQjOhUewPdSaBDpRXxlpoDGnYaPjw==
   dependencies:
+    "@ampproject/remapping" "^2.2.0"
     "@rollup/pluginutils" "^4.2.1"
-    "@unocss/config" "0.44.0"
-    "@unocss/core" "0.44.0"
-    "@unocss/inspector" "0.44.0"
-    "@unocss/scope" "0.44.0"
-    "@unocss/transformer-directives" "0.44.0"
+    "@unocss/config" "0.44.7"
+    "@unocss/core" "0.44.7"
+    "@unocss/inspector" "0.44.7"
+    "@unocss/scope" "0.44.7"
+    "@unocss/transformer-directives" "0.44.7"
     magic-string "^0.26.2"
 
 "@vitejs/plugin-vue@2.3.3", "@vitejs/plugin-vue@^2.3.3":
@@ -6760,26 +6777,26 @@ universalify@^2.0.0:
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-2.0.0.tgz#75a4984efedc4b08975c5aeb73f530d02df25717"
   integrity sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==
 
-unocss@0.44.0:
-  version "0.44.0"
-  resolved "https://registry.yarnpkg.com/unocss/-/unocss-0.44.0.tgz#e240b880e1a8cd681267a4a25ff3dcd33b77cd42"
-  integrity sha512-tvkkpHkuGM0uodihm/EQhs6ETmnWc5rexOmcDxB59lXnSIyfwXkVV/FFBlL+RCYBaTFz2UeLM2LrW4ane4MD3Q==
+unocss@0.44.7:
+  version "0.44.7"
+  resolved "https://registry.yarnpkg.com/unocss/-/unocss-0.44.7.tgz#df8c9282e5072a9268d51ad833da7640e1cf6562"
+  integrity sha512-4XQZAZ7F5gFi30Dn4e7PdxYc2BVTBtrkXA5QzHgmBy/RqNoM5kEuQwsooEVEMl6Cp3Q+vHuQCueVffOBHUl9rQ==
   dependencies:
-    "@unocss/cli" "0.44.0"
-    "@unocss/core" "0.44.0"
-    "@unocss/preset-attributify" "0.44.0"
-    "@unocss/preset-icons" "0.44.0"
-    "@unocss/preset-mini" "0.44.0"
-    "@unocss/preset-tagify" "0.44.0"
-    "@unocss/preset-typography" "0.44.0"
-    "@unocss/preset-uno" "0.44.0"
-    "@unocss/preset-web-fonts" "0.44.0"
-    "@unocss/preset-wind" "0.44.0"
-    "@unocss/reset" "0.44.0"
-    "@unocss/transformer-compile-class" "0.44.0"
-    "@unocss/transformer-directives" "0.44.0"
-    "@unocss/transformer-variant-group" "0.44.0"
-    "@unocss/vite" "0.44.0"
+    "@unocss/cli" "0.44.7"
+    "@unocss/core" "0.44.7"
+    "@unocss/preset-attributify" "0.44.7"
+    "@unocss/preset-icons" "0.44.7"
+    "@unocss/preset-mini" "0.44.7"
+    "@unocss/preset-tagify" "0.44.7"
+    "@unocss/preset-typography" "0.44.7"
+    "@unocss/preset-uno" "0.44.7"
+    "@unocss/preset-web-fonts" "0.44.7"
+    "@unocss/preset-wind" "0.44.7"
+    "@unocss/reset" "0.44.7"
+    "@unocss/transformer-compile-class" "0.44.7"
+    "@unocss/transformer-directives" "0.44.7"
+    "@unocss/transformer-variant-group" "0.44.7"
+    "@unocss/vite" "0.44.7"
 
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"

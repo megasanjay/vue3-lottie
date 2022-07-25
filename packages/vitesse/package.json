@@ -42,7 +42,7 @@
     "markdown-it-prism": "2.2.4",
     "pnpm": "7.1.9",
     "typescript": "4.7.4",
-    "unocss": "0.44.0",
+    "unocss": "0.44.7",
     "unplugin-auto-import": "0.9.3",
     "unplugin-vue-components": "0.21.1",
     "vite": "2.9.14",
