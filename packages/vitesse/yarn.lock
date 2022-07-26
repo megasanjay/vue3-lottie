@@ -1147,10 +1147,10 @@
   resolved "https://registry.yarnpkg.com/@intlify/shared/-/shared-9.2.0-beta.35.tgz#10f98403cb541d29d90d428a2ef58fbd927caf1d"
   integrity sha512-DXf7xrwf08GKhr93XPQ8EgaEN0CIELl+mAS6SlRhi/aLtZv5HSGSMkz4M/ICwoWzFLSgOx/ZdBSasex19MMogg==
 
-"@intlify/vite-plugin-vue-i18n@5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@intlify/vite-plugin-vue-i18n/-/vite-plugin-vue-i18n-5.0.0.tgz#af71abfc1a459238ca94fd3f1e2bd272eb2abd66"
-  integrity sha512-49W7y2b0m6Cg6qGoBkjdNgxyzFx3iOSbnxvDaWcN65raaceJVuwCwxXX1SqJbjHTg32rpTFi4jSlroqAV9Rr0w==
+"@intlify/vite-plugin-vue-i18n@5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@intlify/vite-plugin-vue-i18n/-/vite-plugin-vue-i18n-5.0.1.tgz#80a0b5e1a2428aabecffe41aa9173ebcfe4d61a7"
+  integrity sha512-+LAUdm5PxGtLrUYgD2Wg9SINmLmhZqrcTnzccfqopca5NvaXWOPnQR4cQOkn82qLuyjWdCYC1BoqMHWBWX/MyQ==
   dependencies:
     "@intlify/bundle-utils" next
     "@intlify/shared" next
