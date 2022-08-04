@@ -1823,10 +1823,10 @@
     "@vueuse/shared" "8.7.4"
     vue-demi "*"
 
-"@vueuse/head@0.7.7":
-  version "0.7.7"
-  resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-0.7.7.tgz#372728e30af498159b3642882bde132de8448b2a"
-  integrity sha512-umsupiMPYxSMvREskQhcwhQ8zpnv8u1oKSB3Q1gclhsV53XAMTurkX+vPE4aBmGulHI1XEZp3N5ctEABEj3xqQ==
+"@vueuse/head@0.7.9":
+  version "0.7.9"
+  resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-0.7.9.tgz#888ab87667ab6dbe6edba10d176fa91c1b0ec021"
+  integrity sha512-5wnRiH2XIUSLLXJDLDDTcpvAg5QXgTIVZl46AU7to/T91KHsdBLHSE4WhRO7kP0jbkAhlxnx64E29cQtwBrMjg==
 
 "@vueuse/metadata@8.7.4":
   version "8.7.4"
