@@ -6971,10 +6971,10 @@ vite-plugin-vue-layouts@0.7.0:
     debug "^4.3.3"
     fast-glob "^3.2.11"
 
-vite-ssg-sitemap@0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/vite-ssg-sitemap/-/vite-ssg-sitemap-0.3.1.tgz#92c8c0374b423a42fb5adb44e021a1bc81f64ab6"
-  integrity sha512-I/urEKBAF62r4b3jL4Usa3kpo/WQl4gC/SqQz2APHh+2ZLMbO0xstULfkVHIaRW6416vtfz2SlvysdvW+u1xkQ==
+vite-ssg-sitemap@0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/vite-ssg-sitemap/-/vite-ssg-sitemap-0.3.2.tgz#389c641f616ab63bf079fb8333b9b0a038ba9853"
+  integrity sha512-udsHc11VYQLSy/Zy6efKHnU/ABozGUz84Z9GqmrD8MaB2HCezqFVFAJukwZaxBzcEjy1jFXfNCIcT8J6LefpWw==
 
 vite-ssg@0.20.2:
   version "0.20.2"
