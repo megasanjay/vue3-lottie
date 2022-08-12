@@ -6818,10 +6818,10 @@ unplugin-auto-import@0.11.1:
     unimport "^0.6.5"
     unplugin "^0.9.0"
 
-unplugin-vue-components@0.22.0:
-  version "0.22.0"
-  resolved "https://registry.yarnpkg.com/unplugin-vue-components/-/unplugin-vue-components-0.22.0.tgz#cbfc298fb64c2f4f22bb755c18aa3e67dca24b3f"
-  integrity sha512-MpGcrnHgFLUK94Jf46UuiMOPQ4hVAijriR6bPbCGSBygiEDJbPXqy2C1d1k6PkixESFacKkipeuPhme+8F7gHQ==
+unplugin-vue-components@0.22.4:
+  version "0.22.4"
+  resolved "https://registry.yarnpkg.com/unplugin-vue-components/-/unplugin-vue-components-0.22.4.tgz#774a96339368f3b8436fa7c20e059d9fee42c983"
+  integrity sha512-2rRZcM9OnJGXnYxQNfaceEYuPeVACcWySIjy8WBwIiN3onr980TmA3XE5pRJFt8zoQrUA+c46oyIq96noLqrEQ==
   dependencies:
     "@antfu/utils" "^0.5.2"
     "@rollup/pluginutils" "^4.2.1"
@@ -6832,7 +6832,7 @@ unplugin-vue-components@0.22.0:
     magic-string "^0.26.2"
     minimatch "^5.1.0"
     resolve "^1.22.1"
-    unplugin "^0.8.1"
+    unplugin "^0.9.0"
 
 unplugin@^0.8.1:
   version "0.8.1"
