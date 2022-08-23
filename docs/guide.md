@@ -434,7 +434,7 @@ this.$refs.lottieContainer.setSubFrame(true)
 This method updates text on text layers. Refer to the [official docs](https://github.com/airbnb/lottie-web/wiki/TextLayer.updateDocumentData) for how to use this method.
 
 - `documentData`: An object with the document data (see below supported properties and meaning)
-- `index`: index of the text keyframe. If the text source is not keyframed, you can skip this argument. If not skipped and the source text is keyframed, it will update the current source.
+- `index`: index of the text keyframe. If the text source is not keyframed, you can skip this argument. If not skipped and the source text is keyframed, it will update the current source. This value is `0` by default.
 
 All supported properties:
 
