@@ -382,6 +382,14 @@ export default defineComponent({
       }
     }
 
+    const updateDocumentData = (documentData: any, index: number = 0) => {
+      if (lottieAnimation) {
+        lottieAnimation.renderer.elements[index].updateDocumentData(
+          documentData,
+        )
+      }
+    }
+
     // function to generate random strings for IDs
     const makeid = (length: number) => {
       var result = ''
@@ -444,6 +452,7 @@ export default defineComponent({
       playSegments,
       setSubFrame,
       getDuration,
+      updateDocumentData,
     }
   },
 })

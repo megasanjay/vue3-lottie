@@ -200,6 +200,8 @@ You can control the animation with the following methods. These methods can be c
   - You can call this method to play a specific segment of your animation.
 - setSubFrame(subFrame)
   - You can call this method to set the subframe value.
+- updateDocumentData(documentData, index)
+  - This method updates text on text layers. Refer to the [official docs](https://github.com/airbnb/lottie-web/wiki/TextLayer.updateDocumentData) for how to use this method.
 
 # Credits
 

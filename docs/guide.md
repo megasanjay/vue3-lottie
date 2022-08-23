@@ -428,3 +428,23 @@ You can call this method to set the subframe value. This method takes a single a
 ```js
 this.$refs.lottieContainer.setSubFrame(true)
 ```
+
+### updateDocumentData(documentData, index)
+
+This method updates text on text layers. Refer to the [official docs](https://github.com/airbnb/lottie-web/wiki/TextLayer.updateDocumentData) for how to use this method.
+
+- `documentData`: An object with the document data (see below supported properties and meaning)
+- `index`: index of the text keyframe. If the text source is not keyframed, you can skip this argument. If not skipped and the source text is keyframed, it will update the current source.
+
+All supported properties:
+
+- `t`: text value
+- `s`: font size
+- `fc`: fill color - array with RGB values ranging from 0 to 1
+- `lh`: font line height
+- `sc`: stroke color - array with RGB values ranging from 0 to 1
+- `j`: justify
+
+```js
+this.$refs.lottieContainer.updateDocumentData({ t: 'new text', s: 20 }, 0)
+```
