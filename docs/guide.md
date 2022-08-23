@@ -429,7 +429,7 @@ You can call this method to set the subframe value. This method takes a single a
 this.$refs.lottieContainer.setSubFrame(true)
 ```
 
-### updateDocumentData(documentData, index)
+### updateDocumentData
 
 This method updates text on text layers. Refer to the [official docs](https://github.com/airbnb/lottie-web/wiki/TextLayer.updateDocumentData) for how to use this method.
 
