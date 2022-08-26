@@ -7150,10 +7150,10 @@ vue-tsc@0.40.1:
     "@volar/vue-language-core" "0.40.1"
     "@volar/vue-typescript" "0.40.1"
 
-vue3-lottie@2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/vue3-lottie/-/vue3-lottie-2.2.5.tgz#0e5842335a8c3d30dd5495a79afcb56bb534b63b"
-  integrity sha512-r9J5mSJpKjHmwf8OE2sFl3Xi7vRm+F8IDArMBGddLjKxXmFh2PZhdNR85faHt1/MBWLjPjLlKU5VR0N+l1yF8Q==
+vue3-lottie@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/vue3-lottie/-/vue3-lottie-2.3.0.tgz#3b0e93cd8235545aad85e73a3ed3e9ca8ccbc6cd"
+  integrity sha512-pThHpAIxxvk9c5lJXyCgrIAUIy/Xn/XLETqW2yA+VIg5B+phjQkdxkTvRG60pq3zOZ9su2hee+HZgT9tWA+8Fw==
   dependencies:
     lottie-web "^5.8.1"
 
