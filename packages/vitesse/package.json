@@ -19,7 +19,7 @@
     "pinia": "2.0.21",
     "prism-theme-vars": "0.2.4",
     "vue": "3.2.37",
-    "vue-demi": "0.13.8",
+    "vue-demi": "0.13.11",
     "vue-i18n": "9.2.2",
     "vue-router": "4.1.5",
     "vue3-lottie": "2.3.0"
