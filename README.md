@@ -163,7 +163,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
 This should register as a global component that you can call anywhere in your app under the <Vue3Lottie> tag.
 
-I would recommend using a <client-only> parent tag to ensure that the animation only loads in on the client side.
+I would recommend using a `<client-only>` parent tag to ensure that the animation only loads in on the client side.
 
 ```vue
 <client-only>
