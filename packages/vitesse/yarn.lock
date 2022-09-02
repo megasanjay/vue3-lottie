@@ -5026,10 +5026,10 @@ markdown-it-link-attributes@4.0.1:
   resolved "https://registry.yarnpkg.com/markdown-it-link-attributes/-/markdown-it-link-attributes-4.0.1.tgz#25751f2cf74fd91f0a35ba7b3247fa45f2056d88"
   integrity sha512-pg5OK0jPLg62H4k7M9mRJLT61gUp9nvG0XveKYHMOOluASo9OEF13WlXrpAp2aj35LbedAy3QOCgQCw0tkLKAQ==
 
-markdown-it-prism@2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/markdown-it-prism/-/markdown-it-prism-2.2.5.tgz#a4e5045681edf3a6064c7382fbf6ac62395218b9"
-  integrity sha512-joodcO4elSJeeQGzf47hPxFDlzDpYme7aaJ/0TyTcAAKq7oSzaodJ2VpwRMy1rfoup8+v8CwEDcf8QKn08ixSw==
+markdown-it-prism@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/markdown-it-prism/-/markdown-it-prism-2.3.0.tgz#8b3ca2105e665ca20f62b2dc2b81f9393660a5af"
+  integrity sha512-ePtHY80gZyeje4bn3R3SL0jpd1C9HFaYffJW2Ma0YD+tspqa2v9TuVwUyFwboFu4jnFNcO8oPQROgbcYJbmBvw==
   dependencies:
     prismjs "1.29.0"
 
