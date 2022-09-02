@@ -1876,6 +1876,13 @@
   dependencies:
     native-dash "^1.22.1"
 
+"@yankeeinlondon/happy-wrapper@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@yankeeinlondon/happy-wrapper/-/happy-wrapper-2.6.0.tgz#cd9217c103da967af59509049233e0127db9e925"
+  integrity sha512-az+gEjG4Jl4GbM35ID5pn4v7FwfrgeA1br/B9STXlDLvIsV8q7mCxQ1oYa8bR1iHtNQg7kgW6s9DYheaTemrHQ==
+  dependencies:
+    native-dash "^1.23.2"
+
 abab@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.6.tgz#41b80f2c871d19686216b82309231cfd3cb3d291"
@@ -5214,7 +5221,7 @@ nanoid@^3.3.4:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.4.tgz#730b67e3cd09e2deacf03c027c81c9d9dbc5e8ab"
   integrity sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==
 
-native-dash@^1.22.1:
+native-dash@^1.22.1, native-dash@^1.23.2:
   version "1.23.2"
   resolved "https://registry.yarnpkg.com/native-dash/-/native-dash-1.23.2.tgz#16b6fbea1bf9502273706bc289032f01ca5fdb89"
   integrity sha512-Ev5OPB5vDZ+HLj4MXfAwZRHJV/LJr2LHjsIr1UN7jZigMS2JRpF7Qy77t66GURhtzp7GSWLNSLeRwXOg1iwJkQ==
@@ -6990,13 +6997,13 @@ vite-plugin-inspect@0.6.0:
     sirv "^2.0.2"
     ufo "^0.8.5"
 
-vite-plugin-md@0.20.2:
-  version "0.20.2"
-  resolved "https://registry.yarnpkg.com/vite-plugin-md/-/vite-plugin-md-0.20.2.tgz#c1d6e69d496ce4fb196b1c139cf1f2a77a2922ab"
-  integrity sha512-Jkl21FPSFIJU2O1ARBK9v4A6r2Ceo4nxsSqIA+Q5SXfwIR5zjeTP+WP4swy1wSi2ju7DUkHXBVa2e4xsWjOzJA==
+vite-plugin-md@0.20.4:
+  version "0.20.4"
+  resolved "https://registry.yarnpkg.com/vite-plugin-md/-/vite-plugin-md-0.20.4.tgz#5bc2913745c84b231bf48d395e2c4c672b9f0f89"
+  integrity sha512-W3Z59/ROS2X6OIwPwV2PjE+QkfW0UVGxyf3Z2JR0OLqGJ+Iy2SGA503m/vmATJv+C3DjeU8Oy8diQx1R+IyRwQ==
   dependencies:
     "@yankeeinlondon/builder-api" "*"
-    "@yankeeinlondon/happy-wrapper" "^2.5.0"
+    "@yankeeinlondon/happy-wrapper" "^2.6.0"
     gray-matter "^4.0.3"
     markdown-it "^13.0.1"
     source-map-js "^1.0.2"
