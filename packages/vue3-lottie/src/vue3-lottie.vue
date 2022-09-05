@@ -262,6 +262,9 @@ export default defineComponent({
       if (lottieAnimation && props.pauseOnHover) {
         lottieAnimation.play()
       }
+      if (lottieAnimation && props.playOnHover) {
+        lottieAnimation.pause()
+      }
     }
 
     // watch for changes in props.pauseAnimation
