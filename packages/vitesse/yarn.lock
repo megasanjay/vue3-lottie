@@ -7074,10 +7074,10 @@ vite-plugin-md@0.20.4:
     markdown-it "^13.0.1"
     source-map-js "^1.0.2"
 
-vite-plugin-pages@0.25.0:
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/vite-plugin-pages/-/vite-plugin-pages-0.25.0.tgz#ebaff80a368301df738dbd6cdc8e529c4d6ddca7"
-  integrity sha512-q0SX2iSw0UrTnivkzsPb19ZxamShq1nE/e/CKOe8+uVg70/e14uJuzKnw7dZ2omPjmV9Lhks38nzJL6RDRGmeA==
+vite-plugin-pages@0.26.0:
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-pages/-/vite-plugin-pages-0.26.0.tgz#2acf077b759fd4e34d0f9677ab1c32692e12249e"
+  integrity sha512-yJZvwHEt7puYIf19S89IvkDsWPjWleSied4H8hmdW6i8buCA93z1UAU1ipW1d8fNKrC4FzXsUHHbPm6+kl1p9w==
   dependencies:
     "@types/debug" "^4.1.7"
     debug "^4.3.4"
@@ -7085,7 +7085,7 @@ vite-plugin-pages@0.25.0:
     extract-comments "^1.1.0"
     fast-glob "^3.2.11"
     json5 "^2.2.1"
-    local-pkg "^0.4.1"
+    local-pkg "^0.4.2"
     picocolors "^1.0.0"
     yaml "^2.1.1"
 
