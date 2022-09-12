@@ -109,7 +109,7 @@ importers:
 
   packages/vue3-lottie:
     specifiers:
-      '@babel/types': 7.18.13
+      '@babel/types': 7.19.0
       '@types/node': 17.0.19
       '@vitejs/plugin-vue': 2.3.4
       lottie-web: ^5.8.1
@@ -121,7 +121,7 @@ importers:
     dependencies:
       lottie-web: 5.8.1
     devDependencies:
-      '@babel/types': 7.18.13
+      '@babel/types': 7.19.0
       '@types/node': 17.0.19
       '@vitejs/plugin-vue': 2.3.4_vite@2.9.15+vue@3.2.39
       typescript: 4.8.2
@@ -549,7 +549,7 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.18.13
+      '@babel/types': 7.19.0
 
   /@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression/7.16.7_@babel+core@7.17.9:
     resolution: {integrity: sha512-anv/DObl7waiGEnC24O9zqL0pSuI9hljihqiDuFHC8d7/bjr/4RLGPWuc8rYOff/QPzbEPSkzG8wGG9aDuhHRg==}
@@ -1379,6 +1379,15 @@ packages:
 
   /@babel/types/7.18.13:
     resolution: {integrity: sha512-ePqfTihzW0W6XAU+aMw2ykilisStJfDnsejDCXRchCcMJ4O0+8DhPXf2YUbZ6wjBlsEmZwLK/sPweWtu8hcJYQ==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      '@babel/helper-string-parser': 7.18.10
+      '@babel/helper-validator-identifier': 7.18.6
+      to-fast-properties: 2.0.0
+    dev: true
+
+  /@babel/types/7.19.0:
+    resolution: {integrity: sha512-YuGopBq3ke25BVSiS6fgF49Ul9gH1x70Bcr6bqRLjWCkcX8Hre1/5+z+IiWOIerRMSSEfGZVB9z9kyq7wVs9YA==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/helper-string-parser': 7.18.10
