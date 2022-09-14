@@ -1970,10 +1970,12 @@
     "@vueuse/shared" "9.2.0"
     vue-demi "*"
 
-"@vueuse/head@0.7.9":
-  version "0.7.9"
-  resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-0.7.9.tgz#888ab87667ab6dbe6edba10d176fa91c1b0ec021"
-  integrity sha512-5wnRiH2XIUSLLXJDLDDTcpvAg5QXgTIVZl46AU7to/T91KHsdBLHSE4WhRO7kP0jbkAhlxnx64E29cQtwBrMjg==
+"@vueuse/head@0.7.11":
+  version "0.7.11"
+  resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-0.7.11.tgz#f5a2a44e32864a9f6374b2e7c6fd6df66837a73f"
+  integrity sha512-qW2VbJnQ7c1nHqt1wWQYtPf6pMKghcBsCGQd76zFSzKZXncjOYV1I5dZcmAdj3E30JP0WKWCItVbV/cgSAPipA==
+  dependencies:
+    "@zhead/schema-vue" "^0.7.1"
 
 "@vueuse/metadata@9.2.0":
   version "9.2.0"
@@ -2007,6 +2009,18 @@
   integrity sha512-az+gEjG4Jl4GbM35ID5pn4v7FwfrgeA1br/B9STXlDLvIsV8q7mCxQ1oYa8bR1iHtNQg7kgW6s9DYheaTemrHQ==
   dependencies:
     native-dash "^1.23.2"
+
+"@zhead/schema-vue@^0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@zhead/schema-vue/-/schema-vue-0.7.1.tgz#0b382d9074338ab7e313c33b9d3fd345785f3273"
+  integrity sha512-puEmNJOjfC5IRJqc5p0GEemWP1B25YYRMZ2RM10UrJXGjR+cGOZ+PYQHoBIl9Nf5kJVzhokg1H99HE6Wnyx+qA==
+  dependencies:
+    "@zhead/schema" "0.7.1"
+
+"@zhead/schema@0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@zhead/schema/-/schema-0.7.1.tgz#f02af07fdde5038c3d1632b5e74cf1b2666b1870"
+  integrity sha512-3FjTUj8YBN45PCW4YSosV9LjBu6HnKetk0aYtaZ7HffgpSlAIl/eCaem8T34KJZ7/lRsvoGPcDDkaAzyvGqi0g==
 
 abab@^2.0.6:
   version "2.0.6"
