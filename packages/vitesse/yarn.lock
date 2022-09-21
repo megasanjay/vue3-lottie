@@ -1970,19 +1970,19 @@
     "@vueuse/shared" "9.2.0"
     vue-demi "*"
 
-"@vueuse/head@0.7.11":
-  version "0.7.11"
-  resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-0.7.11.tgz#f5a2a44e32864a9f6374b2e7c6fd6df66837a73f"
-  integrity sha512-qW2VbJnQ7c1nHqt1wWQYtPf6pMKghcBsCGQd76zFSzKZXncjOYV1I5dZcmAdj3E30JP0WKWCItVbV/cgSAPipA==
+"@vueuse/head@0.7.12":
+  version "0.7.12"
+  resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-0.7.12.tgz#bdb2185654399d10b10c4e94b52f6129e9ca4f67"
+  integrity sha512-sRcrE6VohiHInQR0sB0U8H8x2hAKdo+AIhd5PWBLx1jUp2vwyeQyA/4rlCzP5CMDB8z61MLvsOCApFJrRMRtTQ==
   dependencies:
-    "@zhead/schema-vue" "^0.7.1"
+    "@zhead/schema-vue" "^0.7.3"
 
 "@vueuse/metadata@9.2.0":
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-9.2.0.tgz#6bf7c9c44b9f5ece405837226a0e04a997994458"
   integrity sha512-exN4KE6iquxDCdt72BgEhb3tlOpECtD61AUdXnUqBTIUCl70x1Ar/QXo3bYcvxmdMS2/peQyfeTzBjRTpvL5xw==
 
-"@vueuse/shared@9.2.0":
+"@vueuse/shared@9.2.0", "@vueuse/shared@^9.2.0":
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-9.2.0.tgz#7831051b2c1d01c3413c749468ee53a86024510e"
   integrity sha512-NnRp/noSWuXW0dKhZK5D0YLrDi0nmZ18UeEgwXQq7Ul5TTP93lcNnKjrHtd68j2xFB/l59yPGFlCryL692bnrA==
@@ -2010,17 +2010,18 @@
   dependencies:
     native-dash "^1.23.2"
 
-"@zhead/schema-vue@^0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@zhead/schema-vue/-/schema-vue-0.7.1.tgz#0b382d9074338ab7e313c33b9d3fd345785f3273"
-  integrity sha512-puEmNJOjfC5IRJqc5p0GEemWP1B25YYRMZ2RM10UrJXGjR+cGOZ+PYQHoBIl9Nf5kJVzhokg1H99HE6Wnyx+qA==
+"@zhead/schema-vue@^0.7.3":
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/@zhead/schema-vue/-/schema-vue-0.7.3.tgz#cc87e5884b0bdeeb67d1207e05478eef85bba8af"
+  integrity sha512-X9wIugL/7fFoeVbxPDgRvBLdKt2k243ZezU4N85iCHjs4OaGTgXUPQVfb9+uP7dSj2kMSAvhvY6fKe7D9TzbHA==
   dependencies:
-    "@zhead/schema" "0.7.1"
+    "@vueuse/shared" "^9.2.0"
+    "@zhead/schema" "0.7.3"
 
-"@zhead/schema@0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@zhead/schema/-/schema-0.7.1.tgz#f02af07fdde5038c3d1632b5e74cf1b2666b1870"
-  integrity sha512-3FjTUj8YBN45PCW4YSosV9LjBu6HnKetk0aYtaZ7HffgpSlAIl/eCaem8T34KJZ7/lRsvoGPcDDkaAzyvGqi0g==
+"@zhead/schema@0.7.3":
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/@zhead/schema/-/schema-0.7.3.tgz#de1c867673c83be0de18588d03b4c07000b2a077"
+  integrity sha512-z7TDtS5YihDW1w5Xk/P5iZ5bHuEajAGsRFs8ipgVSKZSqHy/7Tc4mC6FUfwFciHOj1efMHWf+tFY+byKUdVKug==
 
 abab@^2.0.6:
   version "2.0.6"

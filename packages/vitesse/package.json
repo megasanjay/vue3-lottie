@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@vueuse/core": "9.2.0",
-    "@vueuse/head": "0.7.11",
+    "@vueuse/head": "0.7.12",
     "nprogress": "0.2.0",
     "pinia": "2.0.22",
     "prism-theme-vars": "0.2.4",
