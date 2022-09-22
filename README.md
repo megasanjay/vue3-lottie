@@ -12,7 +12,7 @@
       <img src="https://img.shields.io/npm/v/vue3-lottie" />
     </a>
     <a href="https://www.npmjs.com/package/vue3-lottie">
-      <img src="https://img.shields.io/npm/dt/vue3-lottie" />
+      <img src="https://img.shields.io/npm/dm/vue3-lottie" />
     </a>
     <a href="https://github.com/megasanjay/vue3-lottie/stargazers">
       <img src="https://img.shields.io/github/stars/megasanjay/vue3-lottie.svg?style=flat-square" />
