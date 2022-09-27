@@ -35,7 +35,7 @@
     "critters": "0.0.16",
     "cross-env": "7.0.3",
     "cypress": "10.8.0",
-    "eslint": "8.23.1",
+    "eslint": "8.24.0",
     "eslint-plugin-cypress": "2.12.1",
     "https-localhost": "4.7.1",
     "markdown-it-link-attributes": "4.0.1",
