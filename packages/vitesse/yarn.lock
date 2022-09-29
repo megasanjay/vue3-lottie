@@ -6996,10 +6996,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vite-plugin-inspect@0.7.2:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/vite-plugin-inspect/-/vite-plugin-inspect-0.7.2.tgz#cabbbc7614cda5e220a756ca6741549cce70af5d"
-  integrity sha512-d6lR45+bjojVvBTNvDKssSdvHs238RLVIQ3sErRR5H0ktSncLQnjsm9TBMnxUDTFoIl75MIZZHsYpnCkh2a2mg==
+vite-plugin-inspect@0.7.4:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/vite-plugin-inspect/-/vite-plugin-inspect-0.7.4.tgz#543584917ea317da775315f9ff6de174d866c2b3"
+  integrity sha512-06uSil9CPWsGwICsXixx2O3vsIOLNTkQaiBijmJA84BuxYKIWJ3k0r4I96kX1WgdA3olxJxVBXOjzryzeHOSuQ==
   dependencies:
     "@rollup/pluginutils" "^4.2.1"
     debug "^4.3.4"
