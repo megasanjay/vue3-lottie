@@ -1,63 +1,65 @@
 {
   "name": "vue3-lottie",
   "version": "2.3.0",
-  "license": "MIT",
-  "author": "Sanjay Soundarajan <info@sanjaysoundarajan.dev> (https://sanjaysoundarajan.dev)",
-  "scripts": {
-    "dev": "vue-cli-service serve dev/serve.ts",
-    "build": "vite build && tsc -d --emitDeclarationOnly && vue-typegen gen -s ./src -o ./dist",
-    "prepublishOnly": "npm run build",
-    "lint": "eslint \"{packages,playground}/**/*.{ts,tsx,vue,js,jsx,html}\"",
-    "prettier": "npx prettier --write ."
-  },
-  "dependencies": {
-    "lottie-web": "^5.8.1"
-  },
-  "peerDependencies": {
-    "vue": "^3.2"
-  },
-  "files": [
-    "dist",
-    "dist/*.css"
+  "keywords": [
+    "vue3",
+    "lottie"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/megasanjay/vue3-lottie.git"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
-  "main": "dist/vue3-lottie.umd.js",
-  "module": "dist/vue3-lottie.es.js",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/vue3-lottie.es.js",
-      "require": "./dist/vue3-lottie.umd.js"
-    },
-    "./dist/style.css": "./dist/style.css"
-  },
-  "devDependencies": {
-    "@babel/types": "7.19.0",
-    "@types/node": "17.0.19",
-    "@vitejs/plugin-vue": "2.3.4",
-    "typescript": "4.8.3",
-    "vite": "2.9.15",
-    "vue": "3.2.39",
-    "vue-tsc": "0.40.13",
-    "vue-typegen": "0.2.0"
-  },
+  "homepage": "https://vue3-lottie.vercel.app/",
   "bugs": {
     "url": "https://github.com/megasanjay/vue3-lottie/issues",
     "email": "info@sanjaysoundarajan.dev"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/megasanjay/vue3-lottie.git"
+  },
+  "license": "MIT",
+  "author": "Sanjay Soundarajan <info@sanjaysoundarajan.dev> (https://sanjaysoundarajan.dev)",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/vue3-lottie.js",
+      "require": "./dist/vue3-lottie.cjs"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "main": "dist/vue3-lottie.cjs",
+  "module": "dist/vue3-lottie.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "build": "vite build && vue-tsc --declaration --emitDeclarationOnly",
+    "dev": "vite",
+    "lint": "eslint \"{packages,playground}/**/*.{ts,tsx,vue,js,jsx,html}\"",
+    "prepublishOnly": "npm run build",
+    "prettier": "npx prettier --write ."
+  },
+  "dependencies": {
+    "lottie-web": "^5.9.6"
+  },
+  "devDependencies": {
+    "@babel/types": "~7.19.3",
+    "@types/node": "~18.8.3",
+    "@vitejs/plugin-vue": "~3.1.2",
+    "@vue/compiler-sfc": "~3.2.40",
+    "typescript": "~4.8.4",
+    "vite": "~3.1.6",
+    "vite-plugin-css-injected-by-js": "~2.1.0",
+    "vite-plugin-vue-type-imports": "~0.2.3",
+    "vue": "~3.2.40",
+    "vue-tsc": "~0.40.13"
+  },
+  "peerDependencies": {
+    "vue": "^3.2"
+  },
   "engines": {
     "node": ">=12"
   },
-  "homepage": "https://vue3-lottie.vercel.app/",
-  "keywords": [
-    "vue3",
-    "lottie"
-  ]
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }

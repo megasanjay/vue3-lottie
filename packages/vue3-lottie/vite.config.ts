@@ -1,15 +1,17 @@
-import { resolve } from 'path'
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import Vue from '@vitejs/plugin-vue'
+import VueTypeImports from 'vite-plugin-vue-type-imports'
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [Vue(), VueTypeImports(), cssInjectedByJsPlugin()],
   build: {
     lib: {
       entry: resolve(__dirname, './src/index.ts'),
       name: 'vue3-lottie',
+      formats: ['es', 'cjs'],
     },
-    outDir: 'dist',
     rollupOptions: {
       external: ['vue', 'lottie-web'],
       output: {
@@ -20,8 +22,5 @@ export default defineConfig({
         },
       },
     },
-  },
-  define: {
-    VERSION: JSON.stringify(require('./package.json').version),
   },
 })
