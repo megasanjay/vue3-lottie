@@ -10,7 +10,16 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, computed, watch, shallowRef, onUnmounted } from 'vue'
+import {
+  ref,
+  onMounted,
+  computed,
+  watch,
+  shallowRef,
+  onUnmounted,
+  watchEffect,
+  nextTick,
+} from 'vue'
 import Lottie from 'lottie-web'
 
 import { fetchData, parseData } from './utils'
@@ -82,15 +91,13 @@ const loadLottie = async (element: Element) => {
     autoPlay = false
   }
 
-  if (!lottieAnimation) return
-
   // actually load the animation
   lottieAnimation = Lottie.loadAnimation({
     container: element,
     renderer: 'svg',
     loop: loop,
     autoplay: autoPlay,
-    animationData: animationData,
+    animationData: animationData.value,
   })
 
   if (!lottieAnimation) {
@@ -135,6 +142,12 @@ const loadLottie = async (element: Element) => {
       lottieAnimation.pause()
     }
   }
+
+  attachEvents()
+}
+
+function attachEvents() {
+  if (!lottieAnimation) return
 
   // set the emit events
   lottieAnimation.addEventListener('loopComplete', () => {
@@ -251,9 +264,10 @@ const stop = () => {
 }
 
 const destroy = () => {
-  if (lottieAnimation) {
-    lottieAnimation.destroy()
-  }
+  if (!lottieAnimation) return
+
+  lottieAnimation.destroy()
+  lottieAnimation = null
 }
 
 const setSpeed = (speed: number = 1) => {
@@ -378,29 +392,35 @@ async function prepareAnimationData() {
   animationData.value = json
 }
 
-const unWatchDataLink = watch(
+watch(
   () => [props.animationData, props.animationLink],
-  (value, oldValue) => {
-    // TODO: remove
-    console.log('watch', value)
-
-    // TODO: add check is one of two
+  () => {
     prepareAnimationData()
   },
-  { immediate: true },
+  {
+    immediate: true,
+  },
 )
 
 onMounted(() => {
   elementId.value = makeId(20) // generate a random id for the container
-  setupLottie(elementId.value)
+
+  watch(
+    () => animationData.value,
+    (value, oldValue) => {
+      if (value && value !== oldValue) {
+        destroy()
+        setupLottie(elementId.value)
+      }
+    },
+    {
+      immediate: true,
+    },
+  )
 })
 
 onUnmounted(() => {
-  // destroy the animation when the component is unmounted
   destroy()
-
-  // clean lottieAnimation
-  lottieAnimation = null
 })
 </script>
 

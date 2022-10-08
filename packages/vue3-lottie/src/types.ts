@@ -1,3 +1,5 @@
+/// <reference lib="dom" />
+
 export type {
   AnimationDirection,
   AnimationItem,
@@ -19,5 +21,5 @@ export interface LottieProps {
   playOnHover: boolean
   backgroundColor: string
   pauseAnimation: boolean
-  fetchOptions: RequestInit
+  fetchOptions: object
 }

@@ -3,9 +3,21 @@ import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import VueTypeImports from 'vite-plugin-vue-type-imports'
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
+import dts from 'vite-plugin-dts'
 
 export default defineConfig({
-  plugins: [Vue(), VueTypeImports(), cssInjectedByJsPlugin()],
+  plugins: [
+    Vue(),
+    VueTypeImports(),
+    cssInjectedByJsPlugin(),
+    dts({
+      insertTypesEntry: true,
+      copyDtsFiles: false,
+      skipDiagnostics: false,
+      logDiagnostics: true,
+      cleanVueFileName: true,
+    }),
+  ],
   build: {
     lib: {
       entry: resolve(__dirname, './src/index.ts'),

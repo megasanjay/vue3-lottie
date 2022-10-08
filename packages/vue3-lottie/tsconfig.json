@@ -4,12 +4,11 @@
     "module": "ESNext",
     "strict": true,
     "declaration": true,
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "lib": ["es2017", "ESNext", "DOM", "DOM.Iterable"],
     "jsx": "preserve",
     "outDir": "dist",
     "moduleResolution": "node",
     "types": ["vite/client"]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"],
-  "exclude": ["node_modules", "dist", "**/*.js"]
+  "include": ["src", "*.d.ts"]
 }

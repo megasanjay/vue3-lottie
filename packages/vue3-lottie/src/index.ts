@@ -1,22 +1,16 @@
-import { App } from 'vue'
-import type { Plugin } from 'vue'
+import type { App, Plugin } from 'vue'
 import Vue3Lottie from './vue3-lottie.vue'
 export * from './types'
 
-export function install(app: App, options: { name: string }) {
-  const finalOptions = Object.assign(
-    {},
-    {
-      name: 'Vue3Lottie',
-    },
-    options,
-  )
-
-  app.component(`${finalOptions.name}`, Vue3Lottie)
+export interface PluginOptions {
+  name?: string
 }
 
 const plugin: Plugin = {
-  install,
+  install(app: App, options: PluginOptions) {
+    const name = options?.name ?? 'Vue3Lottie'
+    app.component(name, Vue3Lottie)
+  },
 }
 
 export { Vue3Lottie }

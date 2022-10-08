@@ -21,8 +21,7 @@
     ".": {
       "import": "./dist/vue3-lottie.js",
       "require": "./dist/vue3-lottie.cjs"
-    },
-    "./style.css": "./dist/style.css"
+    }
   },
   "main": "dist/vue3-lottie.cjs",
   "module": "dist/vue3-lottie.js",
@@ -31,8 +30,8 @@
     "dist/*"
   ],
   "scripts": {
-    "build": "vite build && vue-tsc --declaration --emitDeclarationOnly",
-    "dev": "vite",
+    "dev": "vite build --watch",
+    "build": "vite build",
     "lint": "eslint \"{packages,playground}/**/*.{ts,tsx,vue,js,jsx,html}\"",
     "prepublishOnly": "npm run build",
     "prettier": "npx prettier --write ."
@@ -48,9 +47,9 @@
     "typescript": "~4.8.4",
     "vite": "~3.1.6",
     "vite-plugin-css-injected-by-js": "~2.1.0",
+    "vite-plugin-dts": "~1.6.5",
     "vite-plugin-vue-type-imports": "~0.2.3",
-    "vue": "~3.2.40",
-    "vue-tsc": "~0.40.13"
+    "vue": "~3.2.40"
   },
   "peerDependencies": {
     "vue": "^3.2"
