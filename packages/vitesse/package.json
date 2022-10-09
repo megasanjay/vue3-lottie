@@ -51,7 +51,7 @@
     "vite-plugin-pages": "0.26.0",
     "vite-plugin-pwa": "0.13.1",
     "vite-plugin-vue-layouts": "0.7.0",
-    "vite-ssg": "0.20.2",
+    "vite-ssg": "0.21.1",
     "vite-ssg-sitemap": "0.4.3",
     "vitest": "0.23.4",
     "vue-tsc": "0.40.13"
