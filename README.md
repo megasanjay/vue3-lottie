@@ -67,7 +67,6 @@ The most common use case is to register the component globally.
 // main.js
 import { createApp } from 'vue'
 import Vue3Lottie from 'vue3-lottie'
-import 'vue3-lottie/dist/style.css'
 
 createApp(App).use(Vue3Lottie).mount('#app')
 ```
@@ -76,9 +75,10 @@ To define global components for [Volar type-checking](https://github.com/johnson
 
 ```ts
 // components.d.ts
-declare module '@vue/runtime-core' {
+
+declare module 'vue' {
   export interface GlobalComponents {
-    LottieAnimation: typeof import('vue3-lottie')['Vue3Lottie']
+    Vue3Lottie: typeof import('vue3-lottie')['Vue3Lottie']
   }
 }
 export {}
@@ -92,11 +92,12 @@ app.use(Vue3Lottie, { name: 'LottieAnimation' }) // use in template <LottieAnima
 
 - `name` string (default: 'Vue3Lottie') - set custom component name
 
+> also you need rename component in `components.d.ts`
+
 Alternatively you can also import the component locally.
 
 ```js
 import { Vue3Lottie } from 'vue3-lottie'
-import 'vue3-lottie/dist/style.css'
 
 export default {
   components: {
@@ -114,8 +115,6 @@ You can then use the component in your template
 
 <script>
 import { Vue3Lottie } from 'vue3-lottie'
-import 'vue3-lottie/dist/style.css'
-
 import AstronautJSON from './astronaut.json'
 
 export default {
@@ -173,12 +172,6 @@ I would recommend using a `<client-only>` parent tag to ensure that the animatio
     :width="200"
   />
 </client-only>
-```
-
-- Import the css file required by the component into your **`app.vue`** file.
-
-```js
-import 'vue3-lottie/dist/style.css'
 ```
 
 # Props and options

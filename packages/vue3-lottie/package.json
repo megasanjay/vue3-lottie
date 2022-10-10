@@ -1,6 +1,6 @@
 {
-  "name": "vue3-lottie",
-  "version": "2.3.0",
+  "name": "@reslear/vue3-lottie",
+  "version": "0.0.5",
   "keywords": [
     "vue3",
     "lottie"
