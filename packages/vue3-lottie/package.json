@@ -33,7 +33,7 @@
     "dev": "vite build --watch",
     "build": "vite build",
     "lint": "eslint \"{packages,playground}/**/*.{ts,tsx,vue,js,jsx,html}\"",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "pnpm run build",
     "prettier": "npx prettier --write ."
   },
   "dependencies": {
