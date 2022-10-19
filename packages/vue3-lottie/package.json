@@ -1,6 +1,6 @@
 {
   "name": "@reslear/vue3-lottie",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "keywords": [
     "vue3",
     "lottie"
@@ -37,6 +37,7 @@
     "prettier": "npx prettier --write ."
   },
   "dependencies": {
+    "@reslear/dotlottie-player-core": "^0.0.4",
     "lottie-web": "^5.9.6"
   },
   "devDependencies": {

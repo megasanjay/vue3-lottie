@@ -1,5 +1,5 @@
 {
-  "name": "vite-project",
+  "name": "vite-playground",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "vue": "3.2.40",
-    "vue3-lottie": "workspace:*"
+    "@reslear/vue3-lottie": "workspace:*"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "3.1.2",

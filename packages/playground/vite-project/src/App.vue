@@ -8,6 +8,9 @@
   <h2>Static Asset</h2>
   <Vue3Lottie :animationLink="thirdAnim" :height="200" />
 
+  <h2>Dot lottie external file</h2>
+  <Vue3Lottie :animationLink="dotLottieFile" :height="200" />
+
   <button @click="switchJson()">Change file</button>
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
 </template>
@@ -25,6 +28,10 @@ const secondAnim = ref(
   'https://assets1.lottiefiles.com/packages/lf20_soCRuE.json',
 )
 const thirdAnim = ref(new URL(CatUrl, import.meta.url).href)
+
+const dotLottieFile = ref(
+  'https://assets1.lottiefiles.com/dotlotties/dlf10_qdfIUJH8rq.lottie',
+)
 
 function switchJson() {
   firstAnim.value = CatJSON

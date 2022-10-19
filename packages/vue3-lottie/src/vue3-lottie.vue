@@ -10,19 +10,11 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  ref,
-  onMounted,
-  computed,
-  watch,
-  shallowRef,
-  onUnmounted,
-  watchEffect,
-  nextTick,
-} from 'vue'
+import { ref, onMounted, computed, watch, shallowRef, onUnmounted } from 'vue'
 import Lottie from 'lottie-web'
 
-import { fetchData, parseData } from './utils'
+import { parseData } from './utils'
+import { fetchLottie } from '@reslear/dotlottie-player-core'
 
 import type {
   AnimationDirection,
@@ -383,7 +375,7 @@ async function prepareAnimationData() {
   // parse or fetch data
   const json = props.animationData
     ? parseData(props.animationData)
-    : await fetchData(props.animationLink, props.fetchOptions)
+    : await fetchLottie(props.animationLink, props.fetchOptions)
 
   if (!json) {
     throw new Error('You must provide correct animationLink or animationData')

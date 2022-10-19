@@ -24,10 +24,3 @@ export function parseData(value: string | object): object | undefined {
 
   return
 }
-export async function fetchData(value: string, fetchOptions?: object) {
-  try {
-    return await fetch(new URL(value).href, fetchOptions)
-      .then((res) => res.text())
-      .then((text) => parseData(text))
-  } catch {}
-}
