@@ -5736,10 +5736,10 @@ pluralize@^8.0.0:
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
   integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
 
-pnpm@7.1.9:
-  version "7.1.9"
-  resolved "https://registry.yarnpkg.com/pnpm/-/pnpm-7.1.9.tgz#66e1977275552e3127f075124fd3f5be4880d5be"
-  integrity sha512-YWA+iqayHb0MndHTyqvVPKQVYVCOoBYlQNLP3hAf2DT/Iw2EHVcP18yCT+xnsPNvkC4VYfQepE6AZvySQue1TA==
+pnpm@7.14.0:
+  version "7.14.0"
+  resolved "https://registry.yarnpkg.com/pnpm/-/pnpm-7.14.0.tgz#2baf3a7e8a7fc865b349f94fe8f656b24f21449c"
+  integrity sha512-yUKSckJLBIw8ByqMKJF9497kzwrevuQhdL6o2eYbky7woAictxoGX9veBdQYCdBemuC239X2FJq/LGTpCjQ55w==
 
 postcss-selector-parser@^6.0.9:
   version "6.0.10"
