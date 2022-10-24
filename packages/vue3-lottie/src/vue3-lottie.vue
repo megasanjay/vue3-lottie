@@ -11,6 +11,7 @@
 <script lang="ts">
 import { ref, onMounted, computed, watch, defineComponent, PropType } from 'vue'
 import Lottie from 'lottie-web'
+import { isEqual } from 'lodash'
 
 export interface LottieProps {
   animationData: any
@@ -108,7 +109,7 @@ export default defineComponent({
 
     // hack fix supplement for ssr
     const checkIfContainerExists = (elementID: String) => {
-      if (document.querySelector(`[data-id="${elementID}" ]`) !== null) {
+      if (document.querySelector(`[data-id="${elementID}"]`) !== null) {
         return true
       } else {
         return false
@@ -125,7 +126,7 @@ export default defineComponent({
       // creating a copy of the animation data to prevent the original data from being modified
       // also needed to render multiple animations on the same page
       let animationData = {}
-      if (props.animationData !== {}) {
+      if (isEqual(props.animationData, {})) {
         animationData = JSON.parse(JSON.stringify(props.animationData))
       }
 
@@ -411,7 +412,7 @@ export default defineComponent({
         )
       }
 
-      if (props.animationLink === '' && props.animationData === {}) {
+      if (props.animationLink === '' && isEqual(props.animationData, {})) {
         throw new Error(
           'You must provide either animationLink or animationData',
         )
