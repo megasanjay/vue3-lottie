@@ -11,7 +11,7 @@
 <script lang="ts">
 import { ref, onMounted, computed, watch, defineComponent, PropType } from 'vue'
 import Lottie from 'lottie-web'
-import { isEqual } from 'lodash'
+import { isEqual, cloneDeep } from 'lodash'
 
 export interface LottieProps {
   animationData: any
@@ -92,6 +92,10 @@ export default defineComponent({
       type: Boolean as PropType<LottieProps['pauseAnimation']>,
       default: false,
     },
+    rendererSettings: {
+      type: Object as PropType<LottieProps['rendererSettings']>,
+      default: () => ({}),
+    },
   },
 
   emits: {
@@ -127,7 +131,7 @@ export default defineComponent({
       // also needed to render multiple animations on the same page
       let animationData = {}
       if (isEqual(props.animationData, {})) {
-        animationData = JSON.parse(JSON.stringify(props.animationData))
+        animationData = cloneDeep(props.animationData)
       }
 
       if (props.animationLink != '') {
@@ -161,6 +165,7 @@ export default defineComponent({
         loop: loop,
         autoplay: autoPlay,
         animationData: animationData,
+        rendererSettings: props.rendererSettings,
       })
 
       setTimeout(() => {
