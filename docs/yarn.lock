@@ -555,6 +555,11 @@ isarray@~1.0.0:
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
   integrity sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=
 
+lodash@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+
 lottie-web@^5.8.1:
   version "5.8.1"
   resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.8.1.tgz#807e0af0ad22b59bf867d964eb684cb3368da0ef"
@@ -777,11 +782,12 @@ vitepress@0.22.4:
     vite "^2.9.7"
     vue "^3.2.33"
 
-vue3-lottie@2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/vue3-lottie/-/vue3-lottie-2.3.0.tgz#3b0e93cd8235545aad85e73a3ed3e9ca8ccbc6cd"
-  integrity sha512-pThHpAIxxvk9c5lJXyCgrIAUIy/Xn/XLETqW2yA+VIg5B+phjQkdxkTvRG60pq3zOZ9su2hee+HZgT9tWA+8Fw==
+vue3-lottie@2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/vue3-lottie/-/vue3-lottie-2.3.2.tgz#e816ad8f49a2f9f6ac46b30fa70e67178a466742"
+  integrity sha512-cUrB0k5pDKcsSPMKF74wRnpDchKEraMsn5lWQDMVFSFU9HsHQOqThqOQQfIBlY3jIYCPffgVgPQ6ugzh4eQb5A==
   dependencies:
+    lodash "^4.17.21"
     lottie-web "^5.8.1"
 
 vue@^3.2.33:

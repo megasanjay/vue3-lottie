@@ -130,7 +130,7 @@ export default defineComponent({
       // creating a copy of the animation data to prevent the original data from being modified
       // also needed to render multiple animations on the same page
       let animationData = {}
-      if (isEqual(props.animationData, {})) {
+      if (!isEqual(props.animationData, {})) {
         animationData = JSON.parse(JSON.stringify(props.animationData))
       }
 
@@ -158,15 +158,21 @@ export default defineComponent({
         autoPlay = false
       }
 
-      // actually load the animation
-      lottieAnimation = Lottie.loadAnimation({
+      const lottieAnimationConfig: any = {
         container: element,
         renderer: 'svg',
         loop: loop,
         autoplay: autoPlay,
         animationData: animationData,
         rendererSettings: props.rendererSettings,
-      })
+      }
+
+      if (!isEqual(props.rendererSettings, {})) {
+        lottieAnimationConfig.rendererSettings = props.rendererSettings
+      }
+
+      // actually load the animation
+      lottieAnimation = Lottie.loadAnimation(lottieAnimationConfig)
 
       setTimeout(() => {
         autoPlay = props.autoPlay
@@ -417,7 +423,7 @@ export default defineComponent({
         )
       }
 
-      if (props.animationLink === '' && isEqual(props.animationData, {})) {
+      if (props.animationLink === '' && !isEqual(props.animationData, {})) {
         throw new Error(
           'You must provide either animationLink or animationData',
         )
