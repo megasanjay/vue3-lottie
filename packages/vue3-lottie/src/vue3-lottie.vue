@@ -11,7 +11,7 @@
 <script lang="ts">
 import { ref, onMounted, computed, watch, defineComponent, PropType } from 'vue'
 import Lottie from 'lottie-web'
-import { isEqual, cloneDeep } from 'lodash'
+import { isEqual } from 'lodash'
 
 export interface LottieProps {
   animationData: any
@@ -131,7 +131,7 @@ export default defineComponent({
       // also needed to render multiple animations on the same page
       let animationData = {}
       if (isEqual(props.animationData, {})) {
-        animationData = cloneDeep(props.animationData)
+        animationData = JSON.parse(JSON.stringify(props.animationData))
       }
 
       if (props.animationLink != '') {
