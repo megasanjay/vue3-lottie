@@ -11,7 +11,7 @@
 <script lang="ts">
 import { ref, onMounted, computed, watch, defineComponent, PropType } from 'vue'
 import Lottie from 'lottie-web'
-import { isEqual } from 'lodash'
+import { cloneDeep, isEqual } from 'lodash'
 
 export interface LottieProps {
   animationData: any
@@ -130,8 +130,8 @@ export default defineComponent({
       // creating a copy of the animation data to prevent the original data from being modified
       // also needed to render multiple animations on the same page
       let animationData = {}
-      if (!isEqual(props.animationData, {})) {
-        animationData = JSON.parse(JSON.stringify(props.animationData))
+      if (isEqual(props.animationData, {}) === false) {
+        animationData = cloneDeep(props.animationData)
       }
 
       if (props.animationLink != '') {
@@ -164,10 +164,9 @@ export default defineComponent({
         loop: loop,
         autoplay: autoPlay,
         animationData: animationData,
-        rendererSettings: props.rendererSettings,
       }
 
-      if (!isEqual(props.rendererSettings, {})) {
+      if (isEqual(props.rendererSettings, {}) === false) {
         lottieAnimationConfig.rendererSettings = props.rendererSettings
       }
 
@@ -423,7 +422,13 @@ export default defineComponent({
         )
       }
 
-      if (props.animationLink === '' && !isEqual(props.animationData, {})) {
+      if (props.animationLink === '' && isEqual(props.animationData, {})) {
+        console.log(
+          props.animationData,
+          'animationData',
+          props.animationLink,
+          'animationLink',
+        )
         throw new Error(
           'You must provide either animationLink or animationData',
         )
