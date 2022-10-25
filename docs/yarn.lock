@@ -782,10 +782,10 @@ vitepress@0.22.4:
     vite "^2.9.7"
     vue "^3.2.33"
 
-vue3-lottie@2.3.3:
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/vue3-lottie/-/vue3-lottie-2.3.3.tgz#a85d39e3b80656c5809065d1cfab979daa39d8a2"
-  integrity sha512-Jz521NlnUb60Qwu8z9HbzdlmhTh9hAlfDpsI79fARWcnzaQtQgr8mXyQg9cFzPc43XzZX8n/p5Vg4kEaK9DF/A==
+vue3-lottie@2.3.4:
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/vue3-lottie/-/vue3-lottie-2.3.4.tgz#69cf45da86b37bea24b64dc1717a31ebe0d16fda"
+  integrity sha512-u+cqHldraYckpXp4/l6wEMf62sAT2xYCoPeA2ZMKwV35W92nvYFFdboPcX1ZSHY7ZlKkH+Vcc5QTeIDm305NHQ==
   dependencies:
     lodash "^4.17.21"
     lottie-web "^5.8.1"
