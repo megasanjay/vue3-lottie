@@ -25,7 +25,7 @@ importers:
   packages/vue3-lottie:
     specifiers:
       '@babel/types': 7.19.0
-      '@types/lodash': ^4.14.186
+      '@types/lodash': 4.14.186
       '@types/node': 17.0.19
       '@vitejs/plugin-vue': 2.3.4
       lodash: ^4.17.21
