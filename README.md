@@ -1,35 +1,6 @@
-<p align="center">
-  <a href="#">
-    <img src="hi.gif" width="150" height="150" />
-  </a>
+# Vue 3 Lottie
 
-  <h3 align="center">Vue 3 Lottie</h3>
-
-  <p align="center">
-    Add Lottie animations to your Vue 3 application <br/>
-    <br/>
-    <a href="https://www.npmjs.com/package/vue3-lottie">
-      <img src="https://img.shields.io/npm/v/vue3-lottie" />
-    </a>
-    <a href="https://www.npmjs.com/package/vue3-lottie">
-      <img src="https://img.shields.io/npm/dm/vue3-lottie" />
-    </a>
-    <a href="https://github.com/megasanjay/vue3-lottie/stargazers">
-      <img src="https://img.shields.io/github/stars/megasanjay/vue3-lottie.svg?style=flat-square" />
-    </a>
-    <a href="https://github.com/megasanjay/vue3-lottie/blob/main/LICENSE">
-      <img src="https://img.shields.io/npm/l/vue3-lottie" >
-    </a>
-    <a href="https://github.com/megasanjay/vue3-lottie/issues">
-      <img src="https://img.shields.io/github/issues/megasanjay/vue3-lottie" />
-    </a>
-    <br/> 
-    <br/>
-    <a href="https://vue3-lottie.vercel.app/"><strong>Explore the documentation »</strong></a>
-  </p>
-</p>
-
----
+[![npm](https://img.shields.io/npm/v/vue3-lottie)](https://www.npmjs.com/package/vue3-lottie) [![Downloads](https://img.shields.io/npm/dt/vue3-lottie)](https://www.npmjs.com/package/vue3-lottie) [![Stars](https://img.shields.io/github/stars/megasanjay/vue3-lottie.svg?style=flat-square)](https://github.com/megasanjay/vue3-lottie/stargazers) [![License](https://img.shields.io/npm/l/vue3-lottie)](https://github.com/megasanjay/vue3-lottie/blob/main/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/megasanjay/vue3-lottie)](https://github.com/megasanjay/vue3-lottie/issues)
 
 `vue3-lottie` was created to help developers add Lottie animations to their Vue 3 applications. In my search for a simple way to add Lottie animations to my Vue application I found a suprising lack of maintained solutions. `vue3-lottie` is a vue wrapper around the `lottie-web` library with a few additional features.
 
@@ -200,6 +171,7 @@ More detailed explanations are provided in the [documentation](https://vue3-lott
 | pauseOnHover     | Boolean           | false         | Whether to pause the animation on hover                                                  |
 | playOnHover      | Boolean           | false         | Whether to play the animation when you hover                                             |
 | backgroundColor  | String            | transparent   | Background color of the container                                                        |
+| renderer         | String            | "svg"         | Set the renderer                                                                         |
 | rendererSettings | Object            | {}            | Options for if you want to use an existing canvas to draw (can be ignored on most cases) |
 
 # Events

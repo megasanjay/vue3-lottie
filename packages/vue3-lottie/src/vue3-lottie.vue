@@ -92,6 +92,10 @@ export default defineComponent({
       type: Boolean as PropType<LottieProps['pauseAnimation']>,
       default: false,
     },
+    renderer: {
+      type: String as PropType<LottieProps['rendererSettings']>,
+      default: 'svg',
+    },
     rendererSettings: {
       type: Object as PropType<LottieProps['rendererSettings']>,
       default: () => ({}),
@@ -160,7 +164,7 @@ export default defineComponent({
 
       const lottieAnimationConfig: any = {
         container: element,
-        renderer: 'svg',
+        renderer: props.renderer,
         loop: loop,
         autoplay: autoPlay,
         animationData: animationData,
