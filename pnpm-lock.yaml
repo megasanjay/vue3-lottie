@@ -7,7 +7,7 @@ importers:
 
   packages/playground/vite-project:
     specifiers:
-      '@vitejs/plugin-vue': 2.3.4
+      '@vitejs/plugin-vue': 3.2.0
       typescript: 4.8.4
       vite: 2.9.15
       vue: 3.2.39
@@ -17,7 +17,7 @@ importers:
       vue: 3.2.39
       vue3-lottie: link:../../vue3-lottie
     devDependencies:
-      '@vitejs/plugin-vue': 2.3.4_vite@2.9.15+vue@3.2.39
+      '@vitejs/plugin-vue': 3.2.0_vite@2.9.15+vue@3.2.39
       typescript: 4.8.4
       vite: 2.9.15
       vue-tsc: 0.40.13_typescript@4.8.4
@@ -27,7 +27,7 @@ importers:
       '@babel/types': 7.20.0
       '@types/lodash': 4.14.186
       '@types/node': 18.11.7
-      '@vitejs/plugin-vue': 2.3.4
+      '@vitejs/plugin-vue': 3.2.0
       lodash: ^4.17.21
       lottie-web: ^5.8.1
       typescript: 4.8.4
@@ -42,7 +42,7 @@ importers:
       '@babel/types': 7.20.0
       '@types/lodash': 4.14.186
       '@types/node': 18.11.7
-      '@vitejs/plugin-vue': 2.3.4_vite@2.9.15+vue@3.2.39
+      '@vitejs/plugin-vue': 3.2.0_vite@2.9.15+vue@3.2.39
       typescript: 4.8.4
       vite: 2.9.15
       vue: 3.2.39
@@ -103,11 +103,11 @@ packages:
     resolution: {integrity: sha512-LhFTglglr63mNXUSRYD8A+ZAIu5sFqNJ4Y2fPuY7UlrySJH87rRRlhtVmMHplmfk5WkoJGmDjE9oiTfyX94CpQ==}
     dev: true
 
-  /@vitejs/plugin-vue/2.3.4_vite@2.9.15+vue@3.2.39:
-    resolution: {integrity: sha512-IfFNbtkbIm36O9KB8QodlwwYvTEsJb4Lll4c2IwB3VHc2gie2mSPtSzL0eYay7X2jd/2WX02FjSGTWR6OPr/zg==}
-    engines: {node: '>=12.0.0'}
+  /@vitejs/plugin-vue/3.2.0_vite@2.9.15+vue@3.2.39:
+    resolution: {integrity: sha512-E0tnaL4fr+qkdCNxJ+Xd0yM31UwMkQje76fsDVBBUCoGOUPexu2VDUYHL8P4CwV+zMvWw6nlRw19OnRKmYAJpw==}
+    engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
-      vite: ^2.5.10
+      vite: ^3.0.0
       vue: ^3.2.25
     dependencies:
       vite: 2.9.15
