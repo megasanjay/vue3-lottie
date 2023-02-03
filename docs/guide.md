@@ -61,6 +61,10 @@ import 'vue3-lottie/dist/style.css'
 createApp(App).use(Vue3Lottie).mount('#app')
 ```
 
+::: warning
+If you get an error with TS, try use(Vue3Lottie, { name: "Vue3Lottie" })
+:::
+
 To define global components for [Volar type-checking](https://github.com/johnsoncodehk/volar/tree/master/extensions/vscode-vue-language-features#usage) you will need to add:
 
 ```ts
