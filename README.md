@@ -70,6 +70,8 @@ import 'vue3-lottie/dist/style.css'
 createApp(App).use(Vue3Lottie).mount('#app')
 ```
 
+If you get an error with TS, try `use(Vue3Lottie, { name: "Vue3Lottie" })`
+
 To define global components for [Volar type-checking](https://github.com/johnsoncodehk/volar/tree/master/extensions/vscode-vue-language-features#usage) you will need to add:
 
 ```ts
@@ -158,6 +160,8 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(Vue3Lottie)
 })
 ```
+
+If you get an error with TS, try `use(Vue3Lottie, { name: "Vue3Lottie" })`
 
 This should register as a global component that you can call anywhere in your app under the <Vue3Lottie> tag.
 
