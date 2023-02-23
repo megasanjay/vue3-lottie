@@ -12,6 +12,7 @@
 <script lang="ts" setup>
 import { ref, onMounted, computed, watch, shallowRef, onUnmounted } from 'vue'
 import Lottie from 'lottie-web'
+import { cloneDeep, isEqual } from 'lodash'
 
 import { parseData } from './utils'
 import { fetchLottie } from '@reslear/dotlottie-player-core'
@@ -39,6 +40,7 @@ const props = withDefaults(defineProps<LottieProps>(), {
   backgroundColor: 'transparent',
   pauseAnimation: false,
   fetchOptions: undefined,
+  renderer: 'svg',
 })
 
 const emits = defineEmits<{
@@ -70,6 +72,24 @@ const loadLottie = async (element: Element) => {
     autoPlay = false
   }
 
+  // creating a copy of the animation data to prevent the original data from being modified
+  // also needed to render multiple animations on the same page
+  let animationData = {}
+  if (isEqual(props.animationData, {}) === false) {
+    animationData = cloneDeep(props.animationData)
+  }
+
+  if (props.animationLink != '') {
+    try {
+      const response = await fetch(props.animationLink)
+      const json = await response.json()
+      animationData = json
+    } catch (error) {
+      console.error(error)
+      return
+    }
+  }
+
   let loop = props.loop
 
   // drop the loop by one
@@ -83,14 +103,20 @@ const loadLottie = async (element: Element) => {
     autoPlay = false
   }
 
-  // actually load the animation
-  lottieAnimation = Lottie.loadAnimation({
+  const lottieAnimationConfig: any = {
     container: element,
-    renderer: 'svg',
+    renderer: props.renderer,
     loop: loop,
     autoplay: autoPlay,
-    animationData: animationData.value,
-  })
+    animationData: animationData,
+  }
+
+  if (isEqual(props.rendererSettings, {}) === false) {
+    lottieAnimationConfig.rendererSettings = props.rendererSettings
+  }
+
+  // actually load the animation
+  lottieAnimation = Lottie.loadAnimation(lottieAnimationConfig)
 
   if (!lottieAnimation) {
     return
@@ -98,7 +124,6 @@ const loadLottie = async (element: Element) => {
 
   setTimeout(() => {
     if (!lottieAnimation) return
-
     autoPlay = props.autoPlay
 
     if (props.playOnHover) {
@@ -350,6 +375,16 @@ const setupLottie = (elementID: String) => {
     throw new Error(
       'You cannot set pauseOnHover and playOnHover for Vue3-Lottie at the same time.',
     )
+  }
+
+  if (props.animationLink === '' && isEqual(props.animationData, {})) {
+    console.log(
+      props.animationData,
+      'animationData',
+      props.animationLink,
+      'animationLink',
+    )
+    throw new Error('You must provide either animationLink or animationData')
   }
 
   // Unfortunately, this is a hackfix for ssr. We need to wait for the element to be rendered before we can load the animation.

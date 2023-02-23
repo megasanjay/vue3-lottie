@@ -61,6 +61,10 @@ import 'vue3-lottie/dist/style.css'
 createApp(App).use(Vue3Lottie).mount('#app')
 ```
 
+::: warning
+If you get an error with TS, try use(Vue3Lottie, { name: "Vue3Lottie" })
+:::
+
 To define global components for [Volar type-checking](https://github.com/johnsoncodehk/volar/tree/master/extensions/vscode-vue-language-features#usage) you will need to add:
 
 ```ts
@@ -145,17 +149,17 @@ yarn add vue3-lottie@latest
 - Add the following code to the **`Vue3Lottie.client.ts`** file.
 
 ```js
-import Vue3Lottie from "vue3-lottie";
+import Vue3Lottie from 'vue3-lottie'
 
 export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.use(Vue3Lottie);
-});
+  nuxtApp.vueApp.use(Vue3Lottie)
+})
 ```
 
-This should register as a global component that you can call anywhere in your app under the `<Vue3Lottie>` tag. 
+This should register as a global component that you can call anywhere in your app under the `<Vue3Lottie>` tag.
 
 :::tip
-I would recommend using a `<client-only>` parent tag to ensure that the animation only loads in on the client side. 
+I would recommend using a `<client-only>` parent tag to ensure that the animation only loads in on the client side.
 
 ```
 <client-only>
@@ -166,6 +170,7 @@ I would recommend using a `<client-only>` parent tag to ensure that the animatio
   />
 </client-only>
 ```
+
 :::
 
 - Import the css file required by the component into your **`app.vue`** file.
@@ -299,6 +304,14 @@ A prop to change the background color of the container. This will be passed dire
 | Type   | Default value | Required | Accepted values                            |
 | ------ | ------------- | -------- | ------------------------------------------ |
 | String | `transparent` | no       | Any valid CSS color or hex based rgb value |
+
+### renderer
+
+A prop to change the renderer of the animation.
+
+| Type   | Default value | Required | Accepted values             |
+| ------ | ------------- | -------- | --------------------------- |
+| String | `svg`         | no       | `svg` or `canvas` or `html` |
 
 ### rendererSettings
 

@@ -29,8 +29,6 @@
   </p>
 </p>
 
----
-
 `vue3-lottie` was created to help developers add Lottie animations to their Vue 3 applications. In my search for a simple way to add Lottie animations to my Vue application I found a suprising lack of maintained solutions. `vue3-lottie` is a vue wrapper around the `lottie-web` library with a few additional features.
 
 # Demos
@@ -70,6 +68,8 @@ import Vue3Lottie from 'vue3-lottie'
 
 createApp(App).use(Vue3Lottie).mount('#app')
 ```
+
+If you get an error with TS, try `use(Vue3Lottie, { name: "Vue3Lottie" })`
 
 To define global components for [Volar type-checking](https://github.com/johnsoncodehk/volar/tree/master/extensions/vscode-vue-language-features#usage) you will need to add:
 
@@ -160,6 +160,8 @@ export default defineNuxtPlugin((nuxtApp) => {
 })
 ```
 
+If you get an error with TS, try `use(Vue3Lottie, { name: "Vue3Lottie" })`
+
 This should register as a global component that you can call anywhere in your app under the <Vue3Lottie> tag.
 
 I would recommend using a `<client-only>` parent tag to ensure that the animation only loads in on the client side.
@@ -193,6 +195,7 @@ More detailed explanations are provided in the [documentation](https://vue3-lott
 | pauseOnHover     | Boolean           | false         | Whether to pause the animation on hover                                                  |
 | playOnHover      | Boolean           | false         | Whether to play the animation when you hover                                             |
 | backgroundColor  | String            | transparent   | Background color of the container                                                        |
+| renderer         | String            | "svg"         | Set the renderer                                                                         |
 | rendererSettings | Object            | {}            | Options for if you want to use an existing canvas to draw (can be ignored on most cases) |
 
 # Events

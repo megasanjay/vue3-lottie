@@ -1,6 +1,33 @@
-# Vue 3 Lottie
+<p align="center">
+  <a href="#">
+    <img src="hi.gif" width="150" height="150" />
+  </a>
 
-[![npm](https://img.shields.io/npm/v/vue3-lottie)](https://www.npmjs.com/package/vue3-lottie) [![Downloads](https://img.shields.io/npm/dt/vue3-lottie)](https://www.npmjs.com/package/vue3-lottie) [![Stars](https://img.shields.io/github/stars/megasanjay/vue3-lottie.svg?style=flat-square)](https://github.com/megasanjay/vue3-lottie/stargazers) [![License](https://img.shields.io/npm/l/vue3-lottie)](https://github.com/megasanjay/vue3-lottie/blob/main/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/megasanjay/vue3-lottie)](https://github.com/megasanjay/vue3-lottie/issues)
+  <h3 align="center">Vue 3 Lottie</h3>
+
+  <p align="center">
+    Add Lottie animations to your Vue 3 application <br/>
+    <br/>
+    <a href="https://www.npmjs.com/package/vue3-lottie">
+      <img src="https://img.shields.io/npm/v/vue3-lottie" />
+    </a>
+    <a href="https://www.npmjs.com/package/vue3-lottie">
+      <img src="https://img.shields.io/npm/dm/vue3-lottie" />
+    </a>
+    <a href="https://github.com/megasanjay/vue3-lottie/stargazers">
+      <img src="https://img.shields.io/github/stars/megasanjay/vue3-lottie.svg?style=flat-square" />
+    </a>
+    <a href="https://github.com/megasanjay/vue3-lottie/blob/main/LICENSE">
+      <img src="https://img.shields.io/npm/l/vue3-lottie" >
+    </a>
+    <a href="https://github.com/megasanjay/vue3-lottie/issues">
+      <img src="https://img.shields.io/github/issues/megasanjay/vue3-lottie" />
+    </a>
+    <br/> 
+    <br/>
+    <a href="https://vue3-lottie.vercel.app/"><strong>Explore the documentation »</strong></a>
+  </p>
+</p>
 
 `vue3-lottie` was created to help developers add Lottie animations to their Vue 3 applications. In my search for a simple way to add Lottie animations to my Vue application I found a suprising lack of maintained solutions. `vue3-lottie` is a vue wrapper around the `lottie-web` library with a few additional features.
 
@@ -173,6 +200,7 @@ More detailed explanations are provided in the [documentation](https://vue3-lott
 | pauseOnHover     | Boolean                                                                                                                                           | false         | Whether to pause the animation on hover                                                                                                                                                                  |
 | playOnHover      | Boolean                                                                                                                                           | false         | Whether to play the animation when you hover                                                                                                                                                             |
 | backgroundColor  | String                                                                                                                                            | transparent   | Background color of the container                                                                                                                                                                        |
+| renderer         | String                                                                                                                                            | "svg"         | Set the renderer                                                                                                                                                                                         |
 | rendererSettings | Object                                                                                                                                            | {}            | Options for if you want to use an existing canvas to draw (can be ignored on most cases)                                                                                                                 |
 | fetchOptions     | [Object](https://microsoft.github.io/PowerBI-JavaScript/interfaces/_node_modules_typedoc_node_modules_typescript_lib_lib_dom_d_.requestinit.html) | undefined     | Options for fetch request `animationLink` for support additional features like AbortController, credentials, headers and etc... [MDN](https://developer.mozilla.org/en-US/docs/Web/API/fetch#parameters) |
 
@@ -231,5 +259,6 @@ You can control the animation with the following methods. These methods can be c
 A big thank you goes to [@reslear](https://github.com/reslear) for adding Typescript support to this library. Go check out his profile and give him a follow!
 
 - [@DamianGlowala](https://github.com/DamianGlowala) - PR [#29](https://github.com/megasanjay/vue3-lottie/pull/29) - Fix `watch` function
+- [@Doyeon Eum](https://lottiefiles.com/user/283677) - For the hero [image](https://lottiefiles.com/20574-mongryong-hi) in this repo.
 
 ![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg) ![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)

@@ -12,7 +12,15 @@
   <Vue3Lottie :animationLink="dotLottieFile" :height="200" />
 
   <button @click="switchJson()">Change file</button>
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+
+
+  <Vue3Lottie :animationData="DogJSON" :height="300" />
+  <Vue3Lottie
+    animationLink="https://assets1.lottiefiles.com/packages/lf20_soCRuE.json"
+    :height="300"
+  />
+  
+  <HelloWorld msg="Hello Lottie! Using Vue 3 + TypeScript + Vite" />
 </template>
 
 <script setup lang="ts">

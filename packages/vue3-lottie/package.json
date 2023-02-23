@@ -1,19 +1,6 @@
 {
   "name": "@reslear/vue3-lottie",
-  "version": "0.0.6",
-  "keywords": [
-    "vue3",
-    "lottie"
-  ],
-  "homepage": "https://vue3-lottie.vercel.app/",
-  "bugs": {
-    "url": "https://github.com/megasanjay/vue3-lottie/issues",
-    "email": "info@sanjaysoundarajan.dev"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/megasanjay/vue3-lottie.git"
-  },
+  "version": "0.0.7",
   "license": "MIT",
   "author": "Sanjay Soundarajan <info@sanjaysoundarajan.dev> (https://sanjaysoundarajan.dev)",
   "type": "module",
@@ -37,20 +24,22 @@
     "prettier": "npx prettier --write ."
   },
   "dependencies": {
+    "lodash": "^4.17.21",
     "@reslear/dotlottie-player-core": "^0.0.4",
     "lottie-web": "^5.9.6"
   },
   "devDependencies": {
-    "@babel/types": "~7.19.3",
-    "@types/node": "~18.8.3",
+    "@babel/types": "7.20.7",
+    "@types/node": "18.11.19",
     "@vitejs/plugin-vue": "~3.1.2",
     "@vue/compiler-sfc": "~3.2.40",
-    "typescript": "~4.8.4",
+    "@types/lodash": "4.14.191",
+    "typescript": "4.9.5",
     "vite": "~3.1.6",
     "vite-plugin-css-injected-by-js": "~2.1.0",
     "vite-plugin-dts": "~1.6.5",
     "vite-plugin-vue-type-imports": "~0.2.3",
-    "vue": "~3.2.40"
+    "vue": "~3.2.47"
   },
   "peerDependencies": {
     "vue": "^3.2"
