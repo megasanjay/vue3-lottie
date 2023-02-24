@@ -31,15 +31,13 @@
 
 `vue3-lottie` was created to help developers add Lottie animations to their Vue 3 applications. In my search for a simple way to add Lottie animations to my Vue application I found a suprising lack of maintained solutions. `vue3-lottie` is a vue wrapper around the `lottie-web` library with a few additional features.
 
-# Demos
+## Demos
 
 View the live demos here: [https://vue3-lottie.vercel.app](https://vue3-lottie.vercel.app)
 
-# Upgrade to v2.x
+## Migration guide
 
-If you are using version 1.x of `vue3-lottie` you should upgrade to version 2.x. You can do this by running the [Installation and Usage](#installation-and-usage) command below. This adds TS support for the component. There are some new imports so take a look at the [new documentation](https://vue3-lottie.vercel.app/guide.html#usage).
-
-# Upgrade to v3.x
+### Upgrade to v3.x
 
 1. Upgrade to version 3.x.
 2. Remove importing styles
@@ -63,11 +61,11 @@ If you are using version 1.x of `vue3-lottie` you should upgrade to version 2.x.
    + <Vue3Lottie :animationData="AstronautJSON"  @complete="onComplete" />
    ```
 
-# Installation and Usage
+## Installation and Usage
 
-## Vue 3
+### Vue 3
 
-- You can install `vue3-lottie` over `yarn`, `npm` or `pnpm`. `lottie-web` is a dependency of `vue3-lottie` and should be automatically installed when you install `vue3-lottie`.
+- You can install `vue3-lottie`.
 
 ```sh
 # npm
@@ -112,7 +110,7 @@ app.use(Vue3Lottie, { name: 'LottieAnimation' }) // use in template <LottieAnima
 
 - `name` string (default: 'Vue3Lottie') - set custom component name
 
-Alternatively you can also import the component locally.
+Alternatively you can also import the component locally (recommended is you use not many animations in your project ).
 
 ```js
 import { Vue3Lottie } from 'vue3-lottie'
@@ -131,84 +129,131 @@ You can then use the component in your template
   <Vue3Lottie :animationData="AstronautJSON" :height="200" :width="200" />
 </template>
 
-<script>
+<script script="setup" lang="ts">
 import { Vue3Lottie } from 'vue3-lottie'
-
 import AstronautJSON from './astronaut.json'
-
-export default {
-  components: {
-    Vue3Lottie,
-  },
-  data() {
-    return {
-      AstronautJSON,
-    }
-  },
-}
 </script>
 ```
 
-## Nuxt 3
+### Nuxt 3
 
-This is still experimental. Will be updated soon.
-
-- You can install `vue3-lottie` over `yarn` or `npm`. `lottie-web` is a dependency of `vue3-lottie` and should be automatically installed when you install `vue3-lottie`.
-
-- Create a folder called **`plugins`** at the root of your project.
-- Create a file named **`Vue3Lottie.client.ts`** inside the _plugins_ directory.
-- Add the following code to the **`Vue3Lottie.client.ts`** file.
+In folder **`plugins`** create a file named **`Vue3Lottie.client.ts`** and add code:
 
 ```ts
-import Vue3Lottie from 'vue3-lottie'
-
-export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.use(Vue3Lottie)
+export default defineNuxtPlugin(async (nuxtApp) => {
+  const { Vue3Lottie } = await import('@reslear/vue3-lottie')
+  nuxtApp.vueApp.component('Vue3Lottie', Vue3Lottie)
 })
 ```
 
 This should register as a global component that you can call anywhere in your app under the <Vue3Lottie> tag.
 
-I would recommend using a `<client-only>` parent tag to ensure that the animation only loads in on the client side.
+```vue
+<Vue3Lottie
+  animationLink="https://assets10.lottiefiles.com/packages/lf20_soCRuE.json"
+  :height="200"
+  :width="200"
+/>
+```
+
+## Usage
+
+You can use one of the strategies:
+
+### Basic assets usage
+
+Bundle as assets your animation data with your application and import it into your component.
+
+You app will be bigger (any json files bundled in to you script files and so we get a larger size because of internal optimizations for support in different browsers)
+
+Recommended this strategy if you need to quickly load and render animation, for example in places where you want to see it first - dashboards, welcome screen, the first slide, etc.
 
 ```vue
-<client-only>
+<template>
+  <Vue3Lottie :animationData="AstronautJSON" :height="200" :width="200" />
+</template>
+
+<script script="setup" lang="ts">
+import { Vue3Lottie } from 'vue3-lottie'
+import AstronautJSON from '../assets/astronaut.json'
+</script>
+```
+
+### Using Lottie Animation URL
+
+Load animation data from URL, but you will have problems with CORS and slow loading animation data, recommend host animation data on your `public` folder and set `animationLink` to relative path.
+
+```vue
+<template>
   <Vue3Lottie
     animationLink="https://assets10.lottiefiles.com/packages/lf20_soCRuE.json"
     :height="200"
     :width="200"
   />
-</client-only>
+
+  <Vue3Lottie animationLink="/animation-data.json" :height="200" :width="200" />
+</template>
 ```
 
-# Props and options
+### Using Lottie Animation URL with dotLottie
+
+Same as above, but with support for [dotLottie](https://dotlottie.io/) `.lottie` file format, preferred way to load animation data from URL. Fetching a small compressed format animation in the browser is unpacked and render on the fly.
+
+We use own tiny powerful engine [dotlottie-player-core](https://github.com/reslear/dotlottie-player-core) to prepare data.
+
+For converting `.json` to `.lottie` use [dotlottie-web-converter](https://dotlottie.io/resources/json-to-dotLottie/).
+
+Recommended in all other cases where you do not need a strategy with assets import.
+
+```vue
+<template>
+  <Vue3Lottie
+    animationLink="https://assets10.lottiefiles.com/packages/lf20_soCRuE.lottie"
+    :height="200"
+    :width="200"
+  />
+</template>
+```
+
+### Comparison of strategies
+
+| **Strategy**         | **Fast painting** | **Fast bundling** | **Not bundled** | **Compressed** | **No CORS problems** |
+| -------------------- | ----------------- | ----------------- | --------------- | -------------- | -------------------- |
+| Assets               | ✅                | ❌                | ❌              | ❌             | ✅                   |
+| fetch .json          | ⚠️                | ✅                | ✅              | ❌             | ✅                   |
+| fetch external .json | ⚠️                | ✅                | ✅              | ❌             | ⚠️                   |
+| fetch .lottie        | ⚠️                | ✅                | ✅              | ✅             | ✅                   |
+| fetch external .json | ⚠️                | ✅                | ✅              | ✅             | ⚠️                   |
+
+## Props and options
 
 More detailed explanations are provided in the [documentation](https://vue3-lottie.vercel.app/guide.html).
 
-| Prop             | Type                                                                                                                                              | Default Value | Description                                                                                                                                                                                              |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| animationData    | Object \| String                                                                                                                                  | ''            | The lottie animation data provided as a JSON or String JSON                                                                                                                                              |
-| animationLink    | String                                                                                                                                            | ''            | A URL link to the Lottie animation data (eg: `Lottie Animation URL` on lottiefiles.com)                                                                                                                  |
-| width            | Number \| String                                                                                                                                  | "100%"        | Width of the lottie animation container (Numbers correspond to pixel values)                                                                                                                             |
-| height           | Number \| String                                                                                                                                  | "100%"        | Height of the lottie animation container (Numbers correspond to pixel values)                                                                                                                            |
-| speed            | Number                                                                                                                                            | "1"           | Speed of the lottie animation                                                                                                                                                                            |
-| direction        | String                                                                                                                                            | "forward"     | Animation play direction                                                                                                                                                                                 |
-| loop             | Number or Boolean                                                                                                                                 | true          | The number of instances that the lottie animation should run (true is infinite)                                                                                                                          |
-| autoPlay         | Boolean                                                                                                                                           | true          | Start animation on component load                                                                                                                                                                        |
-| delay            | Number                                                                                                                                            | 0             | Delay the animation play state by some milliseconds                                                                                                                                                      |
-| pauseAnimation   | Boolean                                                                                                                                           | false         | Prop to pass reactive variables so that you can control animation pause and play                                                                                                                         |
-| pauseOnHover     | Boolean                                                                                                                                           | false         | Whether to pause the animation on hover                                                                                                                                                                  |
-| playOnHover      | Boolean                                                                                                                                           | false         | Whether to play the animation when you hover                                                                                                                                                             |
-| backgroundColor  | String                                                                                                                                            | transparent   | Background color of the container                                                                                                                                                                        |
-| renderer         | String                                                                                                                                            | "svg"         | Set the renderer                                                                                                                                                                                         |
-| rendererSettings | Object                                                                                                                                            | {}            | Options for if you want to use an existing canvas to draw (can be ignored on most cases)                                                                                                                 |
-| fetchOptions     | [Object](https://microsoft.github.io/PowerBI-JavaScript/interfaces/_node_modules_typedoc_node_modules_typescript_lib_lib_dom_d_.requestinit.html) | undefined     | Options for fetch request `animationLink` for support additional features like AbortController, credentials, headers and etc... [MDN](https://developer.mozilla.org/en-US/docs/Web/API/fetch#parameters) |
+| **Prop**         | **Type**          | **Default Value** | **Description**                                                                                                                                                 |
+| ---------------- | ----------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| animationData    | Object/String     | ""                | The lottie animation data provided as a JSON or String JSON                                                                                                     |
+| animationLink    | String            | ""                | A URL link to the Lottie animation data (eg: `Lottie Animation URL` on lottiefiles.com also support [dotLottie](https://dotlottie.io/) `.lottie` ) file format. |
+| width            | Number/String     | 100%              | Width of the lottie animation container (Numbers correspond to pixel values)                                                                                    |
+| height           | Number/String     | 100%              | Height of the lottie animation container (Numbers correspond to pixel values)                                                                                   |
+| speed            | Number            | 1                 | Speed of the lottie animation                                                                                                                                   |
+| direction        | String            | "forward"         | Animation play direction                                                                                                                                        |
+| loop             | Number or Boolean | true              | The number of instances that the lottie animation should run (true is infinite)                                                                                 |
+| autoPlay         | Boolean           | true              | Start animation on component load                                                                                                                               |
+| delay            | Number            | 0                 | Delay the animation play state by some milliseconds                                                                                                             |
+| pauseAnimation   | Boolean           | false             | Prop to pass reactive variables so that you can control animation pause and play                                                                                |
+| pauseOnHover     | Boolean           | false             | Whether to pause the animation on hover                                                                                                                         |
+| playOnHover      | Boolean           | false             | Whether to play the animation when you hover                                                                                                                    |
+| backgroundColor  | String            | transparent       | Background color of the container                                                                                                                               |
+| renderer         | String            | "svg"             | Set the renderer                                                                                                                                                |
+| rendererSettings | Object            | {}                | Options for if you want to use an existing canvas to draw (can be ignored on most cases)                                                                        |
 
 We can use `LottieProps` to define options interface.
 
 ```ts
 import type { LottieProps } from 'vue3-lottie'
 ```
+
+## Events
 
 A few events are emitted from the component. Look at the [Demos](#Demos) for examples.
 
@@ -229,7 +274,7 @@ Example:
 <Vue3Lottie animationLink="anim.json" @loop-complete="log('loop complete 1')" />
 ```
 
-# Methods
+## Methods
 
 You can control the animation with the following methods. These methods can be called by assigning a `ref` value to the `vue3-lottie` component. Look at the [Demos](#Demos) for examples.
 
@@ -258,7 +303,7 @@ You can control the animation with the following methods. These methods can be c
 - updateDocumentData(documentData, index)
   - This method updates text on text layers. Refer to the [official docs](https://github.com/airbnb/lottie-web/wiki/TextLayer.updateDocumentData) for how to use this method.
 
-# Credits
+## Credits
 
 A big thank you goes to [@reslear](https://github.com/reslear) for adding Typescript support to this library. Go check out his profile and give him a follow!
 
