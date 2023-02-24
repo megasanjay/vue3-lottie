@@ -40,7 +40,7 @@
     "./dist/style.css": "./dist/style.css"
   },
   "devDependencies": {
-    "@babel/types": "7.21.0",
+    "@babel/types": "7.21.2",
     "@types/lodash": "4.14.191",
     "@types/node": "18.11.19",
     "@vitejs/plugin-vue": "2.3.4",
