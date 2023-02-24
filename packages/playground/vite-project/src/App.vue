@@ -13,13 +13,13 @@
 
   <button @click="switchJson()">Change file</button>
 
-
-  <Vue3Lottie :animationData="DogJSON" :height="300" />
+  <Vue3Lottie :animationData="DogJSON" :height="300" @click="log('click')" />
   <Vue3Lottie
     animationLink="https://assets1.lottiefiles.com/packages/lf20_soCRuE.json"
     :height="300"
+    @loop-complete="log('loop complete 1')"
   />
-  
+
   <HelloWorld msg="Hello Lottie! Using Vue 3 + TypeScript + Vite" />
 </template>
 
@@ -47,6 +47,10 @@ function switchJson() {
     'https://assets10.lottiefiles.com/packages/lf20_8fr70to8.json'
 
   thirdAnim.value = new URL('./assets/dog.json', import.meta.url).href
+}
+
+function log(msg: string) {
+  console.log(msg)
 }
 </script>
 

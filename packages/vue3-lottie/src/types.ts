@@ -7,10 +7,11 @@ export type {
 } from 'lottie-web'
 
 export interface LottieProps {
-  animationData: string | object
+  animationData: any
   animationLink: string
   loop: boolean | number
   autoPlay: boolean
+  renderer: string
   rendererSettings: any
   width: number | string
   height: number | string
@@ -22,4 +23,9 @@ export interface LottieProps {
   backgroundColor: string
   pauseAnimation: boolean
   fetchOptions: object
+  onLoopComplete: () => void
+  onEnterFrame: () => void
+  onSegmentStart: () => void
+  onComplete: () => void
+  onAnimationLoaded: () => void
 }

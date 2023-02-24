@@ -6,12 +6,11 @@ export interface PluginOptions {
   name?: string
 }
 
-const plugin: Plugin = {
-  install(app: App, options: PluginOptions) {
+export default {
+  install(app: App, options?: PluginOptions) {
     const name = options?.name ?? 'Vue3Lottie'
     app.component(name, Vue3Lottie)
   },
-}
+} as Plugin
 
 export { Vue3Lottie }
-export default plugin

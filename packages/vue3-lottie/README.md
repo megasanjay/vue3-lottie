@@ -41,7 +41,27 @@ If you are using version 1.x of `vue3-lottie` you should upgrade to version 2.x.
 
 # Upgrade to v3.x
 
-Remove importing css, upgrade to version 3.x.
+1. Upgrade to version 3.x.
+2. Remove importing styles
+
+```diff
+- import 'vue3-lottie/dist/style.css'
+```
+
+3. Rename events names, also need remove `on` prefix:
+
+   | 2.x                  | 3.x                 |
+   | -------------------- | ------------------- |
+   | `@onComplete`        | `@complete`         |
+   | `@onLoopComplete`    | `@loop-complete`    |
+   | `@onEnterFrame`      | `@enter-frame`      |
+   | `@onSegmentStart`    | `@segment-start`    |
+   | `@onAnimationLoaded` | `@animation-loaded` |
+
+   ```diff
+   - <Vue3Lottie :animationData="AstronautJSON" @onComplete="onComplete" />
+   + <Vue3Lottie :animationData="AstronautJSON"  @complete="onComplete" />
+   ```
 
 # Installation and Usage
 
@@ -96,7 +116,6 @@ Alternatively you can also import the component locally.
 
 ```js
 import { Vue3Lottie } from 'vue3-lottie'
-import 'vue3-lottie/dist/style.css'
 
 export default {
   components: {
@@ -114,7 +133,6 @@ You can then use the component in your template
 
 <script>
 import { Vue3Lottie } from 'vue3-lottie'
-import 'vue3-lottie/dist/style.css'
 
 import AstronautJSON from './astronaut.json'
 
@@ -136,18 +154,6 @@ export default {
 This is still experimental. Will be updated soon.
 
 - You can install `vue3-lottie` over `yarn` or `npm`. `lottie-web` is a dependency of `vue3-lottie` and should be automatically installed when you install `vue3-lottie`.
-
-If you are using npm:
-
-```shell
-npm install vue3-lottie@latest --save
-```
-
-If you are using yarn:
-
-```shell
-yarn add vue3-lottie@latest
-```
 
 - Create a folder called **`plugins`** at the root of your project.
 - Create a file named **`Vue3Lottie.client.ts`** inside the _plugins_ directory.
@@ -173,12 +179,6 @@ I would recommend using a `<client-only>` parent tag to ensure that the animatio
     :width="200"
   />
 </client-only>
-```
-
-- Import the css file required by the component into your **`app.vue`** file.
-
-```js
-import 'vue3-lottie/dist/style.css'
 ```
 
 # Props and options
@@ -210,20 +210,24 @@ We can use `LottieProps` to define options interface.
 import type { LottieProps } from 'vue3-lottie'
 ```
 
-# Events
-
 A few events are emitted from the component. Look at the [Demos](#Demos) for examples.
 
-- onComplete
+- `@complete`
   - If your animation has a finite amount of loops you can use this event to know when the animation has completed.
-- onLoopComplete
+- `@loop-complete`
   - If your animation has a finite amount of loops you can use this event to know when the animation has completed a loop.
-- onEnterFrame
+- `@enter-frame`
   - This event is fired every frame of the animation. There will be 60 events fired per second if your lottie animation runs at 60fps.
-- onSegmentStart
+- `@segment-start`
   - This event is fired when the animation enters a segment.
-- onAnimationLoaded
+- `@animation-loaded`
   - This event is fired when the animation has loaded. This should let you know when you can start referencing the methods for the component.
+
+Example:
+
+```vue
+<Vue3Lottie animationLink="anim.json" @loop-complete="log('loop complete 1')" />
+```
 
 # Methods
 

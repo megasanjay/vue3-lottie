@@ -1,6 +1,5 @@
 <template>
   <div
-    :data-id="elementId"
     ref="root"
     class="lottie-animation-container"
     :style="getCurrentStyle"
@@ -10,9 +9,17 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, computed, watch, shallowRef, onUnmounted } from 'vue'
+import {
+  ref,
+  onMounted,
+  computed,
+  watch,
+  shallowRef,
+  onUnmounted,
+  useAttrs,
+} from 'vue'
+
 import Lottie from 'lottie-web'
-import { cloneDeep, isEqual } from 'lodash'
 
 import { parseData } from './utils'
 import { fetchLottie } from '@reslear/dotlottie-player-core'
@@ -43,18 +50,21 @@ const props = withDefaults(defineProps<LottieProps>(), {
   renderer: 'svg',
 })
 
-const emits = defineEmits<{
-  (event: 'onComplete'): void
-  (event: 'onLoopComplete'): void
-  (event: 'onEnterFrame'): void
-  (event: 'onSegmentStart'): void
-  (event: 'onAnimationLoaded'): void
+const emit = defineEmits<{
+  (event: 'complete'): void
+  (event: 'loop-complete'): void
+  (event: 'enter-frame'): void
+  (event: 'segment-start'): void
+  (event: 'animation-loaded'): void
 }>()
+
+const attrs = useAttrs()
 
 let lottieAnimation: AnimationItem | null = null
 const root = ref<HTMLElement | null>(null)
-const elementId = ref<string>('')
+
 let direction: AnimationDirection = 1
+const animationData = shallowRef<null | object>(null)
 
 // hack fix supplement for ssr
 const checkIfContainerExists = (elementID: String) => {
@@ -70,24 +80,6 @@ const loadLottie = async (element: Element) => {
 
   if (props.playOnHover) {
     autoPlay = false
-  }
-
-  // creating a copy of the animation data to prevent the original data from being modified
-  // also needed to render multiple animations on the same page
-  let animationData = {}
-  if (isEqual(props.animationData, {}) === false) {
-    animationData = cloneDeep(props.animationData)
-  }
-
-  if (props.animationLink != '') {
-    try {
-      const response = await fetch(props.animationLink)
-      const json = await response.json()
-      animationData = json
-    } catch (error) {
-      console.error(error)
-      return
-    }
   }
 
   let loop = props.loop
@@ -106,13 +98,10 @@ const loadLottie = async (element: Element) => {
   const lottieAnimationConfig: any = {
     container: element,
     renderer: props.renderer,
+    rendererSettings: props.rendererSettings,
     loop: loop,
     autoplay: autoPlay,
-    animationData: animationData,
-  }
-
-  if (isEqual(props.rendererSettings, {}) === false) {
-    lottieAnimationConfig.rendererSettings = props.rendererSettings
+    animationData: animationData.value,
   }
 
   // actually load the animation
@@ -140,7 +129,9 @@ const loadLottie = async (element: Element) => {
      * Emit an `onAnimationLoaded` event when the animation is loaded
      * This should help with times where you want to run functions on the ref of the element
      */
-    emits('onAnimationLoaded')
+    if (!!props.onAnimationLoaded) {
+      emit('animation-loaded')
+    }
   }, props.delay)
 
   lottieAnimation.setSpeed(props.speed)
@@ -167,29 +158,38 @@ function attachEvents() {
   if (!lottieAnimation) return
 
   // set the emit events
-  lottieAnimation.addEventListener('loopComplete', () => {
-    if (!lottieAnimation) return
+  if (!!props.onLoopComplete) {
+    lottieAnimation.addEventListener('loopComplete', () => {
+      if (!lottieAnimation) return
 
-    if (props.direction === 'alternate') {
-      lottieAnimation.stop()
-      direction = direction === -1 ? 1 : -1 //invert direction
-      lottieAnimation.setDirection(direction)
-      lottieAnimation.play()
-    }
-    emits('onLoopComplete')
-  })
+      if (props.direction === 'alternate') {
+        lottieAnimation.stop()
+        direction = direction === -1 ? 1 : -1 //invert direction
+        lottieAnimation.setDirection(direction)
+        lottieAnimation.play()
+      }
 
-  lottieAnimation.addEventListener('complete', () => {
-    emits('onComplete')
-  })
+      emit('loop-complete')
+    })
+  }
 
-  lottieAnimation.addEventListener('enterFrame', () => {
-    emits('onEnterFrame')
-  })
+  if (!!props.onComplete) {
+    lottieAnimation.addEventListener('complete', () => {
+      emit('complete')
+    })
+  }
 
-  lottieAnimation.addEventListener('segmentStart', () => {
-    emits('onSegmentStart')
-  })
+  if (!!props.onEnterFrame) {
+    lottieAnimation.addEventListener('enterFrame', () => {
+      emit('enter-frame')
+    })
+  }
+
+  if (!!props.onSegmentStart) {
+    lottieAnimation.addEventListener('segmentStart', () => {
+      emit('segment-start')
+    })
+  }
 }
 
 // generate the css variables for width, height and background color
@@ -358,59 +358,32 @@ const updateDocumentData = (documentData: any, index: number = 0) => {
   }
 }
 
-// function to generate random strings for IDs
-const makeId = (length: number) => {
-  var result = ''
-  var characters =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-  var charactersLength = characters.length
-  for (var i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength))
-  }
-  return result
-}
-
-const setupLottie = (elementID: String) => {
+const setupLottie = () => {
   if (props.pauseOnHover && props.playOnHover) {
     throw new Error(
       'You cannot set pauseOnHover and playOnHover for Vue3-Lottie at the same time.',
     )
   }
 
-  if (props.animationLink === '' && isEqual(props.animationData, {})) {
-    console.log(
-      props.animationData,
-      'animationData',
-      props.animationLink,
-      'animationLink',
-    )
-    throw new Error('You must provide either animationLink or animationData')
+  if (root.value) {
+    loadLottie(root.value)
   }
-
-  // Unfortunately, this is a hackfix for ssr. We need to wait for the element to be rendered before we can load the animation.
-  // One day I will figure out how to do this properly.
-  const interval = setInterval(() => {
-    if (checkIfContainerExists(elementID)) {
-      clearInterval(interval)
-      const element = document.querySelector(`[data-id="${elementID}" ]`)
-
-      if (element) {
-        loadLottie(element) // load the animation
-      }
-    }
-  }, 0)
 }
-
-const animationData = shallowRef<null | object>(null)
 
 /**
  * Prepare the animation data
  */
-async function prepareAnimationData() {
+async function prepareAnimationData({
+  data,
+  link,
+}: {
+  data: any
+  link: string
+}) {
   // parse or fetch data
-  const json = props.animationData
-    ? parseData(props.animationData)
-    : await fetchLottie(props.animationLink, props.fetchOptions)
+  const json = data
+    ? parseData(data)
+    : await fetchLottie(link, props.fetchOptions)
 
   if (!json) {
     throw new Error('You must provide correct animationLink or animationData')
@@ -421,8 +394,8 @@ async function prepareAnimationData() {
 
 watch(
   () => [props.animationData, props.animationLink],
-  () => {
-    prepareAnimationData()
+  ([data, link]) => {
+    prepareAnimationData({ link, data })
   },
   {
     immediate: true,
@@ -430,14 +403,12 @@ watch(
 )
 
 onMounted(() => {
-  elementId.value = makeId(20) // generate a random id for the container
-
   watch(
     () => animationData.value,
     (value, oldValue) => {
       if (value && value !== oldValue) {
         destroy()
-        setupLottie(elementId.value)
+        setupLottie()
       }
     },
     {

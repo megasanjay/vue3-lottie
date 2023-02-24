@@ -3,5 +3,8 @@
   "private": "true",
   "scripts": {
     "build": "pnpm build --filter vue3-lottie"
+  },
+  "dependencies": {
+    "vue3-lottie": "^2.4.0"
   }
 }

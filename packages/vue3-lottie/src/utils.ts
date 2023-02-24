@@ -1,4 +1,8 @@
-export function parseData(value: string | object): object | undefined {
+import { LottieJson } from '@reslear/dotlottie-player-core'
+
+export function parseData(
+  value: string | LottieJson | Record<string, unknown>,
+): LottieJson | undefined {
   try {
     // check is string or json
     if (
