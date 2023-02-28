@@ -251,5 +251,6 @@ A big thank you goes to [@reslear](https://github.com/reslear) for adding Typesc
 
 - [@DamianGlowala](https://github.com/DamianGlowala) - PR [#29](https://github.com/megasanjay/vue3-lottie/pull/29) - Fix `watch` function
 - [@Doyeon Eum](https://lottiefiles.com/user/283677) - For the hero [image](https://lottiefiles.com/20574-mongryong-hi) in this repo.
+- [@Tafel](https://github.com/tafelnl) - PR[#296](https://github.com/megasanjay/vue3-lottie/pull/296) - Update lodash to the tree-shakeable versions
 
 ![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg) ![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
