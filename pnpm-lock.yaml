@@ -24,7 +24,7 @@ importers:
 
   packages/vue3-lottie:
     specifiers:
-      '@babel/types': 7.21.2
+      '@babel/types': 7.21.4
       '@types/lodash-es': 4.17.7
       '@types/node': 18.15.0
       '@vitejs/plugin-vue': 2.3.4
@@ -39,7 +39,7 @@ importers:
       lodash-es: 4.17.21
       lottie-web: 5.8.1
     devDependencies:
-      '@babel/types': 7.21.2
+      '@babel/types': 7.21.4
       '@types/lodash-es': 4.17.7
       '@types/node': 18.15.0
       '@vitejs/plugin-vue': 2.3.4_vite@2.9.15+vue@3.2.47
@@ -64,10 +64,10 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.21.2
+      '@babel/types': 7.21.4
 
-  /@babel/types/7.21.2:
-    resolution: {integrity: sha512-3wRZSs7jiFaB8AjxiiD+VqN5DTG2iRvJGQ+qYFrs/654lg6kGTQWIOFjlBo5RaXuAZjBmP3+OQH4dmhqiiyYxw==}
+  /@babel/types/7.21.4:
+    resolution: {integrity: sha512-rU2oY501qDxE8Pyo7i/Orqma4ziCOrby0/9mvbDUGEfvZjb279Nk9k19e2fiCxHbRRpY2ZyrgW1eq22mvmOIzA==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/helper-string-parser': 7.19.4
