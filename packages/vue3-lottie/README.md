@@ -70,6 +70,8 @@ import 'vue3-lottie/dist/style.css'
 createApp(App).use(Vue3Lottie).mount('#app')
 ```
 
+If you get an error with TS, try `use(Vue3Lottie, { name: "Vue3Lottie" })`
+
 To define global components for [Volar type-checking](https://github.com/johnsoncodehk/volar/tree/master/extensions/vscode-vue-language-features#usage) you will need to add:
 
 ```ts
@@ -159,6 +161,8 @@ export default defineNuxtPlugin((nuxtApp) => {
 })
 ```
 
+If you get an error with TS, try `use(Vue3Lottie, { name: "Vue3Lottie" })`
+
 This should register as a global component that you can call anywhere in your app under the <Vue3Lottie> tag.
 
 I would recommend using a `<client-only>` parent tag to ensure that the animation only loads in on the client side.
@@ -198,9 +202,9 @@ More detailed explanations are provided in the [documentation](https://vue3-lott
 | pauseOnHover     | Boolean           | false         | Whether to pause the animation on hover                                                  |
 | playOnHover      | Boolean           | false         | Whether to play the animation when you hover                                             |
 | backgroundColor  | String            | transparent   | Background color of the container                                                        |
+| assetsPath       | String            | ""            | URL to the image asset you need to use in your Lottie animation                          |
 | renderer         | String            | "svg"         | Set the renderer                                                                         |
 | rendererSettings | Object            | {}            | Options for if you want to use an existing canvas to draw (can be ignored on most cases) |
-| assetsPath | String | '' | Set the assets path for the animation |
 
 # Events
 
@@ -253,5 +257,6 @@ A big thank you goes to [@reslear](https://github.com/reslear) for adding Typesc
 - [@DamianGlowala](https://github.com/DamianGlowala) - PR [#29](https://github.com/megasanjay/vue3-lottie/pull/29) - Fix `watch` function
 - [@Doyeon Eum](https://lottiefiles.com/user/283677) - For the hero [image](https://lottiefiles.com/20574-mongryong-hi) in this repo.
 - [@Tafel](https://github.com/tafelnl) - PR[#296](https://github.com/megasanjay/vue3-lottie/pull/296) - Update lodash to the tree-shakeable versions
+- [@TartanLeGrand](https://github.com/TartanLeGrand) - PR[#307](https://github.com/megasanjay/vue3-lottie/pull/307) - Add the `assetsPath` prop to the component
 
 ![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg) ![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
