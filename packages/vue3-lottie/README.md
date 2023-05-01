@@ -200,6 +200,7 @@ More detailed explanations are provided in the [documentation](https://vue3-lott
 | backgroundColor  | String            | transparent   | Background color of the container                                                        |
 | renderer         | String            | "svg"         | Set the renderer                                                                         |
 | rendererSettings | Object            | {}            | Options for if you want to use an existing canvas to draw (can be ignored on most cases) |
+| assetsPath | String | '' | Set the assets path for the animation |
 
 # Events
 

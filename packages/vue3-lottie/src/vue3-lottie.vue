@@ -28,6 +28,7 @@ export interface LottieProps {
   playOnHover: boolean
   backgroundColor: string
   pauseAnimation: boolean
+  assetsPath: string
 }
 
 export default defineComponent({
@@ -100,6 +101,10 @@ export default defineComponent({
       type: Object as PropType<LottieProps['rendererSettings']>,
       default: () => ({}),
     },
+    assetsPath: {
+      type: String as PropType<LottieProps['assetsPath']>,
+      default: '',
+    },
   },
 
   emits: {
@@ -168,6 +173,7 @@ export default defineComponent({
         loop: loop,
         autoplay: autoPlay,
         animationData: animationData,
+        assetsPath: props.assetsPath,
       }
 
       if (isEqual(props.rendererSettings, {}) === false) {
