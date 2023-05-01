@@ -427,12 +427,6 @@ export default defineComponent({
       }
 
       if (props.animationLink === '' && isEqual(props.animationData, {})) {
-        console.log(
-          props.animationData,
-          'animationData',
-          props.animationLink,
-          'animationLink',
-        )
         throw new Error(
           'You must provide either animationLink or animationData',
         )

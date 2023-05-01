@@ -29,7 +29,7 @@ importers:
       '@types/node': 18.15.11
       '@vitejs/plugin-vue': 2.3.4
       lodash-es: ^4.17.21
-      lottie-web: ^5.8.1
+      lottie-web: 5.11.0
       typescript: 5.0.4
       vite: 2.9.15
       vue: 3.2.47
@@ -37,7 +37,7 @@ importers:
       vue-typegen: 0.2.0
     dependencies:
       lodash-es: 4.17.21
-      lottie-web: 5.8.1
+      lottie-web: 5.11.0
     devDependencies:
       '@babel/types': 7.21.4
       '@types/lodash-es': 4.17.7
@@ -560,8 +560,8 @@ packages:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
     dev: false
 
-  /lottie-web/5.8.1:
-    resolution: {integrity: sha512-9gIizWADlaHC2GCt+D+yNpk5l2clZQFqnVWWIVdY0LnxC/uLa39dYltAe3fcmC/hrZ2IUQ8dLlY0O934Npjs7Q==}
+  /lottie-web/5.11.0:
+    resolution: {integrity: sha512-9vSt0AtdOH98GKDXwD5LPfFg9Pcmxt5+1BllAbudKM5iqPxpJnJUfuGaP45OyudDrESCOBgsjnntVUTygBNlzw==}
     dev: false
 
   /lru-cache/6.0.0:

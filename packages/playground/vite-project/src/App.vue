@@ -3,6 +3,7 @@
   <Vue3Lottie
     animationLink="https://assets1.lottiefiles.com/packages/lf20_soCRuE.json"
     :height="300"
+    :pauseOnHover="true"
   />
   <HelloWorld msg="Hello Lottie! Using Vue 3 + TypeScript + Vite" />
 </template>
