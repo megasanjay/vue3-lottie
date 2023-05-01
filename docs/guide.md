@@ -307,7 +307,7 @@ A prop to change the background color of the container. This will be passed dire
 
 ### assetsPath
 
-Use this prop if your lottie animation needs to load assets from a different path. This is useful if you are using a CDN to host your assets. Refer to the [examples section](/examples#assets-path) for a demo on how to use this prop.
+Use this prop if your lottie animation needs to load assets from a different path. This is useful if you are using a CDN to host your assets. Refer to the [examples section](/examples#using-a-custom-assets-path) for a demo on how to use this prop.
 
 | Type   | Default value | Required | Accepted values |
 | ------ | ------------- | -------- | --------------- |
