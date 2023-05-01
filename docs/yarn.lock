@@ -560,10 +560,10 @@ lodash-es@^4.17.21:
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
   integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
 
-lottie-web@^5.8.1:
-  version "5.8.1"
-  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.8.1.tgz#807e0af0ad22b59bf867d964eb684cb3368da0ef"
-  integrity sha512-9gIizWADlaHC2GCt+D+yNpk5l2clZQFqnVWWIVdY0LnxC/uLa39dYltAe3fcmC/hrZ2IUQ8dLlY0O934Npjs7Q==
+lottie-web@5.11.0:
+  version "5.11.0"
+  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.11.0.tgz#04bb9fd6cdfbb10e586985dd666de6c727619d95"
+  integrity sha512-9vSt0AtdOH98GKDXwD5LPfFg9Pcmxt5+1BllAbudKM5iqPxpJnJUfuGaP45OyudDrESCOBgsjnntVUTygBNlzw==
 
 magic-string@^0.25.7:
   version "0.25.7"
@@ -782,13 +782,13 @@ vitepress@0.22.4:
     vite "^2.9.7"
     vue "^3.2.33"
 
-vue3-lottie@2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/vue3-lottie/-/vue3-lottie-2.5.0.tgz#0bfa8bffa19235b8593d719b125f9ae0b31c603b"
-  integrity sha512-JwlTzykr4ofPnSXsTAPt571RDrtQNy66H8w/zYBVHNgrCRG4RINI30c/oJx3Dj+XpxuktpKzgfI08tv1FjYkAQ==
+vue3-lottie@2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/vue3-lottie/-/vue3-lottie-2.7.0.tgz#b9f591bb1990eca762a6195f5d49259dac57f7e2"
+  integrity sha512-6vblrGFQxRP1bqd5Lfg+/g/kDH7OL5dQMxU9xYORSsTC7NfHXOjebhYrIYOlRodtA5/zfWMkG+3+sIR7wjaIXw==
   dependencies:
     lodash-es "^4.17.21"
-    lottie-web "^5.8.1"
+    lottie-web "5.11.0"
 
 vue@^3.2.33:
   version "3.2.36"

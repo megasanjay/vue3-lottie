@@ -18,6 +18,7 @@ If you don't see the example in any of the sections below [click here](https://v
   import PlayOnHoverExample from './examples/PlayOnHoverExample.vue'
   import ReactiveExample from './examples/ReactiveExample.vue'
   import EventExample from './examples/EventExample.vue'
+  import AssetsPathExample from './examples/AssetsPathExample.vue'
   import CustomControlsExample from './examples/CustomControlsExample.vue'
 </script>
 
@@ -284,6 +285,35 @@ export default {
       playState: false,
       CarJSON,
     }
+  },
+}
+</script>
+```
+
+## Using a custom Assets Path
+
+You can also pass in a custom assets path to the `assetsPath` prop. This is useful if you want to host your assets on a CDN.
+
+<AssetsPathExample/>
+
+```vue
+<template>
+  <Vue3Lottie
+    animationLink="https://assets1.lottiefiles.com/packages/lf20_xvz0dpbn.json"
+    assetsPath="https://source.unsplash.com/user/wsanter"
+    :height="200"
+    :width="200"
+  />
+</template>
+
+<script>
+import { Vue3Lottie } from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
+
+export default {
+  name: 'AssetsPathExample',
+  components: {
+    Vue3Lottie,
   },
 }
 </script>
