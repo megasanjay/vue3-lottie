@@ -1,13 +1,15 @@
+# Vue 3 Lottie
+
+Add Lottie animations to your Vue 3 or Nuxt 3 application.
+
+---
+
 <p align="center">
   <a href="#">
     <img src="hi.gif" width="150" height="150" />
   </a>
 
-  <h3 align="center">Vue 3 Lottie</h3>
-
   <p align="center">
-    Add Lottie animations to your Vue 3 application <br/>
-    <br/>
     <a href="https://www.npmjs.com/package/vue3-lottie">
       <img src="https://img.shields.io/npm/v/vue3-lottie" />
     </a>
