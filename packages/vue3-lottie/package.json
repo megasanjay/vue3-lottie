@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "lodash-es": "^4.17.21",
-    "lottie-web": "5.12.1"
+    "lottie-web": "5.12.2"
   },
   "peerDependencies": {
     "vue": "^3.2"
