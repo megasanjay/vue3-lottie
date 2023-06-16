@@ -25,7 +25,7 @@ Add Lottie animations to your Vue 3 or Nuxt 3 application.
     <a href="https://github.com/megasanjay/vue3-lottie/issues">
       <img src="https://img.shields.io/github/issues/megasanjay/vue3-lottie" />
     </a>
-    <br/> 
+    <br/>
     <br/>
     <a href="https://vue3-lottie.vercel.app/"><strong>Explore the documentation »</strong></a>
   </p>
@@ -33,17 +33,17 @@ Add Lottie animations to your Vue 3 or Nuxt 3 application.
 
 `vue3-lottie` was created to help developers add Lottie animations to their Vue 3 applications. In my search for a simple way to add Lottie animations to my Vue application I found a suprising lack of maintained solutions. `vue3-lottie` is a vue wrapper around the `lottie-web` library with a few additional features.
 
-# Demos
+## Demos
 
 View the live demos here: [https://vue3-lottie.vercel.app](https://vue3-lottie.vercel.app)
 
-# Upgrade to v2.x
+## Upgrade to v2.x
 
-If you are using version 1.x of `vue3-lottie` you should upgrade to version 2.x. You can do this by running the [Installation and Usage](#installation-and-usage) command below. This adds TS support for the component. There are some new imports so take a look at the [new documentation](https://vue3-lottie.vercel.app/guide.html#usage).
+If you are using version 1.x of `vue3-lottie` you should upgrade to version 2.x. You can do this by running the [Installation and Usage](#installation-and-usage) command below. This adds TS support for the component. There are some new imports so take a look at the [new documentation](https://vue3-lottie.vercel.app).
 
-# Installation and Usage
+## Installation and Usage
 
-## Vue 3
+### Vue 3
 
 - You can install `vue3-lottie` over `yarn` or `npm`. `lottie-web` is a dependency of `vue3-lottie` and should be automatically installed when you install `vue3-lottie`.
 
@@ -133,7 +133,7 @@ export default {
 </script>
 ```
 
-## Nuxt 3
+### Nuxt 3
 
 This is still experimental. Will be updated soon.
 
@@ -185,9 +185,9 @@ I would recommend using a `<client-only>` parent tag to ensure that the animatio
 import 'vue3-lottie/dist/style.css'
 ```
 
-# Props and options
+## Props and options
 
-More detailed explanations are provided in the [documentation](https://vue3-lottie.vercel.app/guide.html).
+More detailed explanations are provided in the [documentation](https://vue3-lottie.vercel.app).
 
 | Prop             | Type              | Default Value | Description                                                                              |
 | ---------------- | ----------------- | ------------- | ---------------------------------------------------------------------------------------- |
@@ -208,9 +208,9 @@ More detailed explanations are provided in the [documentation](https://vue3-lott
 | renderer         | String            | "svg"         | Set the renderer                                                                         |
 | rendererSettings | Object            | {}            | Options for if you want to use an existing canvas to draw (can be ignored on most cases) |
 
-# Events
+## Events
 
-A few events are emitted from the component. Look at the [Demos](#Demos) for examples.
+A few events are emitted from the component. Look at the [Demos](#demos) for examples.
 
 - onComplete
   - If your animation has a finite amount of loops you can use this event to know when the animation has completed.
@@ -223,9 +223,9 @@ A few events are emitted from the component. Look at the [Demos](#Demos) for exa
 - onAnimationLoaded
   - This event is fired when the animation has loaded. This should let you know when you can start referencing the methods for the component.
 
-# Methods
+## Methods
 
-You can control the animation with the following methods. These methods can be called by assigning a `ref` value to the `vue3-lottie` component. Look at the [Demos](#Demos) for examples.
+You can control the animation with the following methods. These methods can be called by assigning a `ref` value to the `vue3-lottie` component. Look at the [Demos](#demos) for examples.
 
 - play
   - Plays the animation
@@ -252,7 +252,7 @@ You can control the animation with the following methods. These methods can be c
 - updateDocumentData(documentData, index)
   - This method updates text on text layers. Refer to the [official docs](https://github.com/airbnb/lottie-web/wiki/TextLayer.updateDocumentData) for how to use this method.
 
-# Credits
+## Credits
 
 A big thank you goes to [@reslear](https://github.com/reslear) for adding Typescript support to this library. Go check out his profile and give him a follow!
 
