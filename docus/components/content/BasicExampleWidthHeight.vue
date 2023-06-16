@@ -1,0 +1,13 @@
+<template>
+  <ClientOnly>
+    <Vue3Lottie
+      animation-link="https://assets7.lottiefiles.com/packages/lf20_Yc2PU8DdfX.json"
+      :height="300"
+      :width="300"
+    />
+  </ClientOnly>
+</template>
+
+<script setup>
+import 'vue3-lottie/dist/style.css'
+</script>

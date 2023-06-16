@@ -4386,6 +4386,11 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
+lodash-es@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
+  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
+
 lodash._reinterpolate@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
@@ -4478,6 +4483,11 @@ longest-streak@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/longest-streak/-/longest-streak-3.1.0.tgz#62fa67cd958742a1574af9f39866364102d90cd4"
   integrity sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==
+
+lottie-web@5.12.1:
+  version "5.12.1"
+  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.12.1.tgz#0974eefaf8058c1cba4a05ae67a77894022f9e71"
+  integrity sha512-J5LgeexlmrrzRwe1q4qwQIwJmjih62vatDUPtxquaYVfjvSt/PfNfanhlfSrvdGPr4/nxJ8+uBKlS359Jq4F6w==
 
 lower-case@^2.0.2:
   version "2.0.2"
@@ -7931,6 +7941,14 @@ vue-template-compiler@^2.7.14:
   dependencies:
     de-indent "^1.0.2"
     he "^1.2.0"
+
+vue3-lottie@^2.7.1:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/vue3-lottie/-/vue3-lottie-2.7.1.tgz#1c429753ef6d3786af972b5a688de8c4b628a752"
+  integrity sha512-FWHDhqJxKMFKO+86VeaD9xHFY2h0zUh4VGPwGg1/cLkzWSQhJfLcV48Lf3GMfKpgVlvWNc/C2eoHndmPlc9puA==
+  dependencies:
+    lodash-es "^4.17.21"
+    lottie-web "5.12.1"
 
 vue@^3.3.4:
   version "3.3.4"
