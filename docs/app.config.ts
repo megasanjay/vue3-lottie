@@ -2,13 +2,13 @@ export default defineAppConfig({
   docus: {
     title: 'Vue 3 Lottie',
     description:
-      'A simple component library that will add support for Lottie animations in your Vue 3/Nuxt 3 applications.    ',
+      'A simple component library that will add support for Lottie animations in your Vue 3/Nuxt 3 applications.',
     socials: {
       twitter: 'megasanjay',
       github: 'megasanjay/vue3-lottie',
     },
     github: {
-      dir: '.starters/default/content',
+      dir: 'blob/main/content',
       branch: 'main',
       repo: 'vue3-lottie',
       owner: 'megasanjay',
@@ -46,6 +46,10 @@ export default defineAppConfig({
         {
           href: 'https://nuxt.com',
           icon: 'simple-icons:nuxtdotjs',
+        },
+        {
+          icon: 'mdi:npm-variant',
+          href: 'https://npmjs.com/package/vue3-lottie',
         },
       ],
     },
