@@ -11,6 +11,7 @@
 <script lang="ts">
 import { ref, onMounted, computed, watch, defineComponent, PropType } from 'vue'
 import Lottie from 'lottie-web'
+// compile without --strict
 import { cloneDeep, isEqual } from 'lodash-es'
 
 export interface LottieProps {
