@@ -1,6 +1,6 @@
 {
   "name": "vue3-lottie",
-  "version": "2.7.2",
+  "version": "2.7.3-beta.0",
   "license": "MIT",
   "author": "Sanjay Soundarajan <info@sanjaysoundarajan.dev> (https://sanjaysoundarajan.dev)",
   "scripts": {
@@ -31,7 +31,7 @@
   },
   "main": "dist/vue3-lottie.umd.js",
   "module": "dist/vue3-lottie.es.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/vue3-lottie.vue.d.ts",
   "exports": {
     ".": {
       "import": "./dist/vue3-lottie.es.js",
