@@ -8,7 +8,7 @@ export default defineNuxtConfig({
         {
           src: 'https://umami.sanjaysoundarajan.dev/mushroom',
           async: true,
-          'data-website-id': '076e376b-e7ba-457e-85e3-c3e7fc55ec61',
+          'data-website-id': '954eb05e-76df-436f-9998-a048f6095e63',
         },
       ],
     },
