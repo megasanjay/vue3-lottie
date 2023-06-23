@@ -24,7 +24,7 @@
 <script setup>
 import 'vue3-lottie/dist/style.css'
 
-const playState = ref(true)
+const playState = ref(false)
 </script>
 
 <style scoped>
