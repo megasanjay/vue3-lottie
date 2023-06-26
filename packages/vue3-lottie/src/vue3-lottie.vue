@@ -13,23 +13,12 @@ import { ref, onMounted, computed, watch, defineComponent, PropType } from 'vue'
 import Lottie from 'lottie-web'
 import { cloneDeep, isEqual } from 'lodash-es'
 
-export interface LottieProps {
-  animationData: any
-  animationLink: string
-  loop: boolean | number
-  autoPlay: boolean
-  rendererSettings: any
-  width: number | string
-  height: number | string
-  speed: number
-  delay: number
-  direction: string
-  pauseOnHover: boolean
-  playOnHover: boolean
-  backgroundColor: string
-  pauseAnimation: boolean
-  assetsPath: string
-}
+import type {
+  AnimationDirection,
+  AnimationItem,
+  AnimationSegment,
+  LottieProps,
+} from './types'
 
 export default defineComponent({
   props: {
@@ -116,9 +105,9 @@ export default defineComponent({
   },
 
   setup(props, { emit: emits }) {
-    let lottieAnimation = ref<any>(null)
+    let lottieAnimation: AnimationItem | null = null
     const elementid = ref<string>('')
-    let direction = 1
+    let direction: AnimationDirection = 1
 
     // hack fix supplement for ssr
     const checkIfContainerExists = (elementID: String) => {
@@ -187,12 +176,12 @@ export default defineComponent({
         autoPlay = props.autoPlay
 
         if (props.playOnHover) {
-          lottieAnimation.pause()
+          lottieAnimation?.pause()
         } else {
           if (autoPlay) {
-            lottieAnimation.play()
+            lottieAnimation?.play()
           } else {
-            lottieAnimation.pause()
+            lottieAnimation?.pause()
           }
         }
 
@@ -223,10 +212,10 @@ export default defineComponent({
       // set the emit events
       lottieAnimation.addEventListener('loopComplete', () => {
         if (props.direction === 'alternate') {
-          lottieAnimation.stop()
-          direction = direction * -1 //invert direction
-          lottieAnimation.setDirection(direction)
-          lottieAnimation.play()
+          lottieAnimation?.stop()
+          direction = direction === -1 ? 1 : -1 //invert direction
+          lottieAnimation?.setDirection(direction)
+          lottieAnimation?.play()
         }
         emits('onLoopComplete')
       })
@@ -360,7 +349,7 @@ export default defineComponent({
       }
     }
 
-    const goToAndStop = (frame: number, isFrame: Boolean = true) => {
+    const goToAndStop = (frame: number, isFrame: boolean = true) => {
       //value: numeric value.
       //isFrame: defines if first argument is a time based value or a frame based (default true).
 
@@ -369,7 +358,7 @@ export default defineComponent({
       }
     }
 
-    const goToAndPlay = (frame: number, isFrame: Boolean = true) => {
+    const goToAndPlay = (frame: number, isFrame: boolean = true) => {
       //value: numeric value
       //isFrame: defines if first argument is a time based value or a frame based (default true).
 
@@ -379,8 +368,8 @@ export default defineComponent({
     }
 
     const playSegments = (
-      segments: Array<number>,
-      forceFlag: Boolean = false,
+      segments: AnimationSegment[],
+      forceFlag: boolean = false,
     ) => {
       //segments: array. Can contain 2 numeric values that will be used as first and last frame of the animation. Or can contain a sequence of arrays each with 2 numeric values.
       //forceFlag: boolean. If set to false, it will wait until the current segment is complete. If true, it will update values immediately.
@@ -390,14 +379,14 @@ export default defineComponent({
       }
     }
 
-    const setSubFrame = (useSubFrame: Boolean = true) => {
+    const setSubFrame = (useSubFrame: boolean = true) => {
       // useSubFrames: If false, it will respect the original AE fps. If true, it will update on every requestAnimationFrame with intermediate values. Default is true.
       if (lottieAnimation) {
         lottieAnimation.setSubframe(useSubFrame)
       }
     }
 
-    const getDuration = (inFrames: Boolean = true) => {
+    const getDuration = (inFrames: boolean = true) => {
       if (lottieAnimation) {
         return lottieAnimation.getDuration(inFrames)
       }
