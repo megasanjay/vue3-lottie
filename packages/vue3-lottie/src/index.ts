@@ -1,24 +1,16 @@
-import { App } from 'vue'
+import type { App, Plugin } from 'vue'
 import Vue3Lottie from './vue3-lottie.vue'
+export * from './types'
+
+export interface PluginOptions {
+  name?: string
+}
+
+export default {
+  install(app: App, options?: PluginOptions) {
+    const name = options?.name ?? 'Vue3Lottie'
+    app.component(name, Vue3Lottie)
+  },
+} as Plugin
 
 export { Vue3Lottie }
-
-export function install(app: App, options: { name: string }) {
-  const finalOptions = Object.assign(
-    {},
-    {
-      name: 'Vue3Lottie',
-    },
-    options,
-  )
-
-  app.component(`${finalOptions.name}`, Vue3Lottie)
-}
-
-const plugin = {
-  // eslint-disable-next-line no-undef
-  version: VERSION,
-  install,
-}
-
-export default plugin
