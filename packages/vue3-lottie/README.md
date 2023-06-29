@@ -39,7 +39,7 @@ View the live demos here: [https://vue3-lottie.vercel.app](https://vue3-lottie.v
 
 ## Upgrade to v3.x
 
-If you are using version 2.x of `vue3-lottie` you should upgrade to version 3.x. You can do this by running the [Installation and Usage](#installation-and-usage) command below. This add better support for Typescript. There is also a change with the `dist/style.css` import (it's been removed) so take a look at the [new documentation](https://vue3-lottie.vercel.app/v3) for instructions on how to migrate to this package.
+If you are using version 2.x of `vue3-lottie` you should upgrade to version 3.x. You can do this by running the [Installation and Usage](#installation-and-usage) command below. This add better support for Typescript. There is also a change with the `dist/style.css` import (it's been removed) so take a look at the [new documentation](https://vue3-lottie.vercel.app/introduction/v3) for instructions on how to migrate to this package.
 
 ## Installation and Usage
 
