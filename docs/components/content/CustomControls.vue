@@ -68,8 +68,6 @@
 </template>
 
 <script setup>
-import 'vue3-lottie/dist/style.css'
-
 const lottieAnimation = ref(null)
 
 const direction = ref('forward')

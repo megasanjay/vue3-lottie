@@ -5,7 +5,5 @@
 </template>
 
 <script setup>
-import 'vue3-lottie/dist/style.css'
-
 import SkullJSON from './lotties/skull.json'
 </script>
