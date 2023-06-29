@@ -19,6 +19,6 @@
     "nuxt": "^3.5.3"
   },
   "dependencies": {
-    "vue3-lottie": "2.7.4"
+    "vue3-lottie": "2.7.5-beta.2"
   }
 }

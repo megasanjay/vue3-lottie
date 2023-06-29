@@ -1,11 +1,13 @@
 {
   "name": "vue3-lottie",
-  "version": "2.7.4",
+  "version": "3.0.0",
   "license": "MIT",
   "author": "Sanjay Soundarajan <info@sanjaysoundarajan.dev> (https://sanjaysoundarajan.dev)",
+  "type": "module",
   "scripts": {
-    "dev": "vue-cli-service serve dev/serve.ts",
-    "build": "vite build && tsc -d --emitDeclarationOnly && vue-typegen gen -s ./src -o ./dist",
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "dev:build": "vite build && tsc -d --emitDeclarationOnly && vue-typegen gen -s ./src -o ./dist",
     "prepublishOnly": "npm run build",
     "lint": "eslint \"{packages,playground}/**/*.{ts,tsx,vue,js,jsx,html}\"",
     "prettier": "npx prettier --write ."
@@ -18,8 +20,7 @@
     "vue": "^3.2"
   },
   "files": [
-    "dist",
-    "dist/*.css"
+    "dist/*"
   ],
   "repository": {
     "type": "git",
@@ -29,24 +30,27 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "main": "dist/vue3-lottie.umd.js",
+  "main": "dist/vue3-lottie.cjs.js",
   "module": "dist/vue3-lottie.es.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/vue3-lottie.es.js",
-      "require": "./dist/vue3-lottie.umd.js"
-    },
-    "./dist/style.css": "./dist/style.css"
+      "require": "./dist/vue3-lottie.cjs.js"
+    }
   },
   "devDependencies": {
     "@babel/types": "7.22.5",
     "@types/lodash-es": "4.17.7",
     "@types/node": "18.16.18",
     "@vitejs/plugin-vue": "2.3.4",
+    "@vue/compiler-sfc": "^3.3.4",
     "typescript": "5.0.4",
     "vite": "2.9.16",
+    "vite-plugin-css-injected-by-js": "^3.1.1",
+    "vite-plugin-dts": "^2.3.0",
+    "vite-plugin-vue-type-imports": "^0.2.4",
     "vue": "3.3.4",
     "vue-tsc": "0.40.13",
     "vue-typegen": "0.2.0"
