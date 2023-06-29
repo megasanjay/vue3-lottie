@@ -37,9 +37,9 @@ Add Lottie animations to your Vue 3 or Nuxt 3 application.
 
 View the live demos here: [https://vue3-lottie.vercel.app](https://vue3-lottie.vercel.app)
 
-## Upgrade to v2.x
+## Upgrade to v3.x
 
-If you are using version 1.x of `vue3-lottie` you should upgrade to version 2.x. You can do this by running the [Installation and Usage](#installation-and-usage) command below. This adds TS support for the component. There are some new imports so take a look at the [new documentation](https://vue3-lottie.vercel.app).
+If you are using version 2.x of `vue3-lottie` you should upgrade to version 3.x. You can do this by running the [Installation and Usage](#installation-and-usage) command below. This add better support for Typescript. There is also a change with the `dist/style.css` import (it's been removed) so take a look at the [new documentation](https://vue3-lottie.vercel.app/v3) for instructions on how to migrate to this package.
 
 ## Installation and Usage
 
@@ -67,7 +67,6 @@ The most common use case is to register the component globally.
 // main.js
 import { createApp } from 'vue'
 import Vue3Lottie from 'vue3-lottie'
-import 'vue3-lottie/dist/style.css'
 
 createApp(App).use(Vue3Lottie).mount('#app')
 ```
@@ -98,7 +97,6 @@ Alternatively you can also import the component locally.
 
 ```js
 import { Vue3Lottie } from 'vue3-lottie'
-import 'vue3-lottie/dist/style.css'
 
 export default {
   components: {
@@ -116,7 +114,6 @@ You can then use the component in your template
 
 <script>
 import { Vue3Lottie } from 'vue3-lottie'
-import 'vue3-lottie/dist/style.css'
 
 import AstronautJSON from './astronaut.json'
 
@@ -177,12 +174,6 @@ I would recommend using a `<client-only>` parent tag to ensure that the animatio
     :width="200"
   />
 </client-only>
-```
-
-- Import the css file required by the component into your **`app.vue`** file.
-
-```js
-import 'vue3-lottie/dist/style.css'
 ```
 
 ## Props and options
