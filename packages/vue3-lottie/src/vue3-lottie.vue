@@ -78,8 +78,12 @@ export default defineComponent({
       type: Boolean as PropType<LottieProps['noMargin']>,
       default: false,
     },
+    scale: {
+      type: Number as PropType<LottieProps['scale']>,
+      default: 1,
+    },
     renderer: {
-      type: String as PropType<LottieProps['rendererSettings']>,
+      type: String as PropType<LottieProps['renderer']>,
       default: 'svg',
     },
     rendererSettings: {
@@ -165,6 +169,18 @@ export default defineComponent({
         lottieAnimationConfig.rendererSettings = props.rendererSettings
       }
 
+      /**
+       * If the scale is not 1, we need to set `viewBoxOnly` to true
+       * This will remove the translate3d transform from the svg and
+       * will allow us to scale the svg using css transform scale
+       */
+      if (props.scale !== 1) {
+        lottieAnimationConfig.rendererSettings = {
+          ...lottieAnimationConfig.rendererSettings,
+          viewBoxOnly: true,
+        }
+      }
+
       // actually load the animation
       lottieAnimation = Lottie.loadAnimation(lottieAnimationConfig)
 
@@ -248,6 +264,7 @@ export default defineComponent({
         '--lottie-animation-container-height': height,
         '--lottie-animation-container-background-color': props.backgroundColor,
         '--lottie-animation-margin': props.noMargin ? '0' : '0 auto',
+        '--lottie-animation-scale': props.scale != 1 ? props.scale : '',
       }
 
       return cssVariables
@@ -472,5 +489,9 @@ export default defineComponent({
   background-color: var(--lottie-animation-container-background-color);
   overflow: hidden;
   margin: var(--lottie-animation-margin);
+}
+
+.lottie-animation-container svg {
+  transform: scale(var(--lottie-animation-scale));
 }
 </style>

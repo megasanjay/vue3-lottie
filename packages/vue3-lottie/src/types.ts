@@ -19,6 +19,7 @@ export interface LottieProps {
   pauseOnHover: boolean
   playOnHover: boolean
   noMargin: boolean
+  scale: number
   backgroundColor: string
   pauseAnimation: boolean
   assetsPath: string
