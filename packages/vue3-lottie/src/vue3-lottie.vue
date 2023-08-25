@@ -30,27 +30,22 @@ export default defineComponent({
       type: String as PropType<LottieProps['animationLink']>,
       default: '',
     },
-
     loop: {
       type: [Boolean, Number] as PropType<LottieProps['loop']>,
       default: true,
     },
-
     autoPlay: {
       type: Boolean as PropType<LottieProps['autoPlay']>,
       default: true,
     },
-
     width: {
       type: [Number, String] as PropType<LottieProps['width']>,
       default: '100%',
     },
-
     height: {
       type: [Number, String] as PropType<LottieProps['height']>,
       default: '100%',
     },
-
     speed: {
       type: Number as PropType<LottieProps['speed']>,
       default: 1,
@@ -59,17 +54,14 @@ export default defineComponent({
       type: Number as PropType<LottieProps['delay']>,
       default: 0,
     },
-
     direction: {
       type: String as PropType<LottieProps['direction']>,
       default: 'forward',
     },
-
     pauseOnHover: {
       type: Boolean as PropType<LottieProps['pauseOnHover']>,
       default: false,
     },
-
     playOnHover: {
       type: Boolean as PropType<LottieProps['playOnHover']>,
       default: false,
@@ -80,6 +72,10 @@ export default defineComponent({
     },
     pauseAnimation: {
       type: Boolean as PropType<LottieProps['pauseAnimation']>,
+      default: false,
+    },
+    noMargin: {
+      type: Boolean as PropType<LottieProps['noMargin']>,
       default: false,
     },
     renderer: {
@@ -251,6 +247,7 @@ export default defineComponent({
         '--lottie-animation-container-width': width,
         '--lottie-animation-container-height': height,
         '--lottie-animation-container-background-color': props.backgroundColor,
+        '--lottie-animation-margin': props.noMargin ? '0' : '0 auto',
       }
 
       return cssVariables
@@ -474,6 +471,6 @@ export default defineComponent({
   height: var(--lottie-animation-container-height);
   background-color: var(--lottie-animation-container-background-color);
   overflow: hidden;
-  margin: 0 auto;
+  margin: var(--lottie-animation-margin);
 }
 </style>

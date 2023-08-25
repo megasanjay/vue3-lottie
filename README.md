@@ -180,24 +180,25 @@ I would recommend using a `<client-only>` parent tag to ensure that the animatio
 
 More detailed explanations are provided in the [documentation](https://vue3-lottie.vercel.app).
 
-| Prop             | Type              | Default Value | Description                                                                              |
-| ---------------- | ----------------- | ------------- | ---------------------------------------------------------------------------------------- |
-| animationData    | Object            | {}            | The lottie animation data provided as a JSON object                                      |
-| animationLink    | String            | ''            | A URL link to the Lottie animation data (eg: `Lottie Animation URL` on lottiefiles.com)  |
-| width            | Number or String  | "100%"        | Width of the lottie animation container (Numbers correspond to pixel values)             |
-| height           | Number or String  | "100%"        | Height of the lottie animation container (Numbers correspond to pixel values)            |
-| speed            | Number            | "1"           | Speed of the lottie animation                                                            |
-| direction        | String            | "forward"     | Animation play direction                                                                 |
-| loop             | Number or Boolean | true          | The number of instances that the lottie animation should run (true is infinite)          |
-| autoPlay         | Boolean           | true          | Start animation on component load                                                        |
-| delay            | Number            | 0             | Delay the animation play state by some milliseconds                                      |
-| pauseAnimation   | Boolean           | false         | Prop to pass reactive variables so that you can control animation pause and play         |
-| pauseOnHover     | Boolean           | false         | Whether to pause the animation on hover                                                  |
-| playOnHover      | Boolean           | false         | Whether to play the animation when you hover                                             |
-| backgroundColor  | String            | transparent   | Background color of the container                                                        |
-| assetsPath       | String            | ""            | URL to the image asset you need to use in your Lottie animation                          |
-| renderer         | String            | "svg"         | Set the renderer                                                                         |
-| rendererSettings | Object            | {}            | Options for if you want to use an existing canvas to draw (can be ignored on most cases) |
+| Prop             | Type              | Default Value | Description                                                                                                        |
+| ---------------- | ----------------- | ------------- | ------------------------------------------------------------------------------------------------------------------ |
+| animationData    | Object            | {}            | The lottie animation data provided as a JSON object                                                                |
+| animationLink    | String            | ''            | A URL link to the Lottie animation data (eg: `Lottie Animation URL` on lottiefiles.com)                            |
+| width            | Number or String  | "100%"        | Width of the lottie animation container (Numbers correspond to pixel values)                                       |
+| height           | Number or String  | "100%"        | Height of the lottie animation container (Numbers correspond to pixel values)                                      |
+| speed            | Number            | "1"           | Speed of the lottie animation                                                                                      |
+| direction        | String            | "forward"     | Animation play direction                                                                                           |
+| loop             | Number or Boolean | true          | The number of instances that the lottie animation should run (true is infinite)                                    |
+| autoPlay         | Boolean           | true          | Start animation on component load                                                                                  |
+| delay            | Number            | 0             | Delay the animation play state by some milliseconds                                                                |
+| pauseAnimation   | Boolean           | false         | Prop to pass reactive variables so that you can control animation pause and play                                   |
+| pauseOnHover     | Boolean           | false         | Whether to pause the animation on hover                                                                            |
+| playOnHover      | Boolean           | false         | Whether to play the animation when you hover                                                                       |
+| backgroundColor  | String            | transparent   | Background color of the container                                                                                  |
+| noMargin         | Boolean           | false         | Prevent the lottie from auto centering in the container. This gives you better control on placement within your UI |
+| assetsPath       | String            | ""            | URL to the image asset you need to use in your Lottie animation                                                    |
+| renderer         | String            | "svg"         | Set the renderer                                                                                                   |
+| rendererSettings | Object            | {}            | Options for if you want to use an existing canvas to draw (can be ignored on most cases)                           |
 
 ## Events
 
@@ -248,7 +249,7 @@ You can control the animation with the following methods. These methods can be c
 A big thank you goes to [@reslear](https://github.com/reslear) for adding Typescript support to this library. Go check out his profile and give him a follow!
 
 - [@DamianGlowala](https://github.com/DamianGlowala) - PR [#29](https://github.com/megasanjay/vue3-lottie/pull/29) - Fix `watch` function
-- [@Doyeon Eum](https://lottiefiles.com/user/283677) - For the hero [image](https://lottiefiles.com/20574-mongryong-hi) in this repo.
+- [@Doyeon Eum](https://lottiefiles.com/vjb2ortjmml37359) - For the hero [image](https://lottiefiles.com/20574-mongryong-hi) in this repo.
 - [@Tafel](https://github.com/tafelnl) - PR[#296](https://github.com/megasanjay/vue3-lottie/pull/296) - Update lodash to the tree-shakeable versions
 - [@TartanLeGrand](https://github.com/TartanLeGrand) - PR[#307](https://github.com/megasanjay/vue3-lottie/pull/307) - Add the `assetsPath` prop to the component
 
