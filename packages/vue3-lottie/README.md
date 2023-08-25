@@ -196,6 +196,7 @@ More detailed explanations are provided in the [documentation](https://vue3-lott
 | playOnHover      | Boolean           | false         | Whether to play the animation when you hover                                                                       |
 | backgroundColor  | String            | transparent   | Background color of the container                                                                                  |
 | noMargin         | Boolean           | false         | Prevent the lottie from auto centering in the container. This gives you better control on placement within your UI |
+| scale            | Number            | 1             | Scale the animation (might cause blurriness)                                                                       |
 | assetsPath       | String            | ""            | URL to the image asset you need to use in your Lottie animation                                                    |
 | renderer         | String            | "svg"         | Set the renderer                                                                                                   |
 | rendererSettings | Object            | {}            | Options for if you want to use an existing canvas to draw (can be ignored on most cases)                           |
