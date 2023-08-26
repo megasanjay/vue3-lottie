@@ -1,0 +1,21 @@
+<template>
+  <ClientOnly>
+    <Vue3Lottie
+      animation-link="https://lottie.host/ce7c97f6-e0ea-4ea6-b8c6-50d28928f288/jjsUvZSbD1.json"
+      :height="200"
+      :width="200"
+    />
+    <Vue3Lottie
+      animation-link="https://lottie.host/ce7c97f6-e0ea-4ea6-b8c6-50d28928f288/jjsUvZSbD1.json"
+      :height="200"
+      :width="200"
+      :scale="2"
+    />
+    <Vue3Lottie
+      animation-link="https://lottie.host/ce7c97f6-e0ea-4ea6-b8c6-50d28928f288/jjsUvZSbD1.json"
+      :height="200"
+      :width="200"
+      :scale="3"
+    />
+  </ClientOnly>
+</template>
