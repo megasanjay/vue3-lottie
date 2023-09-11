@@ -41,7 +41,7 @@
     }
   },
   "devDependencies": {
-    "@babel/types": "7.22.15",
+    "@babel/types": "7.22.17",
     "@types/lodash-es": "4.17.9",
     "@types/node": "18.17.5",
     "@vitejs/plugin-vue": "2.3.4",
