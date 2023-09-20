@@ -254,4 +254,4 @@ A big thank you goes to [@reslear](https://github.com/reslear) for adding Typesc
 - [@Tafel](https://github.com/tafelnl) - PR[#296](https://github.com/megasanjay/vue3-lottie/pull/296) - Update lodash to the tree-shakeable versions
 - [@TartanLeGrand](https://github.com/TartanLeGrand) - PR[#307](https://github.com/megasanjay/vue3-lottie/pull/307) - Add the `assetsPath` prop to the component
 
-![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg) ![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
+![forthebadge](https://forthebadge.shorty.systems/images/badges/made-with-vue.svg) ![forthebadge](https://forthebadge.shorty.systems/images/badges/built-with-love.svg)
