@@ -1,15 +1,10 @@
 <template>
-  <div
-    :data-id="elementid"
-    class="lottie-animation-container"
-    :style="getCurrentStyle"
-    @mouseenter="hoverStarted"
-    @mouseleave="hoverEnded"
-  ></div>
+  <div ref="lottieEl" class="lottie-animation-container" :style="getCurrentStyle" @mouseenter="hoverStarted"
+    @mouseleave="hoverEnded"></div>
 </template>
 
 <script lang="ts">
-import { ref, onMounted, computed, watch, defineComponent, PropType } from 'vue'
+import { ref, computed, watch, defineComponent, PropType, watchEffect, nextTick } from 'vue'
 import Lottie from 'lottie-web'
 import { cloneDeep, isEqual } from 'lodash-es'
 
@@ -106,41 +101,43 @@ export default defineComponent({
 
   setup(props, { emit: emits }) {
     let lottieAnimation: AnimationItem | null = null
-    const elementid = ref<string>('')
     let direction: AnimationDirection = 1
+    const animationData = ref<any>()
+    const lottieEl = ref<HTMLDivElement>()
 
-    // hack fix supplement for ssr
-    const checkIfContainerExists = (elementID: String) => {
-      if (document.querySelector(`[data-id="${elementID}"]`) !== null) {
-        return true
-      } else {
-        return false
-      }
-    }
-
-    const loadLottie = async (element: Element) => {
-      let autoPlay = props.autoPlay
-
-      if (props.playOnHover) {
-        autoPlay = false
-      }
-
-      // creating a copy of the animation data to prevent the original data from being modified
-      // also needed to render multiple animations on the same page
-      let animationData = {}
-      if (isEqual(props.animationData, {}) === false) {
-        animationData = cloneDeep(props.animationData)
-      }
-
+    watchEffect(async () => {
       if (props.animationLink != '') {
         try {
           const response = await fetch(props.animationLink)
           const json = await response.json()
-          animationData = json
+          animationData.value = json
+          nextTick(() => loadLottie())
         } catch (error) {
           console.error(error)
           return
         }
+      }else if(isEqual(props.animationData, {}) === false){
+        animationData.value = cloneDeep(props.animationData)
+        nextTick(() => loadLottie())
+      }
+      else{
+        throw new Error('You must provide either animationLink or animationData')
+      }
+    })
+
+    const loadLottie = () => {
+      if (!lottieEl.value)
+        return
+      if (!animationData.value)
+        return
+      // Regenerate lottieAnimation
+      lottieAnimation?.destroy()
+      lottieAnimation = null
+
+      let autoPlay = props.autoPlay
+
+      if (props.playOnHover) {
+        autoPlay = false
       }
 
       let loop = props.loop
@@ -157,11 +154,11 @@ export default defineComponent({
       }
 
       const lottieAnimationConfig: any = {
-        container: element,
+        container: lottieEl.value,
         renderer: props.renderer,
         loop: loop,
         autoplay: autoPlay,
-        animationData: animationData,
+        animationData: animationData.value,
         assetsPath: props.assetsPath,
       }
 
@@ -428,40 +425,8 @@ export default defineComponent({
       return result
     }
 
-    const setupLottie = (elementID: String) => {
-      if (props.pauseOnHover && props.playOnHover) {
-        throw new Error(
-          'You cannot set pauseOnHover and playOnHover for Vue3-Lottie at the same time.',
-        )
-      }
-
-      if (props.animationLink === '' && isEqual(props.animationData, {})) {
-        throw new Error(
-          'You must provide either animationLink or animationData',
-        )
-      }
-
-      // Unfortunately, this is a hackfix for ssr. We need to wait for the element to be rendered before we can load the animation.
-      // One day I will figure out how to do this properly.
-      const interval = setInterval(() => {
-        if (checkIfContainerExists(elementID)) {
-          clearInterval(interval)
-          const element = document.querySelector(`[data-id="${elementID}" ]`)
-
-          if (element) {
-            loadLottie(element) // load the animation
-          }
-        }
-      }, 0)
-    }
-
-    onMounted(async () => {
-      elementid.value = makeid(20) // generate a random id for the container
-      setupLottie(elementid.value)
-    })
-
     return {
-      elementid,
+      lottieEl,
       hoverEnded,
       hoverStarted,
       getCurrentStyle,

@@ -1,3 +1,8 @@
+# 说明
+fork 了[Vue3-lottie](https://github.com/megasanjay/vue3-lottie)，对这个项目做了一些扩展，已经PR到原项目。
+--
+可以使用vue3的响应式来动态修改animationData和animationLink数据了。
+
 # Vue 3 Lottie
 
 Add Lottie animations to your Vue 3 or Nuxt 3 application.
