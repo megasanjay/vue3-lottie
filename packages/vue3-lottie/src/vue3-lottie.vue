@@ -1,10 +1,23 @@
 <template>
-  <div ref="lottieEl" class="lottie-animation-container" :style="getCurrentStyle" @mouseenter="hoverStarted"
-    @mouseleave="hoverEnded"></div>
+  <div
+    ref="lottieAnimationContainer"
+    class="lottie-animation-container"
+    :style="getCurrentStyle"
+    @mouseenter="hoverStarted"
+    @mouseleave="hoverEnded"
+  ></div>
 </template>
 
 <script lang="ts">
-import { ref, computed, watch, defineComponent, PropType, watchEffect, nextTick } from 'vue'
+import {
+  ref,
+  computed,
+  watch,
+  defineComponent,
+  PropType,
+  watchEffect,
+  nextTick,
+} from 'vue'
 import Lottie from 'lottie-web'
 import { cloneDeep, isEqual } from 'lodash-es'
 
@@ -100,61 +113,76 @@ export default defineComponent({
   },
 
   setup(props, { emit: emits }) {
+    const animationData = ref<any>()
+    const lottieAnimationContainer = ref<HTMLDivElement>()
+
     let lottieAnimation: AnimationItem | null = null
     let direction: AnimationDirection = 1
-    const animationData = ref<any>()
-    const lottieEl = ref<HTMLDivElement>()
 
     watchEffect(async () => {
       if (props.animationLink != '') {
+        // fetch the animation data from the url
+
         try {
           const response = await fetch(props.animationLink)
-          const json = await response.json()
-          animationData.value = json
+
+          const responseJSON = await response.json()
+
+          animationData.value = responseJSON
+
           nextTick(() => loadLottie())
         } catch (error) {
           console.error(error)
           return
         }
-      }else if(isEqual(props.animationData, {}) === false){
+      } else if (isEqual(props.animationData, {}) === false) {
+        // clone the animationData to prevent it from being mutated
         animationData.value = cloneDeep(props.animationData)
+
         nextTick(() => loadLottie())
-      }
-      else{
-        throw new Error('You must provide either animationLink or animationData')
+      } else {
+        throw new Error(
+          'You must provide either animationLink or animationData',
+        )
       }
     })
 
     const loadLottie = () => {
-      if (!lottieEl.value)
-        return
-      if (!animationData.value)
-        return
-      // Regenerate lottieAnimation
+      // check if the lottieAnimationContainer has been created
+      if (!lottieAnimationContainer.value) return
+
+      // check if the animationData has been loaded
+      if (!animationData.value) return
+
+      // destroy the animation if it already exists
       lottieAnimation?.destroy()
+
+      // reset the lottieAnimation variable
       lottieAnimation = null
 
+      // set the autoplay and loop variables
       let autoPlay = props.autoPlay
+      let loop = props.loop
 
       if (props.playOnHover) {
         autoPlay = false
       }
 
-      let loop = props.loop
-
       // drop the loop by one
+      // this is because lottie-web will loop one extra time
       if (typeof loop === 'number') {
         if (loop > 0) {
           loop = loop - 1
         }
       }
 
+      // if the delay is greater than 0, we need to set autoplay to false
       if (props.delay > 0) {
         autoPlay = false
       }
 
       const lottieAnimationConfig: any = {
-        container: lottieEl.value,
+        container: lottieAnimationContainer.value,
         renderer: props.renderer,
         loop: loop,
         autoplay: autoPlay,
@@ -162,6 +190,7 @@ export default defineComponent({
         assetsPath: props.assetsPath,
       }
 
+      // check if the custom rendererSettings is provided
       if (isEqual(props.rendererSettings, {}) === false) {
         lottieAnimationConfig.rendererSettings = props.rendererSettings
       }
@@ -201,6 +230,7 @@ export default defineComponent({
         emits('onAnimationLoaded')
       }, props.delay)
 
+      // set the speed and direction
       lottieAnimation.setSpeed(props.speed)
 
       if (props.direction === 'reverse') {
@@ -210,6 +240,7 @@ export default defineComponent({
         lottieAnimation.setDirection(1)
       }
 
+      // pause the animation if pauseAnimation or playOnHover is true
       if (props.pauseAnimation) {
         lottieAnimation.pause()
       } else {
@@ -411,22 +442,8 @@ export default defineComponent({
       }
     }
 
-    // function to generate random strings for IDs
-    const makeid = (length: number) => {
-      var result = ''
-      var characters =
-        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-      var charactersLength = characters.length
-      for (var i = 0; i < length; i++) {
-        result += characters.charAt(
-          Math.floor(Math.random() * charactersLength),
-        )
-      }
-      return result
-    }
-
     return {
-      lottieEl,
+      lottieAnimationContainer,
       hoverEnded,
       hoverStarted,
       getCurrentStyle,
