@@ -1,6 +1,6 @@
 <template>
   <div
-    :data-id="elementid"
+    ref="lottieAnimationContainer"
     class="lottie-animation-container"
     :style="getCurrentStyle"
     @mouseenter="hoverStarted"
@@ -9,7 +9,15 @@
 </template>
 
 <script lang="ts">
-import { ref, onMounted, computed, watch, defineComponent, PropType } from 'vue'
+import {
+  ref,
+  computed,
+  watch,
+  defineComponent,
+  PropType,
+  watchEffect,
+  nextTick,
+} from 'vue'
 import Lottie from 'lottie-web'
 import { cloneDeep, isEqual } from 'lodash-es'
 
@@ -105,66 +113,84 @@ export default defineComponent({
   },
 
   setup(props, { emit: emits }) {
+    const animationData = ref<any>()
+    const lottieAnimationContainer = ref<HTMLDivElement>()
+
     let lottieAnimation: AnimationItem | null = null
-    const elementid = ref<string>('')
     let direction: AnimationDirection = 1
 
-    // hack fix supplement for ssr
-    const checkIfContainerExists = (elementID: String) => {
-      if (document.querySelector(`[data-id="${elementID}"]`) !== null) {
-        return true
-      } else {
-        return false
-      }
-    }
+    watchEffect(async () => {
+      if (props.animationLink != '') {
+        // fetch the animation data from the url
 
-    const loadLottie = async (element: Element) => {
+        try {
+          const response = await fetch(props.animationLink)
+
+          const responseJSON = await response.json()
+
+          animationData.value = responseJSON
+
+          nextTick(() => loadLottie())
+        } catch (error) {
+          console.error(error)
+          return
+        }
+      } else if (isEqual(props.animationData, {}) === false) {
+        // clone the animationData to prevent it from being mutated
+        animationData.value = cloneDeep(props.animationData)
+
+        nextTick(() => loadLottie())
+      } else {
+        throw new Error(
+          'You must provide either animationLink or animationData',
+        )
+      }
+    })
+
+    const loadLottie = () => {
+      // check if the lottieAnimationContainer has been created
+      if (!lottieAnimationContainer.value) return
+
+      // check if the animationData has been loaded
+      if (!animationData.value) return
+
+      // destroy the animation if it already exists
+      lottieAnimation?.destroy()
+
+      // reset the lottieAnimation variable
+      lottieAnimation = null
+
+      // set the autoplay and loop variables
       let autoPlay = props.autoPlay
+      let loop = props.loop
 
       if (props.playOnHover) {
         autoPlay = false
       }
 
-      // creating a copy of the animation data to prevent the original data from being modified
-      // also needed to render multiple animations on the same page
-      let animationData = {}
-      if (isEqual(props.animationData, {}) === false) {
-        animationData = cloneDeep(props.animationData)
-      }
-
-      if (props.animationLink != '') {
-        try {
-          const response = await fetch(props.animationLink)
-          const json = await response.json()
-          animationData = json
-        } catch (error) {
-          console.error(error)
-          return
-        }
-      }
-
-      let loop = props.loop
-
       // drop the loop by one
+      // this is because lottie-web will loop one extra time
       if (typeof loop === 'number') {
         if (loop > 0) {
           loop = loop - 1
         }
       }
 
+      // if the delay is greater than 0, we need to set autoplay to false
       if (props.delay > 0) {
         autoPlay = false
       }
 
       const lottieAnimationConfig: any = {
-        container: element,
+        container: lottieAnimationContainer.value,
         renderer: props.renderer,
         loop: loop,
         autoplay: autoPlay,
-        animationData: animationData,
+        animationData: animationData.value,
         assetsPath: props.assetsPath,
       }
 
+      // check if the custom rendererSettings is provided
       if (isEqual(props.rendererSettings, {}) === false) {
         lottieAnimationConfig.rendererSettings = props.rendererSettings
       }
@@ -204,6 +230,7 @@ export default defineComponent({
         emits('onAnimationLoaded')
       }, props.delay)
 
+      // set the speed and direction
       lottieAnimation.setSpeed(props.speed)
 
       if (props.direction === 'reverse') {
@@ -213,6 +240,7 @@ export default defineComponent({
         lottieAnimation.setDirection(1)
       }
 
+      // pause the animation if pauseAnimation or playOnHover is true
       if (props.pauseAnimation) {
         lottieAnimation.pause()
       } else {
@@ -414,54 +442,8 @@ export default defineComponent({
       }
     }
 
-    // function to generate random strings for IDs
-    const makeid = (length: number) => {
-      var result = ''
-      var characters =
-        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-      var charactersLength = characters.length
-      for (var i = 0; i < length; i++) {
-        result += characters.charAt(
-          Math.floor(Math.random() * charactersLength),
-        )
-      }
-      return result
-    }
-
-    const setupLottie = (elementID: String) => {
-      if (props.pauseOnHover && props.playOnHover) {
-        throw new Error(
-          'You cannot set pauseOnHover and playOnHover for Vue3-Lottie at the same time.',
-        )
-      }
-
-      if (props.animationLink === '' && isEqual(props.animationData, {})) {
-        throw new Error(
-          'You must provide either animationLink or animationData',
-        )
-      }
-
-      // Unfortunately, this is a hackfix for ssr. We need to wait for the element to be rendered before we can load the animation.
-      // One day I will figure out how to do this properly.
-      const interval = setInterval(() => {
-        if (checkIfContainerExists(elementID)) {
-          clearInterval(interval)
-          const element = document.querySelector(`[data-id="${elementID}" ]`)
-
-          if (element) {
-            loadLottie(element) // load the animation
-          }
-        }
-      }, 0)
-    }
-
-    onMounted(async () => {
-      elementid.value = makeid(20) // generate a random id for the container
-      setupLottie(elementid.value)
-    })
-
     return {
-      elementid,
+      lottieAnimationContainer,
       hoverEnded,
       hoverStarted,
       getCurrentStyle,

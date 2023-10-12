@@ -253,5 +253,6 @@ A big thank you goes to [@reslear](https://github.com/reslear) for adding Typesc
 - [@Doyeon Eum](https://lottiefiles.com/vjb2ortjmml37359) - For the hero [image](https://lottiefiles.com/20574-mongryong-hi) in this repo.
 - [@Tafel](https://github.com/tafelnl) - PR[#296](https://github.com/megasanjay/vue3-lottie/pull/296) - Update lodash to the tree-shakeable versions
 - [@TartanLeGrand](https://github.com/TartanLeGrand) - PR[#307](https://github.com/megasanjay/vue3-lottie/pull/307) - Add the `assetsPath` prop to the component
+- [@HighSky2GT](https://github.com/HighSky2GT) - PR[#408](https://github.com/megasanjay/vue3-lottie/pull/408) - Add support for dynamic animation data
 
 ![forthebadge](https://forthebadge.shorty.systems/images/badges/made-with-vue.svg) ![forthebadge](https://forthebadge.shorty.systems/images/badges/built-with-love.svg)
