@@ -20,6 +20,22 @@
     :width="200"
   />
 
+  <div
+		class="lottie"
+		@mousewheel="handleMouseWheel($event)"
+		@click="lottieContainer.playSegments([10, 20])">
+		<h1 class="lottie__title">Test lottie</h1>
+
+		<Vue3Lottie
+			ref="lottieContainer"
+			class="lottie__wrapper"
+			:animation-data="DogJSON"
+			:auto-play="false" :height="300"
+    :width="300"
+			:loop="false"
+			@on-animation-loaded="onLottieLoaded()"/>
+	</div>
+
   <HelloWorld msg="Hello Lottie! Using Vue 3 + TypeScript + Vite" />
 </template>
 
@@ -38,6 +54,42 @@ function linkClick(){
 function dataClick(){
   data.value =  Lottie
 }
+
+import {  reactive } from 'vue';
+import { Vue3Lottie } from 'vue3-lottie';
+import { debounce } from 'lodash-es';
+
+
+const lottieContainer = ref();
+const state = reactive({
+	frame: 100,
+	totalFrames: 0,
+});
+
+function onLottieLoaded () {
+	state.totalFrames = lottieContainer.value.getDuration(true);
+	console.log(`🚀 ~ totalFrames:`, state.totalFrames);
+}
+
+const handleMouseWheel = debounce((ev: WheelEvent) => {
+	console.log(ev);
+	console.log(`🚀 ~ handleMouseWheel ~ lottieContainer:`, lottieContainer.value);
+	let targetFrame = state.frame;
+
+	ev.deltaY > 0
+		? targetFrame += 10
+		: targetFrame -= 10;
+
+	if (targetFrame < 0) targetFrame = 0;
+	if (targetFrame > state.totalFrames) targetFrame = state.totalFrames;
+
+	console.log(`🚀 ~ playSegments:`, [state.frame, targetFrame]);
+
+	lottieContainer.value?.playSegments([state.frame, targetFrame]);
+	state.frame = targetFrame;
+
+}, 100);
+
 </script>
 
 <style>
