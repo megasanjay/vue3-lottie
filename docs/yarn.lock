@@ -8600,10 +8600,10 @@ vue-template-compiler@^2.7.14:
     de-indent "^1.0.2"
     he "^1.2.0"
 
-vue3-lottie@3.2.0-beta.0:
-  version "3.2.0-beta.0"
-  resolved "https://registry.yarnpkg.com/vue3-lottie/-/vue3-lottie-3.2.0-beta.0.tgz#30c65f2c83d0542c8ec9e7cf13c548d6f56e268c"
-  integrity sha512-wPckZb1MN8LHrer7mCilhPeUUqo/Nnyd81VOUEMsywMT0yKCZVmrGrPtbWjJCFI+JNVCCpTdM53XvhXxWqEZPQ==
+vue3-lottie@3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/vue3-lottie/-/vue3-lottie-3.2.0.tgz#7f95831d3483dc304c680a9b2cac6ed098070a2a"
+  integrity sha512-PtNXbv7iD4XGmK8CXd71aLWmILIR6P6VzLMDw6ZzmDAeuJZuJ0MdOVnn50LOARgq+cOFJsn/2z+7tZh0F9T9qw==
   dependencies:
     lodash-es "^4.17.21"
     lottie-web "5.12.2"
