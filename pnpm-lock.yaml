@@ -65,8 +65,8 @@ importers:
         specifier: 4.17.10
         version: 4.17.10
       '@types/node':
-        specifier: 20.8.7
-        version: 20.8.7
+        specifier: 20.8.8
+        version: 20.8.8
       '@vitejs/plugin-vue':
         specifier: 2.3.4
         version: 2.3.4(vite@2.9.16)(vue@3.3.6)
@@ -84,7 +84,7 @@ importers:
         version: 3.1.1(vite@2.9.16)
       vite-plugin-dts:
         specifier: ^2.3.0
-        version: 2.3.0(@types/node@20.8.7)(vite@2.9.16)
+        version: 2.3.0(@types/node@20.8.8)(vite@2.9.16)
       vite-plugin-vue-type-imports:
         specifier: ^0.2.4
         version: 0.2.4(vite@2.9.16)(vue@3.3.6)
@@ -940,24 +940,24 @@ packages:
       - supports-color
     dev: true
 
-  /@microsoft/api-extractor-model@7.27.3(@types/node@20.8.7):
+  /@microsoft/api-extractor-model@7.27.3(@types/node@20.8.8):
     resolution: {integrity: sha512-fSFvw7otYHduOkyshjTbapKKgwF8bgquVHvgF8VgeKtMYvqXkoaj7W6VcM7PNY7E2bbblhUgC4XNdqZLD4SJGw==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.59.4(@types/node@20.8.7)
+      '@rushstack/node-core-library': 3.59.4(@types/node@20.8.8)
     transitivePeerDependencies:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor@7.36.0(@types/node@20.8.7):
+  /@microsoft/api-extractor@7.36.0(@types/node@20.8.8):
     resolution: {integrity: sha512-P+kYgJFDXIr+UNzhRMhlpM/dderi6ab4lxn35vdhfAIMPtGCSXIJxrrtpTOQmQW8CZtmoZX06LYoUsKCc1zjow==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.27.3(@types/node@20.8.7)
+      '@microsoft/api-extractor-model': 7.27.3(@types/node@20.8.8)
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.59.4(@types/node@20.8.7)
+      '@rushstack/node-core-library': 3.59.4(@types/node@20.8.8)
       '@rushstack/rig-package': 0.4.0
       '@rushstack/ts-command-line': 4.15.1
       colors: 1.2.5
@@ -1647,7 +1647,7 @@ packages:
       rollup: 3.29.4
     dev: true
 
-  /@rushstack/node-core-library@3.59.4(@types/node@20.8.7):
+  /@rushstack/node-core-library@3.59.4(@types/node@20.8.8):
     resolution: {integrity: sha512-YAKJDC6Mz/KA1D7bvB88WaRX3knt/ZuLzkRu5G9QADGSjLtvTWzCNCytRF2PCSaaHOZaZsWul4F1KQdgFgUDqA==}
     peerDependencies:
       '@types/node': '*'
@@ -1655,7 +1655,7 @@ packages:
       '@types/node':
         optional: true
     dependencies:
-      '@types/node': 20.8.7
+      '@types/node': 20.8.8
       colors: 1.2.5
       fs-extra: 7.0.1
       import-lazy: 4.0.0
@@ -1757,7 +1757,7 @@ packages:
   /@types/http-proxy@1.17.12:
     resolution: {integrity: sha512-kQtujO08dVtQ2wXAuSFfk9ASy3sug4+ogFR8Kd8UgP8PEuc1/G/8yjYRmp//PcDNJEUKOza/MrQu15bouEUCiw==}
     dependencies:
-      '@types/node': 20.8.7
+      '@types/node': 20.8.8
     dev: true
 
   /@types/lodash-es@4.17.10:
@@ -1770,8 +1770,8 @@ packages:
     resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
     dev: true
 
-  /@types/node@20.8.7:
-    resolution: {integrity: sha512-21TKHHh3eUHIi2MloeptJWALuCu5H7HQTdTrWIFReA8ad+aggoX+lRes3ex7/FtpC+sVUpFMQ+QTfYr74mruiQ==}
+  /@types/node@20.8.8:
+    resolution: {integrity: sha512-YRsdVxq6OaLfmR9Hy816IMp33xOBjfyOgUd77ehqg96CFywxAPbDbXvAsuN2KVg2HOT8Eh6uAfU+l4WffwPVrQ==}
     dependencies:
       undici-types: 5.25.3
     dev: true
@@ -6722,16 +6722,16 @@ packages:
       vite: 2.9.16
     dev: true
 
-  /vite-plugin-dts@2.3.0(@types/node@20.8.7)(vite@2.9.16):
+  /vite-plugin-dts@2.3.0(@types/node@20.8.8)(vite@2.9.16):
     resolution: {integrity: sha512-WbJgGtsStgQhdm3EosYmIdTGbag5YQpZ3HXWUAPCDyoXI5qN6EY0V7NXq0lAmnv9hVQsvh0htbYcg0Or5Db9JQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: '>=2.9.0'
     dependencies:
       '@babel/parser': 7.22.4
-      '@microsoft/api-extractor': 7.36.0(@types/node@20.8.7)
+      '@microsoft/api-extractor': 7.36.0(@types/node@20.8.8)
       '@rollup/pluginutils': 5.0.2
-      '@rushstack/node-core-library': 3.59.4(@types/node@20.8.7)
+      '@rushstack/node-core-library': 3.59.4(@types/node@20.8.8)
       debug: 4.3.4
       fast-glob: 3.2.12
       fs-extra: 10.1.0
