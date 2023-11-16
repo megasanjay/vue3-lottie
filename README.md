@@ -156,11 +156,11 @@ yarn add vue3-lottie@latest
  import { Vue3Lottie } from 'vue3-lottie'
 
  export default defineNuxtPlugin((nuxtApp) => {
-   nuxtApp.vueApp.component('Vue3Lottie', Vue3Lottie)
+   nuxtApp.vueApp.component('Vue3Lottie')
  })
 ```
 
-If you get an error with TS, try `use(Vue3Lottie, { name: "Vue3Lottie" })`
+If you get an error with TS, try `component(Vue3Lottie, { name: "Vue3Lottie" })`
 
 This should register as a global component that you can call anywhere in your app under the <Vue3Lottie> tag.
 
