@@ -19,7 +19,8 @@ import {
   nextTick,
 } from 'vue'
 import Lottie from 'lottie-web'
-import { cloneDeep, isEqual } from 'lodash-es'
+import isEqual from 'fast-deep-equal/es6';
+import { klona as cloneDeep } from 'klona/json';
 
 import type {
   AnimationDirection,
