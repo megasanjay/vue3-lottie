@@ -113,9 +113,9 @@ export default defineComponent({
   },
 
   setup(props, { emit: emits }) {
-    const animationData = ref<any>()
     const lottieAnimationContainer = ref<HTMLDivElement>()
 
+    let animationData: any
     let lottieAnimation: AnimationItem | null = null
     let direction: AnimationDirection = 1
 
@@ -128,7 +128,7 @@ export default defineComponent({
 
           const responseJSON = await response.json()
 
-          animationData.value = responseJSON
+          animationData = responseJSON
 
           nextTick(() => loadLottie())
         } catch (error) {
@@ -137,7 +137,7 @@ export default defineComponent({
         }
       } else if (isEqual(props.animationData, {}) === false) {
         // clone the animationData to prevent it from being mutated
-        animationData.value = cloneDeep(props.animationData)
+        animationData = cloneDeep(props.animationData)
 
         nextTick(() => loadLottie())
       } else {
@@ -152,7 +152,7 @@ export default defineComponent({
       if (!lottieAnimationContainer.value) return
 
       // check if the animationData has been loaded
-      if (!animationData.value) return
+      if (!animationData) return
 
       // destroy the animation if it already exists
       lottieAnimation?.destroy()
@@ -186,7 +186,7 @@ export default defineComponent({
         renderer: props.renderer,
         loop: loop,
         autoplay: autoPlay,
-        animationData: animationData.value,
+        animationData: animationData,
         assetsPath: props.assetsPath,
       }
 
