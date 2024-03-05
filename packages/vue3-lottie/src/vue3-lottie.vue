@@ -16,7 +16,6 @@ import {
   defineComponent,
   PropType,
   watchEffect,
-  nextTick,
 } from 'vue'
 import Lottie from 'lottie-web'
 import { cloneDeep, isEqual } from 'lodash-es'
@@ -133,8 +132,6 @@ export default defineComponent({
           const responseJSON = await response.json()
 
           animationData.value = responseJSON
-
-          nextTick(() => loadLottie())
         } catch (error) {
           console.error(error)
           return
@@ -142,13 +139,13 @@ export default defineComponent({
       } else if (isEqual(props.animationData, {}) === false) {
         // clone the animationData to prevent it from being mutated
         animationData.value = cloneDeep(props.animationData)
-
-        nextTick(() => loadLottie())
       } else {
         throw new Error(
           'You must provide either animationLink or animationData',
         )
       }
+
+      loadLottie()
     })
 
     const loadLottie = () => {
