@@ -120,6 +120,10 @@ export default defineComponent({
     let direction: AnimationDirection = 1
 
     watchEffect(async () => {
+      // track and ensure that `lottieAnimationContainer` is mounted
+      // fix: #502
+      if(!lottieAnimationContainer.value) return
+
       if (props.animationLink != '') {
         // fetch the animation data from the url
 
