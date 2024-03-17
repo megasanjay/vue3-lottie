@@ -16,10 +16,10 @@ import {
   defineComponent,
   PropType,
   watchEffect,
-  nextTick,
 } from 'vue'
 import Lottie from 'lottie-web'
-import { cloneDeep, isEqual } from 'lodash-es'
+import isEqual from 'fast-deep-equal/es6';
+import { klona as cloneDeep } from 'klona/json';
 
 import type {
   AnimationDirection,
@@ -113,13 +113,17 @@ export default defineComponent({
   },
 
   setup(props, { emit: emits }) {
-    const animationData = ref<any>()
     const lottieAnimationContainer = ref<HTMLDivElement>()
 
+    let animationData: any
     let lottieAnimation: AnimationItem | null = null
     let direction: AnimationDirection = 1
 
     watchEffect(async () => {
+      // track and ensure that `lottieAnimationContainer` is mounted
+      // fix: #502
+      if(!lottieAnimationContainer.value) return
+
       if (props.animationLink != '') {
         // fetch the animation data from the url
 
@@ -128,23 +132,21 @@ export default defineComponent({
 
           const responseJSON = await response.json()
 
-          animationData.value = responseJSON
-
-          nextTick(() => loadLottie())
+          animationData = responseJSON
         } catch (error) {
           console.error(error)
           return
         }
       } else if (isEqual(props.animationData, {}) === false) {
         // clone the animationData to prevent it from being mutated
-        animationData.value = cloneDeep(props.animationData)
-
-        nextTick(() => loadLottie())
+        animationData = cloneDeep(props.animationData)
       } else {
         throw new Error(
           'You must provide either animationLink or animationData',
         )
       }
+
+      loadLottie()
     })
 
     const loadLottie = () => {
@@ -152,7 +154,7 @@ export default defineComponent({
       if (!lottieAnimationContainer.value) return
 
       // check if the animationData has been loaded
-      if (!animationData.value) return
+      if (!animationData) return
 
       // destroy the animation if it already exists
       lottieAnimation?.destroy()
@@ -186,7 +188,7 @@ export default defineComponent({
         renderer: props.renderer,
         loop: loop,
         autoplay: autoPlay,
-        animationData: animationData.value,
+        animationData: animationData,
         assetsPath: props.assetsPath,
       }
 
