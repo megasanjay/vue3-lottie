@@ -153,11 +153,11 @@ yarn add vue3-lottie@latest
 - Add the following code to the **`Vue3Lottie.client.ts`** file.
 
 ```ts
- import { Vue3Lottie } from 'vue3-lottie'
+import { Vue3Lottie } from 'vue3-lottie'
 
- export default defineNuxtPlugin((nuxtApp) => {
-   nuxtApp.vueApp.component('Vue3Lottie')
- })
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.component('Vue3Lottie')
+})
 ```
 
 If you get an error with TS, try `component(Vue3Lottie, { name: "Vue3Lottie" })`
@@ -254,5 +254,9 @@ A big thank you goes to [@reslear](https://github.com/reslear) for adding Typesc
 - [@Tafel](https://github.com/tafelnl) - PR[#296](https://github.com/megasanjay/vue3-lottie/pull/296) - Update lodash to the tree-shakeable versions
 - [@TartanLeGrand](https://github.com/TartanLeGrand) - PR[#307](https://github.com/megasanjay/vue3-lottie/pull/307) - Add the `assetsPath` prop to the component
 - [@HighSky2GT](https://github.com/HighSky2GT) - PR[#408](https://github.com/megasanjay/vue3-lottie/pull/408) - Add support for dynamic animation data
+- [@Mini-ghost](https://github.com/Mini-ghost) - PR[#524](https://github.com/megasanjay/vue3-lottie/pull/524) - Adjust script filter syntax
+- [@Mini-ghost](https://github.com/Mini-ghost) - PR[#525](https://github.com/megasanjay/vue3-lottie/pull/525) - Reduce bundle size by swapping `lodash-es` for `klona` and `fast-deep-equal`
+- [@Mini-ghost](https://github.com/Mini-ghost) - PR[#526](https://github.com/megasanjay/vue3-lottie/pull/526) - Improve rendering performance
+- [@Mini-ghost](https://github.com/Mini-ghost) - PR[#527](https://github.com/megasanjay/vue3-lottie/pull/527) - Fix lottie renders in `suspense` components
 
 ![forthebadge](https://forthebadge.shorty.systems/images/badges/made-with-vue.svg) ![forthebadge](https://forthebadge.shorty.systems/images/badges/built-with-love.svg)
