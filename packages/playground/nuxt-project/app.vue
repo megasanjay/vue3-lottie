@@ -27,12 +27,22 @@
     />
   </ClientOnly>
 
+  <Suspense>
+    <LazyDynamicComponent />
+    <template #fallback> Loading... </template>
+  </Suspense>
+
   <HelloWorld msg="Hello Lottie! Using Nuxt 3" />
 </template>
 
 <script setup lang="ts">
 import DogJSON from '@/assets/dog.json'
 import Lottie from '@/assets/lottie.json'
+import { ref, defineAsyncComponent } from 'vue'
+
+const LazyDynamicComponent = defineAsyncComponent(
+  () => import('./components/DynamicComponent.vue'),
+)
 
 const links = ref([
   'https://assets1.lottiefiles.com/packages/lf20_soCRuE.json',

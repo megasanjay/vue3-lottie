@@ -1,5 +1,10 @@
 <template>
-  <Vue3Lottie :animationData="data" :width="300" :height="300" @click="dataClick"/>
+  <Vue3Lottie
+    :animationData="data"
+    :width="300"
+    :height="300"
+    @click="dataClick"
+  />
 
   <Vue3Lottie
     ref="lot"
@@ -20,6 +25,11 @@
     :width="200"
   />
 
+  <Suspense>
+    <LazyDynamicComponent />
+    <template #fallback> Loading... </template>
+  </Suspense>
+
   <HelloWorld msg="Hello Lottie! Using Vue 3 + TypeScript + Vite" />
 </template>
 
@@ -27,16 +37,24 @@
 import HelloWorld from './components/HelloWorld.vue'
 import DogJSON from './assets/dog.json'
 import Lottie from './assets/lottie.json'
-import { ref } from 'vue';
+import { ref, defineAsyncComponent } from 'vue'
+
+const LazyDynamicComponent = defineAsyncComponent(
+  () => import('./components/DynamicComponent.vue'),
+)
+
 const lot = ref()
 
-const link = ref(['https://assets1.lottiefiles.com/packages/lf20_soCRuE.json','https://assets1.lottiefiles.com/packages/lf20_xvz0dpbn.json'])
+const link = ref([
+  'https://assets1.lottiefiles.com/packages/lf20_soCRuE.json',
+  'https://assets1.lottiefiles.com/packages/lf20_xvz0dpbn.json',
+])
 const data = ref<any>(DogJSON)
-function linkClick(){
+function linkClick() {
   link.value = link.value.reverse()
 }
-function dataClick(){
-  data.value =  Lottie
+function dataClick() {
+  data.value = Lottie
 }
 </script>
 
