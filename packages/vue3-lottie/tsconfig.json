@@ -4,6 +4,7 @@
     "module": "ESNext",
     "strict": true,
     "declaration": true,
+    "allowSyntheticDefaultImports": true,
     "lib": ["es2017", "ESNext", "DOM", "DOM.Iterable"],
     "jsx": "preserve",
     "outDir": "dist",
