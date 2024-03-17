@@ -2,6 +2,6 @@
   "name": "vue3-lottie-monorepo",
   "private": "true",
   "scripts": {
-    "build": "pnpm build --filter vue3-lottie"
+    "build": "pnpm --filter vue3-lottie build"
   }
 }
