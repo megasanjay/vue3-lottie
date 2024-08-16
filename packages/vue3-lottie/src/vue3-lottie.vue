@@ -412,7 +412,7 @@ export default defineComponent({
     }
 
     const playSegments = (
-      segments: AnimationSegment[],
+      segments: AnimationSegment | AnimationSegment[],
       forceFlag: boolean = false,
     ) => {
       //segments: array. Can contain 2 numeric values that will be used as first and last frame of the animation. Or can contain a sequence of arrays each with 2 numeric values.
