@@ -20,7 +20,7 @@
     :animationLink="link[1]"
     :animationData="data"
     @click="linkClick"
-    assetsPath="https://source.unsplash.com/user/wsanter"
+    :assetsPath="`https://api.dicebear.com/9.x/micah/svg?seed=${Math.random()}&scale=50`"
     :height="200"
     :width="200"
   />

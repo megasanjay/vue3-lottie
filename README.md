@@ -258,5 +258,6 @@ A big thank you goes to [@reslear](https://github.com/reslear) for adding Typesc
 - [@Mini-ghost](https://github.com/Mini-ghost) - PR[#525](https://github.com/megasanjay/vue3-lottie/pull/525) - Reduce bundle size by swapping `lodash-es` for `klona` and `fast-deep-equal`
 - [@Mini-ghost](https://github.com/Mini-ghost) - PR[#526](https://github.com/megasanjay/vue3-lottie/pull/526) - Improve rendering performance
 - [@Mini-ghost](https://github.com/Mini-ghost) - PR[#527](https://github.com/megasanjay/vue3-lottie/pull/527) - Fix lottie renders in `suspense` components
+- [@brandondv](https://github.com/brandondv) - PR[#560](https://github.com/megasanjay/vue3-lottie/pull/560) - Updating typing of `playSegments` method
 
 ![forthebadge](https://forthebadge.shorty.systems/images/badges/made-with-vue.svg) ![forthebadge](https://forthebadge.shorty.systems/images/badges/built-with-love.svg)

@@ -21,7 +21,7 @@
   <ClientOnly>
     <Vue3Lottie
       animationLink="https://assets1.lottiefiles.com/packages/lf20_xvz0dpbn.json"
-      assetsPath="https://source.unsplash.com/user/wsanter"
+      :assetsPath="`https://api.dicebear.com/9.x/micah/svg?seed=${Math.random()}&scale=50`"
       :height="200"
       :width="200"
     />

@@ -1,6 +1,6 @@
 {
   "name": "vue3-lottie",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "license": "MIT",
   "author": "Sanjay Soundarajan <info@sanjaysoundarajan.dev> (https://sanjaysoundarajan.dev)",
   "type": "module",
@@ -52,7 +52,7 @@
     "vite-plugin-css-injected-by-js": "^3.1.1",
     "vite-plugin-dts": "^2.3.0",
     "vite-plugin-vue-type-imports": "^0.2.4",
-    "vue": "3.4.34",
+    "vue": "3.4.38",
     "vue-tsc": "0.40.13",
     "vue-typegen": "0.2.0"
   },
