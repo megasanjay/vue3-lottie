@@ -16,6 +16,7 @@ import {
   defineComponent,
   PropType,
   watchEffect,
+  onBeforeUnmount,
 } from 'vue'
 import Lottie from 'lottie-web'
 import isEqual from 'fast-deep-equal/es6';
@@ -443,6 +444,10 @@ export default defineComponent({
         )
       }
     }
+
+    onBeforeUnmount(() => {
+      destroy()
+    })
 
     return {
       lottieAnimationContainer,
