@@ -26,13 +26,26 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       external: ['vue', 'lottie-web'],
-      output: {
-        exports: 'named',
-        globals: {
-          vue: 'Vue',
-          'lottie-web': 'Lottie',
+      output: [
+        {
+          format: 'es',
+          entryFileNames: 'vue3-lottie.es.js',
+          exports: 'named',
+          globals: {
+            vue: 'Vue',
+            'lottie-web': 'Lottie',
+          },
         },
-      },
+        {
+          format: 'cjs',
+          entryFileNames: 'vue3-lottie.cjs',
+          exports: 'named',
+          globals: {
+            vue: 'Vue',
+            'lottie-web': 'Lottie',
+          },
+        },
+      ],
     },
   },
 })

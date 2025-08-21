@@ -1,6 +1,6 @@
 {
   "name": "vue3-lottie",
-  "version": "3.3.1",
+  "version": "3.4.0-beta.0",
   "license": "MIT",
   "author": "Sanjay Soundarajan <info@sanjaysoundarajan.dev> (https://sanjaysoundarajan.dev)",
   "type": "module",
@@ -31,14 +31,14 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "main": "dist/vue3-lottie.cjs.js",
+  "main": "dist/vue3-lottie.cjs",
   "module": "dist/vue3-lottie.es.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/vue3-lottie.es.js",
-      "require": "./dist/vue3-lottie.cjs.js"
+      "require": "./dist/vue3-lottie.cjs"
     }
   },
   "devDependencies": {
@@ -61,7 +61,7 @@
     "email": "info@sanjaysoundarajan.dev"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=16"
   },
   "homepage": "https://vue3-lottie.vercel.app/",
   "keywords": [

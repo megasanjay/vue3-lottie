@@ -41,6 +41,10 @@ View the live demos here: [https://vue3-lottie.vercel.app](https://vue3-lottie.v
 
 If you are using version 2.x of `vue3-lottie` you should upgrade to version 3.x. You can do this by running the [Installation and Usage](#installation-and-usage) command below. This add better support for Typescript. There is also a change with the `dist/style.css` import (it's been removed) so take a look at the [new documentation](https://vue3-lottie.vercel.app/introduction/v3) for instructions on how to migrate to this package.
 
+## Node.js Compatibility
+
+Version 3.4.0+ includes fixes for Node.js 20+ compatibility. If you're experiencing issues with Storybook or other build tools on Node.js 20+, please upgrade to the latest version.
+
 ## Installation and Usage
 
 ### Vue 3
