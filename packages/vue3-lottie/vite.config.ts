@@ -1,21 +1,29 @@
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
-import Vue from '@vitejs/plugin-vue'
-import VueTypeImports from 'vite-plugin-vue-type-imports'
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 import dts from 'vite-plugin-dts'
 
+const root = import.meta.dirname
+const dist = resolve(root, 'dist')
+const isWatch = process.argv.includes('--watch') || process.argv.includes('-w')
+
+// entry name (src/<name>.ts) -> output file base name
+//   index: full lottie-web player (`vue3-lottie`)
+//   light: lottie_light player, no `eval` (`vue3-lottie/light`)
+const entries: Record<string, string> = {
+  index: 'vue3-lottie',
+  light: 'vue3-lottie-light',
+}
+
 export default defineConfig({
   plugins: [
-    Vue(),
-    VueTypeImports(),
-    cssInjectedByJsPlugin(),
+    cssInjectedByJsPlugin({
+      // inject into the shared component chunk so both entries get the styles
+      jsAssetsFilterFunction: (chunk) =>
+        chunk.moduleIds.some((id) => id.endsWith('/src/create-vue3-lottie.ts')),
+    }),
     dts({
-      insertTypesEntry: true,
-      copyDtsFiles: false,
-      skipDiagnostics: false,
-      cleanVueFileName: true,
       // ESM declarations need explicit extensions on relative imports
       beforeWriteFile: (filePath, content) => ({
         filePath,
@@ -26,8 +34,6 @@ export default defineConfig({
       }),
       // CJS consumers need .d.cts files since the package is "type": "module"
       afterBuild: () => {
-        const dist = resolve(__dirname, 'dist')
-        // Declarations are nested (e.g. dist/src), so walk the tree
         const files = readdirSync(dist, { recursive: true }) as string[]
         for (const file of files) {
           if (!file.endsWith('.d.ts')) continue
@@ -35,29 +41,38 @@ export default defineConfig({
             /(from\s+['"]\.{1,2}\/[^'"]+?)\.js(['"])/g,
             '$1.cjs$2',
           )
-          writeFileSync(resolve(dist, file.replace(/\.d\.ts$/, '.d.cts')), content)
+          writeFileSync(
+            resolve(dist, file.replace(/\.d\.ts$/, '.d.cts')),
+            content,
+          )
         }
       },
     }),
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, './src/index.ts'),
-      name: 'vue3lottie',
+      entry: Object.fromEntries(
+        Object.keys(entries).map((name) => [
+          name,
+          resolve(root, `src/${name}.ts`),
+        ]),
+      ),
       formats: ['es', 'cjs'],
       // .cjs extension is required for CommonJS output in a "type": "module" package
-      fileName: (format) =>
-        format === 'es' ? 'vue3-lottie.es.js' : 'vue3-lottie.cjs',
+      fileName: (format, entryName) =>
+        `${entries[entryName]}${format === 'es' ? '.es.js' : '.cjs'}`,
     },
     outDir: 'dist',
+    // `vite build --watch` (pnpm dev): the dts plugin registers the files it
+    // writes as watch targets, so without this the es and cjs builds keep
+    // retriggering each other. Only set when watching: a non-null
+    // `build.watch` would turn every `vite build` into watch mode.
+    watch: isWatch ? { exclude: ['dist/**'] } : null,
     rollupOptions: {
-      external: ['vue', 'lottie-web'],
+      // also covers deep imports like lottie-web/build/player/lottie_light
+      external: ['vue', /^lottie-web(\/|$)/],
       output: {
         exports: 'named',
-        globals: {
-          vue: 'Vue',
-          'lottie-web': 'Lottie',
-        },
       },
     },
   },

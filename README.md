@@ -37,9 +37,11 @@ Add Lottie animations to your Vue 3 or Nuxt 3 application.
 
 View the live demos here: [https://vue3-lottie.vercel.app](https://vue3-lottie.vercel.app)
 
-## Upgrade to v3.x
+## Upgrade to v4.x
 
-If you are using version 2.x of `vue3-lottie` you should upgrade to version 3.x. You can do this by running the [Installation and Usage](#installation-and-usage) command below. This add better support for Typescript. There is also a change with the `dist/style.css` import (it's been removed) so take a look at the [new documentation](https://vue3-lottie.vercel.app/introduction/v3) for instructions on how to migrate to this package.
+v4 adds a light build (`vue3-lottie/light`) that avoids the `eval` warning from `lottie-web`; see [Light build](#light-build-no-eval) below. The public API is unchanged from v3; see the [v4 migration guide](https://vue3-lottie.vercel.app/introduction/v4).
+
+Coming from 2.x? The `dist/style.css` import has been removed; see the [v3 migration guide](https://vue3-lottie.vercel.app/introduction/v3).
 
 ## Installation and Usage
 
@@ -176,6 +178,27 @@ I would recommend using a `<client-only>` parent tag to ensure that the animatio
 </client-only>
 ```
 
+### Light build (no `eval`)
+
+The default entry uses the full `lottie-web` player, which evaluates After Effects expressions with `eval`. Bundlers such as Vite/Rollup will warn about this:
+
+```
+Use of eval in "node_modules/lottie-web/build/player/lottie.js" is strongly discouraged...
+```
+
+If your animations don't use expressions, import from `vue3-lottie/light` instead. It uses `lottie-web`'s light player: no `eval`, and a smaller bundle. The API is the same. More details in the [docs](https://vue3-lottie.vercel.app/introduction/light-build).
+
+```js
+import Vue3Lottie from 'vue3-lottie/light'
+// or
+import { Vue3Lottie } from 'vue3-lottie/light'
+```
+
+Limitations of the light build:
+
+- Only the `svg` renderer is supported.
+- Expressions in the animation are not evaluated, so properties driven by them won't animate as intended.
+
 ## Props and options
 
 More detailed explanations are provided in the [documentation](https://vue3-lottie.vercel.app).
@@ -244,20 +267,5 @@ You can control the animation with the following methods. These methods can be c
   - You can call this method to set the subframe value.
 - updateDocumentData(documentData, index)
   - This method updates text on text layers. Refer to the [official docs](https://github.com/airbnb/lottie-web/wiki/TextLayer.updateDocumentData) for how to use this method.
-
-## Credits
-
-A big thank you goes to [@reslear](https://github.com/reslear) for adding Typescript support to this library. Go check out his profile and give him a follow!
-
-- [@DamianGlowala](https://github.com/DamianGlowala) - PR [#29](https://github.com/megasanjay/vue3-lottie/pull/29) - Fix `watch` function
-- [@Doyeon Eum](https://lottiefiles.com/vjb2ortjmml37359) - For the hero [image](https://lottiefiles.com/20574-mongryong-hi) in this repo.
-- [@Tafel](https://github.com/tafelnl) - PR[#296](https://github.com/megasanjay/vue3-lottie/pull/296) - Update lodash to the tree-shakeable versions
-- [@TartanLeGrand](https://github.com/TartanLeGrand) - PR[#307](https://github.com/megasanjay/vue3-lottie/pull/307) - Add the `assetsPath` prop to the component
-- [@HighSky2GT](https://github.com/HighSky2GT) - PR[#408](https://github.com/megasanjay/vue3-lottie/pull/408) - Add support for dynamic animation data
-- [@Mini-ghost](https://github.com/Mini-ghost) - PR[#524](https://github.com/megasanjay/vue3-lottie/pull/524) - Adjust script filter syntax
-- [@Mini-ghost](https://github.com/Mini-ghost) - PR[#525](https://github.com/megasanjay/vue3-lottie/pull/525) - Reduce bundle size by swapping `lodash-es` for `klona` and `fast-deep-equal`
-- [@Mini-ghost](https://github.com/Mini-ghost) - PR[#526](https://github.com/megasanjay/vue3-lottie/pull/526) - Improve rendering performance
-- [@Mini-ghost](https://github.com/Mini-ghost) - PR[#527](https://github.com/megasanjay/vue3-lottie/pull/527) - Fix lottie renders in `suspense` components
-- [@brandondv](https://github.com/brandondv) - PR[#560](https://github.com/megasanjay/vue3-lottie/pull/560) - Updating typing of `playSegments` method
 
 ![forthebadge](https://forthebadge.shorty.systems/images/badges/made-with-vue.svg) ![forthebadge](https://forthebadge.shorty.systems/images/badges/built-with-love.svg)

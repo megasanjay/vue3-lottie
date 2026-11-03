@@ -1,16 +1,8 @@
-import type { App, Plugin } from 'vue'
-import Vue3Lottie from './vue3-lottie.vue'
+import Vue3Lottie from './vue3-lottie'
+import { createPlugin } from './plugin'
 export * from './types'
+export type { PluginOptions } from './plugin'
 
-export interface PluginOptions {
-  name?: string
-}
-
-export default {
-  install(app: App, options?: PluginOptions) {
-    const name = options?.name ?? 'Vue3Lottie'
-    app.component(name, Vue3Lottie)
-  },
-} as Plugin
+export default createPlugin(Vue3Lottie)
 
 export { Vue3Lottie }
