@@ -25,4 +25,15 @@ export default defineNuxtConfig({
     global: true,
     dirs: ['~/components'],
   },
+
+  // Pinceau (used by Docus) generates `import { PinceauTheme } from 'pinceau'`
+  // for type-only symbols. With Nuxt's default `verbatimModuleSyntax: true`,
+  // that import is kept at runtime and breaks in the browser.
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        verbatimModuleSyntax: false,
+      },
+    },
+  },
 })
