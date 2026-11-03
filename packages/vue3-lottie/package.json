@@ -2,6 +2,7 @@
   "name": "vue3-lottie",
   "version": "4.0.0",
   "license": "MIT",
+  "description": "A simple Vue 3 component for using Lottie animations in Vue 3",
   "author": "Sanjay Soundarajan <info@sanjaysoundarajan.dev> (https://sanjaysoundarajan.dev)",
   "type": "module",
   "scripts": {

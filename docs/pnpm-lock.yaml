@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       vue3-lottie:
-        specifier: 3.3.0
-        version: 3.3.0(vue@3.5.44(typescript@5.9.3))
+        specifier: 4.0.0
+        version: 4.0.0(vue@3.5.44(typescript@5.9.3))
     devDependencies:
       '@nuxt-themes/docus':
         specifier: latest
@@ -3919,8 +3919,8 @@ packages:
   longest-streak@3.1.0:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
 
-  lottie-web@5.12.2:
-    resolution: {integrity: sha512-uvhvYPC8kGPjXT3MyKMrL3JitEAmDMp30lVkuq/590Mw9ok6pWcFCwXJveo0t5uqYw1UREQHofD+jVpdjBv8wg==}
+  lottie-web@5.13.0:
+    resolution: {integrity: sha512-+gfBXl6sxXMPe8tKQm7qzLnUy5DUPJPKIyRHwtpCpyUEYjHYRJC/5gjUvdkuO2c3JllrPtHXH5UJJK8LRYl5yQ==}
 
   lower-case@2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
@@ -5958,9 +5958,9 @@ packages:
   vue-template-compiler@2.7.16:
     resolution: {integrity: sha512-AYbUWAJHLGGQM7+cNTELw+KsOG9nl2CnSv467WobS5Cv9uk3wFcnr1Etsz2sEIHEZvw1U+o9mRlEO6QbZvUPGQ==}
 
-  vue3-lottie@3.3.0:
-    resolution: {integrity: sha512-Omv26YN3e78fh0QgQooeZcmPo8O2j5mJ5pacZh1mGdHH9ZTGayWlY1Yp6h+wAvfBKAvJ80JXrSgeBOKA4MRBYA==}
-    engines: {node: '>=12'}
+  vue3-lottie@4.0.0:
+    resolution: {integrity: sha512-1NyD7h4cLLuiagG/ImylE9b0vJeBC9Aq2pREDWwRYk9omAzCTWB4YXDRHWaH2YHZ2y8Sz4CteihK2XRyYf7Qfg==}
+    engines: {node: '>=14.16'}
     peerDependencies:
       vue: ^3.2
 
@@ -10561,7 +10561,7 @@ snapshots:
 
   longest-streak@3.1.0: {}
 
-  lottie-web@5.12.2: {}
+  lottie-web@5.13.0: {}
 
   lower-case@2.0.2:
     dependencies:
@@ -13296,11 +13296,11 @@ snapshots:
       de-indent: 1.0.2
       he: 1.2.0
 
-  vue3-lottie@3.3.0(vue@3.5.44(typescript@5.9.3)):
+  vue3-lottie@4.0.0(vue@3.5.44(typescript@5.9.3)):
     dependencies:
       fast-deep-equal: 3.1.3
       klona: 2.0.6
-      lottie-web: 5.12.2
+      lottie-web: 5.13.0
       vue: 3.5.44(typescript@5.9.3)
 
   vue@3.5.44(typescript@5.9.3):
