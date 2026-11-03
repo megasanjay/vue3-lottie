@@ -1,4 +1,21 @@
 <template>
+  <section class="builds">
+    <div>
+      <h3>Full build</h3>
+      <code>import Vue3Lottie from 'vue3-lottie'</code>
+      <ClientOnly>
+        <Vue3Lottie :animationData="DogJSON" :width="200" :height="200" />
+      </ClientOnly>
+    </div>
+    <div>
+      <h3>Light build</h3>
+      <code>import {{ '{' }} Vue3Lottie {{ '}' }} from 'vue3-lottie/light'</code>
+      <ClientOnly>
+        <Vue3LottieLight :animationData="DogJSON" :width="200" :height="200" />
+      </ClientOnly>
+    </div>
+  </section>
+
   <ClientOnly>
     <Vue3Lottie
       :animationData="data"
@@ -39,6 +56,9 @@
 import DogJSON from '@/assets/dog.json'
 import Lottie from '@/assets/lottie.json'
 import { ref, defineAsyncComponent } from 'vue'
+// light build (svg only, no expressions, no eval); the full build is
+// registered globally as <Vue3Lottie> in plugins/Vue3Lottie.client.ts
+import { Vue3Lottie as Vue3LottieLight } from 'vue3-lottie/light'
 
 const LazyDynamicComponent = defineAsyncComponent(
   () => import('./components/DynamicComponent.vue'),
@@ -70,5 +90,13 @@ div {
   margin-top: 60px;
   display: flex;
   flex-direction: column;
+}
+
+.builds {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 </style>
