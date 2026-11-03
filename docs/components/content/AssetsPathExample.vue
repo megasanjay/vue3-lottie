@@ -9,17 +9,6 @@
   </ClientOnly>
 </template>
 
-<script>
-import { Vue3Lottie } from 'vue3-lottie'
-
-export default {
-  name: 'AssetsPathExample',
-  components: {
-    Vue3Lottie,
-  },
-}
-</script>
-
 <style scoped>
 .lottie-animation-container {
   margin: 0 auto;
