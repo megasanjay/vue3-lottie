@@ -553,6 +553,12 @@ export default defineComponent({
       }
     }
 
+    const getCurrentFrame = () => {
+      if (lottieAnimation) {
+        return lottieAnimation.currentFrame
+      }
+    }
+
     const updateDocumentData = (documentData: any, index: number = 0) => {
       if (!lottieAnimation) return
 
@@ -584,6 +590,7 @@ export default defineComponent({
       playSegments,
       setSubFrame,
       getDuration,
+      getCurrentFrame,
       updateDocumentData,
     }
   },
