@@ -14,12 +14,11 @@ import {
   computed,
   watch,
   defineComponent,
+  onBeforeUnmount,
   PropType,
-  watchEffect,
+  toRaw,
 } from 'vue'
-import Lottie from 'lottie-web'
-import isEqual from 'fast-deep-equal/es6';
-import { klona as cloneDeep } from 'klona/json';
+import { klona as cloneDeep } from 'klona/json'
 
 import type {
   AnimationDirection,
@@ -27,6 +26,27 @@ import type {
   AnimationSegment,
   LottieProps,
 } from './types'
+
+type LottiePlayer = typeof import('lottie-web').default
+
+// lottie-web touches `window`/`document` at import time, so it is loaded
+// lazily on the client only to keep the component SSR-safe.
+let lottiePlayerPromise: Promise<LottiePlayer> | null = null
+const loadLottiePlayer = () => {
+  if (!lottiePlayerPromise) {
+    lottiePlayerPromise = import('lottie-web')
+      .then((mod: any) => (mod.default ?? mod) as LottiePlayer)
+      .catch((error) => {
+        // allow a retry on the next load
+        lottiePlayerPromise = null
+        throw error
+      })
+  }
+  return lottiePlayerPromise
+}
+
+const isEmptyObject = (value: unknown) =>
+  !value || (typeof value === 'object' && Object.keys(value).length === 0)
 
 export default defineComponent({
   props: {
@@ -115,86 +135,135 @@ export default defineComponent({
   setup(props, { emit: emits }) {
     const lottieAnimationContainer = ref<HTMLDivElement>()
 
-    let animationData: any
+    let animationData: any = null
     let lottieAnimation: AnimationItem | null = null
     let direction: AnimationDirection = 1
+    let delayTimer: ReturnType<typeof setTimeout> | null = null
+    let wasPlayingBeforeHover = false
+    let isUnmounted = false
 
-    watchEffect(async () => {
-      // track and ensure that `lottieAnimationContainer` is mounted
-      // fix: #502
-      if(!lottieAnimationContainer.value) return
+    // incremented on every source change so stale async loads are ignored
+    let loadId = 0
+    let abortController: AbortController | null = null
 
-      if (props.animationLink != '') {
-        // fetch the animation data from the url
-
-        try {
-          const response = await fetch(props.animationLink)
-
-          const responseJSON = await response.json()
-
-          animationData = responseJSON
-        } catch (error) {
-          console.error(error)
-          return
-        }
-      } else if (isEqual(props.animationData, {}) === false) {
-        // clone the animationData to prevent it from being mutated
-        animationData = cloneDeep(props.animationData)
-      } else {
-        throw new Error(
-          'You must provide either animationLink or animationData',
-        )
+    const clearDelayTimer = () => {
+      if (delayTimer !== null) {
+        clearTimeout(delayTimer)
+        delayTimer = null
       }
+    }
 
-      loadLottie()
-    })
+    const destroyAnimation = () => {
+      clearDelayTimer()
+      lottieAnimation?.destroy()
+      lottieAnimation = null
+    }
 
-    const loadLottie = () => {
-      // check if the lottieAnimationContainer has been created
+    const shouldPlay = () =>
+      props.autoPlay && !props.playOnHover && !props.pauseAnimation
+
+    const getInitialDirection = (): AnimationDirection =>
+      props.direction === 'reverse' ? -1 : 1
+
+    // fetch / clone the animation source, then (re)build the animation
+    const loadSource = async () => {
+      const currentLoadId = ++loadId
+
+      abortController?.abort()
+      abortController = null
+
       if (!lottieAnimationContainer.value) return
 
-      // check if the animationData has been loaded
-      if (!animationData) return
+      let data: any
 
-      // destroy the animation if it already exists
-      lottieAnimation?.destroy()
+      if (props.animationLink !== '') {
+        const controller =
+          typeof AbortController !== 'undefined' ? new AbortController() : null
+        abortController = controller
 
-      // reset the lottieAnimation variable
-      lottieAnimation = null
+        try {
+          const response = await fetch(props.animationLink, {
+            signal: controller?.signal,
+          })
 
-      // set the autoplay and loop variables
-      let autoPlay = props.autoPlay
-      let loop = props.loop
+          if (!response.ok) {
+            throw new Error(
+              `Failed to fetch animation from ${props.animationLink}: ${response.status} ${response.statusText}`,
+            )
+          }
 
-      if (props.playOnHover) {
-        autoPlay = false
+          data = await response.json()
+        } catch (error: any) {
+          if (error?.name !== 'AbortError') console.error(error)
+          return
+        }
+      } else if (!isEmptyObject(props.animationData)) {
+        // clone the raw animationData so lottie can't mutate the user's
+        // object, without deep-tracking every nested property
+        data = cloneDeep(toRaw(props.animationData))
+      } else {
+        console.warn(
+          '[vue3-lottie] You must provide either animationLink or animationData',
+        )
+        return
       }
+
+      // a newer load started (or the component unmounted) while we waited
+      if (currentLoadId !== loadId || isUnmounted) return
+
+      animationData = data
+      await loadLottie(currentLoadId)
+    }
+
+    const loadLottie = async (currentLoadId = loadId) => {
+      if (!lottieAnimationContainer.value || !animationData) return
+
+      let Lottie: LottiePlayer
+      try {
+        Lottie = await loadLottiePlayer()
+      } catch (error) {
+        console.error(error)
+        return
+      }
+
+      // the source changed or the component unmounted while lottie loaded
+      if (
+        currentLoadId !== loadId ||
+        isUnmounted ||
+        !lottieAnimationContainer.value
+      ) {
+        return
+      }
+
+      destroyAnimation()
+
+      let loop = props.loop
 
       // drop the loop by one
       // this is because lottie-web will loop one extra time
-      if (typeof loop === 'number') {
-        if (loop > 0) {
-          loop = loop - 1
-        }
+      if (typeof loop === 'number' && loop > 0) {
+        loop = loop - 1
       }
 
-      // if the delay is greater than 0, we need to set autoplay to false
-      if (props.delay > 0) {
-        autoPlay = false
+      if (props.direction === 'alternate' && loop === false) {
+        console.warn(
+          '[vue3-lottie] direction="alternate" requires loop to be enabled',
+        )
       }
 
       const lottieAnimationConfig: any = {
         container: lottieAnimationContainer.value,
         renderer: props.renderer,
         loop: loop,
-        autoplay: autoPlay,
+        // only let lottie autoplay when nothing should hold the animation back
+        autoplay: shouldPlay() && props.delay <= 0,
         animationData: animationData,
         assetsPath: props.assetsPath,
       }
 
       // check if the custom rendererSettings is provided
-      if (isEqual(props.rendererSettings, {}) === false) {
-        lottieAnimationConfig.rendererSettings = props.rendererSettings
+      if (!isEmptyObject(props.rendererSettings)) {
+        lottieAnimationConfig.rendererSettings = { ...props.rendererSettings }
       }
 
       /**
@@ -210,19 +279,23 @@ export default defineComponent({
       }
 
       // actually load the animation
-      lottieAnimation = Lottie.loadAnimation(lottieAnimationConfig)
+      const animation = Lottie.loadAnimation(lottieAnimationConfig)
+      lottieAnimation = animation
 
-      setTimeout(() => {
-        autoPlay = props.autoPlay
+      // set the speed and direction
+      direction = getInitialDirection()
+      animation.setSpeed(props.speed)
+      animation.setDirection(direction)
 
-        if (props.playOnHover) {
-          lottieAnimation?.pause()
+      delayTimer = setTimeout(() => {
+        delayTimer = null
+
+        if (lottieAnimation !== animation) return
+
+        if (shouldPlay()) {
+          animation.play()
         } else {
-          if (autoPlay) {
-            lottieAnimation?.play()
-          } else {
-            lottieAnimation?.pause()
-          }
+          animation.pause()
         }
 
         /**
@@ -230,50 +303,85 @@ export default defineComponent({
          * This should help with times where you want to run functions on the ref of the element
          */
         emits('onAnimationLoaded')
-      }, props.delay)
-
-      // set the speed and direction
-      lottieAnimation.setSpeed(props.speed)
-
-      if (props.direction === 'reverse') {
-        lottieAnimation.setDirection(-1)
-      }
-      if (props.direction === 'normal') {
-        lottieAnimation.setDirection(1)
-      }
-
-      // pause the animation if pauseAnimation or playOnHover is true
-      if (props.pauseAnimation) {
-        lottieAnimation.pause()
-      } else {
-        if (props.playOnHover) {
-          lottieAnimation.pause()
-        }
-      }
+      }, Math.max(props.delay, 0))
 
       // set the emit events
-      lottieAnimation.addEventListener('loopComplete', () => {
+      animation.addEventListener('loopComplete', (event: any) => {
         if (props.direction === 'alternate') {
-          lottieAnimation?.stop()
+          animation.stop()
           direction = direction === -1 ? 1 : -1 //invert direction
-          lottieAnimation?.setDirection(direction)
-          lottieAnimation?.play()
+          animation.setDirection(direction)
+          animation.play()
         }
-        emits('onLoopComplete')
+        emits('onLoopComplete', event)
       })
 
-      lottieAnimation.addEventListener('complete', () => {
-        emits('onComplete')
+      animation.addEventListener('complete', (event: any) => {
+        emits('onComplete', event)
       })
 
-      lottieAnimation.addEventListener('enterFrame', () => {
-        emits('onEnterFrame')
+      animation.addEventListener('enterFrame', (event: any) => {
+        emits('onEnterFrame', event)
       })
 
-      lottieAnimation.addEventListener('segmentStart', () => {
-        emits('onSegmentStart')
+      animation.addEventListener('segmentStart', (event: any) => {
+        emits('onSegmentStart', event)
       })
     }
+
+    // (re)load whenever the container mounts or the animation source changes
+    watch(
+      [
+        lottieAnimationContainer,
+        () => props.animationLink,
+        () => props.animationData,
+      ],
+      () => {
+        loadSource()
+      },
+      { immediate: true },
+    )
+
+    // these options can only be applied by rebuilding the animation
+    watch(
+      [
+        () => props.loop,
+        () => props.autoPlay,
+        () => props.delay,
+        () => props.playOnHover,
+        () => props.renderer,
+        () => props.rendererSettings,
+        () => props.assetsPath,
+        () => props.scale,
+      ],
+      () => {
+        if (animationData) loadLottie()
+      },
+      { deep: true },
+    )
+
+    // these options can be applied to the live animation
+    watch(
+      () => props.speed,
+      (speed) => {
+        lottieAnimation?.setSpeed(speed)
+      },
+    )
+
+    watch(
+      () => props.direction,
+      () => {
+        direction = getInitialDirection()
+        lottieAnimation?.setDirection(direction)
+      },
+    )
+
+    onBeforeUnmount(() => {
+      isUnmounted = true
+      abortController?.abort()
+      abortController = null
+      destroyAnimation()
+    })
 
     // generate the css variables for width, height and background color
     const getCurrentStyle: any = computed(() => {
@@ -302,21 +410,29 @@ export default defineComponent({
 
     // function to check if the container is being hovered
     const hoverStarted = () => {
-      if (lottieAnimation && props.pauseOnHover) {
+      if (!lottieAnimation) return
+
+      if (props.pauseOnHover) {
+        // remember the play state so we only resume what we paused
+        wasPlayingBeforeHover = !lottieAnimation.isPaused
         lottieAnimation.pause()
       }
 
-      if (lottieAnimation && props.playOnHover) {
+      if (props.playOnHover) {
         lottieAnimation.play()
       }
     }
 
     // function to check if the container is no longer being hovered
     const hoverEnded = () => {
-      if (lottieAnimation && props.pauseOnHover) {
+      if (!lottieAnimation) return
+
+      if (props.pauseOnHover && wasPlayingBeforeHover) {
         lottieAnimation.play()
       }
-      if (lottieAnimation && props.playOnHover) {
+      wasPlayingBeforeHover = false
+
+      if (props.playOnHover) {
         lottieAnimation.pause()
       }
     }
@@ -366,9 +482,7 @@ export default defineComponent({
     }
 
     const destroy = () => {
-      if (lottieAnimation) {
-        lottieAnimation.destroy()
-      }
+      destroyAnimation()
     }
 
     const setSpeed = (speed: number = 1) => {
@@ -383,13 +497,16 @@ export default defineComponent({
       }
     }
 
-    const setDirection = (direction: 'forward' | 'reverse') => {
+    const setDirection = (newDirection: 'forward' | 'reverse') => {
       if (lottieAnimation) {
-        if (direction === 'forward') {
-          lottieAnimation.setDirection(1)
-        } else if (direction === 'reverse') {
-          lottieAnimation.setDirection(-1)
+        if (newDirection === 'forward') {
+          direction = 1
+        } else if (newDirection === 'reverse') {
+          direction = -1
+        } else {
+          return
         }
+        lottieAnimation.setDirection(direction)
       }
     }
 
@@ -437,11 +554,18 @@ export default defineComponent({
     }
 
     const updateDocumentData = (documentData: any, index: number = 0) => {
-      if (lottieAnimation) {
-        lottieAnimation.renderer.elements[index].updateDocumentData(
-          documentData,
+      if (!lottieAnimation) return
+
+      const element = (lottieAnimation as any).renderer?.elements?.[index]
+
+      if (!element || typeof element.updateDocumentData !== 'function') {
+        console.warn(
+          `[vue3-lottie] updateDocumentData: no text element found at index ${index}`,
         )
+        return
       }
+
+      element.updateDocumentData(documentData)
     }
 
     return {

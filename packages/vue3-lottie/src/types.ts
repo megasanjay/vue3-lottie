@@ -2,6 +2,17 @@ export type {
   AnimationDirection,
   AnimationItem,
   AnimationSegment,
+  BMCompleteEvent,
+  BMCompleteLoopEvent,
+  BMEnterFrameEvent,
+  BMSegmentStartEvent,
+} from 'lottie-web'
+
+import type {
+  BMCompleteEvent,
+  BMCompleteLoopEvent,
+  BMEnterFrameEvent,
+  BMSegmentStartEvent,
 } from 'lottie-web'
 
 export interface LottieProps {
@@ -15,7 +26,7 @@ export interface LottieProps {
   height: number | string
   speed: number
   delay: number
-  direction: string
+  direction: 'forward' | 'reverse' | 'alternate'
   pauseOnHover: boolean
   playOnHover: boolean
   noMargin: boolean
@@ -23,9 +34,9 @@ export interface LottieProps {
   backgroundColor: string
   pauseAnimation: boolean
   assetsPath: string
-  onLoopComplete: () => void
-  onEnterFrame: () => void
-  onSegmentStart: () => void
-  onComplete: () => void
+  onLoopComplete: (event: BMCompleteLoopEvent) => void
+  onEnterFrame: (event: BMEnterFrameEvent) => void
+  onSegmentStart: (event: BMSegmentStartEvent) => void
+  onComplete: (event: BMCompleteEvent) => void
   onAnimationLoaded: () => void
 }
