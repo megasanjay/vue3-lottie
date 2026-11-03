@@ -3,6 +3,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "strict": true,
+    "skipLibCheck": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
     "lib": ["es2017", "ESNext", "DOM", "DOM.Iterable"],
@@ -11,5 +12,5 @@
     "moduleResolution": "node",
     "types": ["vite/client"]
   },
-  "include": ["src", "*.d.ts"],
+  "include": ["src", "*.d.ts"]
 }
